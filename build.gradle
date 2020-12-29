@@ -42,17 +42,17 @@ def createJavaLicenseWith = { license ->
 // monorepo setup and it doesn't actually exclude directories reliably. This code makes the behavior predictable.
 def createSpotlessTarget = { pattern ->
     def excludes = [
-        '.gradle',
-        'node_modules',
-        '.eggs',
-        '.mypy_cache',
-        '.venv',
-        '*.egg-info',
-        'build',
-        'dbt-project-template',
-        'tools'
+            '.gradle',
+            'node_modules',
+            '.eggs',
+            '.mypy_cache',
+            '.venv',
+            '*.egg-info',
+            'build',
+            'dbt-project-template',
+            'tools'
     ]
-    return fileTree(dir: rootDir, include: pattern, exclude: excludes.collect {"**/${it}"})
+    return fileTree(dir: rootDir, include: pattern, exclude: excludes.collect { "**/${it}" })
 }
 
 spotless {
@@ -124,8 +124,13 @@ subprojects {
     }
 
     apply plugin: 'java'
-    apply plugin: 'jacoco'
+    // TODO jacoco does not yet support JDK 15
+//    apply plugin: 'jacoco'
 
+    def javaVersion = JavaVersion.VERSION_15
+    if (JavaVersion.current() != javaVersion) {
+        throw new GradleException("This project requires Java version ${javaVersion} but is running with version ${JavaVersion.current()}!")
+    }
     sourceCompatibility = JavaVersion.VERSION_14
     targetCompatibility = JavaVersion.VERSION_14
 
@@ -148,12 +153,13 @@ subprojects {
             exceptionFormat 'full'
             // showStandardStreams = true
         }
-        finalizedBy jacocoTestReport
+//        TODO jacoco does not yet support JDK 15
+//        finalizedBy jacocoTestReport
     }
-
-    jacocoTestReport {
-        dependsOn test
-    }
+// TODO jacoco does not yet support JDK 15
+//    jacocoTestReport {
+//        dependsOn test
+//    }
 
     dependencies {
         if (project.name != 'airbyte-commons') {

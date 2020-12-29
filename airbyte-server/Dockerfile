@@ -1,4 +1,4 @@
-FROM openjdk:14.0.2-slim AS server
+FROM openjdk:15.0.1-slim AS server
 
 EXPOSE 8000
 

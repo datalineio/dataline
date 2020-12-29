@@ -1,4 +1,4 @@
-FROM openjdk:14.0.2-slim
+FROM openjdk:15.0.1-slim
 COPY --from=airbyte/integration-base:dev /airbyte /airbyte
 
 WORKDIR /airbyte

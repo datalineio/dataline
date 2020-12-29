@@ -55,7 +55,7 @@ jobs:
 
       - uses: actions/setup-java@v1
         with:
-          java-version: '14'
+          java-version: '15'
 
       - uses: actions/setup-node@v1
         with:

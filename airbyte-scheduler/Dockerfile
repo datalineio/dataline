@@ -1,4 +1,4 @@
-FROM openjdk:14.0.2-slim AS scheduler
+FROM openjdk:15.0.1-slim AS scheduler
 
 
 # Install Docker to launch worker images. Eventually should be replaced with Docker-java.
