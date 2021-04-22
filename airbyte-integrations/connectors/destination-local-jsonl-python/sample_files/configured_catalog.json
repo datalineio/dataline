@@ -1,0 +1,28 @@
+{
+  "streams": [
+    {
+      "stream": {
+        "name": "1",
+        "json_schema": {}
+      },
+      "destination_sync_mode": "overwrite",
+      "sync_mode": "full_refresh"
+    },
+    {
+      "stream": {
+        "name": "2",
+        "json_schema": {}
+      },
+      "destination_sync_mode": "append",
+      "sync_mode": "full_refresh"
+    },
+    {
+      "stream": {
+        "name": "3",
+        "json_schema": {}
+      },
+      "destination_sync_mode": "append",
+      "sync_mode": "full_refresh"
+    }
+  ]
+}

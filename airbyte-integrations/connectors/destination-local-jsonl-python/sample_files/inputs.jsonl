@@ -1,0 +1,9 @@
+{"type":"RECORD", "record": {"stream": "1", "data": {"1":"1"}, "emitted_at": 1}}
+{"type":"RECORD", "record": {"stream": "1", "data": {"1":"2"}, "emitted_at": 1}}
+{"type":"STATE", "state": {"data": {}}}
+{"type":"RECORD", "record": {"stream": "1", "data": {"1":"3"}, "emitted_at": 1}}
+{"type":"RECORD", "record": {"stream": "2", "data": {"2":"1"}, "emitted_at": 1}}
+{"type":"RECORD", "record": {"stream": "3", "data": {"3":"1"}, "emitted_at": 1}}
+{"type":"RECORD", "record": {"stream": "3", "data": {"3":"2"}, "emitted_at": 1}}
+{"type":"RECORD", "record": {"stream": "2", "data": {"2":"2"}, "emitted_at": 1}}
+{"type":"RECORD", "record": {"stream": "1", "data": {"1":"4"}, "emitted_at": 1}}
