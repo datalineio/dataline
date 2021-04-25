@@ -1,0 +1,1007 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>base_python package &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="base-python-package">
+<h1>base_python package<a class="headerlink" href="#base-python-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="base_python.cdk.html">base_python.cdk package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="base_python.cdk.streams.html">base_python.cdk.streams package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams.core">base_python.cdk.streams.core module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams.exceptions">base_python.cdk.streams.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams.http">base_python.cdk.streams.http module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams.rate_limiting">base_python.cdk.streams.rate_limiting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="base_python.cdk.utils.html">base_python.cdk.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.utils.html#module-base_python.cdk.utils.casing">base_python.cdk.utils.casing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.utils.html#module-base_python.cdk.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.html#module-base_python.cdk.abstract_source">base_python.cdk.abstract_source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.html#module-base_python.cdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-base_python.catalog_helpers">
+<span id="base-python-catalog-helpers-module"></span><h2>base_python.catalog_helpers module<a class="headerlink" href="#module-base_python.catalog_helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.catalog_helpers.CatalogHelper">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.catalog_helpers.</span></code><code class="sig-name descname"><span class="pre">CatalogHelper</span></code><a class="headerlink" href="#base_python.catalog_helpers.CatalogHelper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.catalog_helpers.CatalogHelper.coerce_catalog_as_full_refresh">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">coerce_catalog_as_full_refresh</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span><a class="headerlink" href="#base_python.catalog_helpers.CatalogHelper.coerce_catalog_as_full_refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the sync mode on all streams in this catalog to be full refresh</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.client">
+<span id="base-python-client-module"></span><h2>base_python.client module<a class="headerlink" href="#module-base_python.client" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.client.BaseClient">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.client.</span></code><code class="sig-name descname"><span class="pre">BaseClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.client.BaseClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.client.StreamStateMixin" title="base_python.client.StreamStateMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.client.StreamStateMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base client for API</p>
+<dl class="py method">
+<dt id="base_python.client.BaseClient.health_check">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">health_check</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.client.BaseClient.health_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if service is up and running</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.client.BaseClient.read_stream">
+<code class="sig-name descname"><span class="pre">read_stream</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteStream</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.client.BaseClient.read_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield records from stream</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="base_python.client.BaseClient.schema_loader_class">
+<code class="sig-name descname"><span class="pre">schema_loader_class</span></code><a class="headerlink" href="#base_python.client.BaseClient.schema_loader_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#base_python.schema_helpers.ResourceSchemaLoader" title="base_python.schema_helpers.ResourceSchemaLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.schema_helpers.ResourceSchemaLoader</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.client.BaseClient.streams">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">streams</span></code><a class="headerlink" href="#base_python.client.BaseClient.streams" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of available streams</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.client.StreamStateMixin">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.client.</span></code><code class="sig-name descname"><span class="pre">StreamStateMixin</span></code><a class="headerlink" href="#base_python.client.StreamStateMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.client.StreamStateMixin.get_stream_state">
+<code class="sig-name descname"><span class="pre">get_stream_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Any</span><a class="headerlink" href="#base_python.client.StreamStateMixin.get_stream_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get state of stream with corresponding name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.client.StreamStateMixin.set_stream_state">
+<code class="sig-name descname"><span class="pre">set_stream_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.client.StreamStateMixin.set_stream_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set state of stream with corresponding name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.client.StreamStateMixin.stream_has_state">
+<code class="sig-name descname"><span class="pre">stream_has_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#base_python.client.StreamStateMixin.stream_has_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell if stream supports incremental sync</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="base_python.client.configured_catalog_from_client">
+<code class="sig-prename descclassname"><span class="pre">base_python.client.</span></code><code class="sig-name descname"><span class="pre">configured_catalog_from_client</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.client.BaseClient" title="base_python.client.BaseClient"><span class="pre">base_python.client.BaseClient</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.ConfiguredAirbyteCatalog</span><a class="headerlink" href="#base_python.client.configured_catalog_from_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper to generate configured catalog for testing</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="base_python.client.package_name_from_class">
+<code class="sig-prename descclassname"><span class="pre">base_python.client.</span></code><code class="sig-name descname"><span class="pre">package_name_from_class</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#base_python.client.package_name_from_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the package name given a class name</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.entrypoint">
+<span id="base-python-entrypoint-module"></span><h2>base_python.entrypoint module<a class="headerlink" href="#module-base_python.entrypoint" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.entrypoint.AirbyteEntrypoint">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.entrypoint.</span></code><code class="sig-name descname"><span class="pre">AirbyteEntrypoint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.integration.Source" title="base_python.integration.Source"><span class="pre">base_python.integration.Source</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.entrypoint.AirbyteEntrypoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.entrypoint.AirbyteEntrypoint.start">
+<code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.entrypoint.AirbyteEntrypoint.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="base_python.entrypoint.launch">
+<code class="sig-prename descclassname"><span class="pre">base_python.entrypoint.</span></code><code class="sig-name descname"><span class="pre">launch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.entrypoint.launch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="base_python.entrypoint.main">
+<code class="sig-prename descclassname"><span class="pre">base_python.entrypoint.</span></code><code class="sig-name descname"><span class="pre">main</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base_python.entrypoint.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-base_python.integration">
+<span id="base-python-integration-module"></span><h2>base_python.integration module<a class="headerlink" href="#module-base_python.integration" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.integration.AirbyteSpec">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.integration.</span></code><code class="sig-name descname"><span class="pre">AirbyteSpec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.integration.AirbyteSpec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.integration.AirbyteSpec.from_file">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">from_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.integration.AirbyteSpec.from_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.integration.Destination">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.integration.</span></code><code class="sig-name descname"><span class="pre">Destination</span></code><a class="headerlink" href="#base_python.integration.Destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.integration.Integration" title="base_python.integration.Integration"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.integration.Integration</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.integration.Integration">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.integration.</span></code><code class="sig-name descname"><span class="pre">Integration</span></code><a class="headerlink" href="#base_python.integration.Integration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.integration.Integration.check">
+<code class="sig-name descname"><span class="pre">check</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">base_python.logger.AirbyteLogger</span></em>, <em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteConnectionStatus</span><a class="headerlink" href="#base_python.integration.Integration.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the input configuration can be used to successfully connect to the integration e.g: if a provided Stripe API token can be used to connect
+to the Stripe API.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.integration.Integration.configure">
+<code class="sig-name descname"><span class="pre">configure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;</span></em>, <em class="sig-param"><span class="pre">temp_dir:</span> <span class="pre">str</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">&lt;module</span> <span class="pre">‘json’</span> <span class="pre">from</span> <span class="pre">‘/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py’&gt;</span><a class="headerlink" href="#base_python.integration.Integration.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist config in temporary directory to run the Source job</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.integration.Integration.discover">
+<code class="sig-name descname"><span class="pre">discover</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">base_python.logger.AirbyteLogger</span></em>, <em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span><a class="headerlink" href="#base_python.integration.Integration.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an AirbyteCatalog representing the available streams and fields in this integration. For example, given valid credentials to a
+Postgres database, returns an Airbyte catalog where each postgres table is a stream, and each table column is a field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.integration.Integration.read_catalog">
+<code class="sig-name descname"><span class="pre">read_catalog</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.ConfiguredAirbyteCatalog</span><a class="headerlink" href="#base_python.integration.Integration.read_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.integration.Integration.read_config">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">read_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">&lt;module</span> <span class="pre">‘json’</span> <span class="pre">from</span> <span class="pre">‘/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py’&gt;</span><a class="headerlink" href="#base_python.integration.Integration.read_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.integration.Integration.read_state">
+<code class="sig-name descname"><span class="pre">read_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.integration.Integration.read_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.integration.Integration.spec">
+<code class="sig-name descname"><span class="pre">spec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.ConnectorSpecification</span><a class="headerlink" href="#base_python.integration.Integration.spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the spec for this integration. The spec is a JSON-Schema object describing the required configurations (e.g: username and password)
+required to run this integration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.integration.Integration.write_config">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">write_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;</span></em>, <em class="sig-param"><span class="pre">config_path:</span> <span class="pre">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.integration.Integration.write_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.integration.Source">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.integration.</span></code><code class="sig-name descname"><span class="pre">Source</span></code><a class="headerlink" href="#base_python.integration.Source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.integration.Integration" title="base_python.integration.Integration"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.integration.Integration</span></code></a></p>
+<dl class="py method">
+<dt id="base_python.integration.Source.read">
+<code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">base_python.logger.AirbyteLogger,</span> <span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;,</span> <span class="pre">catalog:</span> <span class="pre">airbyte_protocol.models.airbyte_protocol.ConfiguredAirbyteCatalog,</span> <span class="pre">state_path:</span> <span class="pre">Dict[str,</span> <span class="pre">any]</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteMessage</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.integration.Source.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of the AirbyteMessages generated by reading the source with the given configuration, catalog, and state.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.logger">
+<span id="base-python-logger-module"></span><h2>base_python.logger module<a class="headerlink" href="#module-base_python.logger" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.logger.AirbyteLogger">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.logger.</span></code><code class="sig-name descname"><span class="pre">AirbyteLogger</span></code><a class="headerlink" href="#base_python.logger.AirbyteLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.logger.AirbyteLogger.debug">
+<code class="sig-name descname"><span class="pre">debug</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.logger.AirbyteLogger.debug" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.logger.AirbyteLogger.error">
+<code class="sig-name descname"><span class="pre">error</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.logger.AirbyteLogger.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.logger.AirbyteLogger.exception">
+<code class="sig-name descname"><span class="pre">exception</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.logger.AirbyteLogger.exception" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.logger.AirbyteLogger.fatal">
+<code class="sig-name descname"><span class="pre">fatal</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.logger.AirbyteLogger.fatal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.logger.AirbyteLogger.info">
+<code class="sig-name descname"><span class="pre">info</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.logger.AirbyteLogger.info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.logger.AirbyteLogger.log">
+<code class="sig-name descname"><span class="pre">log</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.logger.AirbyteLogger.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.logger.AirbyteLogger.log_by_prefix">
+<code class="sig-name descname"><span class="pre">log_by_prefix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.logger.AirbyteLogger.log_by_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.logger.AirbyteLogger.trace">
+<code class="sig-name descname"><span class="pre">trace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.logger.AirbyteLogger.trace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.logger.AirbyteLogger.warn">
+<code class="sig-name descname"><span class="pre">warn</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.logger.AirbyteLogger.warn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.schema_helpers">
+<span id="base-python-schema-helpers-module"></span><h2>base_python.schema_helpers module<a class="headerlink" href="#module-base_python.schema_helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.schema_helpers.JsonSchemaResolver">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.schema_helpers.</span></code><code class="sig-name descname"><span class="pre">JsonSchemaResolver</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared_schemas_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.schema_helpers.JsonSchemaResolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Helper class to expand $ref items in json schema</p>
+<dl class="py method">
+<dt id="base_python.schema_helpers.JsonSchemaResolver.resolve">
+<code class="sig-name descname"><span class="pre">resolve</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#base_python.schema_helpers.JsonSchemaResolver.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves and replaces json-schema $refs with the appropriate dict.
+Recursively walks the given schema dict, converting every instance
+of $ref in a ‘properties’ structure with a resolved dict.
+This modifies the input schema and also returns it.
+Arguments:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>schema:</dt><dd><p>the schema dict</p>
+</dd>
+<dt>refs:</dt><dd><p>a dict of &lt;string, dict&gt; which forms a store of referenced schemata</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>schema</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.schema_helpers.ResourceSchemaLoader">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.schema_helpers.</span></code><code class="sig-name descname"><span class="pre">ResourceSchemaLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">package_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.schema_helpers.ResourceSchemaLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>JSONSchema loader from package resources</p>
+<dl class="py method">
+<dt id="base_python.schema_helpers.ResourceSchemaLoader.get_schema">
+<code class="sig-name descname"><span class="pre">get_schema</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#base_python.schema_helpers.ResourceSchemaLoader.get_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method retrieves a JSON schema from the schemas/ folder.</p>
+<p>The expected file structure is to have all top-level schemas (corresponding to streams) in the “schemas/” folder, with any shared $refs
+living inside the “schemas/shared/” folder. For example:</p>
+<p>schemas/shared/&lt;shared_definition&gt;.json
+schemas/&lt;name&gt;.json # contains a $ref to shared_definition
+schemas/&lt;name2&gt;.json # contains a $ref to shared_definition</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.source">
+<span id="base-python-source-module"></span><h2>base_python.source module<a class="headerlink" href="#module-base_python.source" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.source.BaseSource">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.source.</span></code><code class="sig-name descname"><span class="pre">BaseSource</span></code><a class="headerlink" href="#base_python.source.BaseSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.integration.Source" title="base_python.integration.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.integration.Source</span></code></a></p>
+<p>Base source that designed to work with clients derived from BaseClient</p>
+<dl class="py method">
+<dt id="base_python.source.BaseSource.check">
+<code class="sig-name descname"><span class="pre">check</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteConnectionStatus</span><a class="headerlink" href="#base_python.source.BaseSource.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check connection</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="base_python.source.BaseSource.client_class">
+<code class="sig-name descname"><span class="pre">client_class</span></code><em class="property"><span class="pre">:</span> <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#base_python.client.BaseClient" title="base_python.client.BaseClient"><span class="pre">base_python.client.BaseClient</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#base_python.source.BaseSource.client_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.source.BaseSource.discover">
+<code class="sig-name descname"><span class="pre">discover</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span><a class="headerlink" href="#base_python.source.BaseSource.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discover streams</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.source.BaseSource.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#base_python.source.BaseSource.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Source name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.source.BaseSource.read">
+<code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteMessage</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.source.BaseSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of the AirbyteMessages generated by reading the source with the given configuration, catalog, and state.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-base_python" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.AbstractSource">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">AbstractSource</span></code><a class="headerlink" href="#base_python.AbstractSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.integration.Source" title="base_python.integration.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.integration.Source</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract base class for an Airbyte Source. Consumers should implement any abstract methods
+in this class to create an Airbyte Specification compliant Source.</p>
+<dl class="py method">
+<dt id="base_python.AbstractSource.check">
+<code class="sig-name descname"><span class="pre">check</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteConnectionStatus</span><a class="headerlink" href="#base_python.AbstractSource.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Check Connection operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AbstractSource.check_connection">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">check_connection</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.AbstractSource.check_connection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – The user-provided configuration as specified by the source’s spec. This usually contains information required to check connection e.g. tokens, secrets and keys etc.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple of (boolean, error). If boolean is true, then the connection check is successful and we can connect to the underlying data</p>
+</dd>
+</dl>
+<p>source using the provided configuration.
+Otherwise, the input config cannot be used to connect to the underlying data source, and the “error” object should describe what went wrong.
+The error object will be cast to string to display the problem to the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AbstractSource.discover">
+<code class="sig-name descname"><span class="pre">discover</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span><a class="headerlink" href="#base_python.AbstractSource.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Discover operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AbstractSource.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#base_python.AbstractSource.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Source name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AbstractSource.read">
+<code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteMessage</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.AbstractSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Read operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AbstractSource.streams">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">streams</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="base_python.cdk.streams.html#base_python.cdk.streams.core.Stream" title="base_python.cdk.streams.core.Stream"><span class="pre">base_python.cdk.streams.core.Stream</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.AbstractSource.streams" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – The user-provided configuration as specified by the source’s spec. Any stream construction related operation should happen here.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of the streams in this source connector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.AirbyteLogger">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">AirbyteLogger</span></code><a class="headerlink" href="#base_python.AirbyteLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.AirbyteLogger.debug">
+<code class="sig-name descname"><span class="pre">debug</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteLogger.debug" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AirbyteLogger.error">
+<code class="sig-name descname"><span class="pre">error</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteLogger.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AirbyteLogger.exception">
+<code class="sig-name descname"><span class="pre">exception</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteLogger.exception" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AirbyteLogger.fatal">
+<code class="sig-name descname"><span class="pre">fatal</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteLogger.fatal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AirbyteLogger.info">
+<code class="sig-name descname"><span class="pre">info</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteLogger.info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AirbyteLogger.log">
+<code class="sig-name descname"><span class="pre">log</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteLogger.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AirbyteLogger.log_by_prefix">
+<code class="sig-name descname"><span class="pre">log_by_prefix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteLogger.log_by_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AirbyteLogger.trace">
+<code class="sig-name descname"><span class="pre">trace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteLogger.trace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.AirbyteLogger.warn">
+<code class="sig-name descname"><span class="pre">warn</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteLogger.warn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.AirbyteSpec">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">AirbyteSpec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteSpec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.AirbyteSpec.from_file">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">from_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.AirbyteSpec.from_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.BaseClient">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">BaseClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.BaseClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.client.StreamStateMixin" title="base_python.client.StreamStateMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.client.StreamStateMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base client for API</p>
+<dl class="py method">
+<dt id="base_python.BaseClient.health_check">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">health_check</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.BaseClient.health_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if service is up and running</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.BaseClient.read_stream">
+<code class="sig-name descname"><span class="pre">read_stream</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteStream</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.BaseClient.read_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield records from stream</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="base_python.BaseClient.schema_loader_class">
+<code class="sig-name descname"><span class="pre">schema_loader_class</span></code><a class="headerlink" href="#base_python.BaseClient.schema_loader_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#base_python.schema_helpers.ResourceSchemaLoader" title="base_python.schema_helpers.ResourceSchemaLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.schema_helpers.ResourceSchemaLoader</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.BaseClient.streams">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">streams</span></code><a class="headerlink" href="#base_python.BaseClient.streams" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of available streams</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.BaseSource">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">BaseSource</span></code><a class="headerlink" href="#base_python.BaseSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.integration.Source" title="base_python.integration.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.integration.Source</span></code></a></p>
+<p>Base source that designed to work with clients derived from BaseClient</p>
+<dl class="py method">
+<dt id="base_python.BaseSource.check">
+<code class="sig-name descname"><span class="pre">check</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteConnectionStatus</span><a class="headerlink" href="#base_python.BaseSource.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check connection</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="base_python.BaseSource.client_class">
+<code class="sig-name descname"><span class="pre">client_class</span></code><em class="property"><span class="pre">:</span> <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#base_python.client.BaseClient" title="base_python.client.BaseClient"><span class="pre">base_python.client.BaseClient</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#base_python.BaseSource.client_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.BaseSource.discover">
+<code class="sig-name descname"><span class="pre">discover</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span><a class="headerlink" href="#base_python.BaseSource.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discover streams</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.BaseSource.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#base_python.BaseSource.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Source name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.BaseSource.read">
+<code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteMessage</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.BaseSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of the AirbyteMessages generated by reading the source with the given configuration, catalog, and state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.CatalogHelper">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">CatalogHelper</span></code><a class="headerlink" href="#base_python.CatalogHelper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.CatalogHelper.coerce_catalog_as_full_refresh">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">coerce_catalog_as_full_refresh</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span><a class="headerlink" href="#base_python.CatalogHelper.coerce_catalog_as_full_refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the sync mode on all streams in this catalog to be full refresh</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.Destination">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">Destination</span></code><a class="headerlink" href="#base_python.Destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.integration.Integration" title="base_python.integration.Integration"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.integration.Integration</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.HttpAuthenticator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">HttpAuthenticator</span></code><a class="headerlink" href="#base_python.HttpAuthenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base abstract class for various HTTP Authentication strategies. Authentication strategies are generally
+expected to provide security credentials via HTTP headers.</p>
+<dl class="py method">
+<dt id="base_python.HttpAuthenticator.get_auth_header">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">get_auth_header</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.HttpAuthenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.HttpStream">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">HttpStream</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">authenticator:</span> <span class="pre">base_python.cdk.streams.auth.core.HttpAuthenticator</span> <span class="pre">=</span> <span class="pre">&lt;base_python.cdk.streams.auth.core.NoAuth</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.HttpStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base_python.cdk.streams.html#base_python.cdk.streams.core.Stream" title="base_python.cdk.streams.core.Stream"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.cdk.streams.core.Stream</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base abstract class for an Airbyte Stream using the HTTP protocol. Basic building block for users building an Airbyte source for a HTTP API.</p>
+<dl class="py method">
+<dt id="base_python.HttpStream.authenticator">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">authenticator</span></code><a class="headerlink" href="#base_python.HttpStream.authenticator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.backoff_time">
+<code class="sig-name descname"><span class="pre">backoff_time</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.HttpStream.backoff_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to dynamically determine backoff time e.g: by reading the X-Retry-After header.</p>
+<p>This method is called only if should_backoff() returns True for the input request.</p>
+<p>:return how long to backoff in seconds. The return value may be a floating point number for subsecond precision. Returning None defers backoff
+to the default backoff behavior (e.g using an exponential algorithm).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.http_method">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">http_method</span></code><a class="headerlink" href="#base_python.HttpStream.http_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override if needed. See get_request_data if using POST.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.next_page_token">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">next_page_token</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.HttpStream.next_page_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to define a pagination strategy.</p>
+<p>The value returned from this method is passed to most other methods in this class. Use it to form a request e.g: set headers or query params.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The token for the next page from the input response object. Returning None means there are no more pages to read in this response.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.parse_response">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">parse_response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.HttpStream.parse_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the raw response object into a list of records.
+By default, this returns an iterable containing the input. Override to parse differently.
+:param response:
+:return: An iterable containing the parsed response</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.path">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#base_python.HttpStream.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the URL path for the API endpoint e.g: if you wanted to hit <a class="reference external" href="https://myapi.com/v1/some_entity">https://myapi.com/v1/some_entity</a> then this should return “some_entity”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.read_records">
+<code class="sig-name descname"><span class="pre">read_records</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sync_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.SyncMode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.HttpStream.read_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should be overridden by subclasses to read records based on the inputs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.request_body_json">
+<code class="sig-name descname"><span class="pre">request_body_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.HttpStream.request_body_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>TODO make this possible to do for non-JSON APIs
+Override when creating POST requests to populate the body of the request with a JSON payload.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.request_headers">
+<code class="sig-name descname"><span class="pre">request_headers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.HttpStream.request_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to return any non-auth headers. Authentication headers will overwrite any overlapping headers returned from this method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.request_params">
+<code class="sig-name descname"><span class="pre">request_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.HttpStream.request_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to define the query parameters that should be set on an outgoing HTTP request given the inputs.</p>
+<p>E.g: you might want to define query parameters for paging if next_page_token is not None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.should_retry">
+<code class="sig-name descname"><span class="pre">should_retry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#base_python.HttpStream.should_retry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to set different conditions for backoff based on the response from the server.</p>
+<dl class="simple">
+<dt>By default, back off on the following HTTP response statuses:</dt><dd><ul class="simple">
+<li><p>429 (Too Many Requests) indicating rate limiting</p></li>
+<li><p>500s to handle transient server errors</p></li>
+</ul>
+</dd>
+</dl>
+<p>Unexpected but transient exceptions (connection timeout, DNS resolution failed, etc..) are retried by default.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="base_python.HttpStream.source_defined_cursor">
+<code class="sig-name descname"><span class="pre">source_defined_cursor</span></code><em class="property"> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#base_python.HttpStream.source_defined_cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.HttpStream.url_base">
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">url_base</span></code><a class="headerlink" href="#base_python.HttpStream.url_base" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>URL base for the  API endpoint e.g: if you wanted to hit <a class="reference external" href="https://myapi.com/v1/some_entity">https://myapi.com/v1/some_entity</a> then this should return “<a class="reference external" href="https://myapi.com/v1/">https://myapi.com/v1/</a>”</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.Integration">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">Integration</span></code><a class="headerlink" href="#base_python.Integration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="base_python.Integration.check">
+<code class="sig-name descname"><span class="pre">check</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">base_python.logger.AirbyteLogger</span></em>, <em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteConnectionStatus</span><a class="headerlink" href="#base_python.Integration.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the input configuration can be used to successfully connect to the integration e.g: if a provided Stripe API token can be used to connect
+to the Stripe API.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Integration.configure">
+<code class="sig-name descname"><span class="pre">configure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;</span></em>, <em class="sig-param"><span class="pre">temp_dir:</span> <span class="pre">str</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">&lt;module</span> <span class="pre">‘json’</span> <span class="pre">from</span> <span class="pre">‘/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py’&gt;</span><a class="headerlink" href="#base_python.Integration.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist config in temporary directory to run the Source job</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Integration.discover">
+<code class="sig-name descname"><span class="pre">discover</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">base_python.logger.AirbyteLogger</span></em>, <em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span><a class="headerlink" href="#base_python.Integration.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an AirbyteCatalog representing the available streams and fields in this integration. For example, given valid credentials to a
+Postgres database, returns an Airbyte catalog where each postgres table is a stream, and each table column is a field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Integration.read_catalog">
+<code class="sig-name descname"><span class="pre">read_catalog</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.ConfiguredAirbyteCatalog</span><a class="headerlink" href="#base_python.Integration.read_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Integration.read_config">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">read_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">&lt;module</span> <span class="pre">‘json’</span> <span class="pre">from</span> <span class="pre">‘/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py’&gt;</span><a class="headerlink" href="#base_python.Integration.read_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Integration.read_state">
+<code class="sig-name descname"><span class="pre">read_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.Integration.read_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Integration.spec">
+<code class="sig-name descname"><span class="pre">spec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.ConnectorSpecification</span><a class="headerlink" href="#base_python.Integration.spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the spec for this integration. The spec is a JSON-Schema object describing the required configurations (e.g: username and password)
+required to run this integration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Integration.write_config">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">write_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;</span></em>, <em class="sig-param"><span class="pre">config_path:</span> <span class="pre">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.Integration.write_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.Source">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">Source</span></code><a class="headerlink" href="#base_python.Source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.integration.Integration" title="base_python.integration.Integration"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.integration.Integration</span></code></a></p>
+<dl class="py method">
+<dt id="base_python.Source.read">
+<code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">base_python.logger.AirbyteLogger,</span> <span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/local/opt/python&#64;3.7/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py'&gt;,</span> <span class="pre">catalog:</span> <span class="pre">airbyte_protocol.models.airbyte_protocol.ConfiguredAirbyteCatalog,</span> <span class="pre">state_path:</span> <span class="pre">Dict[str,</span> <span class="pre">any]</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteMessage</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.Source.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of the AirbyteMessages generated by reading the source with the given configuration, catalog, and state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.Stream">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">Stream</span></code><a class="headerlink" href="#base_python.Stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base abstract class for an Airbyte Stream. Makes no assumption of the Stream’s underlying transport protocol.</p>
+<dl class="py method">
+<dt id="base_python.Stream.as_airbyte_stream">
+<code class="sig-name descname"><span class="pre">as_airbyte_stream</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteStream</span><a class="headerlink" href="#base_python.Stream.as_airbyte_stream" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Stream.cursor_field">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">cursor_field</span></code><a class="headerlink" href="#base_python.Stream.cursor_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to return the default cursor field used by this stream e.g: an API entity might always use created_at as the cursor field.
+:return: The name of the field used as a cursor. If the cursor is nested, return an array consisting of the path to the cursor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Stream.get_json_schema">
+<code class="sig-name descname"><span class="pre">get_json_schema</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.Stream.get_json_schema" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dict of the JSON schema representing this stream.</p>
+</dd>
+</dl>
+<p>The default implementation of this method looks for a JSONSchema file with the same name as this stream’s “name” property.
+Override as needed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Stream.get_updated_state">
+<code class="sig-name descname"><span class="pre">get_updated_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest_record</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.Stream.get_updated_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to extract state from the latest record. Needed to implement incremental sync.</p>
+<p>Inspects the latest record extracted from the data source and the current state object and return an updated state object.</p>
+<p>For example: if the state object is based on created_at timestamp, and the current state is {‘created_at’: 10}, and the latest_record is
+{‘name’: ‘octavia’, ‘created_at’: 20 } then this method would return {‘created_at’: 20} to indicate state should be updated to this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>current_stream_state</strong> – The stream’s current state object</p></li>
+<li><p><strong>latest_record</strong> – The latest record extracted from the stream</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An updated state object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="base_python.Stream.logger">
+<code class="sig-name descname"><span class="pre">logger</span></code><em class="property"> <span class="pre">=</span> <span class="pre">&lt;base_python.logger.AirbyteLogger</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#base_python.Stream.logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Stream.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#base_python.Stream.name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Stream name. By default this is the implementing class name, but it can be overridden as needed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Stream.read_records">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">read_records</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sync_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.SyncMode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.Stream.read_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should be overridden by subclasses to read records based on the inputs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Stream.source_defined_cursor">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">source_defined_cursor</span></code><a class="headerlink" href="#base_python.Stream.source_defined_cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return False if the cursor can be configured by the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Stream.state_checkpoint_interval">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">state_checkpoint_interval</span></code><a class="headerlink" href="#base_python.Stream.state_checkpoint_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decides how often to checkpoint state (i.e: emit a STATE message). E.g: if this returns a value of 100, then state is persisted after reading
+100 records, then 200, 300, etc.. A good default value is 1000 although your mileage may vary depending on the underlying data source.</p>
+<p>Checkpointing a stream avoids re-reading records in the case a sync is failed or cancelled.</p>
+<p>return None if state should not be checkpointed e.g: because records returned from the underlying data source are not returned in
+ascending order with respect to the cursor field. This can happen if the source does not support reading records in ascending order of
+created_at date (or whatever the cursor is). In those cases, state must only be saved once the full stream has been read.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Stream.stream_slices">
+<code class="sig-name descname"><span class="pre">stream_slices</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sync_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.SyncMode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.Stream.stream_slices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to define the slices for this stream. See the stream slicing section of the docs for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream_state</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.Stream.supports_incremental">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">supports_incremental</span></code><a class="headerlink" href="#base_python.Stream.supports_incremental" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if this stream supports incrementally reading data</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.TokenAuthenticator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.</span></code><code class="sig-name descname"><span class="pre">TokenAuthenticator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Bearer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_header</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Authorization'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.TokenAuthenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base_python.cdk.streams.auth.html#base_python.cdk.streams.auth.core.HttpAuthenticator" title="base_python.cdk.streams.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.cdk.streams.auth.core.HttpAuthenticator</span></code></a></p>
+<dl class="py method">
+<dt id="base_python.TokenAuthenticator.get_auth_header">
+<code class="sig-name descname"><span class="pre">get_auth_header</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.TokenAuthenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">Intermediate Concepts</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/base_python.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

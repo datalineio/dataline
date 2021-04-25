@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>base_python.cdk package &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="base-python-cdk-package">
+<h1>base_python.cdk package<a class="headerlink" href="#base-python-cdk-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="base_python.cdk.streams.html">base_python.cdk.streams package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="base_python.cdk.streams.auth.html">base_python.cdk.streams.auth package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.auth.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth.core">base_python.cdk.streams.auth.core module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth.jwt">base_python.cdk.streams.auth.jwt module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth.oauth">base_python.cdk.streams.auth.oauth module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth.token">base_python.cdk.streams.auth.token module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams.core">base_python.cdk.streams.core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams.exceptions">base_python.cdk.streams.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams.http">base_python.cdk.streams.http module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams.rate_limiting">base_python.cdk.streams.rate_limiting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.html#module-base_python.cdk.streams">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="base_python.cdk.utils.html">base_python.cdk.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.utils.html#module-base_python.cdk.utils.casing">base_python.cdk.utils.casing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.utils.html#module-base_python.cdk.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-base_python.cdk.abstract_source">
+<span id="base-python-cdk-abstract-source-module"></span><h2>base_python.cdk.abstract_source module<a class="headerlink" href="#module-base_python.cdk.abstract_source" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.cdk.abstract_source.AbstractSource">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.abstract_source.</span></code><code class="sig-name descname"><span class="pre">AbstractSource</span></code><a class="headerlink" href="#base_python.cdk.abstract_source.AbstractSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base_python.html#base_python.integration.Source" title="base_python.integration.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.integration.Source</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract base class for an Airbyte Source. Consumers should implement any abstract methods
+in this class to create an Airbyte Specification compliant Source.</p>
+<dl class="py method">
+<dt id="base_python.cdk.abstract_source.AbstractSource.check">
+<code class="sig-name descname"><span class="pre">check</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="base_python.html#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteConnectionStatus</span><a class="headerlink" href="#base_python.cdk.abstract_source.AbstractSource.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Check Connection operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.abstract_source.AbstractSource.check_connection">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">check_connection</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="base_python.html#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.abstract_source.AbstractSource.check_connection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – The user-provided configuration as specified by the source’s spec. This usually contains information required to check connection e.g. tokens, secrets and keys etc.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple of (boolean, error). If boolean is true, then the connection check is successful and we can connect to the underlying data</p>
+</dd>
+</dl>
+<p>source using the provided configuration.
+Otherwise, the input config cannot be used to connect to the underlying data source, and the “error” object should describe what went wrong.
+The error object will be cast to string to display the problem to the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.abstract_source.AbstractSource.discover">
+<code class="sig-name descname"><span class="pre">discover</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="base_python.html#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteCatalog</span><a class="headerlink" href="#base_python.cdk.abstract_source.AbstractSource.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Discover operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.abstract_source.AbstractSource.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#base_python.cdk.abstract_source.AbstractSource.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Source name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.abstract_source.AbstractSource.read">
+<code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="base_python.html#base_python.logger.AirbyteLogger" title="base_python.logger.AirbyteLogger"><span class="pre">base_python.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteMessage</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.abstract_source.AbstractSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Read operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.abstract_source.AbstractSource.streams">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">streams</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="base_python.cdk.streams.html#base_python.cdk.streams.core.Stream" title="base_python.cdk.streams.core.Stream"><span class="pre">base_python.cdk.streams.core.Stream</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.abstract_source.AbstractSource.streams" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – The user-provided configuration as specified by the source’s spec. Any stream construction related operation should happen here.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of the streams in this source connector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.cdk">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-base_python.cdk" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">Intermediate Concepts</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/base_python.cdk.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

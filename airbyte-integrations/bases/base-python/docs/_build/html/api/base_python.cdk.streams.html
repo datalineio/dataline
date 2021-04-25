@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>base_python.cdk.streams package &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="base-python-cdk-streams-package">
+<h1>base_python.cdk.streams package<a class="headerlink" href="#base-python-cdk-streams-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="base_python.cdk.streams.auth.html">base_python.cdk.streams.auth package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.auth.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth.core">base_python.cdk.streams.auth.core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth.jwt">base_python.cdk.streams.auth.jwt module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth.oauth">base_python.cdk.streams.auth.oauth module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth.token">base_python.cdk.streams.auth.token module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_python.cdk.streams.auth.html#module-base_python.cdk.streams.auth">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-base_python.cdk.streams.core">
+<span id="base-python-cdk-streams-core-module"></span><h2>base_python.cdk.streams.core module<a class="headerlink" href="#module-base_python.cdk.streams.core" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.cdk.streams.core.Stream">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.core.</span></code><code class="sig-name descname"><span class="pre">Stream</span></code><a class="headerlink" href="#base_python.cdk.streams.core.Stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base abstract class for an Airbyte Stream. Makes no assumption of the Stream’s underlying transport protocol.</p>
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.as_airbyte_stream">
+<code class="sig-name descname"><span class="pre">as_airbyte_stream</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">airbyte_protocol.models.airbyte_protocol.AirbyteStream</span><a class="headerlink" href="#base_python.cdk.streams.core.Stream.as_airbyte_stream" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.cursor_field">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">cursor_field</span></code><a class="headerlink" href="#base_python.cdk.streams.core.Stream.cursor_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to return the default cursor field used by this stream e.g: an API entity might always use created_at as the cursor field.
+:return: The name of the field used as a cursor. If the cursor is nested, return an array consisting of the path to the cursor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.get_json_schema">
+<code class="sig-name descname"><span class="pre">get_json_schema</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.core.Stream.get_json_schema" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dict of the JSON schema representing this stream.</p>
+</dd>
+</dl>
+<p>The default implementation of this method looks for a JSONSchema file with the same name as this stream’s “name” property.
+Override as needed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.get_updated_state">
+<code class="sig-name descname"><span class="pre">get_updated_state</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latest_record</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.core.Stream.get_updated_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to extract state from the latest record. Needed to implement incremental sync.</p>
+<p>Inspects the latest record extracted from the data source and the current state object and return an updated state object.</p>
+<p>For example: if the state object is based on created_at timestamp, and the current state is {‘created_at’: 10}, and the latest_record is
+{‘name’: ‘octavia’, ‘created_at’: 20 } then this method would return {‘created_at’: 20} to indicate state should be updated to this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>current_stream_state</strong> – The stream’s current state object</p></li>
+<li><p><strong>latest_record</strong> – The latest record extracted from the stream</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An updated state object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="base_python.cdk.streams.core.Stream.logger">
+<code class="sig-name descname"><span class="pre">logger</span></code><em class="property"> <span class="pre">=</span> <span class="pre">&lt;base_python.logger.AirbyteLogger</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#base_python.cdk.streams.core.Stream.logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#base_python.cdk.streams.core.Stream.name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Stream name. By default this is the implementing class name, but it can be overridden as needed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.read_records">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">read_records</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sync_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.SyncMode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.core.Stream.read_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should be overridden by subclasses to read records based on the inputs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.source_defined_cursor">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">source_defined_cursor</span></code><a class="headerlink" href="#base_python.cdk.streams.core.Stream.source_defined_cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return False if the cursor can be configured by the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.state_checkpoint_interval">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">state_checkpoint_interval</span></code><a class="headerlink" href="#base_python.cdk.streams.core.Stream.state_checkpoint_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decides how often to checkpoint state (i.e: emit a STATE message). E.g: if this returns a value of 100, then state is persisted after reading
+100 records, then 200, 300, etc.. A good default value is 1000 although your mileage may vary depending on the underlying data source.</p>
+<p>Checkpointing a stream avoids re-reading records in the case a sync is failed or cancelled.</p>
+<p>return None if state should not be checkpointed e.g: because records returned from the underlying data source are not returned in
+ascending order with respect to the cursor field. This can happen if the source does not support reading records in ascending order of
+created_at date (or whatever the cursor is). In those cases, state must only be saved once the full stream has been read.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.stream_slices">
+<code class="sig-name descname"><span class="pre">stream_slices</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sync_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.SyncMode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.core.Stream.stream_slices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to define the slices for this stream. See the stream slicing section of the docs for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stream_state</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.core.Stream.supports_incremental">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">supports_incremental</span></code><a class="headerlink" href="#base_python.cdk.streams.core.Stream.supports_incremental" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if this stream supports incrementally reading data</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="base_python.cdk.streams.core.package_name_from_class">
+<code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.core.</span></code><code class="sig-name descname"><span class="pre">package_name_from_class</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#base_python.cdk.streams.core.package_name_from_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the package name given a class name</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.cdk.streams.exceptions">
+<span id="base-python-cdk-streams-exceptions-module"></span><h2>base_python.cdk.streams.exceptions module<a class="headerlink" href="#module-base_python.cdk.streams.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="base_python.cdk.streams.exceptions.BaseBackoffException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.exceptions.</span></code><code class="sig-name descname"><span class="pre">BaseBackoffException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.exceptions.BaseBackoffException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.exceptions.HTTPError</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="base_python.cdk.streams.exceptions.DefaultBackoffException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.exceptions.</span></code><code class="sig-name descname"><span class="pre">DefaultBackoffException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.exceptions.DefaultBackoffException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.cdk.streams.exceptions.BaseBackoffException" title="base_python.cdk.streams.exceptions.BaseBackoffException"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.cdk.streams.exceptions.BaseBackoffException</span></code></a></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="base_python.cdk.streams.exceptions.UserDefinedBackoffException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.exceptions.</span></code><code class="sig-name descname"><span class="pre">UserDefinedBackoffException</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backoff</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.PreparedRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.exceptions.UserDefinedBackoffException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.cdk.streams.exceptions.BaseBackoffException" title="base_python.cdk.streams.exceptions.BaseBackoffException"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.cdk.streams.exceptions.BaseBackoffException</span></code></a></p>
+<p>An exception that exposes how long it attempted to backoff</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.cdk.streams.http">
+<span id="base-python-cdk-streams-http-module"></span><h2>base_python.cdk.streams.http module<a class="headerlink" href="#module-base_python.cdk.streams.http" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.cdk.streams.http.HttpStream">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.http.</span></code><code class="sig-name descname"><span class="pre">HttpStream</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">authenticator:</span> <span class="pre">base_python.cdk.streams.auth.core.HttpAuthenticator</span> <span class="pre">=</span> <span class="pre">&lt;base_python.cdk.streams.auth.core.NoAuth</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.cdk.streams.core.Stream" title="base_python.cdk.streams.core.Stream"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.cdk.streams.core.Stream</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base abstract class for an Airbyte Stream using the HTTP protocol. Basic building block for users building an Airbyte source for a HTTP API.</p>
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.authenticator">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">authenticator</span></code><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.authenticator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.backoff_time">
+<code class="sig-name descname"><span class="pre">backoff_time</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.backoff_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to dynamically determine backoff time e.g: by reading the X-Retry-After header.</p>
+<p>This method is called only if should_backoff() returns True for the input request.</p>
+<p>:return how long to backoff in seconds. The return value may be a floating point number for subsecond precision. Returning None defers backoff
+to the default backoff behavior (e.g using an exponential algorithm).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.http_method">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">http_method</span></code><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.http_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override if needed. See get_request_data if using POST.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.next_page_token">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">next_page_token</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.next_page_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to define a pagination strategy.</p>
+<p>The value returned from this method is passed to most other methods in this class. Use it to form a request e.g: set headers or query params.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The token for the next page from the input response object. Returning None means there are no more pages to read in this response.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.parse_response">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">parse_response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.parse_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the raw response object into a list of records.
+By default, this returns an iterable containing the input. Override to parse differently.
+:param response:
+:return: An iterable containing the parsed response</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.path">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the URL path for the API endpoint e.g: if you wanted to hit <a class="reference external" href="https://myapi.com/v1/some_entity">https://myapi.com/v1/some_entity</a> then this should return “some_entity”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.read_records">
+<code class="sig-name descname"><span class="pre">read_records</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sync_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">airbyte_protocol.models.airbyte_protocol.SyncMode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.read_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should be overridden by subclasses to read records based on the inputs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.request_body_json">
+<code class="sig-name descname"><span class="pre">request_body_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.request_body_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>TODO make this possible to do for non-JSON APIs
+Override when creating POST requests to populate the body of the request with a JSON payload.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.request_headers">
+<code class="sig-name descname"><span class="pre">request_headers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.request_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to return any non-auth headers. Authentication headers will overwrite any overlapping headers returned from this method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.request_params">
+<code class="sig-name descname"><span class="pre">request_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_page_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.request_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to define the query parameters that should be set on an outgoing HTTP request given the inputs.</p>
+<p>E.g: you might want to define query parameters for paging if next_page_token is not None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.should_retry">
+<code class="sig-name descname"><span class="pre">should_retry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">requests.models.Response</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.should_retry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to set different conditions for backoff based on the response from the server.</p>
+<dl class="simple">
+<dt>By default, back off on the following HTTP response statuses:</dt><dd><ul class="simple">
+<li><p>429 (Too Many Requests) indicating rate limiting</p></li>
+<li><p>500s to handle transient server errors</p></li>
+</ul>
+</dd>
+</dl>
+<p>Unexpected but transient exceptions (connection timeout, DNS resolution failed, etc..) are retried by default.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="base_python.cdk.streams.http.HttpStream.source_defined_cursor">
+<code class="sig-name descname"><span class="pre">source_defined_cursor</span></code><em class="property"> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.source_defined_cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.http.HttpStream.url_base">
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">url_base</span></code><a class="headerlink" href="#base_python.cdk.streams.http.HttpStream.url_base" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>URL base for the  API endpoint e.g: if you wanted to hit <a class="reference external" href="https://myapi.com/v1/some_entity">https://myapi.com/v1/some_entity</a> then this should return “<a class="reference external" href="https://myapi.com/v1/">https://myapi.com/v1/</a>”</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.cdk.streams.rate_limiting">
+<span id="base-python-cdk-streams-rate-limiting-module"></span><h2>base_python.cdk.streams.rate_limiting module<a class="headerlink" href="#module-base_python.cdk.streams.rate_limiting" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="base_python.cdk.streams.rate_limiting.default_backoff_handler">
+<code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.rate_limiting.</span></code><code class="sig-name descname"><span class="pre">default_backoff_handler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_tries</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.rate_limiting.default_backoff_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="base_python.cdk.streams.rate_limiting.user_defined_backoff_handler">
+<code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.rate_limiting.</span></code><code class="sig-name descname"><span class="pre">user_defined_backoff_handler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_tries</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.rate_limiting.user_defined_backoff_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-base_python.cdk.streams">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-base_python.cdk.streams" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">Intermediate Concepts</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/base_python.cdk.streams.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

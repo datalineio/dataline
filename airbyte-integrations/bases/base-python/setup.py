@@ -44,4 +44,10 @@ setuptools.setup(
     entry_points={
         "console_scripts": ["base-python=base_python.entrypoint:main"],
     },
+    extras_require={
+        "docs": [
+            'sphinx',
+            'myst_parser'  # To allow writing docs in markdown
+        ],
+    },
 )

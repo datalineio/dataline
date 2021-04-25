@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intermediate Concepts &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to Airbyte Connector Development Kit’s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="intermediate-concepts">
+<h1>Intermediate Concepts<a class="headerlink" href="#intermediate-concepts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="stream-slicing">
+<h2>Stream Slicing<a class="headerlink" href="#stream-slicing" title="Permalink to this headline">¶</a></h2>
+<p>A Stream Slice is a subset of the records in a stream.</p>
+<p>When a stream is being read incrementally, Slices can be used to control when state is saved (see the state management section <span class="xref myst">TODO</span>).
+When slicing is enabled, a state message will be output by the connector after reading every slice. Slicing is completely optional and is provided as a way for connectors to checkpoint state in a more granular way than basic interval-based state checkpointing. Slicing is typically used when reading a large amount of data or when the underlying data source imposes strict rate limits that make it difficult to re-read the same data over and over again. This being said, interval-based checkpointing is compatible with slicing with one difference: intervals are counted within a slice rather than across all records. In other words, the counter used to determine if the interval has been reached (e.g: every 10k records) resets at the beginning of every slice.</p>
+<p>The relationship between records in a slice is up to the developer, but slices are typically used to implement date-based checkpointing,
+for example to group records generated within a particular hour, day, or month etc.</p>
+<p>Slices can be hard-coded or generated dynamically (e.g: by making a query).</p>
+<p>The only restriction imposed on slices is that they must be described with a list of <code class="docutils literal notranslate"><span class="pre">dict</span></code>s returned from the <code class="docutils literal notranslate"><span class="pre">Stream.stream_slices()</span></code> method, where each <code class="docutils literal notranslate"><span class="pre">dict</span></code> describes a slice. The <code class="docutils literal notranslate"><span class="pre">dict</span></code>s may have any schema, and are passed as input to each stream’s <code class="docutils literal notranslate"><span class="pre">read_stream</span></code> method. This way, the connector can read the current slice description (the input <code class="docutils literal notranslate"><span class="pre">dict</span></code>) and use that to make queries as needed.</p>
+<div class="section" id="use-cases">
+<h3>Use cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h3>
+<p>If your use case requires saving state based on an interval e.g: only 10,000 records but nothing more sophisticated, then slicing is not necessary and you can instead set the <code class="docutils literal notranslate"><span class="pre">state_checkpoint_interval</span></code> property on a stream.</p>
+<div class="section" id="the-slack-connector-time-based-slicing-for-large-datasets">
+<h4>The Slack connector: time-based slicing for large datasets<a class="headerlink" href="#the-slack-connector-time-based-slicing-for-large-datasets" title="Permalink to this headline">¶</a></h4>
+<p>Slack is a chat platform for businesses. Collectively, a company can easily post tens or hundreds of thousands of messages in a single
+Slack instance per day. So when writing a connector to pull chats from Slack, it’s easy to run into rate limits or for the sync to take a very long
+time to complete because of the large amount of data. So we want a way to frequently “save” which data we already read from the connector so that if there is a halfway failure, we pick up reading where we left off. In addition, the Slack API does not return messages sorted by timestamp, so we cannot use <code class="docutils literal notranslate"><span class="pre">state_checkpoint_interval</span></code>s.</p>
+<p>This is a great usecase for stream slicing. The <code class="docutils literal notranslate"><span class="pre">messages</span></code> stream, which outputs one record per chat message, can slice records by time e.g: hourly.
+It implements this by specifying the beginning and end timestamp of each hour that it wants to pull data from. Then after all the records in a given
+hour (i.e: slice) have been read, the connector outputs a STATE message to indicate that state should be saved. This way, if the connector
+ever fails during a sync (for example if the API goes down) then at most, it will reread only one hour’s worth of messages.</p>
+<p>See the implementation of the Slack connector here <span class="xref myst">TODO</span>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intermediate Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stream-slicing">Stream Slicing</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to Airbyte Connector Development Kit’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/concepts/concepts.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

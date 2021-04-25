@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>base_python.cdk.streams.auth package &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="base-python-cdk-streams-auth-package">
+<h1>base_python.cdk.streams.auth package<a class="headerlink" href="#base-python-cdk-streams-auth-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-base_python.cdk.streams.auth.core">
+<span id="base-python-cdk-streams-auth-core-module"></span><h2>base_python.cdk.streams.auth.core module<a class="headerlink" href="#module-base_python.cdk.streams.auth.core" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.cdk.streams.auth.core.HttpAuthenticator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.auth.core.</span></code><code class="sig-name descname"><span class="pre">HttpAuthenticator</span></code><a class="headerlink" href="#base_python.cdk.streams.auth.core.HttpAuthenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base abstract class for various HTTP Authentication strategies. Authentication strategies are generally
+expected to provide security credentials via HTTP headers.</p>
+<dl class="py method">
+<dt id="base_python.cdk.streams.auth.core.HttpAuthenticator.get_auth_header">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">get_auth_header</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.auth.core.HttpAuthenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="base_python.cdk.streams.auth.core.NoAuth">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.auth.core.</span></code><code class="sig-name descname"><span class="pre">NoAuth</span></code><a class="headerlink" href="#base_python.cdk.streams.auth.core.NoAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.cdk.streams.auth.core.HttpAuthenticator" title="base_python.cdk.streams.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.cdk.streams.auth.core.HttpAuthenticator</span></code></a></p>
+<dl class="py method">
+<dt id="base_python.cdk.streams.auth.core.NoAuth.get_auth_header">
+<code class="sig-name descname"><span class="pre">get_auth_header</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.auth.core.NoAuth.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.cdk.streams.auth.jwt">
+<span id="base-python-cdk-streams-auth-jwt-module"></span><h2>base_python.cdk.streams.auth.jwt module<a class="headerlink" href="#module-base_python.cdk.streams.auth.jwt" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.cdk.streams.auth.jwt.JWTAuthenticator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.auth.jwt.</span></code><code class="sig-name descname"><span class="pre">JWTAuthenticator</span></code><a class="headerlink" href="#base_python.cdk.streams.auth.jwt.JWTAuthenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.cdk.streams.auth.core.HttpAuthenticator" title="base_python.cdk.streams.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.cdk.streams.auth.core.HttpAuthenticator</span></code></a></p>
+<dl class="py method">
+<dt id="base_python.cdk.streams.auth.jwt.JWTAuthenticator.get_auth_header">
+<code class="sig-name descname"><span class="pre">get_auth_header</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.auth.jwt.JWTAuthenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.cdk.streams.auth.oauth">
+<span id="base-python-cdk-streams-auth-oauth-module"></span><h2>base_python.cdk.streams.auth.oauth module<a class="headerlink" href="#module-base_python.cdk.streams.auth.oauth" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.cdk.streams.auth.oauth.Oauth2Authenticator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.auth.oauth.</span></code><code class="sig-name descname"><span class="pre">Oauth2Authenticator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">token_refresh_endpoint:</span> <span class="pre">str</span></em>, <em class="sig-param"><span class="pre">client_id:</span> <span class="pre">str</span></em>, <em class="sig-param"><span class="pre">client_secret:</span> <span class="pre">str</span></em>, <em class="sig-param"><span class="pre">refresh_token:</span> <span class="pre">str</span></em>, <em class="sig-param"><span class="pre">scopes:</span> <span class="pre">[&lt;class</span> <span class="pre">'str'&gt;]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.auth.oauth.Oauth2Authenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.cdk.streams.auth.core.HttpAuthenticator" title="base_python.cdk.streams.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.cdk.streams.auth.core.HttpAuthenticator</span></code></a></p>
+<p>Generates OAuth2.0 access tokens from an OAuth2.0 refresh token and client credentials.
+The generated access token is attached to each request via the Authorization header.</p>
+<dl class="py method">
+<dt id="base_python.cdk.streams.auth.oauth.Oauth2Authenticator.get_access_token">
+<code class="sig-name descname"><span class="pre">get_access_token</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.auth.oauth.Oauth2Authenticator.get_access_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.auth.oauth.Oauth2Authenticator.get_auth_header">
+<code class="sig-name descname"><span class="pre">get_auth_header</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.auth.oauth.Oauth2Authenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.auth.oauth.Oauth2Authenticator.get_refresh_request_body">
+<code class="sig-name descname"><span class="pre">get_refresh_request_body</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.auth.oauth.Oauth2Authenticator.get_refresh_request_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to define additional parameters</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.auth.oauth.Oauth2Authenticator.refresh_access_token">
+<code class="sig-name descname"><span class="pre">refresh_access_token</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.auth.oauth.Oauth2Authenticator.refresh_access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a tuple of (access_token, token_lifespan_in_seconds)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="base_python.cdk.streams.auth.oauth.Oauth2Authenticator.token_has_expired">
+<code class="sig-name descname"><span class="pre">token_has_expired</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#base_python.cdk.streams.auth.oauth.Oauth2Authenticator.token_has_expired" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.cdk.streams.auth.token">
+<span id="base-python-cdk-streams-auth-token-module"></span><h2>base_python.cdk.streams.auth.token module<a class="headerlink" href="#module-base_python.cdk.streams.auth.token" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="base_python.cdk.streams.auth.token.TokenAuthenticator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">base_python.cdk.streams.auth.token.</span></code><code class="sig-name descname"><span class="pre">TokenAuthenticator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Bearer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_header</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Authorization'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base_python.cdk.streams.auth.token.TokenAuthenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base_python.cdk.streams.auth.core.HttpAuthenticator" title="base_python.cdk.streams.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">base_python.cdk.streams.auth.core.HttpAuthenticator</span></code></a></p>
+<dl class="py method">
+<dt id="base_python.cdk.streams.auth.token.TokenAuthenticator.get_auth_header">
+<code class="sig-name descname"><span class="pre">get_auth_header</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#base_python.cdk.streams.auth.token.TokenAuthenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base_python.cdk.streams.auth">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-base_python.cdk.streams.auth" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">Intermediate Concepts</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/base_python.cdk.streams.auth.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
