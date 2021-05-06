@@ -28,13 +28,11 @@ import io.airbyte.commons.json.Jsons;
 import io.airbyte.db.jdbc.JdbcDatabase;
 import io.airbyte.integrations.base.JavaBaseConstants;
 import io.airbyte.protocol.models.AirbyteRecordMessage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -84,34 +82,24 @@ public class DefaultSqlOperations implements SqlOperations {
 
     // todo (cgardens) - move this into a postgres version of this. this syntax is postgres-specific
     database.execute(connection -> {
-      File tmpFile = null;
       try {
-        tmpFile = Files.createTempFile(tmpTableName + "-", ".tmp").toFile();
-        writeBatchToFile(tmpFile, records);
+        final Reader reader = writeBatchToFile(records);
 
         var copyManager = new CopyManager(connection.unwrap(BaseConnection.class));
         var sql = String.format("COPY %s.%s FROM stdin DELIMITER ',' CSV", schemaName, tmpTableName);
-        var bufferedReader = new BufferedReader(new FileReader(tmpFile));
-        copyManager.copyIn(sql, bufferedReader);
+        copyManager.copyIn(sql, reader);
       } catch (Exception e) {
         throw new RuntimeException(e);
-      } finally {
-        try {
-          if (tmpFile != null) {
-            Files.delete(tmpFile.toPath());
-          }
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
       }
     });
   }
 
-  private void writeBatchToFile(File tmpFile, List<AirbyteRecordMessage> records) throws Exception {
-    PrintWriter writer = null;
+  private Reader writeBatchToFile(List<AirbyteRecordMessage> records) throws Exception {
+    ByteArrayOutputStream byteArrayOutputStream = null;
     try {
-      writer = new PrintWriter(tmpFile, StandardCharsets.UTF_8);
-      var csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
+      byteArrayOutputStream = new ByteArrayOutputStream();
+      final OutputStreamWriter outputStreamWriter = new OutputStreamWriter(byteArrayOutputStream);
+      final CSVPrinter csvPrinter = new CSVPrinter(outputStreamWriter, CSVFormat.DEFAULT);
 
       for (AirbyteRecordMessage record : records) {
         var uuid = UUID.randomUUID().toString();
@@ -120,11 +108,11 @@ public class DefaultSqlOperations implements SqlOperations {
         csvPrinter.printRecord(uuid, jsonData, emittedAt);
       }
     } finally {
-      if (writer != null) {
-        writer.close();
+      if (byteArrayOutputStream != null) {
+        byteArrayOutputStream.close();
       }
     }
-
+    return new StringReader(byteArrayOutputStream.toString(StandardCharsets.UTF_8));
   }
 
   @Override
