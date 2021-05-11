@@ -23,8 +23,10 @@
 
 from typing import Any, List, Mapping, Tuple
 
-from airbyte_protocol import SyncMode
-from base_python import AbstractSource, Stream, TokenAuthenticator
+from airbyte_cdk.models import SyncMode
+from airbyte_cdk.sources import AbstractSource
+from airbyte_cdk.sources.streams import Stream
+from airbyte_cdk.sources.streams.http.auth import TokenAuthenticator
 
 from .api import Accounts, Agents, AgentTimelines, Bans, Chats, Departments, Goals, Roles, RoutingSettings, Shortcuts, Skills, Triggers
 

@@ -26,11 +26,12 @@ from typing import Any, Iterable, List, Mapping, MutableMapping, Optional, Union
 
 import pendulum
 import requests
-from base_python import HttpStream
+from airbyte_cdk.sources.streams.http import HttpStream
 
 
 class Stream(HttpStream):
     url_base = "https://www.zopim.com/api/v2/"
+    primary_key = None
 
     data_field = None
     limit = 100
