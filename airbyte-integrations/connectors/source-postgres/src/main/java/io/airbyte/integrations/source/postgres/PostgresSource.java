@@ -24,6 +24,7 @@
 
 package io.airbyte.integrations.source.postgres;
 
+import static java.lang.management.ManagementFactory.*;
 import static java.util.stream.Collectors.toList;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -55,6 +56,8 @@ import io.airbyte.protocol.models.ConfiguredAirbyteCatalog;
 import io.airbyte.protocol.models.SyncMode;
 import io.debezium.engine.ChangeEvent;
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.PreparedStatement;
@@ -66,7 +69,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -322,10 +328,23 @@ public class PostgresSource extends AbstractJdbcSource implements Source {
   }
 
   public static void main(String[] args) throws Exception {
+    int mb = 1024 * 1024;
+    MemoryMXBean memoryBean = getMemoryMXBean();
+    long xmx = memoryBean.getHeapMemoryUsage().getMax() / mb;
+    long xms = memoryBean.getHeapMemoryUsage().getInit() / mb;
+    LOGGER.info("Initial Memory (xms) : {}mb", xms);
+    LOGGER.info("Max Memory (xmx) : {}mb", xmx);
+
+    var service = Executors.newSingleThreadScheduledExecutor();
+    service.scheduleAtFixedRate(() -> {
+      LOGGER.info("Used heap memory: {}mb, Used non-heap memory: {}mb", memoryBean.getHeapMemoryUsage().getUsed() / mb, memoryBean.getNonHeapMemoryUsage().getUsed() / mb);
+    }, 0, 20, TimeUnit.SECONDS);
+
     final Source source = new PostgresSource();
     LOGGER.info("starting source: {}", PostgresSource.class);
     new IntegrationRunner(source).run(args);
     LOGGER.info("completed source: {}", PostgresSource.class);
+    service.shutdown();
   }
 
 }

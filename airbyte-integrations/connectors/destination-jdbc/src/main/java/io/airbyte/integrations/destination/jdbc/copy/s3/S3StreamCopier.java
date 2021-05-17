@@ -37,6 +37,8 @@ import io.airbyte.integrations.destination.jdbc.copy.StreamCopier;
 import io.airbyte.protocol.models.DestinationSyncMode;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -50,7 +52,7 @@ public abstract class S3StreamCopier implements StreamCopier {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(S3StreamCopier.class);
 
-  private static final int DEFAULT_UPLOAD_THREADS = 10; // The S3 cli uses 10 threads by default.
+  private static final int DEFAULT_UPLOAD_THREADS = 5; // The S3 cli uses 10 threads by defaultd.
   private static final int DEFAULT_QUEUE_CAPACITY = DEFAULT_UPLOAD_THREADS;
   // The smallest part size is 5MB. An S3 upload can be maximally formed of 10,000 parts. This gives
   // us an upper limit of 10,000 * 10 / 1000 = 100 GB per table with a 10MB part size limit.

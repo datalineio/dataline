@@ -36,6 +36,8 @@ import io.airbyte.protocol.models.AirbyteMessage.Type;
 import io.airbyte.protocol.models.AirbyteRecordMessage;
 import io.airbyte.protocol.models.ConfiguredAirbyteCatalog;
 import io.airbyte.protocol.models.ConfiguredAirbyteStream;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -50,6 +52,7 @@ import org.slf4j.LoggerFactory;
 public class CopyConsumer<T> extends FailureTrackingAirbyteMessageConsumer {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(CopyConsumer.class);
+  private static final MemoryMXBean MEMORY_BEAN = ManagementFactory.getMemoryMXBean();
 
   private final String configuredSchema;
   private final T config;
@@ -164,8 +167,11 @@ public class CopyConsumer<T> extends FailureTrackingAirbyteMessageConsumer {
         sqlOperations.executeTransaction(db, queries);
       }
     } finally {
+      var mb = 1024 * 1024;
       for (var copier : streamCopiers) {
+        LOGGER.info("Heap memory used before: {}", MEMORY_BEAN.getHeapMemoryUsage().getUsed() / mb);
         copier.removeFileAndDropTmpTable();
+        LOGGER.info("Heap memory used after: {}", MEMORY_BEAN.getHeapMemoryUsage().getUsed() / mb);
       }
     }
     if (firstException != null) {

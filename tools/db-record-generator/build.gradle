@@ -1,0 +1,11 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    implementation project(':airbyte-db')
+    implementation project(':airbyte-integrations:connectors:destination-jdbc')
+
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+}

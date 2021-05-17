@@ -50,6 +50,7 @@ include ':airbyte-workers'
 include ':airbyte-tests'
 include ':airbyte-test-utils'
 include ':tools:code-generator'
+include ':tools:db-record-generator'
 
 if(!System.getenv().containsKey("CORE_ONLY")) {
     println "Building all of Airbyte."

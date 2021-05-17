@@ -6,6 +6,7 @@ plugins {
 
 application {
     mainClass = 'io.airbyte.integrations.source.postgres.PostgresSource'
+    applicationDefaultJvmArgs = ['-Xmx3096m', '-XX:NativeMemoryTracking=summary']
 }
 
 dependencies {
