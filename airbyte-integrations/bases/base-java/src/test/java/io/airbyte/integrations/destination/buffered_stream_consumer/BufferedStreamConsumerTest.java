@@ -26,9 +26,11 @@ package io.airbyte.integrations.destination.buffered_stream_consumer;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import com.google.common.collect.ImmutableMap;
@@ -84,7 +86,7 @@ public class BufferedStreamConsumerTest {
   private RecordWriter recordWriter;
   private CheckedConsumer<Boolean, Exception> onClose;
   private CheckedFunction<String, Boolean, Exception> isValidRecord;
-  private Consumer<AirbyteMessage> checkpointConsumer;
+  private Consumer<AirbyteMessage> outputRecordCollector;
 
   @SuppressWarnings("unchecked")
   @BeforeEach
@@ -93,9 +95,9 @@ public class BufferedStreamConsumerTest {
     recordWriter = mock(RecordWriter.class);
     onClose = mock(CheckedConsumer.class);
     isValidRecord = mock(CheckedFunction.class);
-    checkpointConsumer = mock(Consumer.class);
+    outputRecordCollector = mock(Consumer.class);
     consumer = new BufferedStreamConsumer(
-        checkpointConsumer,
+        outputRecordCollector,
         onStart,
         recordWriter,
         onClose,
@@ -119,7 +121,7 @@ public class BufferedStreamConsumerTest {
 
     verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecords);
 
-    verify(checkpointConsumer).accept(STATE_MESSAGE1);
+    verify(outputRecordCollector).accept(STATE_MESSAGE1);
   }
 
   @Test
@@ -136,7 +138,7 @@ public class BufferedStreamConsumerTest {
 
     verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecords);
 
-    verify(checkpointConsumer, times(1)).accept(STATE_MESSAGE2);
+    verify(outputRecordCollector, times(1)).accept(STATE_MESSAGE2);
   }
 
   @Test
@@ -152,7 +154,6 @@ public class BufferedStreamConsumerTest {
     verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecords);
   }
 
-  // todo (cgardens) - split testing buffer flushing into own test.
   @Test
   void test1StreamWithStateAndThenMoreRecordsBiggerThanBuffer() throws Exception {
     final List<AirbyteMessage> expectedRecordsBatch1 = getNRecords(10);
@@ -169,7 +170,7 @@ public class BufferedStreamConsumerTest {
     verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecordsBatch1);
     verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecordsBatch2);
 
-    verify(checkpointConsumer).accept(STATE_MESSAGE1);
+    verify(outputRecordCollector).accept(STATE_MESSAGE1);
   }
 
   @Test
@@ -179,7 +180,7 @@ public class BufferedStreamConsumerTest {
 
     // consumer with big enough buffered that we see both batches are flushed in one go.
     final BufferedStreamConsumer consumer = new BufferedStreamConsumer(
-        checkpointConsumer,
+        outputRecordCollector,
         onStart,
         recordWriter,
         onClose,
@@ -201,7 +202,7 @@ public class BufferedStreamConsumerTest {
         .collect(Collectors.toList());
     verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecords);
 
-    verify(checkpointConsumer).accept(STATE_MESSAGE1);
+    verify(outputRecordCollector).accept(STATE_MESSAGE1);
   }
 
   @Test
@@ -222,7 +223,48 @@ public class BufferedStreamConsumerTest {
 
     verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecordsBatch1);
 
-    verify(checkpointConsumer).accept(STATE_MESSAGE1);
+    verify(outputRecordCollector).accept(STATE_MESSAGE1);
+  }
+
+  @Test
+  void testExceptionAfterNoStateMessages() throws Exception {
+    final List<AirbyteMessage> expectedRecordsBatch1 = getNRecords(10);
+    final List<AirbyteMessage> expectedRecordsBatch2 = getNRecords(10, 20);
+    final List<AirbyteMessage> expectedRecordsBatch3 = getNRecords(20, 21);
+
+    consumer.start();
+    consumeRecords(consumer, expectedRecordsBatch1);
+    consumeRecords(consumer, expectedRecordsBatch2);
+    when(isValidRecord.apply(any())).thenThrow(new IllegalStateException("induced exception"));
+    assertThrows(IllegalStateException.class, () -> consumer.accept(expectedRecordsBatch3.get(0)));
+    consumer.close();
+
+    verify(onStart).call();
+    verify(onClose).accept(true);
+
+    verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecordsBatch1);
+
+    verifyNoInteractions(outputRecordCollector);
+  }
+
+  @Test
+  void testExceptionADuringOnClose() throws Exception {
+    doThrow(new IllegalStateException("induced exception")).when(onClose).accept(false);
+
+    final List<AirbyteMessage> expectedRecordsBatch1 = getNRecords(10);
+    final List<AirbyteMessage> expectedRecordsBatch2 = getNRecords(10, 20);
+
+    consumer.start();
+    consumeRecords(consumer, expectedRecordsBatch1);
+    consumer.accept(STATE_MESSAGE1);
+    consumeRecords(consumer, expectedRecordsBatch2);
+    consumer.close();
+
+    verifyStartAndClose();
+
+    verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecordsBatch1);
+
+    verifyNoInteractions(outputRecordCollector);
   }
 
   @Test
@@ -245,7 +287,7 @@ public class BufferedStreamConsumerTest {
     verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecordsStream1);
     verifyRecords(STREAM_NAME2, SCHEMA_NAME, expectedRecordsStream2);
 
-    verify(checkpointConsumer).accept(STATE_MESSAGE1);
+    verify(outputRecordCollector).accept(STATE_MESSAGE1);
   }
 
   @Test
@@ -269,7 +311,7 @@ public class BufferedStreamConsumerTest {
     verifyRecords(STREAM_NAME, SCHEMA_NAME, expectedRecordsStream1);
     verifyRecords(STREAM_NAME2, SCHEMA_NAME, expectedRecordsStream2);
 
-    verify(checkpointConsumer, times(1)).accept(STATE_MESSAGE2);
+    verify(outputRecordCollector, times(1)).accept(STATE_MESSAGE2);
   }
 
   private void verifyStartAndClose() throws Exception {
