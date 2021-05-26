@@ -248,7 +248,7 @@ public class BufferedStreamConsumerTest {
   }
 
   @Test
-  void testExceptionADuringOnClose() throws Exception {
+  void testExceptionDuringOnClose() throws Exception {
     doThrow(new IllegalStateException("induced exception")).when(onClose).accept(false);
 
     final List<AirbyteMessage> expectedRecordsBatch1 = getNRecords(10);
