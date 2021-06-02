@@ -38,7 +38,7 @@ from facebook_business.adobjects.adreportrun import AdReportRun
 from facebook_business.api import FacebookAdsApiBatch, FacebookRequest, FacebookResponse
 from facebook_business.exceptions import FacebookBadObjectError, FacebookRequestError
 
-from .common import JobTimeoutException, batch, deep_merge, retry_pattern
+from .common import FacebookAPIException, JobTimeoutException, batch, deep_merge, retry_pattern
 
 backoff_policy = retry_pattern(backoff.expo, FacebookRequestError, max_tries=5, factor=5)
 
@@ -311,6 +311,14 @@ class AdsInsightAPI(IncrementalStreamAPI):
 
     # Some automatic fields (primary-keys) cannot be used as 'fields' query params.
     INVALID_INSIGHT_FIELDS = [
+        "frequency_value",
+        "device_platform",
+        "hourly_stats_aggregated_by_audience_time_zone",
+        "place_page_id",
+        "product_id",
+        "activity_recency",
+        "hourly_stats_aggregated_by_advertiser_time_zone",
+        "ad_format_asset",
         "impression_device",
         "publisher_platform",
         "platform_position",
@@ -348,7 +356,9 @@ class AdsInsightAPI(IncrementalStreamAPI):
             job = self._run_job_until_completion(params)
             yield from super().read(partial(self._get_job_result, job=job), params)
 
-    @retry_pattern(backoff.expo, (FacebookRequestError, JobTimeoutException, FacebookBadObjectError), max_tries=5, factor=4)
+    @retry_pattern(
+        backoff.expo, (FacebookRequestError, JobTimeoutException, FacebookBadObjectError, FacebookAPIException), max_tries=5, factor=4
+    )
     def _run_job_until_completion(self, params) -> AdReportRun:
         # TODO parallelize running these jobs
         job = self._get_insights(params)
@@ -362,6 +372,8 @@ class AdsInsightAPI(IncrementalStreamAPI):
 
             if job["async_status"] == "Job Completed":
                 return job
+            elif job["async_status"] == "Job Failed":
+                raise FacebookAPIException(f"Job failed: {job}")
 
             runtime = pendulum.now() - start_time
             if runtime > self.MAX_WAIT_TO_START and job_progress_pct == 0:

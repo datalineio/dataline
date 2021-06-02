@@ -25,7 +25,7 @@
 import json
 import sys
 from time import sleep
-from typing import Sequence
+from typing import Iterable, Sequence
 
 import backoff
 import pendulum
@@ -83,6 +83,11 @@ def retry_pattern(backoff_type, exception, **wait_gen_kwargs):
             if exc.api_error_code() in FACEBOOK_API_CALL_LIMIT_ERROR_CODES:
                 return handle_call_rate_response(exc)
             return exc.api_transient_error() or exc.api_error_subcode() == FACEBOOK_UNKNOWN_ERROR_CODE
+        else:
+            exception_list = exception if isinstance(exception, Iterable) else [exception]
+            for exception_type in exception_list:
+                if isinstance(exc, exception_type):
+                    return True
         return False
 
     return backoff.on_exception(
