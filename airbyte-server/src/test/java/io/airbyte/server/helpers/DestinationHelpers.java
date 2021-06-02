@@ -28,11 +28,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import io.airbyte.api.model.DestinationRead;
 import io.airbyte.commons.json.Jsons;
 import io.airbyte.config.DestinationConnection;
+import io.airbyte.config.SourceConnection;
 import io.airbyte.config.StandardDestinationDefinition;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class DestinationHelpers {
@@ -61,6 +64,26 @@ public class DestinationHelpers {
         .withDestinationId(destinationId)
         .withConfiguration(implementationJson)
         .withTombstone(tombstone);
+  }
+
+  public static List<DestinationConnection> generateDestinations(UUID destinationDefinitionId, UUID workspaceId, int destinationsCount) throws IOException {
+    List<DestinationConnection> destinationConnections = new ArrayList<DestinationConnection>(destinationsCount);
+    for (int i=0;i < destinationsCount;i++) {
+      final UUID destinationId = UUID.randomUUID();
+
+      final JsonNode implementationJson = getTestDestinationJson();
+
+      destinationConnections.add(new DestinationConnection()
+              .withName("my db2 instance")
+              .withWorkspaceId(workspaceId)
+              .withDestinationDefinitionId(destinationDefinitionId)
+              .withDestinationId(destinationId)
+              .withConfiguration(implementationJson)
+              .withTombstone(false));
+      }
+
+    return destinationConnections;
+
   }
 
   public static DestinationRead getDestinationRead(DestinationConnection destination, StandardDestinationDefinition standardDestinationDefinition) {

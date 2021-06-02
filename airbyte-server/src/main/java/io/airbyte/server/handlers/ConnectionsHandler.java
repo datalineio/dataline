@@ -187,6 +187,36 @@ public class ConnectionsHandler {
     return new ConnectionReadList().connections(connectionReads);
   }
 
+  public ConnectionReadList paginateConnectionsForWorkspace(WorkspaceIdRequestBody workspaceIdRequestBody, Integer limit, Integer offset)
+      throws JsonValidationException, IOException, ConfigNotFoundException {
+    final List<ConnectionRead> connectionReads = Lists.newArrayList();
+    List<StandardSync> standardSyncs = configRepository.listStandardSyncs();
+
+    final Integer totalConnectionsSize = standardSyncs.size();
+    final Integer lastIndex = offset + limit;
+
+    if (offset > totalConnectionsSize) {
+      standardSyncs = Lists.newArrayList();
+    } else if (lastIndex > totalConnectionsSize) {
+      standardSyncs = standardSyncs.subList(offset, totalConnectionsSize);
+    } else {
+      standardSyncs = standardSyncs.subList(offset, lastIndex);
+    }
+
+    for (StandardSync standardSync : standardSyncs) {
+      if (standardSync.getStatus() == StandardSync.Status.DEPRECATED) {
+        continue;
+      }
+      if (!isStandardSyncInWorkspace(workspaceIdRequestBody.getWorkspaceId(), standardSync)) {
+        continue;
+      }
+
+      connectionReads.add(buildConnectionRead(standardSync.getConnectionId()));
+    }
+
+    return new ConnectionReadList().connections(connectionReads).offset(offset);
+  }
+
   public ConnectionRead getConnection(ConnectionIdRequestBody connectionIdRequestBody)
       throws JsonValidationException, IOException, ConfigNotFoundException {
     return buildConnectionRead(connectionIdRequestBody.getConnectionId());

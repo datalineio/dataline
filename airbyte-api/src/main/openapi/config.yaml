@@ -354,6 +354,21 @@ paths:
       summary: List sources for workspace
       description: List sources for workspace. Does not return deleted sources.
       operationId: listSourcesForWorkspace
+      parameters:
+        - name: limit
+          in: query
+          description: Number of source to return.
+          required: false
+          schema:
+            type: integer
+            default: 25
+        - name: offset
+          in: query
+          description: Number of sources to start from when listing.
+          required: false
+          schema:
+            type: integer
+            default: 0
       requestBody:
         content:
           application/json:
@@ -647,6 +662,21 @@ paths:
         - destination
       summary: List configured destinations for a workspace
       operationId: listDestinationsForWorkspace
+      parameters:
+        - name: limit
+          in: query
+          description: Number of source to return.
+          required: false
+          schema:
+            type: integer
+            default: 25
+        - name: offset
+          in: query
+          description: Number of sources to start from when listing.
+          required: false
+          schema:
+            type: integer
+            default: 0
       requestBody:
         content:
           application/json:
@@ -799,8 +829,23 @@ paths:
       tags:
         - connection
       summary: Returns all connections for a workspace.
-      description: List connections for workspace. Does not return deleted connections.
+      description: List connections for workspace. Does not return deleted connections. Returns the first 25 connections by default.
       operationId: listConnectionsForWorkspace
+      parameters:
+        - name: limit
+          in: query
+          description: Number of connections to return.
+          required: false
+          schema:
+            type: integer
+            default: 25
+        - name: offset
+          in: query
+          description: Number of connections to start from when listing.
+          required: false
+          schema:
+            type: integer
+            default: 0
       requestBody:
         content:
           application/json:
@@ -1127,6 +1172,21 @@ paths:
         - web_backend
       summary: Returns all connections for a workspace.
       operationId: webBackendListConnectionsForWorkspace
+      parameters:
+        - name: limit
+          in: query
+          description: Number of source to return.
+          required: false
+          schema:
+            type: integer
+            default: 25
+        - name: offset
+          in: query
+          description: Number of sources to start from when listing.
+          required: false
+          schema:
+            type: integer
+            default: 0
       requestBody:
         content:
           application/json:
@@ -1739,6 +1799,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/SourceRead"
+        offset:
+          type: integer     
     SourceDiscoverSchemaRead:
       description: Returns the results of a discover catalog job. If the job was not successful, the catalog field will not be present. jobInfo will aways be present and its status be used to determine if the job was successful or not.
       type: object
@@ -1942,6 +2004,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/DestinationRead"
+        offset:
+          type: integer     
     # CONNECTION
     ConnectionId:
       type: string
@@ -2071,6 +2135,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ConnectionRead"
+        offset:
+          type: integer 
     ConnectionStatus:
       type: string
       description: Active means that data is flowing through the connection. Inactive means it is not. Deprecated means the connection is off and cannot be re-activated. the schema field describes the elements of the schema that will be synced.
@@ -2596,6 +2662,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/WbConnectionRead"
+        offset:
+          type: integer     
     SyncMode:
       type: string
       enum:

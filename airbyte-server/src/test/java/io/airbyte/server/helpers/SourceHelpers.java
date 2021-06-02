@@ -33,6 +33,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class SourceHelpers {
@@ -54,6 +56,25 @@ public class SourceHelpers {
         .withSourceId(sourceId)
         .withConfiguration(implementationJson)
         .withTombstone(tombstone);
+  }
+
+  public static List<SourceConnection> generateSources(UUID sourceDefinitionId, UUID workspaceId, int sourceCount) throws IOException {
+    List<SourceConnection> sourceConnections = new ArrayList<SourceConnection>(sourceCount);
+    for (int i=0;i < sourceCount;i++) {
+      final UUID sourceId = UUID.randomUUID();
+
+      final JsonNode implementationJson = getTestImplementationJson();
+
+      sourceConnections.add(new SourceConnection()
+              .withName("my postgres db")
+              .withWorkspaceId(workspaceId)
+              .withSourceDefinitionId(sourceDefinitionId)
+              .withSourceId(sourceId)
+              .withConfiguration(implementationJson)
+              .withTombstone(false));
+    }
+
+    return sourceConnections;
   }
 
   public static JsonNode getTestImplementationJson() throws IOException {

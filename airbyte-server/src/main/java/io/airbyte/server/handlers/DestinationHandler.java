@@ -197,6 +197,37 @@ public class DestinationHandler {
     return new DestinationReadList().destinations(reads);
   }
 
+  public DestinationReadList paginateDestinationsForWorkspace(WorkspaceIdRequestBody workspaceIdRequestBody, Integer limit, Integer offset)
+      throws ConfigNotFoundException, IOException, JsonValidationException {
+    final List<DestinationRead> reads = Lists.newArrayList();
+    List<DestinationConnection> destinations = configRepository.listDestinationConnection();
+
+    final Integer totalConnectionsSize = destinations.size();
+    final Integer lastIndex = offset + limit;
+
+    if (offset > totalConnectionsSize) {
+      destinations = Lists.newArrayList();
+    } else if (lastIndex > totalConnectionsSize) {
+      destinations = destinations.subList(offset, totalConnectionsSize);
+    } else {
+      destinations = destinations.subList(offset, lastIndex);
+    }
+
+    for (DestinationConnection dci : destinations) {
+      if (!dci.getWorkspaceId().equals(workspaceIdRequestBody.getWorkspaceId())) {
+        continue;
+      }
+
+      if (dci.getTombstone()) {
+        continue;
+      }
+
+      reads.add(buildDestinationRead(dci.getDestinationId()));
+    }
+
+    return new DestinationReadList().destinations(reads).offset(offset);
+  }
+
   private void validateDestination(final ConnectorSpecification spec, final JsonNode configuration) throws JsonValidationException {
     validator.ensure(spec.getConnectionSpecification(), configuration);
   }

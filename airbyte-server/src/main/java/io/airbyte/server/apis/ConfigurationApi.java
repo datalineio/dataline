@@ -267,8 +267,8 @@ public class ConfigurationApi implements io.airbyte.api.V1Api {
   }
 
   @Override
-  public SourceReadList listSourcesForWorkspace(@Valid WorkspaceIdRequestBody workspaceIdRequestBody) {
-    return execute(() -> sourceHandler.listSourcesForWorkspace(workspaceIdRequestBody));
+  public SourceReadList listSourcesForWorkspace(@Valid WorkspaceIdRequestBody workspaceIdRequestBody, Integer limit, Integer offset) {
+    return execute(() -> sourceHandler.paginateSourcesForWorkspace(workspaceIdRequestBody, limit, offset));
   }
 
   @Override
@@ -354,8 +354,8 @@ public class ConfigurationApi implements io.airbyte.api.V1Api {
   }
 
   @Override
-  public DestinationReadList listDestinationsForWorkspace(@Valid WorkspaceIdRequestBody workspaceIdRequestBody) {
-    return execute(() -> destinationHandler.listDestinationsForWorkspace(workspaceIdRequestBody));
+  public DestinationReadList listDestinationsForWorkspace(@Valid WorkspaceIdRequestBody workspaceIdRequestBody, Integer limit, Integer offset) {
+    return execute(() -> destinationHandler.paginateDestinationsForWorkspace(workspaceIdRequestBody, limit, offset));
   }
 
   @Override
@@ -386,8 +386,8 @@ public class ConfigurationApi implements io.airbyte.api.V1Api {
   }
 
   @Override
-  public ConnectionReadList listConnectionsForWorkspace(@Valid WorkspaceIdRequestBody workspaceIdRequestBody) {
-    return execute(() -> connectionsHandler.listConnectionsForWorkspace(workspaceIdRequestBody));
+  public ConnectionReadList listConnectionsForWorkspace(@Valid WorkspaceIdRequestBody workspaceIdRequestBody, Integer limit, Integer offset) {
+    return execute(() -> connectionsHandler.paginateConnectionsForWorkspace(workspaceIdRequestBody, limit, offset));
   }
 
   @Override
@@ -506,8 +506,8 @@ public class ConfigurationApi implements io.airbyte.api.V1Api {
   // WEB BACKEND
 
   @Override
-  public WbConnectionReadList webBackendListConnectionsForWorkspace(@Valid WorkspaceIdRequestBody workspaceIdRequestBody) {
-    return execute(() -> webBackendConnectionsHandler.webBackendListConnectionsForWorkspace(workspaceIdRequestBody));
+  public WbConnectionReadList webBackendListConnectionsForWorkspace(@Valid WorkspaceIdRequestBody workspaceIdRequestBody, Integer limit, Integer offset) {
+    return execute(() -> webBackendConnectionsHandler.webBackendPaginateConnectionsForWorkspace(workspaceIdRequestBody, limit, offset));
   }
 
   @Override

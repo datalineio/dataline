@@ -637,7 +637,7 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /v1/connections/list</code></pre></div>
     <div class="method-summary">Returns all connections for a workspace. (<span class="nickname">listConnectionsForWorkspace</span>)</div>
-    <div class="method-notes">List connections for workspace. Does not return deleted connections.</div>
+    <div class="method-notes">List connections for workspace. Does not return deleted connections. Returns the first 25 connections by default.</div>
 
 
     <h3 class="field-label">Consumes</h3>
@@ -655,6 +655,14 @@ font-style: italic;
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Number of connections to return. default: 25 </div><div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Number of connections to start from when listing. default: 0 </div>
+    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -668,6 +676,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
+  "offset" : 0,
   "connections" : [ {
     "sourceId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "schedule" : {
@@ -1471,6 +1480,14 @@ font-style: italic;
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Number of source to return. default: 25 </div><div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Number of sources to start from when listing. default: 0 </div>
+    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -1484,6 +1501,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
+  "offset" : 0,
   "destinations" : [ {
     "connectionConfiguration" : {
       "user" : "charles"
@@ -3477,6 +3495,14 @@ font-style: italic;
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Number of source to return. default: 25 </div><div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Number of sources to start from when listing. default: 0 </div>
+    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -3508,7 +3534,8 @@ font-style: italic;
     "sourceDefinitionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "sourceName" : "sourceName",
     "workspaceId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-  } ]
+  } ],
+  "offset" : 0
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -4239,6 +4266,14 @@ font-style: italic;
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Number of source to return. default: 25 </div><div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Number of sources to start from when listing. default: 0 </div>
+    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -4252,6 +4287,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
+  "offset" : 6,
   "connections" : [ {
     "sourceId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "latestSyncJobCreatedAt" : 0,
@@ -5258,6 +5294,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">connections </div><div class="param-desc"><span class="param-type"><a href="#ConnectionRead">array[ConnectionRead]</a></span>  </div>
+<div class="param">offset (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -5400,6 +5437,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">destinations </div><div class="param-desc"><span class="param-type"><a href="#DestinationRead">array[DestinationRead]</a></span>  </div>
+<div class="param">offset (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -5761,6 +5799,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">sources </div><div class="param-desc"><span class="param-type"><a href="#SourceRead">array[SourceRead]</a></span>  </div>
+<div class="param">offset (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -5828,6 +5867,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">connections </div><div class="param-desc"><span class="param-type"><a href="#WbConnectionRead">array[WbConnectionRead]</a></span>  </div>
+<div class="param">offset (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

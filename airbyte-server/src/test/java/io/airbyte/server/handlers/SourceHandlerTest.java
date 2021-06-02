@@ -28,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -59,9 +60,14 @@ import io.airbyte.server.helpers.SourceHelpers;
 import io.airbyte.validation.json.JsonSchemaValidator;
 import io.airbyte.validation.json.JsonValidationException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
+import org.jooq.meta.derby.sys.Sys;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -71,6 +77,8 @@ class SourceHandlerTest {
   private StandardSourceDefinition standardSourceDefinition;
   private SourceDefinitionSpecificationRead sourceDefinitionSpecificationRead;
   private SourceConnection sourceConnection;
+  private List<SourceConnection> sourceConnections;
+  private UUID workspaceUUID;
   private SourceHandler sourceHandler;
   private JsonSchemaValidator validator;
   private ConnectionsHandler connectionsHandler;
@@ -105,7 +113,9 @@ class SourceHandlerTest {
         .connectionSpecification(connectorSpecification.getConnectionSpecification())
         .documentationUrl(connectorSpecification.getDocumentationUrl().toString());
 
+    workspaceUUID =  UUID.randomUUID();
     sourceConnection = SourceHelpers.generateSource(standardSourceDefinition.getSourceDefinitionId());
+    sourceConnections = SourceHelpers.generateSources(standardSourceDefinition.getSourceDefinitionId(), workspaceUUID,20);
 
     sourceHandler =
         new SourceHandler(configRepository, validator, specFetcher, connectionsHandler, uuidGenerator, secretsProcessor, configurationUpdate);
@@ -227,6 +237,42 @@ class SourceHandlerTest {
 
     assertEquals(expectedSourceRead, actualSourceReadList.getSources().get(0));
     verify(secretsProcessor).maskSecrets(sourceConnection.getConfiguration(), sourceDefinitionSpecificationRead.getConnectionSpecification());
+  }
+
+  @Test
+  void testPaginateSourcesForWorkspace() throws JsonValidationException, ConfigNotFoundException, IOException {
+    final List<SourceRead> expectedSourceRead =  sourceConnections.stream().map(connection -> SourceHelpers.getSourceRead(connection, standardSourceDefinition)).collect(Collectors.toList());
+    final WorkspaceIdRequestBody workspaceIdRequestBody = new WorkspaceIdRequestBody().workspaceId(workspaceUUID);
+
+    when(specFetcher.execute(imageName)).thenReturn(connectorSpecification);
+    when(configRepository.listSourceConnection()).thenReturn(sourceConnections);
+    when(configRepository.getStandardSourceDefinition(sourceDefinitionSpecificationRead.getSourceDefinitionId()))
+        .thenReturn(standardSourceDefinition);
+
+    for (SourceConnection sourceConnection: sourceConnections
+         ) {
+      when(configRepository.getSourceDefinitionFromSource(sourceConnection.getSourceId())).thenReturn(standardSourceDefinition);
+      when(configRepository.getSourceConnection(sourceConnection.getSourceId())).thenReturn(sourceConnection);
+      when(secretsProcessor.maskSecrets(sourceConnection.getConfiguration(), sourceDefinitionSpecificationRead.getConnectionSpecification()))
+              .thenReturn(sourceConnection.getConfiguration());
+    }
+
+    Integer offset = 0;
+    Integer limit = 10;
+    SourceReadList actualSourceReadList = sourceHandler.paginateSourcesForWorkspace(workspaceIdRequestBody, limit, offset);
+    assertEquals(expectedSourceRead.subList(offset, limit), actualSourceReadList.getSources());
+
+    offset = 2;
+    limit = 10;
+    actualSourceReadList = sourceHandler.paginateSourcesForWorkspace(workspaceIdRequestBody, limit, offset);
+    assertEquals(expectedSourceRead.subList(offset, offset + limit), actualSourceReadList.getSources());
+
+    offset = 20;
+    limit = 10;
+    actualSourceReadList = sourceHandler.paginateSourcesForWorkspace(workspaceIdRequestBody, limit, offset);
+    assertEquals(new ArrayList<>(), actualSourceReadList.getSources());
+
+    verify(secretsProcessor, times(20)).maskSecrets(sourceConnection.getConfiguration(), sourceDefinitionSpecificationRead.getConnectionSpecification());
   }
 
   @Test

@@ -26,23 +26,10 @@ package io.airbyte.server.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import com.google.common.collect.Lists;
-import io.airbyte.api.model.AirbyteCatalog;
-import io.airbyte.api.model.ConnectionCreate;
-import io.airbyte.api.model.ConnectionIdRequestBody;
-import io.airbyte.api.model.ConnectionRead;
-import io.airbyte.api.model.ConnectionReadList;
-import io.airbyte.api.model.ConnectionSchedule;
-import io.airbyte.api.model.ConnectionStatus;
-import io.airbyte.api.model.ConnectionUpdate;
-import io.airbyte.api.model.SyncMode;
-import io.airbyte.api.model.WorkspaceIdRequestBody;
+import io.airbyte.api.model.*;
 import io.airbyte.commons.enums.Enums;
 import io.airbyte.config.DataType;
 import io.airbyte.config.Schedule;
@@ -55,8 +42,12 @@ import io.airbyte.server.helpers.ConnectionHelpers;
 import io.airbyte.server.helpers.SourceHelpers;
 import io.airbyte.validation.json.JsonValidationException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -66,6 +57,7 @@ class ConnectionsHandlerTest {
   private Supplier<UUID> uuidGenerator;
 
   private StandardSync standardSync;
+  private List<StandardSync> standardSyncs;
   private ConnectionsHandler connectionsHandler;
   private SourceConnection source;
 
@@ -77,6 +69,7 @@ class ConnectionsHandlerTest {
 
     source = SourceHelpers.generateSource(UUID.randomUUID());
     standardSync = ConnectionHelpers.generateSyncWithSourceId(source.getSourceId());
+    standardSyncs = ConnectionHelpers.generateSyncsWithSourceId(source.getSourceId(), 20);
 
     connectionsHandler = new ConnectionsHandler(configRepository, uuidGenerator);
   }
@@ -181,6 +174,44 @@ class ConnectionsHandlerTest {
         ConnectionHelpers.generateExpectedConnectionRead(standardSync),
         actualConnectionReadList.getConnections().get(0));
   }
+
+  @Test
+  void testPaginateConnectionsForWorkspace() throws JsonValidationException, ConfigNotFoundException, IOException {
+    when(configRepository.listStandardSyncs())
+            .thenReturn(standardSyncs);
+    when(configRepository.getSourceConnection(source.getSourceId()))
+            .thenReturn(source);
+
+    for (StandardSync standardSync: standardSyncs
+    ) {
+      when(configRepository.getStandardSync(standardSync.getConnectionId()))
+              .thenReturn(standardSync);
+    }
+
+    final WorkspaceIdRequestBody workspaceIdRequestBody = new WorkspaceIdRequestBody().workspaceId(source.getWorkspaceId());
+
+    Integer offset = 0;
+    Integer limit = 10;
+    ConnectionReadList actualConnectionReadList = connectionsHandler.paginateConnectionsForWorkspace(workspaceIdRequestBody, limit, offset);
+    assertEquals(
+            ConnectionHelpers.generateExpectedConnectionReads(standardSyncs).subList(offset, limit),
+            actualConnectionReadList.getConnections());
+
+    offset = 2;
+    limit = 10;
+    actualConnectionReadList = connectionsHandler.paginateConnectionsForWorkspace(workspaceIdRequestBody, limit, offset);
+    assertEquals(
+            ConnectionHelpers.generateExpectedConnectionReads(standardSyncs).subList(offset, offset + limit),
+            actualConnectionReadList.getConnections());
+
+    offset = 20;
+    limit = 10;
+    actualConnectionReadList = connectionsHandler.paginateConnectionsForWorkspace(workspaceIdRequestBody, limit, offset);
+    assertEquals(
+            new ArrayList<>(),
+            actualConnectionReadList.getConnections());
+  }
+
 
   @Test
   void testDeleteConnection() throws JsonValidationException, IOException, ConfigNotFoundException {

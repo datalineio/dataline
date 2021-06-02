@@ -26,26 +26,16 @@ package io.airbyte.server.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.collect.Lists;
-import io.airbyte.api.model.ConnectionRead;
-import io.airbyte.api.model.ConnectionReadList;
-import io.airbyte.api.model.DestinationCreate;
-import io.airbyte.api.model.DestinationDefinitionIdRequestBody;
-import io.airbyte.api.model.DestinationDefinitionSpecificationRead;
-import io.airbyte.api.model.DestinationIdRequestBody;
-import io.airbyte.api.model.DestinationRead;
-import io.airbyte.api.model.DestinationReadList;
-import io.airbyte.api.model.DestinationUpdate;
-import io.airbyte.api.model.WorkspaceIdRequestBody;
+import io.airbyte.api.model.*;
 import io.airbyte.commons.docker.DockerUtils;
 import io.airbyte.commons.json.Jsons;
 import io.airbyte.config.DestinationConnection;
+import io.airbyte.config.SourceConnection;
 import io.airbyte.config.StandardDestinationDefinition;
 import io.airbyte.config.StandardSync;
 import io.airbyte.config.persistence.ConfigNotFoundException;
@@ -60,9 +50,13 @@ import io.airbyte.server.helpers.DestinationHelpers;
 import io.airbyte.validation.json.JsonSchemaValidator;
 import io.airbyte.validation.json.JsonValidationException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -72,6 +66,8 @@ class DestinationHandlerTest {
   private StandardDestinationDefinition standardDestinationDefinition;
   private DestinationDefinitionSpecificationRead destinationDefinitionSpecificationRead;
   private DestinationDefinitionIdRequestBody destinationDefinitionIdRequestBody;
+  private UUID workspaceUUID;
+  private List<DestinationConnection> destinationConnections;
   private DestinationConnection destinationConnection;
   private DestinationHandler destinationHandler;
   private ConnectionsHandler connectionsHandler;
@@ -111,7 +107,9 @@ class DestinationHandlerTest {
         .destinationDefinitionId(standardDestinationDefinition.getDestinationDefinitionId())
         .documentationUrl(connectorSpecification.getDocumentationUrl().toString());
 
+    workspaceUUID =  UUID.randomUUID();
     destinationConnection = DestinationHelpers.generateDestination(standardDestinationDefinition.getDestinationDefinitionId());
+    destinationConnections = DestinationHelpers.generateDestinations(standardDestinationDefinition.getDestinationDefinitionId(), workspaceUUID, 20);
     destinationHandler =
         new DestinationHandler(configRepository, validator, specFetcher, connectionsHandler, uuidGenerator, secretsProcessor, configurationUpdate);
   }
@@ -288,4 +286,46 @@ class DestinationHandlerTest {
         .maskSecrets(destinationConnection.getConfiguration(), destinationDefinitionSpecificationRead.getConnectionSpecification());
   }
 
+  @Test
+  void testPaginateDestinationForWorkspace() throws JsonValidationException, ConfigNotFoundException, IOException {
+    List<DestinationRead> expectedDestinationReads = destinationConnections.stream().map(connection -> new DestinationRead()
+            .name(connection.getName())
+            .destinationDefinitionId(standardDestinationDefinition.getDestinationDefinitionId())
+            .workspaceId(connection.getWorkspaceId())
+            .destinationId(connection.getDestinationId())
+            .connectionConfiguration(connection.getConfiguration())
+            .destinationName(standardDestinationDefinition.getName())).collect(Collectors.toList());
+
+    final WorkspaceIdRequestBody workspaceIdRequestBody = new WorkspaceIdRequestBody().workspaceId(workspaceUUID);
+    when(configRepository.listDestinationConnection()).thenReturn(destinationConnections);
+    when(specFetcher.execute(imageName)).thenReturn(connectorSpecification);
+    when(configRepository.getStandardDestinationDefinition(standardDestinationDefinition.getDestinationDefinitionId()))
+            .thenReturn(standardDestinationDefinition);
+
+    for (DestinationConnection destinationConnection: destinationConnections
+    ) {
+      when(configRepository.getDestinationConnection(destinationConnection.getDestinationId())).thenReturn(destinationConnection);
+      when(secretsProcessor.maskSecrets(destinationConnection.getConfiguration(), destinationDefinitionSpecificationRead.getConnectionSpecification()))
+              .thenReturn(destinationConnection.getConfiguration());
+    }
+
+    Integer offset = 0;
+    Integer limit = 10;
+    DestinationReadList actualDestinationRead = destinationHandler.paginateDestinationsForWorkspace(workspaceIdRequestBody, limit, offset);
+    assertEquals(expectedDestinationReads.subList(offset, limit), actualDestinationRead.getDestinations());
+
+    offset = 2;
+    limit = 10;
+    actualDestinationRead = destinationHandler.paginateDestinationsForWorkspace(workspaceIdRequestBody, limit, offset);
+    assertEquals(expectedDestinationReads.subList(offset, offset + limit), actualDestinationRead.getDestinations());
+
+    offset = 20;
+    limit = 10;
+    actualDestinationRead = destinationHandler.paginateDestinationsForWorkspace(workspaceIdRequestBody, limit, offset);
+    assertEquals(new ArrayList<>(), actualDestinationRead.getDestinations());
+
+    verify(secretsProcessor, times(20)).maskSecrets(destinationConnection.getConfiguration(), destinationDefinitionSpecificationRead.getConnectionSpecification());
+  }
+
 }
+

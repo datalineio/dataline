@@ -156,6 +156,36 @@ public class SourceHandler {
     return new SourceReadList().sources(reads);
   }
 
+  public SourceReadList paginateSourcesForWorkspace(WorkspaceIdRequestBody workspaceIdRequestBody, Integer limit, Integer offset)
+      throws ConfigNotFoundException, IOException, JsonValidationException {
+    final List<SourceRead> reads = Lists.newArrayList();
+    List<SourceConnection> sources = configRepository.listSourceConnection();
+
+    final Integer totalConnectionsSize = sources.size();
+    final Integer lastIndex = offset + limit;
+
+    if (offset > totalConnectionsSize) {
+      sources = Lists.newArrayList();
+    } else if (lastIndex > totalConnectionsSize) {
+      sources = sources.subList(offset, totalConnectionsSize);
+    } else {
+      sources = sources.subList(offset, lastIndex);
+    }
+
+    for (SourceConnection sci : sources) {
+      if (!sci.getWorkspaceId().equals(workspaceIdRequestBody.getWorkspaceId())) {
+        continue;
+      }
+      if (sci.getTombstone()) {
+        continue;
+      }
+
+      reads.add(buildSourceRead(sci.getSourceId()));
+    }
+
+    return new SourceReadList().sources(reads).offset(offset);
+  }
+
   public void deleteSource(SourceIdRequestBody sourceIdRequestBody) throws JsonValidationException, IOException, ConfigNotFoundException {
     // get existing source
     final SourceRead source = buildSourceRead(sourceIdRequestBody.getSourceId());

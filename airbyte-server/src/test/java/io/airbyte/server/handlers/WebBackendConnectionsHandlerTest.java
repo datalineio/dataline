@@ -105,8 +105,10 @@ class WebBackendConnectionsHandlerTest {
 
   private SourceRead sourceRead;
   private ConnectionRead connectionRead;
+  private List<ConnectionRead> connectionReads;
   private OperationReadList operationReadList;
   private WbConnectionRead expected;
+  private List<WbConnectionRead> expectedConnections;
   private WbConnectionRead expectedWithNewSchema;
 
   @BeforeEach
@@ -128,8 +130,12 @@ class WebBackendConnectionsHandlerTest {
     final DestinationConnection destination = DestinationHelpers.generateDestination(UUID.randomUUID());
     DestinationRead destinationRead = DestinationHelpers.getDestinationRead(destination, destinationDefinition);
 
+    System.out.println(destination.getDestinationId());
+
     final StandardSync standardSync = ConnectionHelpers.generateSyncWithSourceId(source.getSourceId());
+    final List<StandardSync> standardSyncs = ConnectionHelpers.generateSyncs(source.getSourceId(), destination.getDestinationId(), 20);
     connectionRead = ConnectionHelpers.generateExpectedConnectionRead(standardSync);
+    connectionReads = ConnectionHelpers.generateExpectedConnectionReads(standardSyncs);
     operationReadList = new OperationReadList()
         .operations(List.of(new OperationRead()
             .operationId(connectionRead.getOperationIds().get(0))
@@ -139,8 +145,12 @@ class WebBackendConnectionsHandlerTest {
     sourceIdRequestBody.setSourceId(connectionRead.getSourceId());
     when(sourceHandler.getSource(sourceIdRequestBody)).thenReturn(sourceRead);
 
-    final DestinationIdRequestBody destinationIdRequestBody = new DestinationIdRequestBody();
+    DestinationIdRequestBody destinationIdRequestBody = new DestinationIdRequestBody();
     destinationIdRequestBody.setDestinationId(connectionRead.getDestinationId());
+    when(destinationHandler.getDestination(destinationIdRequestBody)).thenReturn(destinationRead);
+
+    destinationIdRequestBody = new DestinationIdRequestBody();
+    destinationIdRequestBody.setDestinationId(destination.getDestinationId());
     when(destinationHandler.getDestination(destinationIdRequestBody)).thenReturn(destinationRead);
 
     final Instant now = Instant.now();
@@ -185,6 +195,33 @@ class WebBackendConnectionsHandlerTest {
         .latestSyncJobStatus(JobStatus.SUCCEEDED)
         .isSyncing(false);
 
+    expectedConnections = connectionReads.stream().map(connection -> new WbConnectionRead()
+            .connectionId(connection.getConnectionId())
+            .sourceId(connection.getSourceId())
+            .destinationId(connection.getDestinationId())
+            .operationIds(connection.getOperationIds())
+            .name(connection.getName())
+            .prefix(connection.getPrefix())
+            .syncCatalog(connection.getSyncCatalog())
+            .status(connection.getStatus())
+            .schedule(connection.getSchedule())
+            .source(sourceRead)
+            .destination(destinationRead)
+            .operations(operationReadList)
+            .latestSyncJobCreatedAt(now.getEpochSecond())
+            .latestSyncJobStatus(JobStatus.SUCCEEDED)
+            .isSyncing(false)).collect(Collectors.toList());
+
+    for (ConnectionRead connectionRead: connectionReads
+    ) {
+      final JobReadList listJobRead = new JobReadList();
+      listJobRead.setJobs(Collections.singletonList(jobRead));
+      final JobListRequestBody jobRequestBodyList = new JobListRequestBody();
+      jobRequestBodyList.setConfigTypes(Collections.singletonList(JobConfigType.SYNC));
+      jobRequestBodyList.setConfigId(connectionRead.getConnectionId().toString());
+      when(jobHistoryHandler.listJobsFor(jobRequestBodyList)).thenReturn(listJobRead);
+    }
+
     final AirbyteCatalog modifiedCatalog = ConnectionHelpers.generateBasicApiCatalog();
 
     when(schedulerHandler.discoverSchemaForSourceFromSourceId(sourceIdRequestBody)).thenReturn(
@@ -227,6 +264,28 @@ class WebBackendConnectionsHandlerTest {
     final WbConnectionReadList wbConnectionReadList = wbHandler.webBackendListConnectionsForWorkspace(workspaceIdRequestBody);
     assertEquals(1, wbConnectionReadList.getConnections().size());
     assertEquals(expected, wbConnectionReadList.getConnections().get(0));
+  }
+
+  @Test
+  public void testWebBackendPaginateConnectionsForWorkspace() throws ConfigNotFoundException, IOException, JsonValidationException {
+    final WorkspaceIdRequestBody workspaceIdRequestBody = new WorkspaceIdRequestBody();
+    workspaceIdRequestBody.setWorkspaceId(sourceRead.getWorkspaceId());
+
+    final ConnectionReadList connectionReadList = new ConnectionReadList();
+    connectionReadList.setConnections(connectionReads.subList(0, 10));
+
+    for (ConnectionRead connectionRead: connectionReads
+         ) {
+      final ConnectionIdRequestBody connectionIdRequestBody = new ConnectionIdRequestBody();
+      connectionIdRequestBody.setConnectionId(connectionRead.getConnectionId());
+      when(operationsHandler.listOperationsForConnection(connectionIdRequestBody)).thenReturn(operationReadList);
+    }
+
+    when(connectionsHandler.paginateConnectionsForWorkspace(workspaceIdRequestBody, 0, 10)).thenReturn(connectionReadList);
+
+    final WbConnectionReadList wbConnectionReadList = wbHandler.webBackendPaginateConnectionsForWorkspace(workspaceIdRequestBody, 0 , 10);
+    assertEquals(10, wbConnectionReadList.getConnections().size());
+    assertEquals(expectedConnections.subList(0, 10), wbConnectionReadList.getConnections());
   }
 
   @Test

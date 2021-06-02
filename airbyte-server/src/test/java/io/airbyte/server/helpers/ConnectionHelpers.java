@@ -38,6 +38,7 @@ import io.airbyte.api.model.SyncMode;
 import io.airbyte.commons.text.Names;
 import io.airbyte.config.Schedule;
 import io.airbyte.config.Schedule.TimeUnit;
+import io.airbyte.config.SourceConnection;
 import io.airbyte.config.StandardSync;
 import io.airbyte.protocol.models.CatalogHelpers;
 import io.airbyte.protocol.models.ConfiguredAirbyteCatalog;
@@ -45,6 +46,8 @@ import io.airbyte.protocol.models.ConfiguredAirbyteStream;
 import io.airbyte.protocol.models.DestinationSyncMode;
 import io.airbyte.protocol.models.Field;
 import io.airbyte.protocol.models.Field.JsonSchemaPrimitive;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -70,6 +73,48 @@ public class ConnectionHelpers {
         .withOperationIds(List.of(UUID.randomUUID()))
         .withManual(false)
         .withSchedule(generateBasicSchedule());
+  }
+
+  public static List<StandardSync> generateSyncs(UUID sourceId, UUID destinationId, int connectionLength) {
+    List<StandardSync> syncs = new ArrayList<StandardSync>(connectionLength);
+
+    for (int i=0;i < connectionLength;i++) {
+      final UUID connectionId = UUID.randomUUID();
+
+      syncs.add(new StandardSync()
+              .withConnectionId(connectionId)
+              .withName("presto to hudi")
+              .withPrefix("presto_to_hudi")
+              .withStatus(StandardSync.Status.ACTIVE)
+              .withCatalog(generateBasicConfiguredAirbyteCatalog())
+              .withSourceId(sourceId)
+              .withDestinationId(destinationId)
+              .withOperationIds(List.of(UUID.randomUUID()))
+              .withManual(false)
+              .withSchedule(generateBasicSchedule()));
+    }
+    return syncs;
+  }
+
+  public static List<StandardSync> generateSyncsWithSourceId(UUID sourceId, int connectionLength) {
+    List<StandardSync> syncs = new ArrayList<StandardSync>(connectionLength);
+
+    for (int i=0;i < connectionLength;i++) {
+      final UUID connectionId = UUID.randomUUID();
+
+      syncs.add(new StandardSync()
+              .withConnectionId(connectionId)
+              .withName("presto to hudi")
+              .withPrefix("presto_to_hudi")
+              .withStatus(StandardSync.Status.ACTIVE)
+              .withCatalog(generateBasicConfiguredAirbyteCatalog())
+              .withSourceId(sourceId)
+              .withDestinationId(UUID.randomUUID())
+              .withOperationIds(List.of(UUID.randomUUID()))
+              .withManual(false)
+              .withSchedule(generateBasicSchedule()));
+    }
+    return syncs;
   }
 
   public static StandardSync generateSyncWithDestinationId(UUID destinationId) {
@@ -132,6 +177,32 @@ public class ConnectionHelpers {
     }
 
     return connectionRead;
+  }
+
+  public static List<ConnectionRead> generateExpectedConnectionReads(List<StandardSync> standardSyncs) {
+    List<ConnectionRead> connectionReads = new ArrayList<>(standardSyncs.size());
+
+    for (StandardSync standardSync: standardSyncs
+         ) {
+      final ConnectionRead connectionRead = generateExpectedConnectionRead(
+              standardSync.getConnectionId(),
+              standardSync.getSourceId(),
+              standardSync.getDestinationId(),
+              standardSync.getOperationIds());
+
+      if (standardSync.getSchedule() == null) {
+        connectionRead.schedule(null);
+      } else {
+        connectionRead.schedule(new ConnectionSchedule()
+                .timeUnit(TimeUnitEnum.fromValue(standardSync.getSchedule().getTimeUnit().value()))
+                .units(standardSync.getSchedule().getUnits()));
+      }
+
+      connectionReads.add(connectionRead);
+    }
+
+
+    return connectionReads;
   }
 
   public static JsonNode generateBasicJsonSchema() {
