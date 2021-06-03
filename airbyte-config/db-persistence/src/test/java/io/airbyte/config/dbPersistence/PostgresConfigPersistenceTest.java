@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package io.airbyte.config.persistence;
+package io.airbyte.config.dbPersistence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -33,17 +33,19 @@ import com.google.common.collect.Sets;
 import io.airbyte.config.ConfigSchema;
 import io.airbyte.config.StandardSourceDefinition;
 import io.airbyte.config.StandardSync;
+import io.airbyte.config.persistence.ConfigNotFoundException;
 import io.airbyte.validation.json.JsonSchemaValidator;
 import io.airbyte.validation.json.JsonValidationException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.testcontainers.containers.PostgreSQLContainer;
 
-class DefaultConfigPersistenceTest {
+public class PostgresConfigPersistenceTest {
 
   public static final UUID UUID_1 = new UUID(0, 1);
   public static final StandardSourceDefinition SOURCE_1 = new StandardSourceDefinition();
@@ -55,24 +57,32 @@ class DefaultConfigPersistenceTest {
 
   public static final UUID UUID_2 = new UUID(0, 2);
   public static final StandardSourceDefinition SOURCE_2 = new StandardSourceDefinition();
-  private static final Path TEST_ROOT = Path.of("/tmp/airbyte_tests");
 
   static {
     SOURCE_2.withSourceDefinitionId(UUID_2)
         .withName("apache storm");
   }
 
-  private Path rootPath;
   private JsonSchemaValidator schemaValidator;
 
-  private DefaultConfigPersistence configPersistence;
+  private PostgresConfigPersistence configPersistence;
+
+  private static final String IMAGE_NAME = "postgres:13-alpine";
+  private PostgreSQLContainer<?> db;
 
   @BeforeEach
-  void setUp() throws IOException {
+  void setUp() throws SQLException {
     schemaValidator = mock(JsonSchemaValidator.class);
-    rootPath = Files.createTempDirectory(Files.createDirectories(TEST_ROOT), DefaultConfigPersistenceTest.class.getName());
+    db = new PostgreSQLContainer<>(IMAGE_NAME);
+    db.start();
+    configPersistence = new PostgresConfigPersistence(db.getUsername(), db.getPassword(), db.getJdbcUrl(), schemaValidator);
+    configPersistence.Setup();
+  }
 
-    configPersistence = new DefaultConfigPersistence(rootPath, schemaValidator);
+  @AfterEach
+  void tearDown() {
+    db.stop();
+    db.close();
   }
 
   @Test

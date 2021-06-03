@@ -24,26 +24,33 @@
 
 package io.airbyte.db;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import io.airbyte.db.jdbc.DefaultJdbcDatabase;
 import io.airbyte.db.jdbc.JdbcDatabase;
 import io.airbyte.db.jdbc.JdbcStreamingQueryConfiguration;
 import io.airbyte.db.jdbc.StreamingJdbcDatabase;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.jooq.SQLDialect;
 
 public class Databases {
 
+  public static final String POSTGRES_DRIVER = "org.postgresql.Driver";
+  public static final String REDSHIFT_DRIVER = "com.amazon.redshift.jdbc.Driver";
+  public static final String MSSQL_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+
   public static Database createPostgresDatabase(String username, String password, String jdbcConnectionString) {
-    return createDatabase(username, password, jdbcConnectionString, "org.postgresql.Driver", SQLDialect.POSTGRES);
+    return createDatabase(username, password, jdbcConnectionString, POSTGRES_DRIVER, SQLDialect.POSTGRES);
   }
 
   public static JdbcDatabase createRedshiftDatabase(String username, String password, String jdbcConnectionString) {
-    return createJdbcDatabase(username, password, jdbcConnectionString, "com.amazon.redshift.jdbc.Driver");
+    return createJdbcDatabase(username, password, jdbcConnectionString, REDSHIFT_DRIVER);
   }
 
   public static Database createSqlServerDatabase(String username, String password, String jdbcConnectionString) {
-    return createDatabase(username, password, jdbcConnectionString, "com.microsoft.sqlserver.jdbc.SQLServerDriver", SQLDialect.DEFAULT);
+    return createDatabase(username, password, jdbcConnectionString, MSSQL_DRIVER, SQLDialect.DEFAULT);
   }
 
   public static Database createDatabase(final String username,
@@ -107,6 +114,25 @@ public class Databases {
     connectionPool.setUrl(jdbcConnectionString);
     connectionProperties.ifPresent(connectionPool::setConnectionProperties);
     return connectionPool;
+  }
+
+  public static String getPostgresJdbcUrl(JsonNode config) {
+    List<String> additionalParameters = new ArrayList<>();
+
+    final StringBuilder jdbcUrl = new StringBuilder(String.format("jdbc:postgresql://%s:%s/%s?",
+        config.get("host").asText(),
+        config.get("port").asText(),
+        config.get("database").asText()));
+
+    if (config.has("ssl") && config.get("ssl").asBoolean()) {
+      additionalParameters.add("ssl=true");
+      additionalParameters.add("sslmode=require");
+    }
+
+    if (!additionalParameters.isEmpty()) {
+      additionalParameters.forEach(x -> jdbcUrl.append(x).append("&"));
+    }
+    return jdbcUrl.toString();
   }
 
 }

@@ -25,16 +25,17 @@
 package io.airbyte.config.persistence;
 
 import io.airbyte.config.ConfigSchema;
+import java.util.UUID;
 
 public class ConfigNotFoundException extends Exception {
 
   private ConfigSchema type;
   private final String configId;
 
-  public ConfigNotFoundException(ConfigSchema type, String configId) {
-    super(String.format("config type: %s id: %s", type, configId));
+  public ConfigNotFoundException(ConfigSchema type, UUID configId) {
+    super(String.format("config type: %s id: %s", type, configId.toString()));
     this.type = type;
-    this.configId = configId;
+    this.configId = configId.toString();
   }
 
   public ConfigSchema getType() {

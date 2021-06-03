@@ -172,7 +172,7 @@ public class DestinationHandler {
     final DestinationConnection dci = configRepository.getDestinationConnection(destinationId);
 
     if (dci.getTombstone()) {
-      throw new ConfigNotFoundException(ConfigSchema.DESTINATION_CONNECTION, destinationId.toString());
+      throw new ConfigNotFoundException(ConfigSchema.DESTINATION_CONNECTION, destinationId);
     }
 
     return buildDestinationRead(destinationIdRequestBody.getDestinationId());

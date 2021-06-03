@@ -31,6 +31,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -48,6 +49,13 @@ public interface JdbcDatabase extends AutoCloseable {
 
   default void execute(String sql) throws SQLException {
     execute(connection -> connection.createStatement().execute(sql));
+  }
+
+  default void executeParameterized(String sql, String... params) throws SQLException {
+    execute(connection -> {
+      final PreparedStatement stmt = connection.prepareStatement(sql, params);
+      stmt.execute();
+    });
   }
 
   default void executeWithinTransaction(List<String> queries) throws SQLException {
@@ -115,5 +123,31 @@ public interface JdbcDatabase extends AutoCloseable {
   <T> Stream<T> query(CheckedFunction<Connection, PreparedStatement, SQLException> statementCreator,
                       CheckedFunction<ResultSet, T, SQLException> recordTransform)
       throws SQLException;
+
+  default <T> Optional<T> querySingle(String sql, CheckedFunction<ResultSet, T, SQLException> recordTransform, String... params)
+      throws SQLException {
+    return query(c -> {
+      var stmt = c.prepareStatement(sql);
+      int i = 1;
+      for (String param : params) {
+        stmt.setString(i, param);
+        ++i;
+      }
+      return stmt;
+    }, recordTransform).findFirst();
+  }
+
+  default <T> Optional<T> querySingle(String sql, CheckedFunction<ResultSet, T, SQLException> recordTransform, Object... params)
+      throws SQLException {
+    return query(c -> {
+      var stmt = c.prepareStatement(sql);
+      int i = 1;
+      for (Object param : params) {
+        stmt.setObject(i, param);
+        ++i;
+      }
+      return stmt;
+    }, recordTransform).findFirst();
+  }
 
 }

@@ -132,7 +132,7 @@ public class SourceHandler {
     final SourceConnection sourceConnection = configRepository.getSourceConnection(sourceId);
 
     if (sourceConnection.getTombstone()) {
-      throw new ConfigNotFoundException(ConfigSchema.SOURCE_CONNECTION, sourceId.toString());
+      throw new ConfigNotFoundException(ConfigSchema.SOURCE_CONNECTION, sourceId);
     }
 
     return buildSourceRead(sourceId);

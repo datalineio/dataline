@@ -35,6 +35,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -58,7 +59,7 @@ public class DefaultConfigPersistence implements ConfigPersistence {
   }
 
   @Override
-  public <T> T getConfig(final ConfigSchema configType, final String configId, final Class<T> clazz)
+  public <T> T getConfig(final ConfigSchema configType, final UUID configId, final Class<T> clazz)
       throws ConfigNotFoundException, JsonValidationException, IOException {
     synchronized (lock) {
       return getConfigInternal(configType, configId, clazz);
@@ -73,13 +74,13 @@ public class DefaultConfigPersistence implements ConfigPersistence {
   }
 
   @Override
-  public <T> void writeConfig(ConfigSchema configType, String configId, T config) throws JsonValidationException, IOException {
+  public <T> void writeConfig(ConfigSchema configType, UUID configId, T config) throws JsonValidationException, IOException {
     synchronized (lock) {
       writeConfigInternal(configType, configId, config);
     }
   }
 
-  private <T> T getConfigInternal(ConfigSchema configType, String configId, Class<T> clazz)
+  private <T> T getConfigInternal(ConfigSchema configType, UUID configId, Class<T> clazz)
       throws ConfigNotFoundException, JsonValidationException, IOException {
     // validate file with schema
     final Path configPath = buildConfigPath(configType, configId);
@@ -108,7 +109,7 @@ public class DefaultConfigPersistence implements ConfigPersistence {
       final List<T> configs = Lists.newArrayList();
       for (String id : ids) {
         try {
-          configs.add(getConfig(configType, id, clazz));
+          configs.add(getConfig(configType, UUID.fromString(id), clazz));
         } catch (ConfigNotFoundException e) {
           // should not happen since we just read the ids from disk.
           throw new IOException(e);
@@ -119,7 +120,7 @@ public class DefaultConfigPersistence implements ConfigPersistence {
     }
   }
 
-  private <T> void writeConfigInternal(ConfigSchema configType, String configId, T config) throws JsonValidationException, IOException {
+  private <T> void writeConfigInternal(ConfigSchema configType, UUID configId, T config) throws JsonValidationException, IOException {
     // validate config with schema
     validateJson(Jsons.jsonNode(config), configType);
 
@@ -129,8 +130,8 @@ public class DefaultConfigPersistence implements ConfigPersistence {
     Files.writeString(configPath, Jsons.serialize(config));
   }
 
-  private Path buildConfigPath(ConfigSchema type, String configId) {
-    return buildTypePath(type).resolve(String.format("%s.json", configId));
+  private Path buildConfigPath(ConfigSchema type, UUID configId) {
+    return buildTypePath(type).resolve(String.format("%s.json", configId.toString()));
   }
 
   private Path buildTypePath(ConfigSchema type) {

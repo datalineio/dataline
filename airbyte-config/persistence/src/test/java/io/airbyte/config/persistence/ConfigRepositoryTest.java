@@ -62,7 +62,7 @@ class ConfigRepositoryTest {
   }
 
   void assertReturnsWorkspace(StandardWorkspace workspace) throws ConfigNotFoundException, IOException, JsonValidationException {
-    when(configPersistence.getConfig(ConfigSchema.STANDARD_WORKSPACE, PersistenceConstants.DEFAULT_WORKSPACE_ID.toString(), StandardWorkspace.class))
+    when(configPersistence.getConfig(ConfigSchema.STANDARD_WORKSPACE, PersistenceConstants.DEFAULT_WORKSPACE_ID, StandardWorkspace.class))
         .thenReturn(workspace);
 
     assertEquals(workspace, configRepository.getStandardWorkspace(PersistenceConstants.DEFAULT_WORKSPACE_ID, true));
