@@ -1,0 +1,14 @@
+{
+  "streams": [
+    {
+      "stream": {
+        "name": "campaigns",
+        "json_schema": {"$schema": "http://json-schema.org/draft-07/schema#", "type": "object", "properties": {"campaign.name": {"type": "string"}, "metrics.impressions": {"type": "integer"}, "segments.date": {"type": "string"}}},
+        "supported_sync_modes": ["full_refresh", "incremental"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["segments.date"],
+      "destination_sync_mode": "overwrite"
+    }
+  ]
+}

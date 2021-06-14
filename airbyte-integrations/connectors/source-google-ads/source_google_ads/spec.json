@@ -1,0 +1,80 @@
+{
+  "documentationUrl": "https://hub.docker.com/r/airbyte/source-google-adwords",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Source Google Ads Spec",
+    "type": "object",
+    "required": [
+      "developer_token",
+      "client_id",
+      "client_secret",
+      "refresh_token",
+      "customer_id",
+      "streams"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "developer_token": {
+        "type": "string",
+        "description": "Developer token granted by Google to use their APIs. More instruction on how to find this value in our <a href=\"https://docs.airbyte.io/integrations/sources/google-adwords#setup-guide\">docs</a>",
+        "airbyte_secret": true
+      },
+      "client_id": {
+        "type": "string",
+        "description": "Google client id. More instruction on how to find this value in our <a href=\"https://docs.airbyte.io/integrations/sources/google-adwords#setup-guide\">docs</a>"
+      },
+      "client_secret": {
+        "type": "string",
+        "description": "Google client secret. More instruction on how to find this value in our <a href=\"https://docs.airbyte.io/integrations/sources/google-adwords#setup-guide\">docs</a>",
+        "airbyte_secret": true
+      },
+      "refresh_token": {
+        "type": "string",
+        "description": "Refresh token generated using developer_token, oauth_client_id, and oauth_client_secret. More instruction on how to find this value in our <a href=\"https://docs.airbyte.io/integrations/sources/google-adwords#setup-guide\">docs</a>",
+        "airbyte_secret": true
+      },
+      "customer_id": {
+        "type": "string",
+        "description": "Customer ids, a 10-digit number without dashes. More instruction on how to find this value in our <a href=\"https://docs.airbyte.io/integrations/sources/google-adwords#setup-guide\">docs</a>",
+        "pattern": "^[0-9]{10}$",
+        "examples": [
+          "1234567890"
+        ]
+      },
+      "streams": {
+        "title": "The Streams",
+        "description": "The streams defined by GAQLs",
+        "items": {
+          "type": "object",
+          "title": "Stream schema",
+          "description": "Stream mapping of name to GAQL",
+          "required": [
+            "name",
+            "gaql"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Stream",
+              "description": "The stream name.",
+              "default": "",
+              "examples": [
+                "campaigns"
+              ]
+            },
+            "gaql": {
+              "type": "string",
+              "title": "GAQL",
+              "description": "The GAQL search term. <a href=\"https://developers.google.com/google-ads/api/fields/v7/overview_query_builder\">Query Builder</a>",
+              "default": "",
+              "examples": [
+                "SELECT campaign.name, metrics.impressions, segments.date FROM campaign WHERE segments.date DURING LAST_7_DAYS"
+              ]
+            }
+          }
+        },
+        "type": "array"
+      }
+    }
+  }
+}
