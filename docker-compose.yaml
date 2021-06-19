@@ -82,7 +82,7 @@ services:
       - AIRBYTE_ROLE=${AIRBYTE_ROLE:-}
       - TEMPORAL_HOST=${TEMPORAL_HOST}
     ports:
-      - 8001:8001
+      - ${SERVER_PORT}:8001
     volumes:
       - workspace:${WORKSPACE_ROOT}
       - data:${CONFIG_ROOT}
@@ -92,7 +92,7 @@ services:
     container_name: airbyte-webapp
     restart: unless-stopped
     ports:
-      - 8000:80
+      - ${WEBAPP_PORT}:80
     environment:
       - AIRBYTE_ROLE=${AIRBYTE_ROLE:-}
       - AIRBYTE_VERSION=${VERSION}
