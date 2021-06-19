@@ -31,6 +31,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -87,7 +89,9 @@ import io.airbyte.api.client.model.SourceIdRequestBody;
 import io.airbyte.api.client.model.SourceRead;
 import io.airbyte.api.client.model.SyncMode;
 import io.airbyte.commons.json.Jsons;
+import io.airbyte.commons.lang.Exceptions;
 import io.airbyte.commons.lang.MoreBooleans;
+import io.airbyte.commons.resources.MoreResources;
 import io.airbyte.config.persistence.PersistenceConstants;
 import io.airbyte.db.Database;
 import io.airbyte.db.Databases;
@@ -132,8 +136,8 @@ public class AcceptanceTests {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AcceptanceTests.class);
 
-  private static final boolean IS_KUBE = System.getenv().containsKey("KUBE");
-  private static final boolean IS_MINIKUBE = System.getenv().containsKey("IS_MINIKUBE");
+  private static final boolean IS_KUBE = true; // System.getenv().containsKey("KUBE");
+  private static final boolean IS_MINIKUBE = true; // System.getenv().containsKey("IS_MINIKUBE");
 
   private static final String OUTPUT_NAMESPACE_PREFIX = "output_namespace_";
   private static final String OUTPUT_NAMESPACE = OUTPUT_NAMESPACE_PREFIX + "${SOURCE_NAMESPACE}";
@@ -158,10 +162,36 @@ public class AcceptanceTests {
 
   @BeforeAll
   public static void init() {
-    sourcePsql = new PostgreSQLContainer("postgres:13-alpine")
-        .withUsername(SOURCE_USERNAME)
-        .withPassword(SOURCE_PASSWORD);
+    sourcePsql = sourceMock();
     sourcePsql.start();
+  }
+
+  @BeforeEach
+  public void initEach() {
+    runSqlResource("drop_all.sql", sourcePsql);
+  }
+
+  private static PostgreSQLContainer sourceMock() {
+    PostgreSQLContainer psql = mock(PostgreSQLContainer.class);
+    when(psql.getUsername()).thenReturn("");
+    when(psql.getPassword()).thenReturn("");
+    when(psql.getJdbcUrl()).thenReturn("");
+    when(psql.getFirstMappedPort()).thenReturn(5432);
+    when(psql.getDatabaseName()).thenReturn("");
+    when(psql.getHost()).thenReturn("");
+    return psql;
+  }
+
+
+  private static PostgreSQLContainer destMock() {
+    PostgreSQLContainer psql = mock(PostgreSQLContainer.class);
+    when(psql.getUsername()).thenReturn("");
+    when(psql.getPassword()).thenReturn("");
+    when(psql.getJdbcUrl()).thenReturn("");
+    when(psql.getFirstMappedPort()).thenReturn(5432);
+    when(psql.getDatabaseName()).thenReturn("");
+    when(psql.getHost()).thenReturn("");
+    return psql;
   }
 
   @AfterAll
@@ -174,7 +204,7 @@ public class AcceptanceTests {
     apiClient = new AirbyteApiClient(
         new ApiClient().setScheme("http")
             .setHost("localhost")
-            .setPort(8001)
+            .setPort(8000)
             .setBasePath("/api"));
 
     // log which connectors are being used.
@@ -187,8 +217,11 @@ public class AcceptanceTests {
     LOGGER.info("pg source definition: {}", sourceDef.getDockerImageTag());
     LOGGER.info("pg destination definition: {}", destinationDef.getDockerImageTag());
 
-    destinationPsql = new PostgreSQLContainer("postgres:13-alpine");
+    destinationPsql = destMock();
     destinationPsql.start();
+
+    runSqlResource("drop_all.sql", destinationPsql);
+
 
     sourceIds = Lists.newArrayList();
     connectionIds = Lists.newArrayList();
@@ -196,7 +229,28 @@ public class AcceptanceTests {
     operationIds = Lists.newArrayList();
 
     // seed database.
+    runSqlResource("postgres_init.sql", sourcePsql);
     PostgreSQLContainerHelper.runSqlScript(MountableFile.forClasspathResource("postgres_init.sql"), sourcePsql);
+  }
+
+  public static void runSqlResource(String resourceName, PostgreSQLContainer db) {
+    try {
+      getDatabase(db).query(ctx -> {
+
+        try {
+          var sql = MoreResources.readResource(resourceName);
+          System.out.println("sql = " + sql);
+          int execute = ctx.execute(sql);
+          System.out.println("execute = " + execute);
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+
+        return null;
+      });
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @AfterEach
@@ -275,7 +329,7 @@ public class AcceptanceTests {
   @Test
   @Order(3)
   public void testCreateSource() throws ApiException, IOException {
-    final String dbName = "acc-test-db";
+    final String dbName = "d4heke9ipf286s";
     final UUID postgresSourceDefinitionId = getPostgresSourceDefinitionId();
     final UUID defaultWorkspaceId = PersistenceConstants.DEFAULT_WORKSPACE_ID;
     final JsonNode sourceDbConfig = getSourceDbConfig();
@@ -483,6 +537,7 @@ public class AcceptanceTests {
   @Order(10)
   public void testMultipleSchemasAndTablesSync() throws Exception {
     // create tables in another schema
+    runSqlResource("postgres_second_schema_multiple_tables.sql", sourcePsql);
     PostgreSQLContainerHelper.runSqlScript(MountableFile.forClasspathResource("postgres_second_schema_multiple_tables.sql"), sourcePsql);
 
     final String connectionName = "test-connection";
@@ -506,6 +561,7 @@ public class AcceptanceTests {
   @Order(11)
   public void testMultipleSchemasSameTablesSync() throws Exception {
     // create tables in another schema
+    runSqlResource("postgres_separate_schema_same_table.sql", sourcePsql);
     PostgreSQLContainerHelper.runSqlScript(MountableFile.forClasspathResource("postgres_separate_schema_same_table.sql"), sourcePsql);
 
     final String connectionName = "test-connection";
@@ -757,7 +813,7 @@ public class AcceptanceTests {
     }
   }
 
-  private Database getDatabase(PostgreSQLContainer db) {
+  private static Database getDatabase(PostgreSQLContainer db) {
     return Databases.createPostgresDatabase(db.getUsername(), db.getPassword(), db.getJdbcUrl());
   }
 
@@ -849,6 +905,7 @@ public class AcceptanceTests {
   }
 
   private DestinationRead createDestination() throws ApiException {
+    System.out.println("getDestinationDbConfig() = " + getDestinationDbConfig());
     return createDestination(
         "AccTestDestination-" + UUID.randomUUID().toString(),
         PersistenceConstants.DEFAULT_WORKSPACE_ID,
@@ -941,17 +998,18 @@ public class AcceptanceTests {
       final Map<Object, Object> dbConfig = new HashMap<>();
 
       // don't use psql.getHost() directly since the ip we need differs depending on environment
-      if (IS_KUBE) {
-        if (IS_MINIKUBE) {
-          // used with minikube driver=none instance
-          dbConfig.put("host", Inet4Address.getLocalHost().getHostAddress());
-        } else {
-          // used on a single node with docker driver
-          dbConfig.put("host", "host.docker.internal");
-        }
-      } else {
-        dbConfig.put("host", "localhost");
-      }
+//      if (IS_KUBE) {
+//        if (IS_MINIKUBE) {
+//          // used with minikube driver=none instance
+//          dbConfig.put("host", Inet4Address.getLocalHost().getHostAddress());
+//        } else {
+//          // used on a single node with docker driver
+//          dbConfig.put("host", "host.docker.internal");
+//        }
+//      } else {
+//        dbConfig.put("host", "localhost");
+//      }
+      dbConfig.put("host", psql.getHost());
 
       if (hiddenPassword) {
         dbConfig.put("password", "**********");

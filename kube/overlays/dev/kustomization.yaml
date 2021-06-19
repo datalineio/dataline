@@ -6,15 +6,15 @@ bases:
 
 images:
   - name: airbyte/seed
-    newTag: dev
+    newTag: 0.26.1-jrhizor
   - name: airbyte/db
-    newTag: dev
+    newTag: 0.26.1-jrhizor
   - name: airbyte/scheduler
-    newTag: dev
+    newTag: 0.26.1-jrhizor
   - name: airbyte/server
-    newTag: dev
+    newTag: 0.26.1-jrhizor
   - name: airbyte/webapp
-    newTag: dev
+    newTag: 0.26.1-jrhizor
   - name: temporalio/auto-setup
     newTag: 1.7.0
 

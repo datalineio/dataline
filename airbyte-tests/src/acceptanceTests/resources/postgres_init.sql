@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS id_and_name;
+
 CREATE
     TABLE
         id_and_name(

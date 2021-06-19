@@ -1,5 +1,7 @@
 CREATE
-    SCHEMA staging;
+    SCHEMA IF NOT EXISTS staging;
+
+DROP TABLE IF EXISTS staging.cool_employees;
 
 CREATE
     TABLE

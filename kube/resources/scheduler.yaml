@@ -17,6 +17,7 @@ spec:
       containers:
         - name: airbyte-scheduler-container
           image: airbyte/scheduler
+          imagePullPolicy: Always
           env:
             - name: AIRBYTE_VERSION
               valueFrom:
