@@ -87,12 +87,6 @@ jobs:
       - name: Generate Template scaffold
         run: ./gradlew :airbyte-integrations:connector-templates:generator:testScaffoldTemplates --scan
 
-      - name: Format
-        run: ./gradlew --no-daemon format --scan
-
-      - name: Ensure no file change
-        run: git status --porcelain && test -z "$(git status --porcelain)"
-
       - name: Build
         run: CORE_ONLY=true ./gradlew --no-daemon build --scan
 
