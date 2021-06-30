@@ -345,3 +345,9 @@
   dockerRepository: airbyte/source-aws-cloudtrail
   dockerImageTag: 0.1.0
   documentationUrl: https://docs.airbyte.io/integrations/sources/aws-cloudtrail
+- sourceDefinitionId: c4cfaeda-c757-489a-8aba-859fb08b6970
+  name: US Census
+  dockerRepository: airbyte/source-us-census
+  dockerImageTag: 0.1.0
+  documentationUrl: https://docs.airbyte.io/integrations/sources/us-census
+  icon: united-states-flag.svg

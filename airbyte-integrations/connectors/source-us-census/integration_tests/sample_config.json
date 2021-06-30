@@ -1,0 +1,5 @@
+{
+  "query_path": "data/2019/cbp",
+  "query_params": "get=NAME,NAICS2017_LABEL,LFO_LABEL,EMPSZES_LABEL,ESTAB,PAYANN,PAYQTR1,EMP&for=us:*&NAICS2017=72&LFO=001&EMPSZES=001",
+  "api_key": "MY_API_KEY"
+}

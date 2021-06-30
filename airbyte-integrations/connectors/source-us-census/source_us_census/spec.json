@@ -1,0 +1,36 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/us-census",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "https://api.census.gov/ Source Spec",
+    "type": "object",
+    "required": ["api_key", "query_path"],
+    "additionalProperties": false,
+    "properties": {
+      "query_params": {
+        "type": "string",
+        "description": "The query parameters portion of the GET request, without the api key",
+        "pattern": "^\\w+=[\\w,:*]+(&(?!key)\\w+=[\\w,:*]+)*$",
+        "examples": [
+          "get=NAME,NAICS2017_LABEL,LFO_LABEL,EMPSZES_LABEL,ESTAB,PAYANN,PAYQTR1,EMP&for=us:*&NAICS2017=72&LFO=001&EMPSZES=001",
+          "get=MOVEDIN,GEOID1,GEOID2,MOVEDOUT,FULL1_NAME,FULL2_NAME,MOVEDNET&for=county:*"
+        ]
+      },
+      "query_path": {
+        "type": "string",
+        "description": "The path portion of the GET request",
+        "pattern": "^data(\\/[\\w\\d]+)+$",
+        "examples": [
+          "data/2019/cbp",
+          "data/2018/acs",
+          "data/timeseries/healthins/sahie"
+        ]
+      },
+      "api_key": {
+        "type": "string",
+        "description": "Your API Key. Get your key <a href=\"https://api.census.gov/data/key_signup.html\">here</a>.",
+        "airbyte_secret": true
+      }
+    }
+  }
+}
