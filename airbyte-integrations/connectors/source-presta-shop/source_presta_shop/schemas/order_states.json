@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "unremovable": {
+      "type": "string"
+    },
+    "delivery": {
+      "type": "string"
+    },
+    "hidden": {
+      "type": "string"
+    },
+    "send_email": {
+      "type": "string"
+    },
+    "module_name": {
+      "type": "string"
+    },
+    "invoice": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "logable": {
+      "type": "string"
+    },
+    "shipped": {
+      "type": "string"
+    },
+    "paid": {
+      "type": "string"
+    },
+    "pdf_delivery": {
+      "type": "string"
+    },
+    "pdf_invoice": {
+      "type": "string"
+    },
+    "deleted": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "template": {
+      "type": "string"
+    }
+  }
+}

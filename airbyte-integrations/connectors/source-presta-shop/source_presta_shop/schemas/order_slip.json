@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_customer": {
+      "type": "string"
+    },
+    "id_order": {
+      "type": "string"
+    },
+    "conversion_rate": {
+      "type": "string"
+    },
+    "total_products_tax_excl": {
+      "type": "string"
+    },
+    "total_products_tax_incl": {
+      "type": "string"
+    },
+    "total_shipping_tax_excl": {
+      "type": "string"
+    },
+    "total_shipping_tax_incl": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "shipping_cost": {
+      "type": "string"
+    },
+    "shipping_cost_amount": {
+      "type": "string"
+    },
+    "partial": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_upd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "order_slip_type": {
+      "type": "string"
+    }
+  }
+}

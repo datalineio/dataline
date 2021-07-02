@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_zone": {
+      "type": "string"
+    },
+    "id_country": {
+      "type": "string"
+    },
+    "iso_code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    }
+  }
+}

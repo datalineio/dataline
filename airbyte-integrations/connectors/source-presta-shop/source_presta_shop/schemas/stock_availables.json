@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_product": {
+      "type": "string"
+    },
+    "id_product_attribute": {
+      "type": "string"
+    },
+    "id_shop": {
+      "type": "string"
+    },
+    "id_shop_group": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "depends_on_stock": {
+      "type": "string"
+    },
+    "out_of_stock": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    }
+  }
+}

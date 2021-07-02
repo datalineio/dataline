@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_product": {
+      "type": "string"
+    },
+    "id_product_attribute": {
+      "type": "string"
+    },
+    "id_supplier": {
+      "type": "string"
+    },
+    "id_currency": {
+      "type": "string"
+    },
+    "product_supplier_reference": {
+      "type": "string"
+    },
+    "product_supplier_price_te": {
+      "type": "string"
+    }
+  }
+}

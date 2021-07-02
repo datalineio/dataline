@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_shop": {
+      "type": "string"
+    },
+    "id_country": {
+      "type": "string"
+    },
+    "id_currency": {
+      "type": "string"
+    },
+    "id_group": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "from_quantity": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "reduction": {
+      "type": "string"
+    },
+    "reduction_tax": {
+      "type": "string"
+    },
+    "reduction_type": {
+      "type": "string"
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    }
+  }
+}

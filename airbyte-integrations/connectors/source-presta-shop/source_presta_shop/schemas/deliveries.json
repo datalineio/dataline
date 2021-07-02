@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_carrier": {
+      "type": "string"
+    },
+    "id_range_price": {
+      "type": "string"
+    },
+    "id_range_weight": {
+      "type": "string"
+    },
+    "id_zone": {
+      "type": "string"
+    },
+    "id_shop": {
+      "type": "string"
+    },
+    "id_shop_group": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    }
+  }
+}

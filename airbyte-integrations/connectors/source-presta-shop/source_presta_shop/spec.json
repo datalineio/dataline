@@ -1,0 +1,21 @@
+{
+  "documentationUrl": "https://docsurl.com",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "PrestaShop Spec",
+    "type": "object",
+    "required": ["url", "access_key"],
+    "additionalProperties": false,
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "Shop URL without trailing slash (domain name or IP address)"
+      },
+      "access_key": {
+        "type": "string",
+        "description": "Your PrestaShop access key. See <a href=\"https://devdocs.prestashop.com/1.7/webservice/tutorials/creating-access/#create-an-access-key\"> the docs </a> for info on how to obtain this.",
+        "airbyte_secret": true
+      }
+    }
+  }
+}

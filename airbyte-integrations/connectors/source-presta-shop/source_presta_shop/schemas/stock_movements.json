@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_product": {
+      "type": "string"
+    },
+    "id_product_attribute": {
+      "type": "string"
+    },
+    "id_warehouse": {
+      "type": "string"
+    },
+    "id_currency": {
+      "type": "string"
+    },
+    "management_type": {
+      "type": ["null", "string"]
+    },
+    "id_employee": {
+      "type": "string"
+    },
+    "id_stock": {
+      "type": "string"
+    },
+    "id_stock_mvt_reason": {
+      "type": "string"
+    },
+    "id_order": {
+      "type": "string"
+    },
+    "id_supply_order": {
+      "type": "string"
+    },
+    "product_name": {
+      "type": "boolean"
+    },
+    "ean13": {
+      "type": ["null", "string"]
+    },
+    "upc": {
+      "type": ["null", "string"]
+    },
+    "reference": {
+      "type": ["null", "string"]
+    },
+    "mpn": {
+      "type": ["null", "string"]
+    },
+    "physical_quantity": {
+      "type": "string"
+    },
+    "sign": {
+      "type": "string"
+    },
+    "last_wa": {
+      "type": "string"
+    },
+    "current_wa": {
+      "type": "string"
+    },
+    "price_te": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

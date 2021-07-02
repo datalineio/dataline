@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_customer": {
+      "type": "string"
+    },
+    "date_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_to": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "quantity_per_user": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "partial_use": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "minimum_amount": {
+      "type": "string"
+    },
+    "minimum_amount_tax": {
+      "type": "string"
+    },
+    "minimum_amount_currency": {
+      "type": "string"
+    },
+    "minimum_amount_shipping": {
+      "type": "string"
+    },
+    "country_restriction": {
+      "type": "string"
+    },
+    "carrier_restriction": {
+      "type": "string"
+    },
+    "group_restriction": {
+      "type": "string"
+    },
+    "cart_rule_restriction": {
+      "type": "string"
+    },
+    "product_restriction": {
+      "type": "string"
+    },
+    "shop_restriction": {
+      "type": "string"
+    },
+    "free_shipping": {
+      "type": "string"
+    },
+    "reduction_percent": {
+      "type": "string"
+    },
+    "reduction_amount": {
+      "type": "string"
+    },
+    "reduction_tax": {
+      "type": "string"
+    },
+    "reduction_currency": {
+      "type": "string"
+    },
+    "reduction_product": {
+      "type": "string"
+    },
+    "reduction_exclude_special": {
+      "type": "string"
+    },
+    "gift_product": {
+      "type": "string"
+    },
+    "gift_product_attribute": {
+      "type": "string"
+    },
+    "highlight": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_upd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

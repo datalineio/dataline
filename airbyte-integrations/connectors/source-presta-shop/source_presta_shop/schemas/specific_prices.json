@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_shop_group": {
+      "type": "string"
+    },
+    "id_shop": {
+      "type": "string"
+    },
+    "id_cart": {
+      "type": "string"
+    },
+    "id_product": {
+      "type": "string"
+    },
+    "id_product_attribute": {
+      "type": "string"
+    },
+    "id_currency": {
+      "type": "string"
+    },
+    "id_country": {
+      "type": "string"
+    },
+    "id_group": {
+      "type": "string"
+    },
+    "id_customer": {
+      "type": "string"
+    },
+    "id_specific_price_rule": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "from_quantity": {
+      "type": "string"
+    },
+    "reduction": {
+      "type": "string"
+    },
+    "reduction_tax": {
+      "type": "string"
+    },
+    "reduction_type": {
+      "type": "string"
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    }
+  }
+}

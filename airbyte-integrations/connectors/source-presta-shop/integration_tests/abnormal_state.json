@@ -1,0 +1,65 @@
+{
+  "addresses": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "cart_rules": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "carts": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "categories": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "customer_messages": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "customer_threads": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "customers": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "manufacturers": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "messages": {
+    "date_add": "2121-06-16 14:13:26"
+  },
+  "order_carriers": {
+    "date_add": "2121-06-16 14:13:26"
+  },
+  "order_histories": {
+    "date_add": "2121-06-16 14:13:26"
+  },
+  "order_invoices": {
+    "date_add": "2121-06-16 14:13:26"
+  },
+  "order_payments": {
+    "date_add": "2121-06-16 14:13:26"
+  },
+  "order_slip": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "orders": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "products": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "stock_movement_reasons": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "stock_movements": {
+    "date_add": "2121-06-16 14:13:26"
+  },
+  "stores": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "suppliers": {
+    "date_upd": "2121-06-16 14:13:26"
+  },
+  "tax_rule_groups": {
+    "date_upd": "2121-06-16 14:13:26"
+  }
+}

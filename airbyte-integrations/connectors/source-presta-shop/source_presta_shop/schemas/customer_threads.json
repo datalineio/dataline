@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_lang": {
+      "type": "string"
+    },
+    "id_shop": {
+      "type": "string"
+    },
+    "id_customer": {
+      "type": "string"
+    },
+    "id_order": {
+      "type": "string"
+    },
+    "id_product": {
+      "type": "string"
+    },
+    "id_contact": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_upd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "associations": {
+      "type": "object",
+      "properties": {
+        "customer_messages": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

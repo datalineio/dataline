@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_address_delivery": {
+      "type": "string"
+    },
+    "id_address_invoice": {
+      "type": "string"
+    },
+    "id_currency": {
+      "type": "string"
+    },
+    "id_customer": {
+      "type": "string"
+    },
+    "id_guest": {
+      "type": "string"
+    },
+    "id_lang": {
+      "type": "string"
+    },
+    "id_shop_group": {
+      "type": "string"
+    },
+    "id_shop": {
+      "type": "string"
+    },
+    "id_carrier": {
+      "type": "string"
+    },
+    "recyclable": {
+      "type": "string"
+    },
+    "gift": {
+      "type": "string"
+    },
+    "gift_message": {
+      "type": "string"
+    },
+    "mobile_theme": {
+      "type": "string"
+    },
+    "delivery_option": {
+      "type": "string"
+    },
+    "secure_key": {
+      "type": "string"
+    },
+    "allow_seperated_package": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_upd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "associations": {
+      "type": "object",
+      "properties": {
+        "cart_rows": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id_product": {
+                  "type": "string"
+                },
+                "id_product_attribute": {
+                  "type": "string"
+                },
+                "id_address_delivery": {
+                  "type": "string"
+                },
+                "id_customization": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

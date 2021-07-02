@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_customer": {
+      "type": "string"
+    },
+    "id_operating_system": {
+      "type": "string"
+    },
+    "id_web_browser": {
+      "type": "string"
+    },
+    "javascript": {
+      "type": "string"
+    },
+    "screen_resolution_x": {
+      "type": "string"
+    },
+    "screen_resolution_y": {
+      "type": "string"
+    },
+    "screen_color": {
+      "type": "string"
+    },
+    "sun_java": {
+      "type": "string"
+    },
+    "adobe_flash": {
+      "type": "string"
+    },
+    "adobe_director": {
+      "type": "string"
+    },
+    "apple_quicktime": {
+      "type": "string"
+    },
+    "real_player": {
+      "type": "string"
+    },
+    "windows_media": {
+      "type": "string"
+    },
+    "accept_language": {
+      "type": "string"
+    },
+    "mobile_theme": {
+      "type": "string"
+    }
+  }
+}

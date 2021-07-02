@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "iso_code": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "language_code": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    },
+    "is_rtl": {
+      "type": "string"
+    },
+    "date_format_lite": {
+      "type": "string"
+    },
+    "date_format_full": {
+      "type": "string"
+    }
+  }
+}

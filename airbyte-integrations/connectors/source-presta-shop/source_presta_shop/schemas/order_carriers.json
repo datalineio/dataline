@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_order": {
+      "type": "string"
+    },
+    "id_carrier": {
+      "type": "string"
+    },
+    "id_order_invoice": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "string"
+    },
+    "shipping_cost_tax_excl": {
+      "type": "string"
+    },
+    "shipping_cost_tax_incl": {
+      "type": "string"
+    },
+    "tracking_number": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

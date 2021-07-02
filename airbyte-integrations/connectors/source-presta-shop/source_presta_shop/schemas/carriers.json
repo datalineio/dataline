@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "deleted": {
+      "type": "string"
+    },
+    "is_module": {
+      "type": "string"
+    },
+    "id_tax_rules_group": {
+      "type": "string"
+    },
+    "id_reference": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    },
+    "is_free": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "shipping_handling": {
+      "type": "string"
+    },
+    "shipping_external": {
+      "type": "string"
+    },
+    "range_behavior": {
+      "type": "string"
+    },
+    "shipping_method": {
+      "type": "string"
+    },
+    "max_width": {
+      "type": "string"
+    },
+    "max_height": {
+      "type": "string"
+    },
+    "max_depth": {
+      "type": "string"
+    },
+    "max_weight": {
+      "type": "string"
+    },
+    "grade": {
+      "type": "string"
+    },
+    "external_module_name": {
+      "type": "string"
+    },
+    "need_range": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "delay": {
+      "type": "string"
+    }
+  }
+}

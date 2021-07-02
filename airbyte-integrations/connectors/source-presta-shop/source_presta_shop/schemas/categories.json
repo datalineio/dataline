@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_parent": {
+      "type": "string"
+    },
+    "level_depth": {
+      "type": "string"
+    },
+    "nb_products_recursive": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    },
+    "id_shop_default": {
+      "type": "string"
+    },
+    "is_root_category": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_upd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "name": {
+      "type": "string"
+    },
+    "link_rewrite": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    },
+    "meta_keywords": {
+      "type": "string"
+    },
+    "associations": {
+      "type": "object",
+      "properties": {
+        "categories": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

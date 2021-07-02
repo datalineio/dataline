@@ -1,0 +1,46 @@
+# See [Source Acceptance Tests](https://docs.airbyte.io/contributing-to-airbyte/building-new-connector/source-acceptance-tests.md)
+# for more information about how to configure these tests
+connector_image: airbyte/source-presta-shop:dev
+tests:
+  spec:
+    - spec_path: "source_presta_shop/spec.json"
+  connection:
+    - config_path: "secrets/config.json"
+      status: "succeed"
+    - config_path: "integration_tests/invalid_config.json"
+      status: "failed"
+  discovery:
+    - config_path: "secrets/config.json"
+  basic_read:
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "integration_tests/configured_catalog.json"
+      validate_output_from_all_streams: yes
+  incremental:
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "integration_tests/configured_catalog.json"
+      future_state_path: "integration_tests/abnormal_state.json"
+      cursor_paths:
+        addresses: ["date_upd"]
+        cart_rules: ["date_upd"]
+        carts: ["date_upd"]
+        categories: ["date_upd"]
+        customer_messages: ["date_upd"]
+        customer_threads: ["date_upd"]
+        customers: ["date_upd"]
+        manufacturers: ["date_upd"]
+        messages: ["date_add"]
+        order_carriers: ["date_add"]
+        order_histories: ["date_add"]
+        order_invoices: ["date_add"]
+        order_payments: ["date_add"]
+        order_slip: ["date_upd"]
+        orders: ["date_upd"]
+        products: ["date_upd"]
+        stock_movement_reasons: ["date_upd"]
+        stock_movements: ["date_add"]
+        stores: ["date_upd"]
+        suppliers: ["date_upd"]
+        tax_rule_groups: ["date_upd"]
+  full_refresh:
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "integration_tests/configured_catalog.json"

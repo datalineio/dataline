@@ -1,0 +1,276 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_manufacturer": {
+      "type": "string"
+    },
+    "id_supplier": {
+      "type": "string"
+    },
+    "id_category_default": {
+      "type": "string"
+    },
+    "new": {
+      "type": ["null", "string"]
+    },
+    "cache_default_attribute": {
+      "type": "string"
+    },
+    "id_default_image": {
+      "type": "string"
+    },
+    "id_default_combination": {
+      "type": "integer"
+    },
+    "id_tax_rules_group": {
+      "type": "string"
+    },
+    "position_in_category": {
+      "type": "string"
+    },
+    "manufacturer_name": {
+      "type": "boolean"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "id_shop_default": {
+      "type": "string"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "supplier_reference": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "width": {
+      "type": "string"
+    },
+    "height": {
+      "type": "string"
+    },
+    "depth": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "string"
+    },
+    "quantity_discount": {
+      "type": "string"
+    },
+    "ean13": {
+      "type": "string"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "upc": {
+      "type": "string"
+    },
+    "mpn": {
+      "type": "string"
+    },
+    "cache_is_pack": {
+      "type": "string"
+    },
+    "cache_has_attachments": {
+      "type": "string"
+    },
+    "is_virtual": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "additional_delivery_times": {
+      "type": "string"
+    },
+    "delivery_in_stock": {
+      "type": "string"
+    },
+    "delivery_out_stock": {
+      "type": "string"
+    },
+    "on_sale": {
+      "type": "string"
+    },
+    "online_only": {
+      "type": "string"
+    },
+    "ecotax": {
+      "type": "string"
+    },
+    "minimal_quantity": {
+      "type": "string"
+    },
+    "low_stock_threshold": {
+      "type": ["null", "string"]
+    },
+    "low_stock_alert": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "wholesale_price": {
+      "type": "string"
+    },
+    "unity": {
+      "type": "string"
+    },
+    "unit_price_ratio": {
+      "type": "string"
+    },
+    "additional_shipping_cost": {
+      "type": "string"
+    },
+    "customizable": {
+      "type": "string"
+    },
+    "text_fields": {
+      "type": "string"
+    },
+    "uploadable_files": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    },
+    "redirect_type": {
+      "type": "string"
+    },
+    "id_type_redirected": {
+      "type": "string"
+    },
+    "available_for_order": {
+      "type": "string"
+    },
+    "available_date": {
+      "type": "string"
+    },
+    "show_condition": {
+      "type": "string"
+    },
+    "condition": {
+      "type": "string"
+    },
+    "show_price": {
+      "type": "string"
+    },
+    "indexed": {
+      "type": "string"
+    },
+    "visibility": {
+      "type": "string"
+    },
+    "advanced_stock_management": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_upd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "pack_stock_type": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    },
+    "meta_keywords": {
+      "type": "string"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "link_rewrite": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "description_short": {
+      "type": "string"
+    },
+    "available_now": {
+      "type": "string"
+    },
+    "available_later": {
+      "type": "string"
+    },
+    "associations": {
+      "type": "object",
+      "properties": {
+        "categories": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "images": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "stock_availables": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "id_product_attribute": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

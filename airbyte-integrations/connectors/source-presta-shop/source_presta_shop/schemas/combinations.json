@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_product": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "ean13": {
+      "type": "string"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "upc": {
+      "type": "string"
+    },
+    "mpn": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "supplier_reference": {
+      "type": "string"
+    },
+    "wholesale_price": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "ecotax": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "string"
+    },
+    "unit_price_impact": {
+      "type": "string"
+    },
+    "minimal_quantity": {
+      "type": "string"
+    },
+    "low_stock_threshold": {
+      "type": ["null", "string"]
+    },
+    "low_stock_alert": {
+      "type": "string"
+    },
+    "default_on": {
+      "type": ["null", "string"]
+    },
+    "available_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "associations": {
+      "type": "object",
+      "properties": {
+        "product_option_values": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "images": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

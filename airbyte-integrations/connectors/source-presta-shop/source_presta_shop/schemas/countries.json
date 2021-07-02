@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_zone": {
+      "type": "string"
+    },
+    "id_currency": {
+      "type": "string"
+    },
+    "call_prefix": {
+      "type": "string"
+    },
+    "iso_code": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    },
+    "contains_states": {
+      "type": "string"
+    },
+    "need_identification_number": {
+      "type": "string"
+    },
+    "need_zip_code": {
+      "type": "string"
+    },
+    "zip_code_format": {
+      "type": "string"
+    },
+    "display_tax_label": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

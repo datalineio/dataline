@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_feature": {
+      "type": "string"
+    },
+    "custom": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

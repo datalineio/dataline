@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_order": {
+      "type": "string"
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "product_attribute_id": {
+      "type": "string"
+    },
+    "product_quantity_reinjected": {
+      "type": "string"
+    },
+    "group_reduction": {
+      "type": "string"
+    },
+    "discount_quantity_applied": {
+      "type": "string"
+    },
+    "download_hash": {
+      "type": "string"
+    },
+    "download_deadline": {
+      "type": "string"
+    },
+    "id_order_invoice": {
+      "type": "string"
+    },
+    "id_warehouse": {
+      "type": "string"
+    },
+    "id_shop": {
+      "type": "string"
+    },
+    "id_customization": {
+      "type": "string"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "product_quantity": {
+      "type": "string"
+    },
+    "product_quantity_in_stock": {
+      "type": "string"
+    },
+    "product_quantity_return": {
+      "type": "string"
+    },
+    "product_quantity_refunded": {
+      "type": "string"
+    },
+    "product_price": {
+      "type": "string"
+    },
+    "reduction_percent": {
+      "type": "string"
+    },
+    "reduction_amount": {
+      "type": "string"
+    },
+    "reduction_amount_tax_incl": {
+      "type": "string"
+    },
+    "reduction_amount_tax_excl": {
+      "type": "string"
+    },
+    "product_quantity_discount": {
+      "type": "string"
+    },
+    "product_ean13": {
+      "type": "string"
+    },
+    "product_isbn": {
+      "type": "string"
+    },
+    "product_upc": {
+      "type": "string"
+    },
+    "product_mpn": {
+      "type": "string"
+    },
+    "product_reference": {
+      "type": "string"
+    },
+    "product_supplier_reference": {
+      "type": "string"
+    },
+    "product_weight": {
+      "type": "string"
+    },
+    "tax_computation_method": {
+      "type": "string"
+    },
+    "id_tax_rules_group": {
+      "type": "string"
+    },
+    "ecotax": {
+      "type": "string"
+    },
+    "ecotax_tax_rate": {
+      "type": "string"
+    },
+    "download_nb": {
+      "type": "string"
+    },
+    "unit_price_tax_incl": {
+      "type": "string"
+    },
+    "unit_price_tax_excl": {
+      "type": "string"
+    },
+    "total_price_tax_incl": {
+      "type": "string"
+    },
+    "total_price_tax_excl": {
+      "type": "string"
+    },
+    "total_shipping_price_tax_excl": {
+      "type": "string"
+    },
+    "total_shipping_price_tax_incl": {
+      "type": "string"
+    },
+    "purchase_supplier_price": {
+      "type": "string"
+    },
+    "original_product_price": {
+      "type": "string"
+    },
+    "original_wholesale_price": {
+      "type": "string"
+    },
+    "total_refunded_tax_excl": {
+      "type": "string"
+    },
+    "total_refunded_tax_incl": {
+      "type": "string"
+    }
+  }
+}

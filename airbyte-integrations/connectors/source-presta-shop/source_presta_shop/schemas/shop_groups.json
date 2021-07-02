@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "share_customer": {
+      "type": "string"
+    },
+    "share_order": {
+      "type": "string"
+    },
+    "share_stock": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    },
+    "deleted": {
+      "type": "string"
+    }
+  }
+}

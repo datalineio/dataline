@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "order_reference": {
+      "type": "string"
+    },
+    "id_currency": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "payment_method": {
+      "type": "string"
+    },
+    "conversion_rate": {
+      "type": "string"
+    },
+    "transaction_id": {
+      "type": "string"
+    },
+    "card_number": {
+      "type": "string"
+    },
+    "card_brand": {
+      "type": "string"
+    },
+    "card_expiration": {
+      "type": "string"
+    },
+    "card_holder": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_address_delivery": {
+      "type": "string"
+    },
+    "id_address_invoice": {
+      "type": "string"
+    },
+    "id_cart": {
+      "type": "string"
+    },
+    "id_currency": {
+      "type": "string"
+    },
+    "id_lang": {
+      "type": "string"
+    },
+    "id_customer": {
+      "type": "string"
+    },
+    "id_carrier": {
+      "type": "string"
+    },
+    "current_state": {
+      "type": "string"
+    },
+    "module": {
+      "type": "string"
+    },
+    "invoice_number": {
+      "type": "string"
+    },
+    "invoice_date": {
+      "type": "string"
+    },
+    "delivery_number": {
+      "type": "string"
+    },
+    "delivery_date": {
+      "type": "string"
+    },
+    "valid": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_upd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "shipping_number": {
+      "type": "string"
+    },
+    "id_shop_group": {
+      "type": "string"
+    },
+    "id_shop": {
+      "type": "string"
+    },
+    "secure_key": {
+      "type": "string"
+    },
+    "payment": {
+      "type": "string"
+    },
+    "recyclable": {
+      "type": "string"
+    },
+    "gift": {
+      "type": "string"
+    },
+    "gift_message": {
+      "type": "string"
+    },
+    "mobile_theme": {
+      "type": "string"
+    },
+    "total_discounts": {
+      "type": "string"
+    },
+    "total_discounts_tax_incl": {
+      "type": "string"
+    },
+    "total_discounts_tax_excl": {
+      "type": "string"
+    },
+    "total_paid": {
+      "type": "string"
+    },
+    "total_paid_tax_incl": {
+      "type": "string"
+    },
+    "total_paid_tax_excl": {
+      "type": "string"
+    },
+    "total_paid_real": {
+      "type": "string"
+    },
+    "total_products": {
+      "type": "string"
+    },
+    "total_products_wt": {
+      "type": "string"
+    },
+    "total_shipping": {
+      "type": "string"
+    },
+    "total_shipping_tax_incl": {
+      "type": "string"
+    },
+    "total_shipping_tax_excl": {
+      "type": "string"
+    },
+    "carrier_tax_rate": {
+      "type": "string"
+    },
+    "total_wrapping": {
+      "type": "string"
+    },
+    "total_wrapping_tax_incl": {
+      "type": "string"
+    },
+    "total_wrapping_tax_excl": {
+      "type": "string"
+    },
+    "round_mode": {
+      "type": "string"
+    },
+    "round_type": {
+      "type": "string"
+    },
+    "conversion_rate": {
+      "type": "string"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "associations": {
+      "type": "object",
+      "properties": {
+        "order_rows": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "product_id": {
+                  "type": "string"
+                },
+                "product_attribute_id": {
+                  "type": "string"
+                },
+                "product_quantity": {
+                  "type": "string"
+                },
+                "product_name": {
+                  "type": "string"
+                },
+                "product_reference": {
+                  "type": "string"
+                },
+                "product_ean13": {
+                  "type": "string"
+                },
+                "product_isbn": {
+                  "type": "string"
+                },
+                "product_upc": {
+                  "type": "string"
+                },
+                "product_price": {
+                  "type": "string"
+                },
+                "id_customization": {
+                  "type": "string"
+                },
+                "unit_price_tax_incl": {
+                  "type": "string"
+                },
+                "unit_price_tax_excl": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

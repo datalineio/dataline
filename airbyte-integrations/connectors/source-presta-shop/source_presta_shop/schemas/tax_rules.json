@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_tax_rules_group": {
+      "type": "string"
+    },
+    "id_state": {
+      "type": "string"
+    },
+    "id_country": {
+      "type": "string"
+    },
+    "zipcode_from": {
+      "type": "string"
+    },
+    "zipcode_to": {
+      "type": "string"
+    },
+    "id_tax": {
+      "type": "string"
+    },
+    "behavior": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

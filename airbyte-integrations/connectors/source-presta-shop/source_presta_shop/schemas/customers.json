@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "id_default_group": {
+      "type": "string"
+    },
+    "id_lang": {
+      "type": "string"
+    },
+    "newsletter_date_add": {
+      "type": "string"
+    },
+    "ip_registration_newsletter": {
+      "type": "string"
+    },
+    "last_passwd_gen": {
+      "type": "string"
+    },
+    "secure_key": {
+      "type": "string"
+    },
+    "deleted": {
+      "type": "string"
+    },
+    "passwd": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "firstname": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "id_gender": {
+      "type": "string"
+    },
+    "birthday": {
+      "type": "string"
+    },
+    "newsletter": {
+      "type": "string"
+    },
+    "optin": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "siret": {
+      "type": "string"
+    },
+    "ape": {
+      "type": "string"
+    },
+    "outstanding_allow_amount": {
+      "type": "string"
+    },
+    "show_public_prices": {
+      "type": "string"
+    },
+    "id_risk": {
+      "type": "string"
+    },
+    "max_payment_days": {
+      "type": "string"
+    },
+    "active": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "is_guest": {
+      "type": "string"
+    },
+    "id_shop": {
+      "type": "string"
+    },
+    "id_shop_group": {
+      "type": "string"
+    },
+    "date_add": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date_upd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reset_password_token": {
+      "type": "string"
+    },
+    "reset_password_validity": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "associations": {
+      "type": "object",
+      "properties": {
+        "groups": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
