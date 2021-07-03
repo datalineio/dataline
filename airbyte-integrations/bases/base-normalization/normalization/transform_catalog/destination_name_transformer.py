@@ -35,6 +35,7 @@ DESTINATION_SIZE_LIMITS = {
     DestinationType.SNOWFLAKE.value: 255,
     DestinationType.REDSHIFT.value: 127,
     DestinationType.POSTGRES.value: 63,
+    DestinationType.ORACLE.value: 30,
 }
 
 # DBT also needs to generate suffix to table names, so we need to make sure it has enough characters to do so...
@@ -176,6 +177,8 @@ class DestinationNameTransformer:
         elif self.destination_type.value == DestinationType.SNOWFLAKE.value:
             if not is_quoted and not self.needs_quotes(input_name):
                 result = input_name.upper()
+        elif self.destination_type.value == DestinationType.ORACLE.value:
+            result = input_name.upper()
         else:
             raise KeyError(f"Unknown destination type {self.destination_type}")
         return result

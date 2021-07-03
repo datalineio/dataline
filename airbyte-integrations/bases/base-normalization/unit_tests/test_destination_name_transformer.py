@@ -55,21 +55,25 @@ def before_tests(request):
         ("Hello World", "BigQuery", False),
         ("Hello World", "Snowflake", True),
         ("Hello World", "Redshift", True),
+        ("Hello World", "Oracle", True),
         # Reserved Word for BigQuery only
         ("Groups", "Postgres", False),
         ("Groups", "BigQuery", True),
         ("Groups", "Snowflake", False),
         ("Groups", "Redshift", False),
+        ("Groups", "Oracle", False),
         # Doesnt start with alpha or underscore
         ("100x200", "Postgres", True),
         ("100x200", "BigQuery", False),
         ("100x200", "Snowflake", True),
         ("100x200", "Redshift", True),
+        ("100x200", "Oracle", True),
         # Contains non alpha numeric
         ("post.wall", "Postgres", True),
         ("post.wall", "BigQuery", False),
         ("post.wall", "Snowflake", True),
         ("post.wall", "Redshift", True),
+        ("post.wall", "Oracle", True),
     ],
 )
 def test_needs_quote(input_str: str, destination_type: str, expected: bool):
@@ -118,6 +122,7 @@ def test_transform_standard_naming(input_str: str, expected: str):
         ("Identifier Name2", "BigQuery", "Identifier_Name2", "Identifier_Name2"),
         ("Identifier Name3", "Snowflake", "IDENTIFIER_NAME3", "{{ adapter.quote('Identifier Name3') }}"),
         ("Identifier Name4", "Redshift", "identifier_name4", "{{ adapter.quote('identifier name4') }}"),
+        ("Identifier Name4", "Oracle", "IDEN__AME4", "{{ adapter.quote('identifier name4') }}"),
         # Unicode
         ("a-Unicode_name_文1", "Postgres", "a_unicode_name__1", "{{ adapter.quote('a-Unicode_name_文1') }}"),
         ("a-Unicode_name_文2", "BigQuery", "a_Unicode_name__2", "a_Unicode_name__2"),

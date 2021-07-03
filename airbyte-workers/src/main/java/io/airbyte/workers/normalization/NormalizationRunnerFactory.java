@@ -36,6 +36,7 @@ public class NormalizationRunnerFactory {
           .put("airbyte/destination-postgres", DefaultNormalizationRunner.DestinationType.POSTGRES)
           .put("airbyte/destination-redshift", DefaultNormalizationRunner.DestinationType.REDSHIFT)
           .put("airbyte/destination-snowflake", DefaultNormalizationRunner.DestinationType.SNOWFLAKE)
+          .put("airbyte/destination-oracle", DefaultNormalizationRunner.DestinationType.ORACLE)
           .build();
 
   public static NormalizationRunner create(String imageName, ProcessFactory processFactory) {

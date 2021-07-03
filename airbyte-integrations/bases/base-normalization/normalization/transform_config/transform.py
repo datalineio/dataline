@@ -39,6 +39,7 @@ class DestinationType(Enum):
     postgres = "postgres"
     redshift = "redshift"
     snowflake = "snowflake"
+    oracle = "oracle"
 
 
 class TransformConfig:
@@ -82,6 +83,7 @@ class TransformConfig:
             DestinationType.postgres.value: self.transform_postgres,
             DestinationType.redshift.value: self.transform_redshift,
             DestinationType.snowflake.value: self.transform_snowflake,
+            DestinationType.oracle.value: self.transform_oracle,
         }[integration_type.value](config)
 
         # merge pre-populated base_profile with destination-specific configuration.
@@ -162,6 +164,22 @@ class TransformConfig:
             "threads": 32,
             "client_session_keep_alive": False,
             "query_tag": "normalization",
+        }
+        return dbt_config
+
+    @staticmethod
+    def transform_oracle(config: Dict[str, Any]):
+        print("transform_oracle")
+        # https://github.com/techindicium/dbt-oracle#configure-your-profile
+        dbt_config = {
+            "type": "oracle",
+            "host": config["host"],
+            "user": config["username"],
+            "pass": config["password"],
+            "port": config["port"],
+            "dbname": config["database"],
+            "schema": config["schema"],
+            "threads": 32,
         }
         return dbt_config
 

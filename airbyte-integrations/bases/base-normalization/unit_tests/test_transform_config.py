@@ -96,6 +96,31 @@ class TestTransformConfig:
         assert expected == actual
         assert extract_schema(actual) == "public"
 
+    def test_transform_oracle(self):
+        input = {
+            "host": "localhost",
+            "port": 1521,
+            "username": "a user",
+            "password": "password123",
+            "database": "my_db",
+            "schema": "xe",
+        }
+
+        actual = TransformConfig().transform_oracle(input)
+        expected = {
+            "type": "oracle",
+            "dbname": "my_db",
+            "host": "localhost",
+            "pass": "password123",
+            "port": 1521,
+            "schema": "xe",
+            "threads": 32,
+            "user": "a user",
+        }
+
+        assert expected == actual
+        assert extract_schema(actual) == "xe"
+
     def test_transform_snowflake(self):
         input = {
             "host": "http://123abc.us-east-7.aws.snowflakecomputing.com",

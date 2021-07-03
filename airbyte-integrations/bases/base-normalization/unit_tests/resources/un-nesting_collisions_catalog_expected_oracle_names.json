@@ -1,0 +1,52 @@
+{
+  "_airbyte_namespace.simple stream name.simple stream name": {
+    "file": "SIMP___F35",
+    "schema": "_AIRBYTE_NAMESPACE",
+    "table": "SIMP___F35"
+  },
+  "_airbyte_namespace.simple.simple": {
+    "file": "SIMPLE",
+    "schema": "_AIRBYTE_NAMESPACE",
+    "table": "SIMPLE"
+  },
+  "_airbyte_namespace.simple_stream_name.stream_name": {
+    "file": "SIMPLE_B94_STRE__NAME",
+    "schema": "_AIRBYTE_NAMESPACE",
+    "table": "SIMPLE_B94_STRE__NAME"
+  },
+  "_airbyte_other_namespace.simple_b94_stream_name.simple_b94_stream_name": {
+    "file": "_AIR___AAD",
+    "schema": "_AIRBYTE_OTHER_NAMESPACE",
+    "table": "SIMP__NAME"
+  },
+  "_airbyte_yet_another_namespace_with_a_very_long_name.simple_b94_stream_name.simple_b94_stream_name": {
+    "file": "_AIR___EE7",
+    "schema": "_AIRBYTE_YET_ANOTHER_NAMESPACE_WITH_A_VERY_LONG_NAME",
+    "table": "SIMP__NAME"
+  },
+  "namespace.simple stream name.simple stream name": {
+    "file": "SIMP___F35",
+    "schema": "NAMESPACE",
+    "table": "SIMP___F35"
+  },
+  "namespace.simple.simple": {
+    "file": "SIMPLE",
+    "schema": "NAMESPACE",
+    "table": "SIMPLE"
+  },
+  "namespace.simple_stream_name.stream_name": {
+    "file": "SIMPLE_B94_STRE__NAME",
+    "schema": "NAMESPACE",
+    "table": "SIMPLE_B94_STRE__NAME"
+  },
+  "other_namespace.simple_b94_stream_name.simple_b94_stream_name": {
+    "file": "OTHE___242",
+    "schema": "OTHER_NAMESPACE",
+    "table": "SIMP__NAME"
+  },
+  "yet_another_namespace_with_a_very_long_name.simple_b94_stream_name.simple_b94_stream_name": {
+    "file": "YET____4E2",
+    "schema": "YET_ANOTHER_NAMESPACE_WITH_A_VERY_LONG_NAME",
+    "table": "SIMP__NAME"
+  }
+}

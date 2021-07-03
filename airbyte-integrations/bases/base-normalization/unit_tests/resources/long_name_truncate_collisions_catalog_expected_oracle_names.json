@@ -1,0 +1,32 @@
+{
+  "_airbyte_another.postgres_has_a_64_characters_limit_to_table_names_but_other_destinations_are_fine.postgres_has_a_64_characters_limit_to_table_names_but_other_destinations_are_fine": {
+    "file": "POST__FINE",
+    "schema": "_AIRBYTE_ANOTHER",
+    "table": "POST__FINE"
+  },
+  "_airbyte_schema_test.postgres_has_a_64_characters_and_not_more_limit_to_table_names_but_other_destinations_are_fine.postgres_has_a_64_characters_and_not_more_limit_to_table_names_but_other_destinations_are_fine": {
+    "file": "POST___D2B",
+    "schema": "_AIRBYTE_SCHEMA_TEST",
+    "table": "POST___D2B"
+  },
+  "_airbyte_schema_test.postgres_has_a_64_characters_limit_to_table_names_but_other_destinations_are_fine.postgres_has_a_64_characters_limit_to_table_names_but_other_destinations_are_fine": {
+    "file": "POST___E5A",
+    "schema": "_AIRBYTE_SCHEMA_TEST",
+    "table": "POST___E5A"
+  },
+  "another.postgres_has_a_64_characters_limit_to_table_names_but_other_destinations_are_fine.postgres_has_a_64_characters_limit_to_table_names_but_other_destinations_are_fine": {
+    "file": "POST__FINE",
+    "schema": "ANOTHER",
+    "table": "POST__FINE"
+  },
+  "schema_test.postgres_has_a_64_characters_and_not_more_limit_to_table_names_but_other_destinations_are_fine.postgres_has_a_64_characters_and_not_more_limit_to_table_names_but_other_destinations_are_fine": {
+    "file": "POST___D2B",
+    "schema": "SCHEMA_TEST",
+    "table": "POST___D2B"
+  },
+  "schema_test.postgres_has_a_64_characters_limit_to_table_names_but_other_destinations_are_fine.postgres_has_a_64_characters_limit_to_table_names_but_other_destinations_are_fine": {
+    "file": "POST___E5A",
+    "schema": "SCHEMA_TEST",
+    "table": "POST___E5A"
+  }
+}

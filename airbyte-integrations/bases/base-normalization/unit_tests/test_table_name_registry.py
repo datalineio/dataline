@@ -33,6 +33,7 @@ from normalization.transform_catalog.catalog_processor import CatalogProcessor
 from normalization.transform_catalog.destination_name_transformer import DestinationNameTransformer
 from normalization.transform_catalog.table_name_registry import TableNameRegistry, get_nested_hashed_table_name
 
+ORACLE_MAX_TABLE_LENGTH = 30
 
 @pytest.fixture(scope="function", autouse=True)
 def before_tests(request):
@@ -129,26 +130,29 @@ def read_json(input_path: str, apply_function=(lambda x: x)):
 
 
 @pytest.mark.parametrize(
-    "json_path, expected_postgres, expected_bigquery",
+    "json_path, expected_postgres, expected_bigquery, expected_oracle",
     [
         (
             ["parent", "child"],
             "parent_child",
             "parent_child",
+            "PARE__HILD"
         ),
         (
             ["The parent stream has a nested column with a", "short_substream_name"],
             "the_parent_stream_ha___short_substream_name",
             "The_parent_stream_has_a_nested_column_with_a_short_substream_name",
+            "THE___NAME",
         ),
         (
             ["The parent stream has a nested column with a", "substream with a rather long name"],
             "the_parent_stream_ha__th_a_rather_long_name",
             "The_parent_stream_has_a_nested_column_with_a_substream_with_a_rather_long_name",
+            "THE___NAME"
         ),
     ],
 )
-def test_get_simple_table_name(json_path: List[str], expected_postgres: str, expected_bigquery: str):
+def test_get_simple_table_name(json_path: List[str], expected_postgres: str, expected_bigquery: str, expected_oracle: str):
     """
     Checks how to generate a simple and easy to understand name from a json path
     """
@@ -161,28 +165,37 @@ def test_get_simple_table_name(json_path: List[str], expected_postgres: str, exp
     actual_bigquery_name = bigquery_registry.get_simple_table_name(json_path)
     assert actual_bigquery_name == expected_bigquery
 
+    oracle_registry = TableNameRegistry(DestinationType.ORACLE)
+    actual_oracle_name = oracle_registry.get_simple_table_name(json_path)
+    assert actual_oracle_name == expected_oracle
+    assert len(actual_oracle_name) <= ORACLE_MAX_TABLE_LENGTH
+
 
 @pytest.mark.parametrize(
-    "json_path, expected_postgres, expected_bigquery",
+    "json_path, expected_postgres, expected_bigquery, expected_oracle",
     [
         (
             ["parent", "child"],
             "parent_30c_child",
             "parent_30c_child",
+            "PARENT_30c_CHILD",
         ),
         (
             ["The parent stream has a nested column with a", "short_substream_name"],
             "the_parent_stream__cd9_short_substream_name",
             "The_parent_stream_has_a_nested_column_with_a_cd9_short_substream_name",
+            "THE_PARENT_cd9_SHOR__NAME",
         ),
         (
             ["The parent stream has a nested column with a", "substream with a rather long name"],
             "the_parent_0a5_substream_wi__her_long_name",
             "The_parent_stream_has_a_nested_column_with_a_0a5_substream_with_a_rather_long_name",
+            "THE_PARENT_0a5_SUBS__NAME",
         ),
     ],
 )
-def test_get_nested_hashed_table_name(json_path: List[str], expected_postgres: str, expected_bigquery: str):
+def test_get_nested_hashed_table_name(json_path: List[str], expected_postgres: str, expected_bigquery: str,
+                                      expected_oracle: str):
     """
     Checks how to generate a unique name with strategies of combining all fields into a single table name for the user to (somehow)
     identify and recognize what data is available in there.
@@ -198,3 +211,8 @@ def test_get_nested_hashed_table_name(json_path: List[str], expected_postgres: s
     bigquery_name_transformer = DestinationNameTransformer(DestinationType.BIGQUERY)
     actual_bigquery_name = get_nested_hashed_table_name(bigquery_name_transformer, "schema", json_path, child)
     assert actual_bigquery_name == expected_bigquery
+
+    oracle_name_transformer = DestinationNameTransformer(DestinationType.ORACLE)
+    actual_oracle_name = get_nested_hashed_table_name(oracle_name_transformer, "schema", json_path, child)
+    assert actual_oracle_name == expected_oracle
+    assert len(actual_oracle_name) <= ORACLE_MAX_TABLE_LENGTH

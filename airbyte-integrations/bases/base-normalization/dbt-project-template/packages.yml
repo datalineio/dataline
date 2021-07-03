@@ -3,3 +3,5 @@
 packages:
   - git: "https://github.com/fishtown-analytics/dbt-utils.git"
     revision: 0.6.4
+  - git: "https://github.com/techindicium/dbt-oracle.git"
+    revision: 0.4.2
