@@ -1,0 +1,33 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/kustomer",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Source Kustomer Singer Spec",
+    "type": "object",
+    "required": ["TODO"],
+    "additionalProperties": true,
+    "properties": {
+      "api_token": {
+        "type": "string",
+        "description": "The API token for your Kustomer account",
+        "airbyte_secret": true
+      },
+      "start_date": {
+        "type": "string",
+        "examples": ["2019-01-01T00:00:00Z"]
+      },
+      "user_agent": {
+        "type": "string",
+        "examples": "tap-kustomer <api_user_email@your_company.com>"
+      },
+      "date_window_size": {
+        "type": "string",
+        "description": "The integer number of days (between the from and to dates) for date-windowing through the date-filtered endpoints"
+      },
+      "page_size_limit": {
+        "type": "string",
+        "description": "The integer number of records to return per API request"
+      }
+    }
+  }
+}

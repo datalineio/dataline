@@ -1,0 +1,7 @@
+{
+  "api_token": "api_token",
+  "start_date": "2021-01-01T00:00:00Z",
+  "user_agent": "tap-kustomer <test@test.com>",
+  "date_window_size": "60",
+  "page_size_limit": "100"
+}

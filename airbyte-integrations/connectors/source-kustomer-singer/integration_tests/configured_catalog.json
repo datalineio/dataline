@@ -1,0 +1,1590 @@
+{
+  "streams": [
+    {
+      "stream": {
+        "name": "customers",
+        "json_schema": {
+          "properties": {
+            "active_users": { "type": ["null", "string"] },
+            "avatar_url": { "type": ["null", "string"] },
+            "birthday_at": { "type": ["null", "string"] },
+            "conversation_counts": {
+              "properties": {
+                "all": { "type": ["null", "integer"] },
+                "done": { "type": ["null", "integer"] },
+                "open": { "type": ["null", "integer"] },
+                "snoozed": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "created_at": { "type": ["null", "string"] },
+            "created_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "custom": {
+              "properties": {
+                "accepts_marketing_bool": { "type": ["null", "boolean"] },
+                "activation_date_str": { "type": ["null", "string"] },
+                "app_version_str": { "type": ["null", "string"] },
+                "august_id_str": { "type": ["null", "string"] },
+                "august_serial_number_str": { "type": ["null", "string"] },
+                "bridge_date_installed_at": { "type": ["null", "string"] },
+                "bridge_serial_number_str": { "type": ["null", "string"] },
+                "connect_firmware_version_str": { "type": ["null", "string"] },
+                "connect_serial_number_str": { "type": ["null", "string"] },
+                "doorbell_date_installed_at": { "type": ["null", "string"] },
+                "doorbell_firmware_version_str": { "type": ["null", "string"] },
+                "doorbell_serial_str": { "type": ["null", "string"] },
+                "firmware_version_str": { "type": ["null", "string"] },
+                "keypad_firmware_version_str": { "type": ["null", "string"] },
+                "keypad_installed_at": { "type": ["null", "string"] },
+                "keypad_serial_str": { "type": ["null", "string"] },
+                "last_autoresponse_at": { "type": ["null", "string"] },
+                "last_order_id_num": { "type": ["integer", "null"] },
+                "last_order_name_str": { "type": ["null", "string"] },
+                "latest_csat_num": { "type": ["integer", "null"] },
+                "latest_nps_num": { "type": ["integer", "null"] },
+                "lock_date_installed_at": { "type": ["null", "string"] },
+                "lock_firmware_version_str": { "type": ["null", "string"] },
+                "lock_serial_number_str": { "type": ["null", "string"] },
+                "orders_count_num": { "type": ["integer", "null"] },
+                "os00_str": { "type": ["null", "string"] },
+                "owner_guest_str": { "type": ["null", "string"] },
+                "products_owned_str": { "type": ["null", "string"] },
+                "proof_of_purchase_str": { "type": ["null", "string"] },
+                "purchase_date_str": { "type": ["null", "string"] },
+                "sales_force_id_str": { "type": ["null", "string"] },
+                "total_spent_num": { "type": ["integer", "null"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "deleted": { "type": ["null", "string"] },
+            "display_color": { "type": ["null", "string"] },
+            "display_icon": { "type": ["null", "string"] },
+            "display_name": { "type": ["null", "string"] },
+            "emails": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": ["null", "object"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "email": { "type": ["null", "string"] },
+                      "type": { "type": ["null", "string"] },
+                      "verified": { "type": ["null", "boolean"] }
+                    }
+                  }
+                },
+                { "type": "null" }
+              ]
+            },
+            "external_id": { "type": ["null", "string"] },
+            "external_ids": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": ["null", "object"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "external_id": { "type": ["null", "string"] },
+                      "verified": { "type": ["null", "boolean"] }
+                    }
+                  }
+                },
+                { "type": "null" }
+              ]
+            },
+            "facebook_ids": { "type": ["null", "string"] },
+            "first_name": { "type": ["null", "string"] },
+            "gender": { "type": ["null", "string"] },
+            "id": { "type": ["null", "string"] },
+            "imported_at": {
+              "format": "date-time",
+              "type": ["null", "string"]
+            },
+            "instagram_ids": { "type": ["null", "string"] },
+            "last_activity_at": {
+              "format": "date-time",
+              "type": ["null", "string"]
+            },
+            "last_conversation": {
+              "properties": {
+                "channels": {
+                  "items": { "type": ["null", "string"] },
+                  "type": "array"
+                },
+                "id": { "type": ["null", "string"] },
+                "sentiment": {
+                  "properties": {
+                    "polarity": { "type": ["null", "integer"] },
+                    "confidence": { "type": ["null", "number"] }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "tags": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": { "type": ["null", "string"] }
+                    },
+                    { "type": "null" }
+                  ]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "last_customer_activity_at": { "type": ["null", "string"] },
+            "last_message_at": { "type": ["null", "string"] },
+            "last_message_in": {
+              "properties": {
+                "channel": { "type": ["null", "string"] },
+                "sent_at": { "type": ["null", "string"] },
+                "sentiment": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "last_message_out": {
+              "properties": { "sent_at": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "last_message_unresponded_to": {
+              "properties": {
+                "channel": { "type": ["null", "string"] },
+                "sent_at": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "last_name": { "type": ["null", "string"] },
+            "last_seen_at": { "type": ["null", "string"] },
+            "links": {
+              "properties": { "self": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "locale": { "type": ["null", "string"] },
+            "locations": { "type": ["null", "string"] },
+            "modified_at": { "type": ["null", "string"] },
+            "modified_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "name": { "type": ["null", "string"] },
+            "org": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "phones": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": ["null", "object"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "phone": { "type": ["null", "string"] },
+                      "type": { "type": ["null", "string"] },
+                      "verified": { "type": ["null", "boolean"] }
+                    }
+                  }
+                },
+                { "type": "null" }
+              ]
+            },
+            "preview": {
+              "properties": {
+                "channel": { "type": ["null", "string"] },
+                "preview_at": { "type": ["null", "string"] },
+                "subject": { "type": ["null", "string"] },
+                "text": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "progressive_status": { "type": ["null", "string"] },
+            "recent_items": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": ["null", "object"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": { "type": ["null", "string"] },
+                      "meta": {
+                        "type": ["null", "object"],
+                        "additionalProperties": false,
+                        "properties": {
+                          "klass_name": { "type": ["null", "string"] }
+                        }
+                      },
+                      "type": { "type": ["null", "string"] },
+                      "updated_at": { "type": ["null", "string"] }
+                    }
+                  }
+                },
+                { "type": "null" }
+              ]
+            },
+            "recent_location": {
+              "properties": { "updated_at": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "rev": { "type": ["null", "integer"] },
+            "role_group_versions": { "type": ["null", "string"] },
+            "satisfaction_level": {
+              "properties": {
+                "first_satisfaction": {
+                  "properties": {
+                    "sent_by_teams": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": { "type": ["null", "string"] }
+                        },
+                        { "type": "null" }
+                      ]
+                    }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "last_satisfaction": {
+                  "properties": {
+                    "sent_by_teams": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": { "type": ["null", "string"] }
+                        },
+                        { "type": "null" }
+                      ]
+                    }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "sentiment": {
+              "properties": {
+                "confidence": { "type": "number" },
+                "polarity": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "shared_emails": { "type": ["null", "string"] },
+            "shared_external_ids": { "type": ["null", "string"] },
+            "shared_phones": { "type": ["null", "string"] },
+            "shared_socials": { "type": ["null", "string"] },
+            "signed_up_at": { "type": ["null", "string"] },
+            "smooch_ids": { "type": ["null", "string"] },
+            "socials": { "type": ["null", "string"] },
+            "tags": { "type": ["null", "string"] },
+            "time_zone": { "type": ["null", "string"] },
+            "updated_at": { "type": ["null", "string"] },
+            "urls": { "type": ["null", "string"] },
+            "username": { "type": ["null", "string"] },
+            "verified": { "type": ["null", "boolean"] },
+            "watchers": { "type": ["null", "string"] },
+            "whatsapps": { "type": ["null", "string"] }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "kobjects",
+        "json_schema": {
+          "properties": {
+            "created_at": { "type": ["null", "string"] },
+            "custom": {
+              "properties": {
+                "billing_status_str": { "type": ["null", "string"] },
+                "comment_txt": { "type": ["null", "string"] },
+                "delighted_link_str": { "type": ["null", "string"] },
+                "order_created_at": { "type": ["null", "string"] },
+                "order_number_str": { "type": ["null", "string"] },
+                "order_updated_at": { "type": ["null", "string"] },
+                "purchase_amount_num": { "type": "integer" },
+                "score_num": { "type": "integer" },
+                "shipping_address_str": { "type": ["null", "string"] },
+                "shipping_country_str": { "type": ["null", "string"] },
+                "shipping_state_str": { "type": ["null", "string"] },
+                "shipping_zip_str": { "type": ["null", "string"] },
+                "skus_txt": { "type": ["null", "string"] },
+                "special_instructions_str": { "type": ["null", "string"] },
+                "tags_str": { "type": ["null", "string"] },
+                "total_price_num": { "type": "number" },
+                "total_price_str": { "type": ["null", "string"] },
+                "updated_at": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "customer": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "description": { "type": ["null", "string"] },
+            "external_id": { "type": ["null", "string"] },
+            "icon": { "type": ["null", "string"] },
+            "id": { "type": ["null", "string"] },
+            "klass": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "links": {
+              "properties": { "self": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "org": {
+              "properties": { "type": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "title": { "type": ["null", "string"] },
+            "type": { "type": ["null", "string"] },
+            "updated_at": { "type": ["null", "string"] }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "conversations",
+        "json_schema": {
+          "properties": {
+            "assigned_teams": {
+              "anyOf": [
+                { "items": { "type": ["null", "string"] }, "type": "array" },
+                { "type": "null" }
+              ]
+            },
+            "assigned_users": {
+              "anyOf": [
+                { "type": "array", "items": { "type": ["null", "string"] } },
+                { "type": "null" }
+              ]
+            },
+            "channels": {
+              "anyOf": [
+                { "type": "array", "items": { "type": ["null", "string"] } },
+                { "type": "null" }
+              ]
+            },
+            "created_at": { "type": ["null", "string"] },
+            "created_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "custom": {
+              "properties": {
+                "auto_response_at": { "type": ["null", "string"] },
+                "brand_str": { "type": ["null", "string"] },
+                "case_id_str": { "type": ["null", "string"] },
+                "close_out_tree": { "type": ["null", "string"] },
+                "contact_reason_tree": { "type": ["null", "string"] },
+                "desk_ticket_url": { "type": ["null", "string"] },
+                "new_primary_menu_str": { "type": ["null", "string"] },
+                "refund_status_str": { "type": ["null", "string"] },
+                "return_requested_str": { "type": ["null", "string"] },
+                "return_str": { "type": ["null", "string"] },
+                "rma_id_str": { "type": ["null", "string"] },
+                "serial_number_str": { "type": ["null", "string"] },
+                "yale_call_reason_tree": { "type": ["null", "string"] },
+                "yale_connectivity_str": { "type": ["null", "string"] },
+                "yale_finish_str": { "type": ["null", "string"] },
+                "yale_model_str": { "type": ["null", "string"] },
+                "yale_notes_txt": { "type": ["null", "string"] },
+                "yale_resolution_str": { "type": ["null", "string"] },
+                "yale_serial_number_str": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "customer": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "direction": { "type": ["null", "string"] },
+            "done_count": { "type": ["null", "integer"] },
+            "ended": { "type": ["boolean", "null"] },
+            "ended_at": { "type": ["null", "string"] },
+            "ended_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "ended_by_type": { "type": ["null", "string"] },
+            "ended_reason": { "type": ["null", "string"] },
+            "external_id": { "type": ["null", "string"] },
+            "first_done": {
+              "properties": {
+                "assigned_teams": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": { "type": ["null", "string"] }
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "assigned_users": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": { "type": ["null", "string"] }
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "business_time": { "type": ["null", "integer"] },
+                "created_at": { "type": ["null", "string"] },
+                "created_by": { "type": ["null", "string"] },
+                "created_by_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "last_message_direction": { "type": ["null", "string"] },
+                "last_message_direction_type": { "type": ["null", "string"] },
+                "message_count": { "type": ["null", "integer"] },
+                "message_count_by_channel": {
+                  "properties": {
+                    "email": { "type": ["null", "integer"] },
+                    "sms": { "type": ["null", "integer"] },
+                    "voice": { "type": ["null", "integer"] }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "note_count": { "type": ["null", "integer"] },
+                "outbound_message_count": { "type": ["null", "integer"] },
+                "outbound_message_count_by_channel": {
+                  "properties": {
+                    "email": { "type": ["null", "integer"] },
+                    "sms": { "type": ["null", "integer"] },
+                    "voice": { "type": ["null", "integer"] }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "time": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "first_message_in": {
+              "properties": {
+                "channel": { "type": ["null", "string"] },
+                "created_at": { "type": ["null", "string"] },
+                "direction_type": { "type": ["null", "string"] },
+                "id": { "type": ["null", "string"] },
+                "sent_at": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "first_message_out": {
+              "properties": {
+                "channel": { "type": ["null", "string"] },
+                "created_at": { "type": ["null", "string"] },
+                "created_by": { "type": ["null", "string"] },
+                "created_by_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "direction_type": { "type": ["null", "string"] },
+                "id": { "type": ["null", "string"] },
+                "sent_at": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "first_response": {
+              "properties": {
+                "assigned_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "assigned_users": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "business_time": { "type": ["null", "integer"] },
+                "created_at": { "type": ["null", "string"] },
+                "created_by": { "type": ["null", "string"] },
+                "created_by_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "id": { "type": ["null", "string"] },
+                "response_time": { "type": ["null", "integer"] },
+                "sent_at": { "type": ["null", "string"] },
+                "time": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "first_response_since_last_done": {
+              "properties": {
+                "assigned_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "assigned_users": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "business_time": { "type": ["null", "integer"] },
+                "created_at": { "type": ["null", "string"] },
+                "created_by": { "type": ["null", "string"] },
+                "created_by_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "id": { "type": ["null", "string"] },
+                "response_time": { "type": ["null", "integer"] },
+                "sent_at": { "type": ["null", "string"] },
+                "time": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "id": { "type": ["null", "string"] },
+            "imported_at": { "type": ["null", "string"] },
+            "last_activity_at": { "type": ["null", "string"] },
+            "last_done": {
+              "properties": {
+                "assigned_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "assigned_users": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "business_time": { "type": ["null", "integer"] },
+                "created_at": { "type": ["null", "string"] },
+                "created_by": { "type": ["null", "string"] },
+                "created_by_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "last_message_direction": { "type": ["null", "string"] },
+                "last_message_direction_type": { "type": ["null", "string"] },
+                "message_count": { "type": ["null", "integer"] },
+                "message_count_by_channel": {
+                  "properties": {
+                    "email": { "type": ["null", "integer"] },
+                    "sms": { "type": ["null", "integer"] },
+                    "voice": { "type": ["null", "integer"] }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "note_count": { "type": ["null", "integer"] },
+                "outbound_message_count": { "type": ["null", "integer"] },
+                "outbound_message_count_by_channel": {
+                  "properties": {
+                    "email": { "type": ["null", "integer"] },
+                    "sms": { "type": ["null", "integer"] },
+                    "voice": { "type": ["null", "integer"] }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "time": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "last_message_at": { "type": ["null", "string"] },
+            "last_message_direction": { "type": ["null", "string"] },
+            "last_message_in": {
+              "properties": {
+                "created_at": { "type": ["null", "string"] },
+                "id": { "type": ["null", "string"] },
+                "sent_at": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "last_message_out": {
+              "properties": {
+                "created_at": { "type": ["null", "string"] },
+                "id": { "type": ["null", "string"] },
+                "sent_at": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "last_message_unresponded_to": {
+              "properties": {
+                "created_at": { "type": ["null", "string"] },
+                "id": { "type": ["null", "string"] },
+                "sent_at": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "last_message_unresponded_to_since_last_done": {
+              "properties": {
+                "created_at": { "type": ["null", "string"] },
+                "id": { "type": ["null", "string"] },
+                "sent_at": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "last_received_at": { "type": ["null", "string"] },
+            "last_response": {
+              "properties": {
+                "assigned_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "assigned_users": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "business_time": { "type": ["null", "integer"] },
+                "created_at": { "type": ["null", "string"] },
+                "created_by": { "type": ["null", "string"] },
+                "created_by_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "id": { "type": ["null", "string"] },
+                "time": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "links": {
+              "properties": { "self": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "merged_target": { "type": ["null", "boolean"] },
+            "message_count": { "type": ["null", "integer"] },
+            "modified_at": { "type": ["null", "string"] },
+            "modified_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "name": { "type": ["null", "string"] },
+            "note_count": { "type": ["null", "integer"] },
+            "org": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "outbound_message_count": { "type": ["null", "integer"] },
+            "preview": { "type": ["null", "string"] },
+            "priority": { "type": ["null", "integer"] },
+            "queue": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "reopen_count": { "type": ["null", "integer"] },
+            "rev": { "type": ["null", "integer"] },
+            "role_group_versions": { "type": ["null", "string"] },
+            "satisfaction": { "type": ["null", "string"] },
+            "satisfaction_level": {
+              "properties": {
+                "sent_by_teams": {
+                  "anyOf": [
+                    {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    },
+                    { "type": "null" }
+                  ]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "sla": {
+              "properties": {
+                "breach": {
+                  "properties": {
+                    "at": { "type": ["null", "string"] },
+                    "metric": { "type": ["null", "string"] }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "breached": { "type": ["null", "boolean"] },
+                "matched_at": { "type": ["null", "string"] },
+                "metrics": {
+                  "properties": {
+                    "first_response": {
+                      "properties": {
+                        "breach_at": { "type": ["null", "string"] },
+                        "satisfied_at": { "type": ["null", "string"] }
+                      },
+                      "type": ["null", "object"],
+                      "additionalProperties": false
+                    },
+                    "longest_unresponded_message": {
+                      "properties": {
+                        "breach_at": { "type": ["null", "string"] },
+                        "satisfied_at": { "type": ["null", "string"] }
+                      },
+                      "type": ["null", "object"],
+                      "additionalProperties": false
+                    }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "status": { "type": ["null", "string"] },
+                "summary": {
+                  "properties": {
+                    "first_breach_at": { "type": ["null", "string"] },
+                    "satisfied_at": { "type": ["null", "string"] }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "version": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "sla_data": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "sla_version": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "snooze": {
+              "properties": {
+                "status": { "type": ["null", "string"] },
+                "status_at": { "type": ["null", "string"] },
+                "time": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "snooze_count": { "type": ["null", "integer"] },
+            "status": { "type": ["null", "string"] },
+            "suggested_shortcuts": { "type": ["null", "string"] },
+            "suggested_tags": { "type": ["null", "string"] },
+            "tags": {
+              "anyOf": [
+                { "type": "array", "items": { "type": ["null", "string"] } },
+                { "type": "null" }
+              ]
+            },
+            "total_done": {
+              "properties": {
+                "business_time": { "type": ["null", "integer"] },
+                "time": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "total_open": {
+              "properties": {
+                "business_time": { "type": ["null", "integer"] },
+                "business_time_since_last_done": {
+                  "type": ["null", "integer"]
+                },
+                "time": { "type": ["null", "integer"] },
+                "time_since_last_done": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "total_snooze": {
+              "properties": {
+                "business_time": { "type": ["null", "integer"] },
+                "time": { "type": ["null", "integer"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "type": { "type": ["null", "string"] },
+            "updated_at": { "type": ["null", "string"] }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "messages",
+        "json_schema": {
+          "properties": {
+            "created_at": { "type": ["null", "string"] },
+            "custom": {
+              "properties": {
+                "billing_status_str": { "type": ["null", "string"] },
+                "comment_txt": { "type": ["null", "string"] },
+                "delighted_link_str": { "type": ["null", "string"] },
+                "order_created_at": { "type": ["null", "string"] },
+                "order_number_str": { "type": ["null", "string"] },
+                "order_updated_at": { "type": ["null", "string"] },
+                "purchase_amount_num": { "type": "integer" },
+                "score_num": { "type": "integer" },
+                "shipping_address_str": { "type": ["null", "string"] },
+                "shipping_country_str": { "type": ["null", "string"] },
+                "shipping_state_str": { "type": ["null", "string"] },
+                "shipping_zip_str": { "type": ["null", "string"] },
+                "skus_txt": { "type": ["null", "string"] },
+                "special_instructions_str": { "type": ["null", "string"] },
+                "tags_str": { "type": ["null", "string"] },
+                "total_price_num": { "type": "number" },
+                "total_price_str": { "type": ["null", "string"] },
+                "updated_at": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "customer": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "description": { "type": ["null", "string"] },
+            "external_id": { "type": ["null", "string"] },
+            "icon": { "type": ["null", "string"] },
+            "id": { "type": ["null", "string"] },
+            "images": { "type": "array" },
+            "klass": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "links": {
+              "properties": { "self": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "org": {
+              "properties": { "type": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "tags": { "type": "array" },
+            "title": { "type": ["null", "string"] },
+            "type": { "type": ["null", "string"] },
+            "updated_at": { "type": ["null", "string"] }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "users",
+        "json_schema": {
+          "properties": {
+            "avatar_url": { "type": ["null", "string"] },
+            "created_at": { "format": "date-time", "type": ["null", "string"] },
+            "created_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "deleted_at": { "type": ["null", "string"] },
+            "display_name": { "type": ["null", "string"] },
+            "email": { "type": ["null", "string"] },
+            "email_signature": { "type": ["null", "string"] },
+            "email_verified_at": { "type": ["null", "string"] },
+            "first_email_verified_at": { "type": ["null", "string"] },
+            "id": { "type": ["null", "string"] },
+            "links": {
+              "properties": { "self": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "mobile": { "type": ["null", "string"] },
+            "modified_at": { "type": ["null", "string"] },
+            "modified_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "name": { "type": ["null", "string"] },
+            "org": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "password": {
+              "properties": {
+                "allow_new": { "type": "boolean" },
+                "force_new": { "type": "boolean" },
+                "updated_at": {
+                  "format": "date-time",
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "role_groups": {
+              "anyOf": [
+                { "items": { "type": ["null", "string"] }, "type": "array" },
+                { "type": "null" }
+              ]
+            },
+            "roles": {
+              "anyOf": [
+                { "items": { "type": ["null", "string"] }, "type": "array" },
+                { "type": "null" }
+              ]
+            },
+            "type": { "type": ["null", "string"] },
+            "updated_at": { "format": "date-time", "type": ["null", "string"] },
+            "user_type": { "type": ["null", "string"] }
+          },
+          "type": ["null", "object"],
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "teams",
+        "json_schema": {
+          "properties": {
+            "created_at": { "format": "date-time", "type": ["null", "string"] },
+            "created_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "deleted": { "type": ["null", "boolean"] },
+            "deleted_at": { "type": ["null", "string"] },
+            "deleted_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "display_name": { "type": ["null", "string"] },
+            "icon": { "type": ["null", "string"] },
+            "id": { "type": ["null", "string"] },
+            "links": {
+              "properties": { "self": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "members": {
+              "anyOf": [
+                { "items": { "type": ["null", "string"] }, "type": "array" },
+                { "type": "null" }
+              ]
+            },
+            "modified_at": { "type": ["null", "string"] },
+            "modified_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "name": { "type": ["null", "string"] },
+            "org": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "role_groups": {
+              "anyOf": [
+                { "type": "array", "items": { "type": ["null", "string"] } },
+                { "type": "null" }
+              ]
+            },
+            "type": { "type": ["null", "string"] },
+            "updated_at": { "format": "date-time", "type": ["null", "string"] }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "tags",
+        "json_schema": {
+          "properties": {
+            "color": { "type": ["null", "string"] },
+            "created_at": { "format": "date-time", "type": ["null", "string"] },
+            "created_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "deleted": { "type": ["null", "boolean"] },
+            "id": { "type": ["null", "string"] },
+            "links": {
+              "properties": { "self": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "modified_at": { "type": ["null", "string"] },
+            "modified_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "name": { "type": ["null", "string"] },
+            "org": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "type": { "type": ["null", "string"] },
+            "updated_at": { "format": "date-time", "type": ["null", "string"] }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "shortcuts",
+        "json_schema": {
+          "properties": {
+            "conversation": {
+              "properties": {
+                "name": {
+                  "properties": {
+                    "operator": { "type": ["null", "string"] },
+                    "value": { "type": ["null", "string"] }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "tags": {
+                  "properties": {
+                    "operator": { "type": ["null", "string"] },
+                    "value": {
+                      "items": { "type": ["null", "string"] },
+                      "type": "array"
+                    }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "created_at": { "format": "date-time", "type": ["null", "string"] },
+            "created_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "deleted": { "type": ["null", "boolean"] },
+            "draft": {
+              "properties": { "text": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "id": { "type": ["null", "string"] },
+            "is_private": { "type": ["null", "boolean"] },
+            "links": {
+              "properties": { "self": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "modified_at": { "type": ["null", "string"] },
+            "modified_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "name": { "type": ["null", "string"] },
+            "org": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "payload": {
+              "properties": {
+                "text": {
+                  "properties": {
+                    "blocks": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "data": { "type": ["null", "object"] },
+                              "depth": { "type": ["null", "integer"] },
+                              "entity_ranges": {
+                                "anyOf": [
+                                  {
+                                    "type": "array",
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "key": { "type": ["null", "integer"] },
+                                        "length": {
+                                          "type": ["null", "integer"]
+                                        },
+                                        "offset": {
+                                          "type": ["null", "integer"]
+                                        }
+                                      },
+                                      "type": ["null", "object"]
+                                    }
+                                  },
+                                  { "type": "null" }
+                                ]
+                              },
+                              "inline_style_ranges": {
+                                "anyOf": [
+                                  {
+                                    "items": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "length": {
+                                          "type": ["null", "integer"]
+                                        },
+                                        "offset": {
+                                          "type": ["null", "integer"]
+                                        },
+                                        "style": { "type": ["null", "string"] }
+                                      },
+                                      "type": ["null", "object"]
+                                    },
+                                    "type": "array"
+                                  },
+                                  { "type": "null" }
+                                ]
+                              },
+                              "key": { "type": ["null", "string"] },
+                              "text": { "type": ["null", "string"] },
+                              "type": { "type": ["null", "string"] }
+                            },
+                            "type": ["null", "object"]
+                          },
+                          "type": "array"
+                        },
+                        { "type": "null" }
+                      ]
+                    },
+                    "entity_map": {
+                      "properties": {
+                        "0": {
+                          "properties": {
+                            "data": {
+                              "properties": {
+                                "fallback_text": { "type": ["null", "string"] },
+                                "key": { "type": ["null", "string"] },
+                                "url": { "type": ["null", "string"] }
+                              },
+                              "type": ["null", "object"],
+                              "additionalProperties": false
+                            },
+                            "mutability": { "type": ["null", "string"] },
+                            "type": { "type": ["null", "string"] }
+                          },
+                          "type": ["null", "object"],
+                          "additionalProperties": false
+                        },
+                        "1": {
+                          "properties": {
+                            "data": {
+                              "properties": {
+                                "fallback_text": { "type": ["null", "string"] },
+                                "key": { "type": ["null", "string"] },
+                                "url": { "type": ["null", "string"] }
+                              },
+                              "type": ["null", "object"],
+                              "additionalProperties": false
+                            },
+                            "mutability": { "type": ["null", "string"] },
+                            "type": { "type": ["null", "string"] }
+                          },
+                          "type": ["null", "object"],
+                          "additionalProperties": false
+                        },
+                        "2": {
+                          "properties": {
+                            "data": {
+                              "properties": {
+                                "url": { "type": ["null", "string"] }
+                              },
+                              "type": ["null", "object"],
+                              "additionalProperties": false
+                            },
+                            "mutability": { "type": ["null", "string"] },
+                            "type": { "type": ["null", "string"] }
+                          },
+                          "type": ["null", "object"],
+                          "additionalProperties": false
+                        },
+                        "3": {
+                          "properties": {
+                            "data": {
+                              "properties": {
+                                "url": { "type": ["null", "string"] }
+                              },
+                              "type": ["null", "object"],
+                              "additionalProperties": false
+                            },
+                            "mutability": { "type": ["null", "string"] },
+                            "type": { "type": ["null", "string"] }
+                          },
+                          "type": ["null", "object"],
+                          "additionalProperties": false
+                        }
+                      },
+                      "type": ["null", "object"],
+                      "additionalProperties": false
+                    }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "type": { "type": ["null", "string"] },
+            "updated_at": { "format": "date-time", "type": ["null", "string"] }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "notes",
+        "json_schema": {
+          "properties": {
+            "body": { "type": ["null", "string"] },
+            "conversation": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "created_at": { "format": "date-time", "type": ["null", "string"] },
+            "created_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "customer": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "deleted": { "type": ["null", "boolean"] },
+            "deleted_at": { "format": "date-time", "type": ["null", "string"] },
+            "deleted_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "external_id": { "type": ["null", "string"] },
+            "id": { "type": ["null", "string"] },
+            "imported_at": {
+              "format": "date-time",
+              "type": ["null", "string"]
+            },
+            "links": {
+              "properties": { "self": { "type": ["null", "string"] } },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "modified_at": {
+              "format": "date-time",
+              "type": ["null", "string"]
+            },
+            "modified_by": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "org": {
+              "properties": {
+                "id": { "type": ["null", "string"] },
+                "type": { "type": ["null", "string"] }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "type": { "type": ["null", "string"] },
+            "updated_at": { "format": "date-time", "type": ["null", "string"] },
+            "user_mentions": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": ["null", "object"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": { "type": ["null", "string"] },
+                      "type": { "type": ["null", "string"] }
+                    }
+                  }
+                },
+                { "type": "null" }
+              ]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append"
+    }
+  ]
+}
