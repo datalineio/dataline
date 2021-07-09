@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.1"
 #https://github.com/compose-spec/compose-spec/blob/master/spec.md#using-extensions-as-fragments
 x-logging: &default-logging
   options:
@@ -10,6 +10,7 @@ services:
   # every root service (no depends_on) should depend on init
   init:
     image: airbyte/init:${VERSION}
+    platform: linux/amd64
     logging: *default-logging
     container_name: init
     command: /bin/sh -c "./scripts/create_mount_directories.sh /local_parent ${HACK_LOCAL_ROOT_PARENT} ${LOCAL_ROOT}"
@@ -20,6 +21,7 @@ services:
       - ${HACK_LOCAL_ROOT_PARENT}:/local_parent
   db:
     image: airbyte/db:${VERSION}
+    platform: linux/amd64
     logging: *default-logging
     container_name: airbyte-db
     restart: unless-stopped
@@ -30,6 +32,7 @@ services:
       - db:/var/lib/postgresql/data
   seed:
     image: airbyte/seed:${VERSION}
+    platform: linux/amd64
     container_name: airbyte-data-seed
     # Pre-populate the volume if it is empty.
     # See: https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container
@@ -37,6 +40,7 @@ services:
       - data:/app/seed
   scheduler:
     image: airbyte/scheduler:${VERSION}
+    platform: linux/amd64
     logging: *default-logging
     container_name: airbyte-scheduler
     restart: unless-stopped
@@ -71,6 +75,7 @@ services:
       - data:${CONFIG_ROOT}
   server:
     image: airbyte/server:${VERSION}
+    platform: linux/amd64
     logging: *default-logging
     container_name: airbyte-server
     restart: unless-stopped
@@ -103,6 +108,7 @@ services:
       - ${LOCAL_ROOT}:${LOCAL_ROOT}
   webapp:
     image: airbyte/webapp:${VERSION}
+    platform: linux/amd64
     logging: *default-logging
     container_name: airbyte-webapp
     restart: unless-stopped
@@ -119,6 +125,7 @@ services:
       - INTERNAL_API_HOST=${INTERNAL_API_HOST}
   airbyte-temporal:
     image: temporalio/auto-setup:1.7.0
+    platform: linux/amd64
     logging: *default-logging
     container_name: airbyte-temporal
     restart: unless-stopped

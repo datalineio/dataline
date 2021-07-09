@@ -39,5 +39,5 @@ if [ "$FOLLOW_SYMLINKS" == "true" ]; then
   # to use as the build context
   tar cL "${exclusions[@]}" . | docker build - "${args[@]}"
 else
-  docker build . "${args[@]}"
+  docker build . "${args[@]}" --platform linux/amd64
 fi

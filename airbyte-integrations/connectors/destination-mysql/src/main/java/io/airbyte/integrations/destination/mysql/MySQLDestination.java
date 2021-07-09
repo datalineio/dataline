@@ -43,6 +43,7 @@ public class MySQLDestination extends AbstractJdbcDestination implements Destina
   private static final Logger LOGGER = LoggerFactory.getLogger(MySQLDestination.class);
 
   public static final String DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
+  public static final String TEST_DRIVER_CLASS = "org.mariadb.jdbc.Driver";
 
   @Override
   public AirbyteConnectionStatus check(JsonNode config) {

@@ -23,10 +23,13 @@ dependencies {
 
     testImplementation testFixtures(project(':airbyte-integrations:connectors:source-jdbc'))
     testImplementation 'org.apache.commons:commons-lang3:3.11'
-    testImplementation 'org.testcontainers:mysql:1.15.1'
+    testImplementation 'org.testcontainers:mariadb:1.15.3'
+    testImplementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
 
     integrationTestJavaImplementation project(':airbyte-integrations:bases:standard-source-test')
     integrationTestJavaImplementation project(':airbyte-integrations:connectors:source-mysql')
+    integrationTestJavaImplementation "org.testcontainers:mariadb:1.15.3"
+    integrationTestJavaImplementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
 
     implementation files(project(':airbyte-integrations:bases:base-java').airbyteDocker.outputs)
     integrationTestJavaImplementation files(project(':airbyte-integrations:bases:base-java').airbyteDocker.outputs)

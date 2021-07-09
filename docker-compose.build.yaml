@@ -1,8 +1,9 @@
-version: "3.7"
+version: "3.1"
 
 services:
   init:
     image: airbyte/init:${VERSION}
+    platform: linux/amd64
     build:
       dockerfile: Dockerfile
       context: airbyte-config/init
@@ -10,6 +11,7 @@ services:
         io.airbyte.git-revision: ${GIT_REVISION}
   db:
     image: airbyte/db:${VERSION}
+    platform: linux/amd64
     build:
       dockerfile: Dockerfile
       context: airbyte-db
@@ -17,6 +19,7 @@ services:
         io.airbyte.git-revision: ${GIT_REVISION}
   seed:
     image: airbyte/seed:${VERSION}
+    platform: linux/amd64
     build:
       dockerfile: seed.Dockerfile
       context: airbyte-server
@@ -24,6 +27,7 @@ services:
         io.airbyte.git-revision: ${GIT_REVISION}
   scheduler:
     image: airbyte/scheduler:${VERSION}
+    platform: linux/amd64
     build:
       dockerfile: Dockerfile
       context: airbyte-scheduler/app
@@ -31,6 +35,7 @@ services:
         io.airbyte.git-revision: ${GIT_REVISION}
   server:
     image: airbyte/server:${VERSION}
+    platform: linux/amd64
     build:
       dockerfile: Dockerfile
       context: airbyte-server
@@ -38,6 +43,7 @@ services:
         io.airbyte.git-revision: ${GIT_REVISION}
   webapp:
     image: airbyte/webapp:${VERSION}
+    platform: linux/amd64
     build:
       dockerfile: Dockerfile
       context: airbyte-webapp
@@ -45,6 +51,7 @@ services:
         io.airbyte.git-revision: ${GIT_REVISION}
   migration:
     image: airbyte/migration:${VERSION}
+    platform: linux/amd64
     build:
       dockerfile: Dockerfile
       context: airbyte-migration

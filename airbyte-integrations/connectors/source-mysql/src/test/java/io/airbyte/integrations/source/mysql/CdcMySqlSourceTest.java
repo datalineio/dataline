@@ -28,7 +28,6 @@ import static io.airbyte.integrations.source.jdbc.AbstractJdbcSource.CDC_DELETED
 import static io.airbyte.integrations.source.jdbc.AbstractJdbcSource.CDC_LOG_FILE;
 import static io.airbyte.integrations.source.jdbc.AbstractJdbcSource.CDC_LOG_POS;
 import static io.airbyte.integrations.source.jdbc.AbstractJdbcSource.CDC_UPDATED_AT;
-import static io.airbyte.integrations.source.mysql.MySqlSource.DRIVER_CLASS;
 import static io.airbyte.integrations.source.mysql.MySqlSource.MYSQL_CDC_OFFSET;
 import static io.airbyte.integrations.source.mysql.MySqlSource.MYSQL_DB_HISTORY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -79,7 +78,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.MariaDBContainer;
 
 public class CdcMySqlSourceTest {
 
@@ -119,7 +118,7 @@ public class CdcMySqlSourceTest {
       Jsons.jsonNode(ImmutableMap.of(COL_ID, 15, COL_MAKE_ID, 2, COL_MODEL, "A 220")),
       Jsons.jsonNode(ImmutableMap.of(COL_ID, 16, COL_MAKE_ID, 2, COL_MODEL, "E 350")));
 
-  private MySQLContainer<?> container;
+  private MariaDBContainer<?> container;
   private Database database;
   private MySqlSource source;
   private JsonNode config;
@@ -133,17 +132,17 @@ public class CdcMySqlSourceTest {
   }
 
   private void init() {
-    container = new MySQLContainer<>("mysql:8.0");
+    container = new MariaDBContainer<>("mariadb:10.6.1");
     container.start();
     source = new MySqlSource();
     database = Databases.createDatabase(
         "root",
         "test",
-        String.format("jdbc:mysql://%s:%s",
+        String.format("jdbc:mariadb://%s:%s",
             container.getHost(),
             container.getFirstMappedPort()),
-        DRIVER_CLASS,
-        SQLDialect.MYSQL);
+        MySqlSource.TEST_DRIVER_CLASS,
+        SQLDialect.MARIADB);
 
     config = Jsons.jsonNode(ImmutableMap.builder()
         .put("host", container.getHost())

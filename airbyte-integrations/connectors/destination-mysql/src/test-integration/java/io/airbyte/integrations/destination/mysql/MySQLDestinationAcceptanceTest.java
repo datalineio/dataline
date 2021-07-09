@@ -38,13 +38,13 @@ import org.jooq.JSONFormat;
 import org.jooq.JSONFormat.RecordFormat;
 import org.jooq.SQLDialect;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.MariaDBContainer;
 
 public class MySQLDestinationAcceptanceTest extends DestinationAcceptanceTest {
 
   private static final JSONFormat JSON_FORMAT = new JSONFormat().recordFormat(RecordFormat.OBJECT);
 
-  private MySQLContainer<?> db;
+  private MariaDBContainer<?> db;
   private ExtendedNameTransformer namingResolver = new MySQLNameTransformer();
 
   @Override
@@ -112,7 +112,7 @@ public class MySQLDestinationAcceptanceTest extends DestinationAcceptanceTest {
             db.getHost(),
             db.getFirstMappedPort(),
             db.getDatabaseName()),
-        "com.mysql.cj.jdbc.Driver",
+        MySQLDestination.TEST_DRIVER_CLASS,
         SQLDialect.MYSQL).query(
             ctx -> ctx
                 .fetch(String.format("SELECT * FROM %s.%s ORDER BY %s ASC;", schemaName, tableName,
@@ -125,7 +125,7 @@ public class MySQLDestinationAcceptanceTest extends DestinationAcceptanceTest {
 
   @Override
   protected void setup(TestDestinationEnv testEnv) {
-    db = new MySQLContainer<>("mysql:8.0");
+    db = new MariaDBContainer<>("mariadb:10.6.1");
     db.start();
     setLocalInFileToTrue();
     revokeAllPermissions();
@@ -153,7 +153,7 @@ public class MySQLDestinationAcceptanceTest extends DestinationAcceptanceTest {
               db.getHost(),
               db.getFirstMappedPort(),
               db.getDatabaseName()),
-          "com.mysql.cj.jdbc.Driver",
+          MySQLDestination.DRIVER_CLASS,
           SQLDialect.MYSQL).query(
               ctx -> ctx
                   .execute(query));

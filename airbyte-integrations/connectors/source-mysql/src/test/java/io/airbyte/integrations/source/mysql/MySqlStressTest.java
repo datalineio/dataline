@@ -42,21 +42,21 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.MariaDBContainer;
 
 @Disabled
 class MySqlStressTest extends JdbcStressTest {
 
   private static final String TEST_USER = "test";
   private static final String TEST_PASSWORD = "test";
-  private static MySQLContainer<?> container;
+  private static MariaDBContainer<?> container;
 
   private JsonNode config;
   private Database database;
 
   @BeforeAll
   static void init() throws SQLException {
-    container = new MySQLContainer<>("mysql:8.0")
+    container = new MariaDBContainer<>("mariadb:10.6.1")
         .withUsername(TEST_USER)
         .withPassword(TEST_PASSWORD)
         .withEnv("MYSQL_ROOT_HOST", "%")
@@ -79,11 +79,11 @@ class MySqlStressTest extends JdbcStressTest {
     database = Databases.createDatabase(
         config.get("username").asText(),
         config.get("password").asText(),
-        String.format("jdbc:mysql://%s:%s",
+        String.format("jdbc:mariadb://%s:%s",
             config.get("host").asText(),
             config.get("port").asText()),
-        MySqlSource.DRIVER_CLASS,
-        SQLDialect.MYSQL);
+        MySqlSource.TEST_DRIVER_CLASS,
+        SQLDialect.MARIADB);
 
     database.query(ctx -> {
       ctx.fetch("CREATE DATABASE " + config.get("database").asText());
@@ -117,7 +117,7 @@ class MySqlStressTest extends JdbcStressTest {
 
   @Override
   public String getDriverClass() {
-    return MySqlSource.DRIVER_CLASS;
+    return MySqlSource.TEST_DRIVER_CLASS;
   }
 
   @Override

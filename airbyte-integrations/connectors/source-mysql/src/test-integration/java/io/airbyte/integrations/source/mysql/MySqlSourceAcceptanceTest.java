@@ -45,19 +45,19 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import org.jooq.SQLDialect;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.MariaDBContainer;
 
 public class MySqlSourceAcceptanceTest extends SourceAcceptanceTest {
 
   private static final String STREAM_NAME = "id_and_name";
   private static final String STREAM_NAME2 = "public.starships";
 
-  private MySQLContainer<?> container;
+  private MariaDBContainer<?> container;
   private JsonNode config;
 
   @Override
-  protected void setupEnvironment(TestDestinationEnv environment) throws Exception {
-    container = new MySQLContainer<>("mysql:8.0");
+  protected void setup(TestDestinationEnv environment) throws Exception {
+    container = new MariaDBContainer<>("mariadb:10.6.1");
     container.start();
 
     config = Jsons.jsonNode(ImmutableMap.builder()
@@ -71,12 +71,12 @@ public class MySqlSourceAcceptanceTest extends SourceAcceptanceTest {
     final Database database = Databases.createDatabase(
         config.get("username").asText(),
         config.get("password").asText(),
-        String.format("jdbc:mysql://%s:%s/%s",
+        String.format("jdbc:mariadb://%s:%s/%s",
             config.get("host").asText(),
             config.get("port").asText(),
             config.get("database").asText()),
-        "com.mysql.cj.jdbc.Driver",
-        SQLDialect.MYSQL);
+        MySqlSource.TEST_DRIVER_CLASS,
+        SQLDialect.MARIADB);
 
     database.query(ctx -> {
       ctx.fetch("CREATE TABLE id_and_name(id INTEGER, name VARCHAR(200));");

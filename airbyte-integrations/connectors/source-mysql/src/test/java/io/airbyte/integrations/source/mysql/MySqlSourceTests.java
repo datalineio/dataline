@@ -36,13 +36,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.MariaDBContainer;
 
 public class MySqlSourceTests {
 
   private static final String TEST_USER = "test";
   private static final String TEST_PASSWORD = "test";
-  private static MySQLContainer<?> container;
+  private static MariaDBContainer<?> container;
 
   private JsonNode config;
   private Database database;
@@ -50,7 +50,7 @@ public class MySqlSourceTests {
   @Test
   public void testSettingTimezones() throws Exception {
     // start DB
-    container = new MySQLContainer<>("mysql:8.0")
+    container = new MariaDBContainer<>("mariadb:10.6.1")
         .withUsername(TEST_USER)
         .withPassword(TEST_PASSWORD)
         .withEnv("MYSQL_ROOT_HOST", "%")
@@ -74,7 +74,7 @@ public class MySqlSourceTests {
     container.close();
   }
 
-  private static JsonNode getConfig(MySQLContainer dbContainer, String dbName, String jdbcParams) {
+  private static JsonNode getConfig(MariaDBContainer<?> dbContainer, String dbName, String jdbcParams) {
     return Jsons.jsonNode(ImmutableMap.builder()
         .put("host", dbContainer.getHost())
         .put("port", dbContainer.getFirstMappedPort())

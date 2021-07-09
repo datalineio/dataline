@@ -74,6 +74,7 @@ public class MySqlSource extends AbstractJdbcSource implements Source {
   private static final Logger LOGGER = LoggerFactory.getLogger(MySqlSource.class);
 
   public static final String DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
+  public static final String TEST_DRIVER_CLASS = "org.mariadb.jdbc.Driver";
   public static final String MYSQL_CDC_OFFSET = "mysql_cdc_offset";
   public static final String MYSQL_DB_HISTORY = "mysql_db_history";
 

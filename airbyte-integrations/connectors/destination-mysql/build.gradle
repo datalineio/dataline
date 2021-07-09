@@ -18,9 +18,9 @@ dependencies {
 
     integrationTestJavaImplementation project(':airbyte-integrations:bases:standard-destination-test')
     integrationTestJavaImplementation project(':airbyte-integrations:connectors:destination-mysql')
-    integrationTestJavaImplementation "org.testcontainers:mysql:1.15.1"
+    integrationTestJavaImplementation "org.testcontainers:mariadb:1.15.3"
+    integrationTestJavaImplementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
 
     implementation files(project(':airbyte-integrations:bases:base-java').airbyteDocker.outputs)
     integrationTestJavaImplementation files(project(':airbyte-integrations:bases:base-normalization').airbyteDocker.outputs)
 }
-
