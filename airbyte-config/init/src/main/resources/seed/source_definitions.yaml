@@ -368,3 +368,8 @@
   dockerRepository: airbyte/source-paypal-transaction
   dockerImageTag: 0.1.0
   documentationUrl: https://docs.airbyte.io/integrations/sources/paypal-transaction
+- sourceDefinitionId: 8cee7c4a-8047-4cb9-a86d-f7fd87b2d1f8
+  name: DataScope
+  dockerRepository: airbyte/source-datascope
+  dockerImageTag: 0.1.0
+  documentationUrl: https://docs.airbyte.io/integrations/sources/datascope
