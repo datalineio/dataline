@@ -21,7 +21,10 @@ publishing {
         }
     }
     repositories {
-        mavenLocal()
+        maven {
+            name 'GcsRepository'
+            url 'gcs://airbyte-test-public-bucket/'
+        }
     }
 }
 
