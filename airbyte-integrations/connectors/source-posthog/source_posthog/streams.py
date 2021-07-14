@@ -86,12 +86,11 @@ class IncrementalPosthogStream(PosthogStream, ABC):
         """
         Return next page token until we reach the page with records older than state/start_date
         """
-        min_state = self._initial_state or self._start_date
         response_json = response.json()
         data = response_json.get(self.data_field, [])
         latest_record = data[-1] if data else None  # records are ordered so we check only last one
 
-        if not latest_record or latest_record[self.cursor_field] > min_state:
+        if not latest_record or latest_record[self.cursor_field] > self._initial_state:
             return super().next_page_token(response=response)
 
     def get_updated_state(self, current_stream_state: MutableMapping[str, Any], latest_record: Mapping[str, Any]) -> Mapping[str, Any]:
@@ -104,9 +103,10 @@ class IncrementalPosthogStream(PosthogStream, ABC):
         return {self.cursor_field: max(latest_state, current_state)}
 
     def parse_response(self, response: requests.Response, stream_state: Mapping[str, Any], **kwargs) -> Iterable[Mapping]:
+        self._initial_state = self._initial_state or stream_state.get(self.cursor_field) or self._start_date
         data = super().parse_response(response=response, stream_state=stream_state, **kwargs)
         for record in data:
-            if record.get(self.cursor_field) >= stream_state.get(self.cursor_field, self._start_date):
+            if record.get(self.cursor_field) >= self._initial_state:
                 yield record
 
 

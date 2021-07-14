@@ -16,7 +16,7 @@ tests:
   incremental:
     - config_path: "secrets/config.json"
       configured_catalog_path: "integration_tests/configured_catalog.json"
-      future_state_path: "integration_tests/state.json"
+      future_state_path: "integration_tests/future_state.json"
   full_refresh:
     - config_path: "secrets/config.json"
       configured_catalog_path: "integration_tests/configured_catalog.json"
