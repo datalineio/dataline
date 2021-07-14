@@ -44,6 +44,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +71,7 @@ public class DatabaseArchiver {
   /**
    * Serializes each internal Airbyte Database table into a single archive file stored in YAML.
    */
-  public void exportDatabaseToArchive(final Path storageRoot) throws Exception {
+  public void exportDatabaseToArchive(final Path storageRoot, final UUID workspaceId) throws Exception {
     final Map<DatabaseSchema, Stream<JsonNode>> tables = persistence.exportDatabase();
     Files.createDirectories(storageRoot.resolve(DB_FOLDER_NAME));
     for (final DatabaseSchema tableSchema : DatabaseSchema.values()) {

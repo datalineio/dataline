@@ -86,7 +86,7 @@ public class DatabaseArchiverTest {
     });
     final Path tempFolder = Files.createTempDirectory(TEMP_PREFIX);
 
-    databaseArchiver.exportDatabaseToArchive(tempFolder);
+    databaseArchiver.exportDatabaseToArchive(tempFolder, workspaceId);
 
     final Set<String> exportedFiles = Files.walk(tempFolder)
         .map(Path::toString)
@@ -108,7 +108,7 @@ public class DatabaseArchiverTest {
       return null;
     });
     final Path tempFolder = Files.createTempDirectory(TEMP_PREFIX);
-    databaseArchiver.exportDatabaseToArchive(tempFolder);
+    databaseArchiver.exportDatabaseToArchive(tempFolder, workspaceId);
     databaseArchiver.importDatabaseFromArchive(tempFolder, "test");
     // TODO check database state before/after
   }
@@ -116,7 +116,7 @@ public class DatabaseArchiverTest {
   @Test
   void testPartialDatabaseImport() throws Exception {
     final Path tempFolder = Files.createTempDirectory(TEMP_PREFIX);
-    databaseArchiver.exportDatabaseToArchive(tempFolder);
+    databaseArchiver.exportDatabaseToArchive(tempFolder, workspaceId);
     Files.delete(DatabaseArchiver.buildTablePath(tempFolder.toRealPath(), DatabaseSchema.ATTEMPTS.name()));
     assertThrows(RuntimeException.class, () -> databaseArchiver.importDatabaseFromArchive(tempFolder, "test"));
   }
