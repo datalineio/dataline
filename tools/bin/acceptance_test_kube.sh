@@ -39,4 +39,4 @@ echo "Running worker integration tests..."
 ./gradlew --no-daemon :airbyte-workers:integrationTest --scan
 
 echo "Running e2e tests via gradle..."
-KUBE=true ./gradlew --no-daemon :airbyte-tests:acceptanceTests --scan
+CORE_ONLY=true KUBE=true ./gradlew --no-daemon :airbyte-tests:acceptanceTests --scan
