@@ -23,10 +23,28 @@
 #
 
 import logging
-from typing import Iterator, List, Tuple
+from typing import Iterator, List, Tuple, Mapping, Any
 
 from airbyte_cdk.models import AirbyteRecordMessage, ConfiguredAirbyteCatalog
 from jsonschema import Draft4Validator, ValidationError
+
+
+def is_nullable_schema(schema: Mapping[str, Any]) -> bool:
+    """Tell if object schema allows it to be null"""
+    obj_types = schema.get("type", [])
+    if not isinstance(obj_types, List):
+        obj_types = [obj_types]
+
+    if "null" in obj_types:
+        return True
+
+    any_of = schema.get("anyOf")
+    if any_of:
+        for alt_type in any_of:
+            if alt_type.get("type") == "null":
+                return True
+
+    return False
 
 
 def verify_records_schema(
@@ -37,14 +55,18 @@ def verify_records_schema(
     """
     validators = {}
     for stream in catalog.streams:
-        validators[stream.stream.name] = Draft4Validator(stream.stream.json_schema)
+        stream_name = stream.stream.name
+        schema = stream.stream.json_schema
+        validators[stream_name] = Draft4Validator(schema)
+
+        # we don't want top level schema to be nullable, because this will bypass all validation
+        assert not is_nullable_schema(schema), f"Stream `{stream_name}`: nullable top level schema is not supported"
 
     for record in records:
         validator = validators.get(record.stream)
         if not validator:
             logging.error(f"Record from the {record.stream} stream that is not in the catalog.")
             continue
-
         errors = list(validator.iter_errors(record.data))
         if errors:
             yield record, sorted(errors, key=str)

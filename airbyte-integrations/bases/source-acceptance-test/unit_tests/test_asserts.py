@@ -43,7 +43,7 @@ def record_schema_fixture():
             "text": {"type": ["string"]},
             "number": {"type": ["number"]},
         },
-        "type": ["null", "object"],
+        "type": ["object"],
     }
 
 
@@ -56,6 +56,12 @@ def catalog_fixture(record_schema) -> ConfiguredAirbyteCatalog:
     )
 
     return ConfiguredAirbyteCatalog(streams=[stream])
+
+
+@pytest.fixture(name="configured_catalog_with_nullable_schema")
+def configured_catalog_with_nullable_schema_fixture(configured_catalog) -> ConfiguredAirbyteCatalog:
+    configured_catalog.streams[0].stream.json_schema["type"].append("null")
+    return configured_catalog
 
 
 def test_verify_records_schema(configured_catalog: ConfiguredAirbyteCatalog):
@@ -99,3 +105,11 @@ def test_verify_records_schema(configured_catalog: ConfiguredAirbyteCatalog):
     assert errors[0] == ["'text' is not of type 'number'", "123 is not of type 'null', 'string'"]
     assert errors[1] == ["None is not of type 'number'", "None is not of type 'string'"]
     assert errors[2] == ["'text' is not of type 'number'"]
+
+
+def test_top_level_nullable_schema(configured_catalog_with_nullable_schema: ConfiguredAirbyteCatalog):
+    """Test that we don't allow top level schema to be nullable"""
+    records = []
+
+    with pytest.raises(AssertionError):
+        list(verify_records_schema(records, configured_catalog_with_nullable_schema))
