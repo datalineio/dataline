@@ -1685,7 +1685,9 @@ components:
         sourceDefinitionId:
           $ref: "#/components/schemas/SourceDefinitionId"
         connectionConfiguration:
-          $ref: "#/components/schemas/SourceConfiguration"
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/SourceConfiguration"
     SourceCreate:
       allOf:
         - $ref: "#/components/schemas/SourceCoreConfig"
