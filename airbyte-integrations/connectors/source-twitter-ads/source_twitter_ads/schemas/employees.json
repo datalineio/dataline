@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "string"]
+    },
+    "name": {
+      "type": ["null", "string"]
+    },
+    "years_of_service": {
+      "type": ["null", "integer"]
+    },
+    "start_date": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    }
+  }
+}

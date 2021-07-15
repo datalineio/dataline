@@ -1,0 +1,16 @@
+{
+  "documentationUrl": "https://docsurl.com",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Twitter Ads Spec",
+    "type": "object",
+    "required": ["TODO"],
+    "additionalProperties": false,
+    "properties": {
+      "TODO: This schema defines the configuration required for the source. This usually involves metadata such as database and/or authentication information.": {
+        "type": "string",
+        "description": "describe me"
+      }
+    }
+  }
+}
