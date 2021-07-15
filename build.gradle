@@ -169,6 +169,7 @@ subprojects {
             exceptionFormat 'full'
             // showStandardStreams = true
         }
+        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
         finalizedBy jacocoTestReport
     }
 
