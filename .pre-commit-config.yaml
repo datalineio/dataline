@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/ambv/black
+    rev: stable
+    hooks:
+    - id: black
+      args: ["--line-length=140"]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v1.2.3
+    hooks:
+    - id: flake8
+      args: ["--config=tools/python/.flake8"]
+  - repo: https://github.com/timothycrosley/isort
+    rev: 4.3.21
+    hooks:
+      - id: isort
+        args: ["--settings-path=tools/python/.isort.cfg"]
+  - repo: https://github.com/johann-petrak/licenseheaders.git
+    rev: 'master'
+    hooks:
+        - id: licenseheaders
+          args: ["--tmpl=LICENSE", "--ext=py", "-f"]
