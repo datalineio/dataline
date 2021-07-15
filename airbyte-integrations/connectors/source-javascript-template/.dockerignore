@@ -1,0 +1,8 @@
+*
+!Dockerfile
+!Dockerfile.test
+!package.json
+!spec.json
+!source.js
+!secrets
+!fullrefresh_configured_catalog.json

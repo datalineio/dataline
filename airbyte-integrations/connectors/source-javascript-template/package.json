@@ -1,0 +1,16 @@
+{
+  "name": "source-javascript-template",
+  "version": "1.0.0",
+  "description": "This is the repository for the Javascript Template source connector, written in Python.  For information about how to use this connector within Airbyte, see [the documentation](https://docs.airbyte.io/integrations/sources/javascript-template).",
+  "main": "source.js",
+  "scripts": {
+    "build": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "date-fns": "^2.16.1",
+    "argparse": "^2.0.1"
+  }
+}

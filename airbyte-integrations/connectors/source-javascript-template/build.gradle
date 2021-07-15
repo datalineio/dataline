@@ -1,0 +1,42 @@
+plugins {
+    id 'airbyte-docker'
+    id 'airbyte-standard-source-test-file'
+    id 'base' // ?
+    id 'com.github.node-gradle.node' version '2.2.4'
+}
+
+node {
+    download = true
+    version = "14.11.0"
+}
+
+npm_run_build {
+    inputs.files fileTree('public')
+    inputs.files fileTree('src')
+    inputs.file 'package.json'
+    inputs.file 'package-lock.json'
+
+    outputs.dir project.buildDir
+}
+assemble.dependsOn npm_run_build
+
+//task test(type: NpmTask) {
+//    dependsOn assemble
+//
+//    args = ['run', 'test', '--', '--watchAll=false']
+//    inputs.files fileTree('src')
+//    inputs.file 'package.json'
+//    inputs.file 'package-lock.json'
+//}
+
+airbyteStandardSourceTestFile {
+    // All these input paths must live inside this connector's directory (or subdirectories)
+    configPath = "secrets/valid_config.json"
+    configuredCatalogPath = "fullrefresh_configured_catalog.json"
+    specPath = "spec.json"
+}
+
+dependencies {
+    implementation files(project(':airbyte-integrations:bases:base-standard-source-test-file').airbyteDocker.outputs)
+    implementation files(project(':airbyte-integrations:bases:base').airbyteDocker.outputs)
+}
