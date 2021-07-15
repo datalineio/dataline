@@ -1,0 +1,24 @@
+plugins {
+    id 'application'
+    id 'airbyte-docker'
+    id 'airbyte-integration-test-java'
+}
+
+application {
+    mainClass = 'io.airbyte.integrations.source.yelp.YelpTest'
+}
+
+project.configurations {
+    testFixturesImplementation.extendsFrom implementation
+    testFixturesRuntimeOnly.extendsFrom runtimeOnly
+}
+
+dependencies {
+    implementation project(':airbyte-integrations:bases:base-java')
+    implementation project(':airbyte-protocol:models')
+
+
+    integrationTestJavaImplementation project(':airbyte-integrations:bases:standard-source-test')
+
+    implementation files(project(':airbyte-integrations:bases:base-java').airbyteDocker.outputs)
+}

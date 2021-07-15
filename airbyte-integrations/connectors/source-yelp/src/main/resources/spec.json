@@ -1,0 +1,20 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/yelp",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Yelp Source Spec",
+    "type": "object",
+    "required": ["username", "password"],
+    "additionalProperties": false,
+    "properties": {},
+    "username": {
+      "description": "Username to use to access the database.",
+      "type": "string"
+    },
+    "password": {
+      "description": "Password associated with the username.",
+      "type": "string",
+      "airbyte_secret": true
+    },
+  }
+}
