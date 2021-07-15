@@ -2,7 +2,7 @@
   "documentationUrl": "https://docs.airbyte.io/integrations/sources/google-sheets",
   "connectionSpecification": {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Stripe Source Spec",
+    "title": "Google Sheets Spec",
     "type": "object",
     "required": ["spreadsheet_id", "credentials_json"],
     "additionalProperties": false,
