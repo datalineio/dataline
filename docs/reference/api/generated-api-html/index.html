@@ -658,8 +658,16 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /v1/connections/list</code></pre></div>
     <div class="method-summary">Returns all connections for a workspace. (<span class="nickname">listConnectionsForWorkspace</span>)</div>
-    <div class="method-notes">List connections for workspace. Does not return deleted connections.</div>
+    <div class="method-notes">List connections for workspace. Does not return deleted connections. Returns the first 25 connections by default.</div>
 
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Number of connections to return. default: null </div><div class="param">offset (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Number of connections to start from when listing. default: null </div>
+    </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
@@ -689,6 +697,8 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
+  "offset" : 0,
+  "limit" : 6,
   "connections" : [ {
     "sourceId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "resourceRequirements" : {
@@ -5552,6 +5562,8 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">connections </div><div class="param-desc"><span class="param-type"><a href="#ConnectionRead">array[ConnectionRead]</a></span>  </div>
+<div class="param">offset (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">limit (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
