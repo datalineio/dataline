@@ -1,0 +1,64 @@
+{
+  "streams": [
+    {
+      "stream": {
+        "name": "people",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "email": { "type": "string" },
+            "created_at": { "type": "integer" },
+            "last_sent_at": { "type": "integer" },
+            "last_responded_at": { "type": "integer" },
+            "next_survey_scheduled_at": { "type": "integer" }
+          }
+        },
+        "supported_sync_modes": ["full_refresh"],
+        "source_defined_primary_key": [["id"]]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "overwrite"
+    },
+    {
+      "stream": {
+        "name": "unsubscribed_people",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "person_id": { "type": "string" },
+            "email": { "type": "string" },
+            "name": { "type": "string" },
+            "unsubscribed_at": { "type": "integer" }
+          }
+        },
+        "supported_sync_modes": ["full_refresh"],
+        "source_defined_primary_key": [["id"]]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "overwrite"
+    },
+    {
+      "stream": {
+        "name": "bounced_people",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "person_id": { "type": "string" },
+            "email": { "type": "string" },
+            "name": { "type": "string" },
+            "bounced_at": { "type": "integer" }
+          }
+        },
+        "supported_sync_modes": ["full_refresh"],
+        "source_defined_primary_key": [["id"]]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "overwrite"
+    }
+  ]
+}

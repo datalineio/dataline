@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "integer"
+    },
+    "last_sent_at": {
+      "type": "integer"
+    },
+    "last_responded_at": {
+      "type": "integer"
+    },
+    "next_survey_scheduled_at": {
+      "type": "integer"
+    }
+  }
+}

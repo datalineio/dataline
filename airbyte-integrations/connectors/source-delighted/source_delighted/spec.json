@@ -1,0 +1,23 @@
+{
+  "documentationUrl": "https://docsurl.com",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Delighted Spec",
+    "type": "object",
+    "required": ["TODO"],
+    "additionalProperties": false,
+    "properties": {
+      "since": {
+        "type": "integer",
+        "description": "An Unix timestamp to retrieve records created on or after this time.",
+        "examples": [1625328167]
+      },
+      "api_key": {
+        "type": "string",
+        "description": "The API PASSWORD for a private application in Shopify shop.",
+        "airbyte_secret": true
+      }
+    }
+    }
+  }
+}
