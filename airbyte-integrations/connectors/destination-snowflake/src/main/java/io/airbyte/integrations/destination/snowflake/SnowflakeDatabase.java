@@ -53,6 +53,7 @@ public class SnowflakeDatabase {
     properties.put("database", config.get("database").asText());
     properties.put("role", config.get("role").asText());
     properties.put("schema", config.get("schema").asText());
+    properties.put("authenticator", config.get("authenticator").asText());
 
     properties.put("networkTimeout", Math.toIntExact(NETWORK_TIMEOUT.toSeconds()));
     properties.put("queryTimeout", Math.toIntExact(QUERY_TIMEOUT.toSeconds()));

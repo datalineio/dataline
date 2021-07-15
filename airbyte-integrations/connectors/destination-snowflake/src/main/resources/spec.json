@@ -10,6 +10,7 @@
     "type": "object",
     "required": [
       "host",
+      "authenticator",
       "role",
       "warehouse",
       "database",
@@ -27,6 +28,13 @@
         "title": "Host",
         "order": 0
       },
+
+      "authenticator": {
+        "description": "Specifies the authenticator to use for verifying user login credentials, optional parameter",
+        "examples": ["https://<okta_account_name>.okta.com"],
+        "type": "string"
+      },
+
       "role": {
         "description": "The role you created for Airbyte to access Snowflake.",
         "examples": ["AIRBYTE_ROLE"],
