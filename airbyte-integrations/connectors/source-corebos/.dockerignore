@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!Dockerfile.test
+!source_corebos
+!setup.py
+!secrets

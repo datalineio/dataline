@@ -1,0 +1,32 @@
+plugins {
+    id 'airbyte-python'
+    id 'airbyte-docker'
+    id 'airbyte-standard-source-test-file'
+}
+
+airbytePython {
+    moduleDirectory 'source_corebos'
+}
+
+airbyteStandardSourceTestFile {
+    // For more information on standard source tests, see https://docs.airbyte.io/contributing-to-airbyte/building-new-connector/testing-connectors
+
+    // All these input paths must live inside this connector's directory (or subdirectories)
+    // TODO update the spec JSON file
+    specPath = "source_corebos/spec.json"
+
+    // configPath points to a config file which matches the spec.json supplied above. secrets/ is gitignored by default, so place your config file
+    // there (in case it contains any credentials)
+    // TODO update the config file to contain actual credentials
+    configPath = "secrets/config.json"
+    // TODO update the sample configured_catalog JSON for use in testing
+    // Note: If your source supports incremental syncing, then make sure that the catalog that is returned in the get_catalog method is configured
+    // for incremental syncing (e.g. include cursor fields, etc).
+    configuredCatalogPath = "sample_files/configured_catalog.json"
+}
+
+
+dependencies {
+    implementation files(project(':airbyte-integrations:bases:base-standard-source-test-file').airbyteDocker.outputs)
+    implementation files(project(':airbyte-integrations:bases:base-python').airbyteDocker.outputs)
+}
