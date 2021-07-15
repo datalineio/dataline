@@ -173,6 +173,51 @@
     },
     {
       "stream": {
+        "name": "conflict_stream_name",
+        "json_schema": {
+          "type": ["null", "object"],
+          "properties": {
+            "id": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "conflict_stream_name": {
+              "type": [
+                "null",
+                "object"
+              ],
+              "properties": {
+                "conflict_stream_name": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "groups": {
+                        "type": "string"
+                      }
+                    },
+                    "other_info": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "supported_sync_modes": ["full_refresh"],
+        "source_defined_cursor": true,
+        "default_cursor_field": []
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "overwrite",
+      "primary_key": []
+    },
+    {
+      "stream": {
         "name": "dedup_cdc_excluded",
         "json_schema": {
           "type": ["null", "object"],

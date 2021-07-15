@@ -26,3 +26,7 @@
 {"type":"RECORD","record":{"stream":"dedup_cdc_excluded","data":{"id":6,"name":"opel","_ab_cdc_updated_at":1623850868109,"_ab_cdc_lsn":27009440,"_ab_cdc_deleted_at":null},"emitted_at":1623861660}}
 {"type":"RECORD","record":{"stream":"dedup_cdc_excluded","data":{"id":7,"name":"lotus","_ab_cdc_updated_at":1623850868237,"_ab_cdc_lsn":27010048,"_ab_cdc_deleted_at":null},"emitted_at":1623861660}}
 {"type":"RECORD","record":{"stream":"dedup_cdc_excluded","data":{"id":6,"name":null,"_ab_cdc_updated_at":1623850868371,"_ab_cdc_lsn":27010232,"_ab_cdc_deleted_at":1623850868371},"emitted_at":1623861660}}
+
+{"type":"RECORD","record":{"stream":"conflict_stream_name","data":{"id":1,"conflict_stream_name":{"conflict_stream_name": {"groups": "1", "other_info": "hello"}}},"emitted_at":1623861660}}
+{"type":"RECORD","record":{"stream":"conflict_stream_name","data":{"id":2,"conflict_stream_name":{"conflict_stream_name": {"groups": "2", "other_info": "hi"}}},"emitted_at":1623861660}}
+

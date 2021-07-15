@@ -75,6 +75,7 @@ def setup_test_path(request):
     ),
 )
 @pytest.mark.parametrize("destination_type", list(DestinationType))
+# @pytest.mark.parametrize("destination_type", [DestinationType.POSTGRES])
 def test_normalization(destination_type: DestinationType, test_resource_name: str, setup_test_path):
     print("Testing normalization")
     integration_type = destination_type.value

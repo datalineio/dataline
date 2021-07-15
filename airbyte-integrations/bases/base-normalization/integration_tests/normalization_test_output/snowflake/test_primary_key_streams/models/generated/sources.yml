@@ -6,6 +6,7 @@ sources:
     schema: false
     identifier: false
   tables:
+  - name: _AIRBYTE_RAW_CONFLICT_STREAM_NAME
   - name: _AIRBYTE_RAW_DEDUP_CDC_EXCLUDED
   - name: _AIRBYTE_RAW_DEDUP_EXCHANGE_RATE
   - name: _AIRBYTE_RAW_EXCHANGE_RATE
