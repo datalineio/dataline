@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.Objects;
 import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
@@ -101,7 +102,9 @@ public class MigrationRunner {
       final Namespace parsed = parser.parseArgs(args);
       final Path inputPath = Path.of(parsed.getString("input"));
       final Path outputPath = Path.of(parsed.getString("output"));
-      final String targetVersion = parsed.getString("target_version");
+      final String targetVersionFromCli = parsed.getString("target_version");
+      final String targetVersion =
+          Objects.isNull(targetVersionFromCli) ? Migrations.MIGRATIONS.get(Migrations.MIGRATIONS.size() - 1).getVersion() : targetVersionFromCli;
       return new MigrateConfig(inputPath, outputPath, targetVersion);
     } catch (ArgumentParserException e) {
       parser.handleError(e);
