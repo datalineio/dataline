@@ -1,0 +1,22 @@
+{
+  "name": "audience_technology",
+  "metrics": [
+    "ga:users",
+    "ga:newUsers",
+    "ga:sessions",
+    "ga:sessionsPerUser",
+    "ga:avgSessionDuration",
+    "ga:pageviews",
+    "ga:pageviewsPerSession",
+    "ga:hits",
+    "ga:bounces",
+    "ga:bounceRate"
+  ],
+  "dimensions": [
+    "ga:date",
+    "ga:browser",
+    "ga:operatingSystem",
+    "ga:screenResolution"
+  ],
+  "cursor": "ga:date"
+}

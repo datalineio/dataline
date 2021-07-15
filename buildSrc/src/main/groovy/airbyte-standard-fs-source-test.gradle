@@ -1,0 +1,73 @@
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+
+abstract class AirbyteStandardFsSourceTestConfiguration {
+    String configPath
+    String configuredCatalogPath
+    String specPath
+    String statePath
+}
+
+class AirbyteStandardFsSourceTestPlugin implements Plugin<Project> {
+    static void assertNotNull(String param, String paramName) {
+        if (param == null || param == "") {
+            throw new IllegalArgumentException("${paramName} parameter must be provided")
+        }
+    }
+
+    static void validateConfig(AirbyteStandardFsSourceTestConfiguration config) {
+        assertNotNull(config.configPath, 'configPath')
+        assertNotNull(config.specPath, 'specPath')
+        assertNotNull(config.configuredCatalogPath, 'configuredCatalogPath')
+    }
+
+    void apply(Project project) {
+        def config = project.extensions.create('airbyteStandardFsSourceTest', AirbyteStandardFsSourceTestConfiguration)
+
+        project.task('standardFsSourceTest') {
+            doFirst {
+                project.exec {
+                    validateConfig(config)
+                    def targetMountDirectory = "/test_input"
+                    def args = [
+                            'docker', 'run', '--rm', '-i',
+                            // provide access to the docker daemon
+                            '-v', "/var/run/docker.sock:/var/run/docker.sock",
+                            // A container within a container mounts from the host filesystem, not the parent container.
+                            // this forces /tmp to be the same directory for host, parent container, and child container.
+                            '-v', "/tmp:/tmp",
+                            // mount the project dir. all provided input paths must be relative to that dir.
+                            '-v', "${project.projectDir.absolutePath}:${targetMountDirectory}",
+                            '--name', "std-fs-source-test-${project.name}",
+                            'airbyte/base-standard-fs-source-test:dev',
+                            '--imageName', DockerHelpers.getDevTaggedImage(project.projectDir, 'Dockerfile'),
+                            '--catalog', "${targetMountDirectory}/${config.configuredCatalogPath}",
+                            '--spec', "${targetMountDirectory}/${config.specPath}",
+                            '--config', "${targetMountDirectory}/${config.configPath}",
+                    ]
+
+                    if (config.statePath != null){
+                        args.add("--state")
+                        args.add("${targetMountDirectory}/${config.statePath}")
+                    }
+
+                    commandLine args
+                }
+            }
+
+            outputs.upToDateWhen { false }
+        }
+
+        project.standardFsSourceTest.dependsOn(':airbyte-integrations:bases:base-standard-fs-source-test:airbyteDocker')
+        project.standardFsSourceTest.dependsOn(project.build)
+        project.standardFsSourceTest.dependsOn(project.airbyteDocker)
+
+        // make sure we create the integrationTest task once in case a java integration test was already initialized
+        if (!project.hasProperty('integrationTest')) {
+            project.task('integrationTest')
+        }
+
+        project.integrationTest.dependsOn(project.standardFsSourceTest)
+    }
+}
+

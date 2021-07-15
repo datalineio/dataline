@@ -1,0 +1,22 @@
+{
+  "name": "audience_geo",
+  "metrics": [
+    "ga:users",
+    "ga:newUsers",
+    "ga:sessions",
+    "ga:sessionsPerUser",
+    "ga:avgSessionDuration",
+    "ga:pageviews",
+    "ga:pageviewsPerSession",
+    "ga:hits",
+    "ga:bounces",
+    "ga:bounceRate"
+  ],
+  "dimensions": [
+    "ga:date",
+    "ga:language",
+    "ga:country",
+    "ga:city"
+  ],
+  "cursor": "ga:date"
+}

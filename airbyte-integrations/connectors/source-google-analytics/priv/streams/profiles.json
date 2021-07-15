@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/airbytehq/airbyte/tree/master/airbyte-integrations/connectors/source-google-analytics/priv/streams/profiles.json",
+  "title": "Google Analytics Profiles",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "account_id",
+    "web_property_id",
+    "id",
+    "name",
+    "type"
+  ],
+  "properties": {
+    "account_id": {
+      "description": "Account Id",
+      "type": "string"
+    },
+    "web_property_id": {
+      "description": "Web Property_id Id",
+      "type": "string"
+    },
+    "id": {
+      "description": "Profile Id",
+      "type": "string"
+    },
+    "name": {
+      "description": "Profile Name",
+      "type": "string"
+    },
+    "type": {
+      "description": "Profile Type",
+      "type": "string"
+    }
+  }
+}

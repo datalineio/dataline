@@ -1,0 +1,18 @@
+plugins {
+    id 'airbyte-docker'
+    id 'airbyte-standard-source-test-file'
+}
+
+airbyteDocker {
+    followSymlinks = true
+}
+
+airbyteStandardSourceTestFile {
+    configPath = "secrets/config.json"
+    configuredCatalogPath = "priv/standard_source_tests/catalog.json"
+    specPath = "priv/connection_specification.json"
+}
+
+dependencies {
+    implementation files(project(':airbyte-integrations:bases:base-standard-source-test-file').airbyteDocker.outputs)
+}

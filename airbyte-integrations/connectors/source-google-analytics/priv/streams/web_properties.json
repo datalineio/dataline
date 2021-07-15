@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/airbytehq/airbyte/tree/master/airbyte-integrations/connectors/source-google-analytics/priv/streams/web_properties.json",
+  "title": "Google Analytics Web Property",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "account_id",
+    "id",
+    "name",
+    "level",
+    "website_url"
+  ],
+  "properties": {
+    "account_id": {
+      "description": "Account Id",
+      "type": "string"
+    },
+    "id": {
+      "description": "Web Property Id",
+      "type": "string"
+    },
+    "level": {
+      "description": "Web Property Level",
+      "type": "string"
+    },
+    "name": {
+      "description": "Web Property Name",
+      "type": "string"
+    },
+    "website_url": {
+      "description": "Web Property URL",
+      "type": "string"
+    }
+  }
+}

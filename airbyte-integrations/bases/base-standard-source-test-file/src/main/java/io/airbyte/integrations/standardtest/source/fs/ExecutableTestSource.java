@@ -109,7 +109,11 @@ public class ExecutableTestSource extends SourceAcceptanceTest {
     if (TEST_CONFIG.getStatePath() != null) {
       return Jsons.deserialize(IOs.readFile(TEST_CONFIG.getStatePath()));
     } else {
+<<<<<<< HEAD:airbyte-integrations/bases/base-standard-fs-source-test/src/main/java/io/airbyte/integrations/standardtest/source/fs/ExecutableTestSource.java
+      return Jsons.deserialize("{}}");
+=======
       return Jsons.deserialize("{}");
+>>>>>>> 8f30d665d1f4b68e87a0442541ec6c3dd1570459:airbyte-integrations/bases/base-standard-source-test-file/src/main/java/io/airbyte/integrations/standardtest/source/fs/ExecutableTestSource.java
     }
 
   }

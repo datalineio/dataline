@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/airbytehq/airbyte/tree/master/airbyte-integrations/connectors/source-google-analytics/priv/connection_specification.json",
+  "title": "Airbyte.Source.GoogleAnalytics.ConnectionSpecification",
+  "type": "object",
+  "description": "Connection specification for Google Analytics source",
+  "additionalProperties": false,
+  "properties": {
+    "service_account_key": {
+      "description": "Path for a service account key (json)",
+      "type": "string"
+    },
+    "reports": {
+      "description": "A JSON string with an array of custom reports",
+      "type": "string"
+    },
+    "start_date": {
+      "description": "A ISO 8601:2004 date format (YYYY-MM-DD)",
+      "type": "string"
+    }
+  }
+}
