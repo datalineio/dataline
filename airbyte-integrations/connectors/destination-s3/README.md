@@ -1,6 +1,6 @@
 # S3 Test Configuration
 
-In order to test the D3 destination, you need an AWS account (or alternative S3 account).
+In order to test the S3 destination, you need an AWS account (or alternative S3 account).
 
 ## Community Contributor
 
@@ -14,8 +14,7 @@ As a community contributor, you will need access to AWS to run the integration t
 
 ## Airbyte Employee
 
-- Access the `destination s3 * creds` secrets on Last Pass. The `*` here represents the different file format.
-- Replace the `config.json` under `sample_secrets`.
+- Access the `destination s3 creds` secrets on Last Pass, and put it in `sample_secrets/config.json`.
 - Rename the directory from `sample_secrets` to `secrets`.
 
 ## Add New Output Format

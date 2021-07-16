@@ -98,6 +98,7 @@
     * [Zoom](integrations/sources/zoom.md)
   * [Destinations](integrations/destinations/README.md)
     * [BigQuery](integrations/destinations/bigquery.md)
+    * [Google Cloud Storage (GCS)](integrations/destinations/gcs.md)
     * [Google PubSub](integrations/destinations/pubsub.md)
     * [Local CSV](integrations/destinations/local-csv.md)
     * [Local JSON](integrations/destinations/local-json.md)

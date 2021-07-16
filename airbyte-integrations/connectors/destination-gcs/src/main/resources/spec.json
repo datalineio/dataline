@@ -1,0 +1,328 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "documentationUrl": "https://docs.airbyte.io/integrations/destinations/gcs",
+  "supportsIncremental": true,
+  "supportsNormalization": false,
+  "supportsDBT": false,
+  "supported_destination_sync_modes": ["overwrite", "append"],
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "GCS Destination Spec",
+    "type": "object",
+    "required": [
+      "gcs_bucket_name",
+      "gcs_bucket_path",
+      "gcs_bucket_region",
+      "credential",
+      "format"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "gcs_bucket_name": {
+        "title": "GCS Bucket Name",
+        "type": "string",
+        "description": "The name of the GCS bucket.",
+        "examples": ["airbyte_sync"]
+      },
+      "gcs_bucket_path": {
+        "description": "Directory under the GCS bucket where data will be written.",
+        "type": "string",
+        "examples": ["data_sync/test"]
+      },
+      "gcs_bucket_region": {
+        "title": "GCS Bucket Region",
+        "type": "string",
+        "default": "",
+        "description": "The region of the GCS bucket.",
+        "enum": [
+          "",
+          "-- North America --",
+          "northamerica-northeast1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-west1",
+          "us-west2",
+          "us-west3",
+          "us-west4",
+          "-- South America --",
+          "southamerica-east1",
+          "-- Europe --",
+          "europe-central2",
+          "europe-north1",
+          "europe-west1",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west6",
+          "-- Asia --",
+          "asia-east1",
+          "asia-east2",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-northeast3",
+          "asia-south1",
+          "asia-south2",
+          "asia-southeast1",
+          "asia-southeast2",
+          "-- Australia --",
+          "australia-southeast1",
+          "australia-southeast2",
+          "-- Multi-regions --",
+          "asia",
+          "eu",
+          "us",
+          "-- Dual-regions --",
+          "asia1",
+          "eur4",
+          "nam4"
+        ]
+      },
+      "credential": {
+        "title": "Credential",
+        "type": "object",
+        "oneOf": [
+          {
+            "title": "HMAC key",
+            "required": [
+              "credential_type",
+              "hmac_key_access_id",
+              "hmac_key_secret"
+            ],
+            "properties": {
+              "credential_type": {
+                "type": "string",
+                "enum": ["HMAC_KEY"],
+                "default": "HMAC_KEY"
+              },
+              "hmac_key_access_id": {
+                "type": "string",
+                "description": "HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to a user account, it is 24 characters long.",
+                "title": "HMAC Key Access ID",
+                "airbyte_secret": true,
+                "examples": ["1234567890abcdefghij1234"]
+              },
+              "hmac_key_secret": {
+                "type": "string",
+                "description": "The corresponding secret for the access ID. It is a 40-character base-64 encoded string.",
+                "title": "HMAC Key Secret",
+                "airbyte_secret": true,
+                "examples": ["1234567890abcdefghij1234567890ABCDEFGHIJ"]
+              }
+            }
+          }
+        ]
+      },
+      "format": {
+        "title": "Output Format",
+        "type": "object",
+        "description": "Output data format",
+        "oneOf": [
+          {
+            "title": "Avro: Apache Avro",
+            "required": ["format_type", "compression_codec"],
+            "properties": {
+              "format_type": {
+                "type": "string",
+                "enum": ["Avro"],
+                "default": "Avro"
+              },
+              "compression_codec": {
+                "title": "Compression Codec",
+                "description": "The compression algorithm used to compress data. Default to no compression.",
+                "type": "object",
+                "oneOf": [
+                  {
+                    "title": "no compression",
+                    "required": ["codec"],
+                    "properties": {
+                      "codec": {
+                        "type": "string",
+                        "enum": ["no compression"],
+                        "default": "no compression"
+                      }
+                    }
+                  },
+                  {
+                    "title": "Deflate",
+                    "required": ["codec", "compression_level"],
+                    "properties": {
+                      "codec": {
+                        "type": "string",
+                        "enum": ["Deflate"],
+                        "default": "Deflate"
+                      },
+                      "compression_level": {
+                        "title": "Deflate level",
+                        "description": "0: no compression & fastest, 9: best compression & slowest.",
+                        "type": "integer",
+                        "default": 0,
+                        "minimum": 0,
+                        "maximum": 9
+                      }
+                    }
+                  },
+                  {
+                    "title": "bzip2",
+                    "required": ["codec"],
+                    "properties": {
+                      "codec": {
+                        "type": "string",
+                        "enum": ["bzip2"],
+                        "default": "bzip2"
+                      }
+                    }
+                  },
+                  {
+                    "title": "xz",
+                    "required": ["codec", "compression_level"],
+                    "properties": {
+                      "codec": {
+                        "type": "string",
+                        "enum": ["xz"],
+                        "default": "xz"
+                      },
+                      "compression_level": {
+                        "title": "Compression level",
+                        "description": "See <a href=\"https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/compressors/xz/XZCompressorOutputStream.html#XZCompressorOutputStream-java.io.OutputStream-int-\">here</a> for details.",
+                        "type": "integer",
+                        "default": 6,
+                        "minimum": 0,
+                        "maximum": 9
+                      }
+                    }
+                  },
+                  {
+                    "title": "zstandard",
+                    "required": ["codec", "compression_level"],
+                    "properties": {
+                      "codec": {
+                        "type": "string",
+                        "enum": ["zstandard"],
+                        "default": "zstandard"
+                      },
+                      "compression_level": {
+                        "title": "Compression level",
+                        "description": "Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.",
+                        "type": "integer",
+                        "default": 3,
+                        "minimum": -5,
+                        "maximum": 22
+                      },
+                      "include_checksum": {
+                        "title": "Include checksum",
+                        "description": "If true, include a checksum with each data block.",
+                        "type": "boolean",
+                        "default": false
+                      }
+                    }
+                  },
+                  {
+                    "title": "snappy",
+                    "required": ["codec"],
+                    "properties": {
+                      "codec": {
+                        "type": "string",
+                        "enum": ["snappy"],
+                        "default": "snappy"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "title": "CSV: Comma-Separated Values",
+            "required": ["format_type", "flattening"],
+            "properties": {
+              "format_type": {
+                "type": "string",
+                "enum": ["CSV"],
+                "default": "CSV"
+              },
+              "flattening": {
+                "type": "string",
+                "title": "Normalization (Flattening)",
+                "description": "Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.",
+                "default": "No flattening",
+                "enum": ["No flattening", "Root level flattening"]
+              }
+            }
+          },
+          {
+            "title": "JSON Lines: newline-delimited JSON",
+            "required": ["format_type"],
+            "properties": {
+              "format_type": {
+                "type": "string",
+                "enum": ["JSONL"],
+                "default": "JSONL"
+              }
+            }
+          },
+          {
+            "title": "Parquet: Columnar Storage",
+            "required": ["format_type"],
+            "properties": {
+              "format_type": {
+                "type": "string",
+                "enum": ["Parquet"],
+                "default": "Parquet"
+              },
+              "compression_codec": {
+                "title": "Compression Codec",
+                "description": "The compression algorithm used to compress data pages.",
+                "type": "string",
+                "enum": [
+                  "UNCOMPRESSED",
+                  "SNAPPY",
+                  "GZIP",
+                  "LZO",
+                  "BROTLI",
+                  "LZ4",
+                  "ZSTD"
+                ],
+                "default": "UNCOMPRESSED"
+              },
+              "block_size_mb": {
+                "title": "Block Size (Row Group Size) (MB)",
+                "description": "This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.",
+                "type": "integer",
+                "default": 128,
+                "examples": [128]
+              },
+              "max_padding_size_mb": {
+                "title": "Max Padding Size (MB)",
+                "description": "Maximum size allowed as padding to align row groups. This is also the minimum size of a row group. Default: 8 MB.",
+                "type": "integer",
+                "default": 8,
+                "examples": [8]
+              },
+              "page_size_kb": {
+                "title": "Page Size (KB)",
+                "description": "The page size is for compression. A block is composed of pages. A page is the smallest unit that must be read fully to access a single record. If this value is too small, the compression will deteriorate. Default: 1024 KB.",
+                "type": "integer",
+                "default": 1024,
+                "examples": [1024]
+              },
+              "dictionary_page_size_kb": {
+                "title": "Dictionary Page Size (KB)",
+                "description": "There is one dictionary page per column per row group when dictionary encoding is used. The dictionary page size works like the page size but for dictionary. Default: 1024 KB.",
+                "type": "integer",
+                "default": 1024,
+                "examples": [1024]
+              },
+              "dictionary_encoding": {
+                "title": "Dictionary Encoding",
+                "description": "Default: true.",
+                "type": "boolean",
+                "default": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

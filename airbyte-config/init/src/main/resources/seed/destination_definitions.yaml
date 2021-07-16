@@ -24,6 +24,11 @@
   dockerRepository: airbyte/destination-bigquery-denormalized
   dockerImageTag: 0.1.0
   documentationUrl: https://docs.airbyte.io/integrations/destinations/bigquery
+- destinationDefinitionId: ca8f6566-e555-4b40-943a-545bf123117a
+  name: Google Cloud Storage (GCS)
+  dockerRepository: airbyte/destination-gcs
+  dockerImageTag: 0.1.0
+  documentationUrl: https://docs.airbyte.io/integrations/destinations/gcs
 - destinationDefinitionId: 356668e2-7e34-47f3-a3b0-67a8a481b692
   name: Google PubSub
   dockerRepository: airbyte/destination-pubsub

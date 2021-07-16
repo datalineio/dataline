@@ -1,0 +1,10 @@
+{
+  "gcs_bucket_name": "<bucket-name>",
+  "gcs_bucket_path": "integration-test",
+  "gcs_bucket_region": "<region>",
+  "credential": {
+    "credential_type": "HMAC_KEY",
+    "hmac_key_access_id": "<access-id>",
+    "hmac_key_secret": "<secret>"
+  }
+}

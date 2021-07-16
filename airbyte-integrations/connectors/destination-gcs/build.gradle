@@ -1,0 +1,38 @@
+plugins {
+    id 'application'
+    id 'airbyte-docker'
+    id 'airbyte-integration-test-java'
+}
+
+application {
+    mainClass = 'io.airbyte.integrations.destination.gcs.GcsDestination'
+}
+
+dependencies {
+    implementation project(':airbyte-config:models')
+    implementation project(':airbyte-protocol:models')
+    implementation project(':airbyte-integrations:bases:base-java')
+    implementation project(':airbyte-integrations:connectors:destination-jdbc')
+    implementation project(':airbyte-integrations:connectors:destination-s3')
+    implementation files(project(':airbyte-integrations:bases:base-java').airbyteDocker.outputs)
+
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.12.14')
+    implementation 'com.google.cloud.bigdataoss:gcs-connector:hadoop3-2.2.1'
+
+    // csv
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.11.978'
+    implementation 'org.apache.commons:commons-csv:1.4'
+    implementation 'com.github.alexmojaki:s3-stream-upload:2.2.2'
+
+    // parquet
+    implementation group: 'org.apache.hadoop', name: 'hadoop-common', version: '3.3.0'
+    implementation group: 'org.apache.hadoop', name: 'hadoop-aws', version: '3.3.0'
+    implementation group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: '3.3.0'
+    implementation group: 'org.apache.parquet', name: 'parquet-avro', version: '1.12.0'
+    implementation group: 'tech.allegro.schema.json2avro', name: 'converter', version: '0.2.10'
+
+    testImplementation 'org.apache.commons:commons-lang3:3.11'
+
+    integrationTestJavaImplementation project(':airbyte-integrations:bases:standard-destination-test')
+    integrationTestJavaImplementation project(':airbyte-integrations:connectors:destination-gcs')
+}

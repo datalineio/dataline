@@ -1,0 +1,17 @@
+{
+  "gcs_bucket_name": "test_bucket",
+  "gcs_bucket_path": "test_path",
+  "gcs_bucket_region": "us-west1",
+  "credential": {
+    "credential_type": "HMAC_KEY",
+    "hmac_key_access_id": "test_access_id",
+    "hmac_key_secret": "test_secret"
+  },
+  "format": {
+    "format_type": "Avro",
+    "compression_codec": {
+      "codec": "Deflate",
+      "compression_level": 5
+    }
+  }
+}
