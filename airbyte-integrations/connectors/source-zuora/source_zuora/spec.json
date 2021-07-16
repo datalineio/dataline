@@ -1,0 +1,40 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/zuora",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Zuora Connector Configuration",
+    "type": "object",
+    "required": ["start_date","client_id","client_secret"],
+    "additionalProperties": false,
+    "properties": {
+      "start_date": {
+        "type": "string",
+        "description": "Start Date in format: YYYY-MM-DD",
+        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+      },
+      "window_in_days": {
+        "type": "integer",
+        "description": "The amount of days for each data-chunk begining from start_date. Bigger the value - faster the fetch. (Min=1, as for a Day; Max=364, as for a Year).",
+        "pattern": "/^[1-2]?[0-9]$|^3[0-2]$/",
+        "minimum": 1,
+        "maximum": 364,
+        "default": 90
+      },
+      "client_id": {
+        "type": "string",
+        "description": "Client ID",
+        "airbyte_secret": true
+      },
+      "client_secret": {
+        "type": "string",
+        "description": "Client Secret",
+        "airbyte_secret": true
+      },
+      "is_sandbox": {
+        "type": "boolean",
+        "description": "Defines whether use the SANDBOX or PRODUCTION environment.",
+        "default": true
+      }
+    }
+  }
+}
