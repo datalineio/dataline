@@ -23,23 +23,9 @@
 #
 
 
-from setuptools import find_packages, setup
+import sys
 
-MAIN_REQUIREMENTS = ["airbyte-cdk", "stripe"]
+from destination_kvdb import DestinationKvdb
 
-TEST_REQUIREMENTS = [
-    "pytest~=6.1",
-]
-
-setup(
-    name="source_stripe",
-    description="Source implementation for Stripe.",
-    author="Airbyte",
-    author_email="contact@airbyte.io",
-    packages=find_packages(),
-    install_requires=MAIN_REQUIREMENTS,
-    package_data={"": ["*.json", "schemas/*.json", "schemas/shared/*.json"]},
-    extras_require={
-        "tests": TEST_REQUIREMENTS,
-    },
-)
+if __name__ == "__main__":
+    DestinationKvdb().run(sys.argv[1:])

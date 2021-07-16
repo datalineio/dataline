@@ -7,6 +7,8 @@ dependencies {
     implementation 'commons-cli:commons-cli:1.4'
 
     implementation project(':airbyte-protocol:models')
+    implementation project(':airbyte-queue')
+    implementation project(":airbyte-json-validation")
 
     implementation files(project(':airbyte-integrations:bases:base').airbyteDocker.outputs)
 }

@@ -42,12 +42,10 @@
       "type": ["null", "object"],
       "properties": {
         "start": {
-          "type": ["null", "string"],
-          "format": "date-time"
+          "type": ["null", "number"]
         },
         "end": {
-          "type": ["null", "string"],
-          "format": "date-time"
+          "type": ["null", "number"]
         }
       }
     },
@@ -139,8 +137,7 @@
           "properties": {}
         },
         "updated": {
-          "type": ["null", "string"],
-          "format": "date-time"
+          "type": ["null", "number"]
         }
       }
     },

@@ -1,5 +1,11 @@
 {
   "documentationUrl": "https://docs.airbyte.io/integrations/destinations/scaffold-destination-python",
+  "supported_destination_sync_modes": [
+    "TODO, available options are: 'overwrite', 'append', and 'append_dedup'"
+  ],
+  "supportsIncremental": true,
+  "supportsDBT": false,
+  "supportsNormalization": false,
   "connectionSpecification": {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Destination Scaffold Destination Python",

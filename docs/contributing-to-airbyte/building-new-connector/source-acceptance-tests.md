@@ -67,6 +67,18 @@ Configuring all streams in the input catalog to full refresh mode verifies that 
 |||x|
 ||||
 
+### Example of `expected_records.txt`:
+In general, the expected_records.json should contain the subset of output of the records of particular stream you need to test.
+The required fields are: `stream, data, emitted_at`
+
+```JSON
+{"stream": "my_stream", "data": {"field_1": "value0", "field_2": "value0", "field_3": null, "field_4": {"is_true": true}, "field_5": 123}, "emitted_at": 1626172757000}
+{"stream": "my_stream", "data": {"field_1": "value1", "field_2": "value1", "field_3": null, "field_4": {"is_true": false}, "field_5": 456}, "emitted_at": 1626172757000}
+{"stream": "my_stream", "data": {"field_1": "value2", "field_2": "value2", "field_3": null, "field_4": {"is_true": true}, "field_5": 678}, "emitted_at": 1626172757000}
+{"stream": "my_stream", "data": {"field_1": "value3", "field_2": "value3", "field_3": null, "field_4": {"is_true": false}, "field_5": 91011}, "emitted_at": 1626172757000}
+
+```
+
 ## Test Full Refresh sync
 ### TestSequentialReads
 

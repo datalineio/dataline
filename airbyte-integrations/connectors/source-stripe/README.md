@@ -49,10 +49,10 @@ and place them into `secrets/config.json`.
 
 ### Locally running the connector
 ```
-python main_dev.py spec
-python main_dev.py check --config secrets/config.json
-python main_dev.py discover --config secrets/config.json
-python main_dev.py read --config secrets/config.json --catalog sample_files/configured_catalog.json
+python main.py spec
+python main.py check --config secrets/config.json
+python main.py discover --config secrets/config.json
+python main.py read --config secrets/config.json --catalog sample_files/configured_catalog.json
 ```
 
 ### Unit Tests
@@ -61,17 +61,37 @@ To run unit tests locally, from the connector directory run:
 python -m pytest unit_tests
 ```
 
-### Locally running the connector docker image
+#### Acceptance Tests
+Customize `acceptance-test-config.yml` file to configure tests. See [Source Acceptance Tests](source-acceptance-tests.md) for more information.
+If your connector requires to create or destroy resources for use during acceptance tests create fixtures for it and place them inside integration_tests/acceptance.py.
+To run your integration tests with acceptance tests, from the connector root, run
+```
+python -m pytest integration_tests -p integration_tests.acceptance
+```
+
+### Using gradle to run tests
+All commands should be run from airbyte project root.
+To run unit tests:
+```
+./gradlew :airbyte-integrations:connectors:source-stripe:unitTest
+```
+
+To run acceptance and custom integration tests:
+```
+./gradlew :airbyte-integrations:connectors:source-stripe:integrationTest
+```
 
 #### Build
+To run your integration tests with docker localy
+
 First, make sure you build the latest Docker image:
 ```
-docker build . -t airbyte/source-stripe:dev
+docker build --no-cache . -t airbyte/source-stripe:dev
 ```
 
 You can also build the connector image via Gradle:
 ```
-./gradlew :airbyte-integrations:connectors:source-stripe:airbyteDocker
+./gradlew clean :airbyte-integrations:connectors:source-stripe:airbyteDocker
 ```
 When building via Gradle, the docker image name and tag, respectively, are the values of the `io.airbyte.name` and `io.airbyte.version` `LABEL`s in
 the Dockerfile.

@@ -1,4 +1,5 @@
 {
+  "type": ["null", "object"],
   "properties": {
     "fee": {
       "type": ["null", "integer"]
@@ -70,6 +71,5 @@
       "type": ["null", "string"],
       "format": "date-time"
     }
-  },
-  "type": ["null", "object"]
+  }
 }

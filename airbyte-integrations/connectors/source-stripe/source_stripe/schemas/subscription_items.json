@@ -98,8 +98,7 @@
           "properties": {}
         },
         "updated": {
-          "type": ["null", "string"],
-          "format": "date-time"
+          "type": ["null", "number"]
         }
       }
     },
@@ -107,8 +106,7 @@
       "type": ["null", "string"]
     },
     "trial_start": {
-      "type": ["null", "string"],
-      "format": "date-time"
+      "type": ["null", "number"]
     },
     "created": {
       "type": ["null", "integer"]
@@ -127,8 +125,7 @@
       "format": "date-time"
     },
     "start": {
-      "type": ["null", "string"],
-      "format": "date-time"
+      "type": ["null", "number"]
     },
     "discount": {
       "type": ["null", "object"],
@@ -153,12 +150,10 @@
       "type": ["null", "boolean"]
     },
     "ended_at": {
-      "type": ["null", "string"],
-      "format": "date-time"
+      "type": ["null", "number"]
     },
     "trial_end": {
-      "type": ["null", "string"],
-      "format": "date-time"
+      "type": ["null", "number"]
     }
   }
 }

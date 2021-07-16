@@ -120,8 +120,7 @@
       "type": ["null", "object"],
       "properties": {
         "due_by": {
-          "type": ["null", "string"],
-          "format": "date-time"
+          "type": ["null", "number"]
         },
         "has_evidence": {
           "type": ["null", "boolean"]

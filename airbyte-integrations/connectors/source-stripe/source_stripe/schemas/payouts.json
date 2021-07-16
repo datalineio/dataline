@@ -117,8 +117,7 @@
       "type": ["null", "string"]
     },
     "arrival_date": {
-      "type": ["null", "string"],
-      "format": "date-time"
+      "type": ["null", "number"]
     },
     "description": {
       "type": ["null", "string"]

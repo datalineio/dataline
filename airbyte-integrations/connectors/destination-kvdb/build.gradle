@@ -1,9 +1,8 @@
 plugins {
     id 'airbyte-python'
     id 'airbyte-docker'
-    id 'airbyte-source-acceptance-test'
 }
 
 airbytePython {
-    moduleDirectory 'source_stripe'
+    moduleDirectory 'destination_kvdb'
 }

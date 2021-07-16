@@ -2,7 +2,7 @@
   "sourceDefinitionId": "e094cb9a-26de-4645-8761-65c0c425d1de",
   "name": "Stripe",
   "dockerRepository": "airbyte/source-stripe",
-  "dockerImageTag": "0.1.13",
+  "dockerImageTag": "0.1.14",
   "documentationUrl": "https://hub.docker.com/r/airbyte/source-stripe",
   "icon": "stripe.svg"
 }

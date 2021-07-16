@@ -1,46 +1,46 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
+  "type": ["null", "object"],
   "properties": {
     "id": {
-      "type": "string"
+      "type": ["null", "string"]
     },
     "object": {
-      "type": "string"
+      "type": ["null", "string"]
     },
     "amount": {
-      "type": "integer"
+      "type": ["null", "number"]
     },
     "created": {
-      "type": "integer"
+      "type": ["null", "number"]
     },
     "credit_note": {
-      "type": "string"
+      "type": ["null", "string"]
     },
     "currency": {
-      "type": "string"
+      "type": ["null", "string"]
     },
     "customer": {
-      "type": "string"
+      "type": ["null", "string"]
     },
     "description": {
-      "type": "string"
+      "type": ["null", "string"]
     },
     "ending_balance": {
-      "type": "integer"
+      "type": ["null", "number"]
     },
     "invoice": {
-      "type": "string"
+      "type": ["null", "string"]
     },
     "livemode": {
-      "type": "boolean"
+      "type": ["null", "boolean"]
     },
     "metadata": {
-      "type": "object",
+      "type": ["null", "object"],
       "additionalProperties": true
     },
     "type": {
-      "type": "string"
+      "type": ["null", "string"]
     }
   }
 }

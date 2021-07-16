@@ -211,9 +211,16 @@ class Products(IncrementalStripeStream):
 
 class Subscriptions(IncrementalStripeStream):
     cursor_field = "created"
+    status = "all"
 
     def path(self, **kwargs):
         return "subscriptions"
+
+    def request_params(self, stream_state=None, **kwargs):
+        stream_state = stream_state or {}
+        params = super().request_params(stream_state=stream_state, **kwargs)
+        params["status"] = self.status
+        return params
 
 
 class SubscriptionItems(StripeStream):

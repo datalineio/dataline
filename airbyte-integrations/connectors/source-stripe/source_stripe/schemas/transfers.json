@@ -5,10 +5,23 @@
       "properties": {}
     },
     "reversals": {
-      "type": ["null", "array"],
-      "items": {
-        "type": ["null", "object"],
-        "properties": {}
+      "type": ["null", "object"],
+      "properties": {
+        "object": {
+          "type": ["null", "string"]
+        },
+        "data": {
+          "type": ["null", "array"]
+        },
+        "has_more": {
+          "type": ["null", "boolean"]
+        },
+        "total_count": {
+          "type": ["null", "number"]
+        },
+        "url": {
+          "type": ["null", "string"]
+        }
       }
     },
     "id": {

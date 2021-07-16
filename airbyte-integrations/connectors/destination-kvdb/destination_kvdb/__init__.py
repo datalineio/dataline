@@ -1,4 +1,3 @@
-#
 # MIT License
 #
 # Copyright (c) 2020 Airbyte
@@ -20,26 +19,8 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-#
 
 
-from setuptools import find_packages, setup
+from .destination import DestinationKvdb
 
-MAIN_REQUIREMENTS = ["airbyte-cdk", "stripe"]
-
-TEST_REQUIREMENTS = [
-    "pytest~=6.1",
-]
-
-setup(
-    name="source_stripe",
-    description="Source implementation for Stripe.",
-    author="Airbyte",
-    author_email="contact@airbyte.io",
-    packages=find_packages(),
-    install_requires=MAIN_REQUIREMENTS,
-    package_data={"": ["*.json", "schemas/*.json", "schemas/shared/*.json"]},
-    extras_require={
-        "tests": TEST_REQUIREMENTS,
-    },
-)
+__all__ = ["DestinationKvdb"]

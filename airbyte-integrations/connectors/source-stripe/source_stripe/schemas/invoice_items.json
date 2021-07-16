@@ -105,12 +105,10 @@
       "type": ["null", "object"],
       "properties": {
         "end": {
-          "type": ["null", "string"],
-          "format": "date-time"
+          "type": ["null", "number"]
         },
         "start": {
-          "type": ["null", "string"],
-          "format": "date-time"
+          "type": ["null", "number"]
         }
       }
     },

@@ -41,5 +41,6 @@ def addScaffoldTemplateTask(name, packageName,scaffoldParams=[]) {
 addScaffoldTemplateTask('Python Source', 'scaffold-source-python')
 addScaffoldTemplateTask('Python HTTP API Source', 'scaffold-source-http')
 addScaffoldTemplateTask('Java JDBC Source', 'scaffold-java-jdbc')
+addScaffoldTemplateTask('Python Destination', 'scaffold-destination-python')
 // TODO: enable Singer template testing
 //addScaffoldTask('source-python-singer', ['tap-exchangeratesapi'])

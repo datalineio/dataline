@@ -1,0 +1,25 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/destinations/kvdb",
+  "supported_destination_sync_modes": ["overwrite", "append", "append_dedupe"],
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Destination Kvdb",
+    "type": "object",
+    "required": ["bucket_id", "secret_key"],
+    "additionalProperties": false,
+    "properties": {
+      "bucket_id": {
+        "title": "Bucket ID",
+        "type": "string",
+        "description": "The ID of your KVDB bucket",
+        "order": 1
+      },
+      "secret_key": {
+        "title": "Secret Key",
+        "type": "string",
+        "description": "Your bucket's secret key",
+        "order": 2
+      }
+    }
+  }
+}

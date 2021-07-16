@@ -24,7 +24,15 @@
       "type": ["null", "integer"]
     },
     "request": {
-      "type": ["null", "string"]
+      "type": ["null", "object"],
+      "properties": {
+        "id": {
+          "type": ["null", "string"]
+        },
+        "idempotency_key": {
+          "type": ["null", "string"]
+        }
+      }
     },
     "type": {
       "type": ["null", "string"]

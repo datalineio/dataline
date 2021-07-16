@@ -13,26 +13,34 @@ tests:
     - config_path: "secrets/config.json"
     - config_path: "secrets/connected_account_config.json"
   basic_read:
+    # TEST 1 - Reading catalog without invoice_line_items
+    # Along with this test we expect subscriptions with status in ["active","canceled"]
+    # If this test fails for some reason, please check the expected_subscriptions_records.json for valid subset of data.
     - config_path: "secrets/config.json"
-#     Reading a invoice_line_items stream takes too long and falls on timeout.
       configured_catalog_path: "integration_tests/non_invoice_line_items_catalog.json"
       validate_output_from_all_streams: yes
+      timeout_seconds: 3600
+      expect_records:
+        path: "integration_tests/expected_subscriptions_records.txt"
+    # TEST 2 - Reading data from account that has no records for stream Disputes
     - config_path: "secrets/connected_account_config.json"
-#     This account has no records for stream Disputes.
-      configured_catalog_path: "integration_tests/non_disputes_catalog.json"
+      configured_catalog_path: "integration_tests/non_disputes_events_catalog.json"
       validate_output_from_all_streams: yes
+      timeout_seconds: 3600
   incremental:
     - config_path: "secrets/config.json"
       configured_catalog_path: "integration_tests/non_invoice_line_items_catalog.json"
       future_state_path: "integration_tests/abnormal_state.json"
       cursor_paths:
-        charges: [ "created" ]
+        charges: ["created"]
     - config_path: "secrets/connected_account_config.json"
-      configured_catalog_path: "integration_tests/non_disputes_catalog.json"
+      configured_catalog_path: "integration_tests/non_disputes_events_catalog.json"
       future_state_path: "integration_tests/abnormal_state.json"
       cursor_paths:
-        charges: [ "created" ]
+        charges: ["created"]
   full_refresh:
     - config_path: "secrets/config.json"
       configured_catalog_path: "integration_tests/non_invoice_line_items_catalog.json"
+      timeout_seconds: 3600
     - config_path: "secrets/connected_account_config.json"
+      
