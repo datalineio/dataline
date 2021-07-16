@@ -53,7 +53,7 @@
 - destinationDefinitionId: ca81ee7c-3163-4246-af40-094cc31e5e42
   name: MySQL
   dockerRepository: airbyte/destination-mysql
-  dockerImageTag: 0.1.7
+  dockerImageTag: 0.1.8
   documentationUrl: https://docs.airbyte.io/integrations/destinations/mysql
 - destinationDefinitionId: d4353156-9217-4cad-8dd7-c108fd4f74cf
   name: MS SQL Server
