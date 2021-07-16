@@ -1,0 +1,223 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/destinations/kafka",
+  "supportsIncremental": true,
+  "supportsNormalization": false,
+  "supportsDBT": false,
+  "supported_destination_sync_modes": ["append"],
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Kafka Destination Spec",
+    "type": "object",
+    "required": [
+      "bootstrap_servers",
+      "topic_pattern",
+      "security_protocol",
+      "acks",
+      "transaction_timeout_ms",
+      "enable_idempotence",
+      "compression_type",
+      "batch_size",
+      "linger_ms",
+      "max_in_flight_requests_per_connection",
+      "client_dns_lookup",
+      "buffer_memory",
+      "max_request_size",
+      "retries",
+      "socket_connection_setup_timeout_ms",
+      "socket_connection_setup_timeout_max_ms",
+      "delivery_timeout_ms",
+      "send_buffer_bytes",
+      "receive_buffer_bytes"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "bootstrap_servers": {
+        "title": "Bootstrap servers",
+        "description": "A list of host/port pairs to use for establishing the initial connection to the Kafka cluster. The client will make use of all servers irrespective of which servers are specified here for bootstrapping&mdash;this list only impacts the initial hosts used to discover the full set of servers. This list should be in the form <code>host1:port1,host2:port2,...</code>. Since these servers are just used for the initial connection to discover the full cluster membership (which may change dynamically), this list need not contain the full set of servers (you may want more than one, though, in case a server is down).",
+        "type": "string",
+        "examples": ["kafka-broker1:9092,kafka-broker2:9092"],
+        "order": 0
+      },
+      "topic_pattern": {
+        "title": "Topic pattern",
+        "description": "Topic pattern in which the records will be sent. You can use patterns like '{namespace}' and/or '{stream}' to send the message to a specific topic based on these values. Notice that the topic name will be transformed to a standard naming convention.",
+        "type": "string",
+        "examples": ["sample.topic", "{namespace}.{stream}.sample"],
+        "order": 1
+      },
+      "test_topic": {
+        "title": "Test topic",
+        "description": "Topic to test if Airbyte can produce messages.",
+        "type": "string",
+        "examples": ["test.topic"],
+        "order": 2
+      },
+      "sync_producer": {
+        "title": "Sync producer",
+        "description": "Wait synchronously until the record has been sent to Kafka.",
+        "type": "boolean",
+        "default": false,
+        "order": 3
+      },
+      "security_protocol": {
+        "title": "Security protocol",
+        "description": "Protocol used to communicate with brokers.",
+        "type": "string",
+        "default": "PLAINTEXT",
+        "enum": ["PLAINTEXT", "SASL_PLAINTEXT", "SSL", "SASL_SSL"],
+        "order": 4
+      },
+      "sasl_jaas_config": {
+        "title": "SASL JAAS config",
+        "description": "JAAS login context parameters for SASL connections in the format used by JAAS configuration files.",
+        "type": "string",
+        "default": "",
+        "airbyte_secret": true,
+        "order": 5
+      },
+      "sasl_mechanism": {
+        "title": "SASL mechanism",
+        "description": "SASL mechanism used for client connections. This may be any mechanism for which a security provider is available.",
+        "type": "string",
+        "default": "PLAIN",
+        "enum": ["PLAIN", "GSSAPI"],
+        "order": 6
+      },
+      "client_id": {
+        "title": "Client ID",
+        "description": "An id string to pass to the server when making requests. The purpose of this is to be able to track the source of requests beyond just ip/port by allowing a logical application name to be included in server-side request logging.",
+        "type": "string",
+        "examples": ["airbyte-producer"],
+        "order": 7
+      },
+      "acks": {
+        "title": "ACKs",
+        "description": "The number of acknowledgments the producer requires the leader to have received before considering a request complete. This controls the  durability of records that are sent.",
+        "type": "string",
+        "default": "1",
+        "enum": ["0", "1", "all"],
+        "order": 8
+      },
+      "transactional_id": {
+        "title": "Transactional ID",
+        "description": "The transactional ID to use for transactional delivery. This enables reliability semantics which span multiple producer sessions since it allows the client to guarantee that transactions using the same transactional ID have been completed prior to starting any new transactions. If no transactional ID is provided, then the producer is limited to idempotent delivery.",
+        "type": "string",
+        "default": "",
+        "examples": ["txn-id"],
+        "order": 9
+      },
+      "transaction_timeout_ms": {
+        "title": "Transaction timeout ms",
+        "description": "The maximum amount of time in ms that the transaction coordinator will wait for a transaction status update from the producer before proactively aborting the ongoing transaction.",
+        "type": "integer",
+        "default": 60000,
+        "order": 10
+      },
+      "enable_idempotence": {
+        "title": "Enable idempotence",
+        "description": "When set to 'true', the producer will ensure that exactly one copy of each message is written in the stream. If 'false', producer retries due to broker failures, etc., may write duplicates of the retried message in the stream.",
+        "type": "boolean",
+        "default": false,
+        "order": 11
+      },
+      "compression_type": {
+        "title": "Compression type",
+        "description": "The compression type for all data generated by the producer.",
+        "type": "string",
+        "default": "none",
+        "enum": ["none", "gzip", "snappy", "lz4", "zstd"],
+        "order": 12
+      },
+      "batch_size": {
+        "title": "Batch size",
+        "description": "The producer will attempt to batch records together into fewer requests whenever multiple records are being sent to the same partition.",
+        "type": "integer",
+        "default": 16384,
+        "order": 13
+      },
+      "linger_ms": {
+        "title": "Linger ms",
+        "description": "The producer groups together any records that arrive in between request transmissions into a single batched request.",
+        "type": "integer",
+        "default": 0,
+        "order": 14
+      },
+      "max_in_flight_requests_per_connection": {
+        "title": "Max in flight requests per connection",
+        "description": "The maximum number of unacknowledged requests the client will send on a single connection before blocking.",
+        "type": "integer",
+        "default": 5,
+        "order": 15
+      },
+      "client_dns_lookup": {
+        "title": "Client DNS lookup",
+        "description": "Controls how the client uses DNS lookups.",
+        "type": "string",
+        "default": "use_all_dns_ips",
+        "enum": [
+          "default",
+          "use_all_dns_ips",
+          "resolve_canonical_bootstrap_servers_only",
+          "use_all_dns_ips"
+        ],
+        "order": 16
+      },
+      "buffer_memory": {
+        "title": "Buffer memory",
+        "description": "The total bytes of memory the producer can use to buffer records waiting to be sent to the server.",
+        "type": "integer",
+        "default": 33554432,
+        "order": 17
+      },
+      "max_request_size": {
+        "title": "Max request size",
+        "description": "The maximum size of a request in bytes.",
+        "type": "integer",
+        "default": 1048576,
+        "order": 18
+      },
+      "retries": {
+        "title": "Retries",
+        "description": "Setting a value greater than zero will cause the client to resend any record whose send fails with a potentially transient error.",
+        "type": "integer",
+        "default": 2147483647,
+        "order": 19
+      },
+      "socket_connection_setup_timeout_ms": {
+        "title": "Socket connection setup timeout",
+        "description": "The amount of time the client will wait for the socket connection to be established.",
+        "type": "integer",
+        "default": 10000,
+        "order": 20
+      },
+      "socket_connection_setup_timeout_max_ms": {
+        "title": "Socket connection setup max timeout",
+        "description": "The maximum amount of time the client will wait for the socket connection to be established. The connection setup timeout will increase exponentially for each consecutive connection failure up to this maximum.",
+        "type": "integer",
+        "default": 30000,
+        "order": 21
+      },
+      "delivery_timeout_ms": {
+        "title": "Delivery timeout",
+        "description": "An upper bound on the time to report success or failure after a call to 'send()' returns.",
+        "type": "integer",
+        "default": 120000,
+        "order": 22
+      },
+      "send_buffer_bytes": {
+        "title": "Send buffer bytes",
+        "description": "The size of the TCP send buffer (SO_SNDBUF) to use when sending data. If the value is -1, the OS default will be used.",
+        "type": "integer",
+        "default": -1,
+        "order": 23
+      },
+      "receive_buffer_bytes": {
+        "title": "Receive buffer bytes",
+        "description": "The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. If the value is -1, the OS default will be used.",
+        "type": "integer",
+        "default": -1,
+        "order": 24
+      }
+    }
+  }
+}
