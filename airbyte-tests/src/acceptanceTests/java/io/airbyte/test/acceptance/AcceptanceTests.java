@@ -60,6 +60,7 @@ import io.airbyte.api.client.model.DestinationCreate;
 import io.airbyte.api.client.model.DestinationDefinitionCreate;
 import io.airbyte.api.client.model.DestinationDefinitionIdRequestBody;
 import io.airbyte.api.client.model.DestinationDefinitionRead;
+import io.airbyte.api.client.model.DestinationDefinitionReadWithJobInfo;
 import io.airbyte.api.client.model.DestinationDefinitionSpecificationRead;
 import io.airbyte.api.client.model.DestinationIdRequestBody;
 import io.airbyte.api.client.model.DestinationRead;
@@ -82,6 +83,7 @@ import io.airbyte.api.client.model.SourceCreate;
 import io.airbyte.api.client.model.SourceDefinitionCreate;
 import io.airbyte.api.client.model.SourceDefinitionIdRequestBody;
 import io.airbyte.api.client.model.SourceDefinitionRead;
+import io.airbyte.api.client.model.SourceDefinitionReadWithJobInfo;
 import io.airbyte.api.client.model.SourceDefinitionSpecificationRead;
 import io.airbyte.api.client.model.SourceIdRequestBody;
 import io.airbyte.api.client.model.SourceRead;
@@ -602,13 +604,13 @@ public class AcceptanceTests {
   @DisabledIfEnvironmentVariable(named = "KUBE",
                                  matches = "true")
   public void testCheckpointing() throws Exception {
-    final SourceDefinitionRead sourceDefinition = apiClient.getSourceDefinitionApi().createSourceDefinition(new SourceDefinitionCreate()
+    final SourceDefinitionReadWithJobInfo sourceDefinition = apiClient.getSourceDefinitionApi().createSourceDefinition(new SourceDefinitionCreate()
         .name("E2E Test Source")
         .dockerRepository("airbyte/source-e2e-test")
         .dockerImageTag("dev")
         .documentationUrl(URI.create("https://example.com")));
 
-    final DestinationDefinitionRead destinationDefinition = apiClient.getDestinationDefinitionApi()
+    final DestinationDefinitionReadWithJobInfo destinationDefinition = apiClient.getDestinationDefinitionApi()
         .createDestinationDefinition(new DestinationDefinitionCreate()
             .name("E2E Test Destination")
             .dockerRepository("airbyte/destination-e2e-test")
@@ -618,7 +620,7 @@ public class AcceptanceTests {
     final SourceRead source = createSource(
         "E2E Test Source -" + UUID.randomUUID(),
         PersistenceConstants.DEFAULT_WORKSPACE_ID,
-        sourceDefinition.getSourceDefinitionId(),
+        sourceDefinition.getSourceDefinitionRead().getSourceDefinitionId(),
         Jsons.jsonNode(ImmutableMap.builder()
             .put("type", "EXCEPTION_AFTER_N")
             .put("throw_after_n_records", 100)
@@ -627,7 +629,7 @@ public class AcceptanceTests {
     final DestinationRead destination = createDestination(
         "E2E Test Destination -" + UUID.randomUUID(),
         PersistenceConstants.DEFAULT_WORKSPACE_ID,
-        destinationDefinition.getDestinationDefinitionId(),
+        destinationDefinition.getDestinationDefinitionRead().getDestinationDefinitionId(),
         Jsons.jsonNode(ImmutableMap.of("type", "LOGGING")));
 
     final String connectionName = "test-connection";
@@ -702,13 +704,13 @@ public class AcceptanceTests {
   @DisabledIfEnvironmentVariable(named = "KUBE",
                                  matches = "true")
   public void testBackpressure() throws Exception {
-    final SourceDefinitionRead sourceDefinition = apiClient.getSourceDefinitionApi().createSourceDefinition(new SourceDefinitionCreate()
+    final SourceDefinitionReadWithJobInfo sourceDefinition = apiClient.getSourceDefinitionApi().createSourceDefinition(new SourceDefinitionCreate()
         .name("E2E Test Source")
         .dockerRepository("airbyte/source-e2e-test")
         .dockerImageTag("dev")
         .documentationUrl(URI.create("https://example.com")));
 
-    final DestinationDefinitionRead destinationDefinition = apiClient.getDestinationDefinitionApi()
+    final DestinationDefinitionReadWithJobInfo destinationDefinition = apiClient.getDestinationDefinitionApi()
         .createDestinationDefinition(new DestinationDefinitionCreate()
             .name("E2E Test Destination")
             .dockerRepository("airbyte/destination-e2e-test")
@@ -718,7 +720,7 @@ public class AcceptanceTests {
     final SourceRead source = createSource(
         "E2E Test Source -" + UUID.randomUUID(),
         PersistenceConstants.DEFAULT_WORKSPACE_ID,
-        sourceDefinition.getSourceDefinitionId(),
+        sourceDefinition.getSourceDefinitionRead().getSourceDefinitionId(),
         Jsons.jsonNode(ImmutableMap.builder()
             .put("type", "INFINITE_FEED")
             .put("max_records", 5000)
@@ -727,7 +729,7 @@ public class AcceptanceTests {
     final DestinationRead destination = createDestination(
         "E2E Test Destination -" + UUID.randomUUID(),
         PersistenceConstants.DEFAULT_WORKSPACE_ID,
-        destinationDefinition.getDestinationDefinitionId(),
+        destinationDefinition.getDestinationDefinitionRead().getDestinationDefinitionId(),
         Jsons.jsonNode(ImmutableMap.builder()
             .put("type", "THROTTLED")
             .put("millis_per_record", 1)

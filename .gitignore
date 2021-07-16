@@ -10,6 +10,9 @@ data
 .project
 .settings
 
+# External editors
+.swp
+
 # Secrets
 secrets
 !airbyte-integrations/connector-templates/**/secrets

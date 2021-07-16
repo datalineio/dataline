@@ -38,9 +38,9 @@ public class KnownExceptionMapper implements ExceptionMapper<KnownException> {
 
   @Override
   public Response toResponse(KnownException e) {
-    LOGGER.info("Known exception", e.getKnownExceptionInfo());
+    LOGGER.info("Known exception", e.asKnownExceptionInfo());
     return Response.status(e.getHttpCode())
-        .entity(Jsons.serialize(e.getKnownExceptionInfo()))
+        .entity(Jsons.serialize(e.asKnownExceptionInfo()))
         .type("application/json")
         .build();
   }

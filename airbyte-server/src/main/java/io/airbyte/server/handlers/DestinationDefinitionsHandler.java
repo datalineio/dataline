@@ -25,19 +25,20 @@
 package io.airbyte.server.handlers;
 
 import com.google.common.annotations.VisibleForTesting;
-import io.airbyte.api.model.DestinationDefinitionCreate;
-import io.airbyte.api.model.DestinationDefinitionIdRequestBody;
-import io.airbyte.api.model.DestinationDefinitionRead;
-import io.airbyte.api.model.DestinationDefinitionReadList;
-import io.airbyte.api.model.DestinationDefinitionUpdate;
+import io.airbyte.api.model.*;
+import io.airbyte.commons.docker.DockerUtils;
 import io.airbyte.commons.resources.MoreResources;
 import io.airbyte.config.StandardDestinationDefinition;
 import io.airbyte.config.persistence.ConfigNotFoundException;
 import io.airbyte.config.persistence.ConfigRepository;
+import io.airbyte.protocol.models.ConnectorSpecification;
 import io.airbyte.scheduler.client.CachingSynchronousSchedulerClient;
+import io.airbyte.scheduler.client.SynchronousResponse;
+import io.airbyte.server.converters.JobConverter;
+import io.airbyte.server.converters.SpecFetcher;
+import io.airbyte.server.errors.BadObjectSchemaKnownException;
 import io.airbyte.server.errors.InternalServerKnownException;
 import io.airbyte.server.services.AirbyteGithubStore;
-import io.airbyte.server.validators.DockerImageValidator;
 import io.airbyte.validation.json.JsonValidationException;
 import java.io.IOException;
 import java.net.URI;
@@ -53,26 +54,26 @@ public class DestinationDefinitionsHandler {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(DestinationDefinitionsHandler.class);
 
-  private final DockerImageValidator imageValidator;
   private final ConfigRepository configRepository;
   private final Supplier<UUID> uuidSupplier;
+  private final SpecFetcher specFetcher;
   private final CachingSynchronousSchedulerClient schedulerSynchronousClient;
   private final AirbyteGithubStore githubStore;
 
   public DestinationDefinitionsHandler(final ConfigRepository configRepository,
-                                       final DockerImageValidator imageValidator,
+                                       final SpecFetcher specFetcher,
                                        final CachingSynchronousSchedulerClient schedulerSynchronousClient) {
-    this(configRepository, imageValidator, UUID::randomUUID, schedulerSynchronousClient, AirbyteGithubStore.production());
+    this(configRepository, UUID::randomUUID, specFetcher, schedulerSynchronousClient, AirbyteGithubStore.production());
   }
 
   @VisibleForTesting
   public DestinationDefinitionsHandler(final ConfigRepository configRepository,
-                                       final DockerImageValidator imageValidator,
                                        final Supplier<UUID> uuidSupplier,
+                                       final SpecFetcher specFetcher,
                                        final CachingSynchronousSchedulerClient schedulerSynchronousClient,
                                        final AirbyteGithubStore githubStore) {
     this.configRepository = configRepository;
-    this.imageValidator = imageValidator;
+    this.specFetcher = specFetcher;
     this.uuidSupplier = uuidSupplier;
     this.schedulerSynchronousClient = schedulerSynchronousClient;
     this.githubStore = githubStore;
@@ -122,44 +123,63 @@ public class DestinationDefinitionsHandler {
         configRepository.getStandardDestinationDefinition(destinationDefinitionIdRequestBody.getDestinationDefinitionId()));
   }
 
-  public DestinationDefinitionRead createDestinationDefinition(DestinationDefinitionCreate destinationDefinitionCreate)
+  public DestinationDefinitionReadWithJobInfo createDestinationDefinition(DestinationDefinitionCreate destinationDefinitionCreate)
       throws JsonValidationException, IOException {
-    imageValidator.assertValidIntegrationImage(destinationDefinitionCreate.getDockerRepository(),
-        destinationDefinitionCreate.getDockerImageTag());
-
-    final UUID id = uuidSupplier.get();
     final StandardDestinationDefinition destinationDefinition = new StandardDestinationDefinition()
-        .withDestinationDefinitionId(id)
+        .withDestinationDefinitionId(uuidSupplier.get())
         .withDockerRepository(destinationDefinitionCreate.getDockerRepository())
         .withDockerImageTag(destinationDefinitionCreate.getDockerImageTag())
         .withDocumentationUrl(destinationDefinitionCreate.getDocumentationUrl().toString())
         .withName(destinationDefinitionCreate.getName())
         .withIcon(destinationDefinitionCreate.getIcon());
-
-    configRepository.writeStandardDestinationDefinition(destinationDefinition);
-
-    return buildDestinationDefinitionRead(destinationDefinition);
+    return saveDestinationDefinition(destinationDefinition);
   }
 
-  public DestinationDefinitionRead updateDestinationDefinition(DestinationDefinitionUpdate destinationDefinitionUpdate)
+  public DestinationDefinitionReadWithJobInfo updateDestinationDefinition(DestinationDefinitionUpdate destinationDefinitionUpdate)
       throws ConfigNotFoundException, IOException, JsonValidationException {
-    final StandardDestinationDefinition currentDestination = configRepository
+    final StandardDestinationDefinition destinationDefinition = configRepository
         .getStandardDestinationDefinition(destinationDefinitionUpdate.getDestinationDefinitionId());
-    imageValidator.assertValidIntegrationImage(currentDestination.getDockerRepository(),
-        destinationDefinitionUpdate.getDockerImageTag());
+    // Update with the new tag
+    destinationDefinition.setDockerImageTag(destinationDefinitionUpdate.getDockerImageTag());
+    return saveDestinationDefinition(destinationDefinition);
+  }
 
-    final StandardDestinationDefinition newDestination = new StandardDestinationDefinition()
-        .withDestinationDefinitionId(currentDestination.getDestinationDefinitionId())
-        .withDockerImageTag(destinationDefinitionUpdate.getDockerImageTag())
-        .withDockerRepository(currentDestination.getDockerRepository())
-        .withName(currentDestination.getName())
-        .withDocumentationUrl(currentDestination.getDocumentationUrl())
-        .withIcon(currentDestination.getIcon());
+  private DestinationDefinitionReadWithJobInfo saveDestinationDefinition(StandardDestinationDefinition destinationDefinition)
+      throws IOException, JsonValidationException {
+    // Validates that the docker image exists and can generate a compatible spec by running a getSpec
+    // job on the provided image and checking that getOutput() worked. If it succeeds, then writes the
+    // config.
+    SynchronousResponse<ConnectorSpecification> response = specFetcher.executeWithResponse(
+        DockerUtils.getTaggedImageName(destinationDefinition.getDockerRepository(), destinationDefinition.getDockerImageTag()));
+    boolean validationSucceeded = (response != null && response.isSuccess() && response.getOutput() != null);
+    if (validationSucceeded) {
+      configRepository.writeStandardDestinationDefinition(destinationDefinition);
+      // we want to re-fetch the spec for updated definitions.
+      schedulerSynchronousClient.resetCache();
+    }
 
-    configRepository.writeStandardDestinationDefinition(newDestination);
-    // we want to re-fetch the spec for updated definitions.
-    schedulerSynchronousClient.resetCache();
-    return buildDestinationDefinitionRead(newDestination);
+    // When an error occurs, your destination isn't echoed back to you, indicating it failed to save.
+    return new DestinationDefinitionReadWithJobInfo()
+        .destinationDefinitionRead(validationSucceeded ? buildDestinationDefinitionRead(destinationDefinition) : null)
+        .exception(validationSucceeded ? null
+            : new BadObjectSchemaKnownException(
+                String.format("Error validating docker image %s:%s - %s - see job logs for details.",
+                    destinationDefinition.getDockerRepository(),
+                    destinationDefinition.getDockerImageTag(),
+                    getFailureReason(response)))
+                        .asKnownExceptionInfo())
+        .jobInfo(JobConverter.getSynchronousJobRead(response));
+  }
+
+  private String getFailureReason(SynchronousResponse<ConnectorSpecification> response) {
+    if (response == null) {
+      return "Get Spec job returned null response";
+    } else if (!response.isSuccess()) {
+      return "Get Spec job failed.";
+    } else if (response.getOutput() == null) {
+      return "Get Spec job returned null spec.";
+    }
+    return "No failure";
   }
 
   public static String loadIcon(String name) {

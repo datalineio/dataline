@@ -218,9 +218,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SourceDefinitionRead"
-        "422":
-          $ref: "#/components/responses/InvalidInputResponse"
+                $ref: "#/components/schemas/SourceDefinitionReadWithJobInfo"
   /v1/source_definitions/update:
     post:
       tags:
@@ -238,11 +236,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SourceDefinitionRead"
+                $ref: "#/components/schemas/SourceDefinitionReadWithJobInfo"
         "404":
           $ref: "#/components/responses/NotFoundResponse"
-        "422":
-          $ref: "#/components/responses/InvalidInputResponse"
   /v1/source_definitions/list:
     post:
       tags:
@@ -512,9 +508,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DestinationDefinitionRead"
-        "422":
-          $ref: "#/components/responses/InvalidInputResponse"
+                $ref: "#/components/schemas/DestinationDefinitionReadWithJobInfo"
   /v1/destination_definitions/update:
     post:
       tags:
@@ -533,11 +527,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DestinationDefinitionRead"
+                $ref: "#/components/schemas/DestinationDefinitionReadWithJobInfo"
         "404":
           $ref: "#/components/responses/NotFoundResponse"
-        "422":
-          $ref: "#/components/responses/InvalidInputResponse"
   /v1/destination_definitions/list:
     post:
       tags:
@@ -1613,6 +1605,17 @@ components:
           $ref: "#/components/schemas/SourceDefinitionId"
         dockerImageTag:
           type: string
+    SourceDefinitionReadWithJobInfo:
+      type: object
+      required:
+        - jobInfo
+      properties:
+        sourceDefinitionRead:
+          $ref: "#/components/schemas/SourceDefinitionRead"
+        jobInfo:
+          $ref: "#/components/schemas/SynchronousJobRead"
+        exception:
+          $ref: "#/components/schemas/KnownExceptionInfo"
     SourceDefinitionRead:
       type: object
       required:
@@ -1811,6 +1814,17 @@ components:
           $ref: "#/components/schemas/DestinationDefinitionId"
         dockerImageTag:
           type: string
+    DestinationDefinitionReadWithJobInfo:
+      type: object
+      required:
+        - jobInfo
+      properties:
+        destinationDefinitionRead:
+          $ref: "#/components/schemas/DestinationDefinitionRead"
+        jobInfo:
+          $ref: "#/components/schemas/SynchronousJobRead"
+        exception:
+          $ref: "#/components/schemas/KnownExceptionInfo"
     DestinationDefinitionRead:
       type: object
       required:

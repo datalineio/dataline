@@ -38,6 +38,7 @@ import io.airbyte.api.model.DestinationDefinitionCreate;
 import io.airbyte.api.model.DestinationDefinitionIdRequestBody;
 import io.airbyte.api.model.DestinationDefinitionRead;
 import io.airbyte.api.model.DestinationDefinitionReadList;
+import io.airbyte.api.model.DestinationDefinitionReadWithJobInfo;
 import io.airbyte.api.model.DestinationDefinitionSpecificationRead;
 import io.airbyte.api.model.DestinationDefinitionUpdate;
 import io.airbyte.api.model.DestinationIdRequestBody;
@@ -67,6 +68,7 @@ import io.airbyte.api.model.SourceDefinitionCreate;
 import io.airbyte.api.model.SourceDefinitionIdRequestBody;
 import io.airbyte.api.model.SourceDefinitionRead;
 import io.airbyte.api.model.SourceDefinitionReadList;
+import io.airbyte.api.model.SourceDefinitionReadWithJobInfo;
 import io.airbyte.api.model.SourceDefinitionSpecificationRead;
 import io.airbyte.api.model.SourceDefinitionUpdate;
 import io.airbyte.api.model.SourceDiscoverSchemaRead;
@@ -112,7 +114,6 @@ import io.airbyte.server.handlers.WebBackendConnectionsHandler;
 import io.airbyte.server.handlers.WebBackendDestinationHandler;
 import io.airbyte.server.handlers.WebBackendSourceHandler;
 import io.airbyte.server.handlers.WorkspacesHandler;
-import io.airbyte.server.validators.DockerImageValidator;
 import io.airbyte.validation.json.JsonSchemaValidator;
 import io.airbyte.validation.json.JsonValidationException;
 import io.temporal.serviceclient.WorkflowServiceStubs;
@@ -161,11 +162,10 @@ public class ConfigurationApi implements io.airbyte.api.V1Api {
         configs.getWorkspaceRoot(),
         jobNotifier,
         temporalService);
-    final DockerImageValidator dockerImageValidator = new DockerImageValidator(synchronousSchedulerClient);
-    sourceDefinitionsHandler = new SourceDefinitionsHandler(configRepository, dockerImageValidator, synchronousSchedulerClient);
+    sourceDefinitionsHandler = new SourceDefinitionsHandler(configRepository, specFetcher, synchronousSchedulerClient);
     connectionsHandler = new ConnectionsHandler(configRepository);
     operationsHandler = new OperationsHandler(configRepository);
-    destinationDefinitionsHandler = new DestinationDefinitionsHandler(configRepository, dockerImageValidator, synchronousSchedulerClient);
+    destinationDefinitionsHandler = new DestinationDefinitionsHandler(configRepository, specFetcher, synchronousSchedulerClient);
     destinationHandler = new DestinationHandler(configRepository, schemaValidator, specFetcher, connectionsHandler);
     sourceHandler = new SourceHandler(configRepository, schemaValidator, specFetcher, connectionsHandler);
     workspacesHandler = new WorkspacesHandler(configRepository, connectionsHandler, destinationHandler, sourceHandler);
@@ -244,12 +244,12 @@ public class ConfigurationApi implements io.airbyte.api.V1Api {
   }
 
   @Override
-  public SourceDefinitionRead createSourceDefinition(@Valid SourceDefinitionCreate sourceDefinitionCreate) {
+  public SourceDefinitionReadWithJobInfo createSourceDefinition(@Valid SourceDefinitionCreate sourceDefinitionCreate) {
     return execute(() -> sourceDefinitionsHandler.createSourceDefinition(sourceDefinitionCreate));
   }
 
   @Override
-  public SourceDefinitionRead updateSourceDefinition(@Valid SourceDefinitionUpdate sourceDefinitionUpdate) {
+  public SourceDefinitionReadWithJobInfo updateSourceDefinition(@Valid SourceDefinitionUpdate sourceDefinitionUpdate) {
     return execute(() -> sourceDefinitionsHandler.updateSourceDefinition(sourceDefinitionUpdate));
   }
 
@@ -323,12 +323,12 @@ public class ConfigurationApi implements io.airbyte.api.V1Api {
   }
 
   @Override
-  public DestinationDefinitionRead createDestinationDefinition(@Valid DestinationDefinitionCreate destinationDefinitionCreate) {
+  public DestinationDefinitionReadWithJobInfo createDestinationDefinition(@Valid DestinationDefinitionCreate destinationDefinitionCreate) {
     return execute(() -> destinationDefinitionsHandler.createDestinationDefinition(destinationDefinitionCreate));
   }
 
   @Override
-  public DestinationDefinitionRead updateDestinationDefinition(@Valid DestinationDefinitionUpdate destinationDefinitionUpdate) {
+  public DestinationDefinitionReadWithJobInfo updateDestinationDefinition(@Valid DestinationDefinitionUpdate destinationDefinitionUpdate) {
     return execute(() -> destinationDefinitionsHandler.updateDestinationDefinition(destinationDefinitionUpdate));
   }
 

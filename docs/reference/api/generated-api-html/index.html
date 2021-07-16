@@ -1662,7 +1662,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#DestinationDefinitionRead">DestinationDefinitionRead</a>
+      <a href="#DestinationDefinitionReadWithJobInfo">DestinationDefinitionReadWithJobInfo</a>
       
     </div>
 
@@ -1671,12 +1671,31 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "documentationUrl" : "https://openapi-generator.tech",
-  "dockerImageTag" : "dockerImageTag",
-  "dockerRepository" : "dockerRepository",
-  "name" : "name",
-  "icon" : "icon",
-  "destinationDefinitionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  "exception" : {
+    "exceptionStack" : [ "exceptionStack", "exceptionStack" ],
+    "rootCauseExceptionStack" : [ "rootCauseExceptionStack", "rootCauseExceptionStack" ],
+    "rootCauseExceptionClassName" : "rootCauseExceptionClassName",
+    "exceptionClassName" : "exceptionClassName",
+    "message" : "message"
+  },
+  "destinationDefinitionRead" : {
+    "documentationUrl" : "https://openapi-generator.tech",
+    "dockerImageTag" : "dockerImageTag",
+    "dockerRepository" : "dockerRepository",
+    "name" : "name",
+    "icon" : "icon",
+    "destinationDefinitionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  },
+  "jobInfo" : {
+    "createdAt" : 0,
+    "configId" : "configId",
+    "endedAt" : 6,
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "logs" : {
+      "logLines" : [ "logLines", "logLines" ]
+    },
+    "succeeded" : true
+  }
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1689,10 +1708,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Successful operation
-        <a href="#DestinationDefinitionRead">DestinationDefinitionRead</a>
-    <h4 class="field-label">422</h4>
-    Input failed validation
-        <a href="#InvalidInputExceptionInfo">InvalidInputExceptionInfo</a>
+        <a href="#DestinationDefinitionReadWithJobInfo">DestinationDefinitionReadWithJobInfo</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getDestinationDefinition"/>
@@ -1893,7 +1909,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#DestinationDefinitionRead">DestinationDefinitionRead</a>
+      <a href="#DestinationDefinitionReadWithJobInfo">DestinationDefinitionReadWithJobInfo</a>
       
     </div>
 
@@ -1902,12 +1918,31 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "documentationUrl" : "https://openapi-generator.tech",
-  "dockerImageTag" : "dockerImageTag",
-  "dockerRepository" : "dockerRepository",
-  "name" : "name",
-  "icon" : "icon",
-  "destinationDefinitionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  "exception" : {
+    "exceptionStack" : [ "exceptionStack", "exceptionStack" ],
+    "rootCauseExceptionStack" : [ "rootCauseExceptionStack", "rootCauseExceptionStack" ],
+    "rootCauseExceptionClassName" : "rootCauseExceptionClassName",
+    "exceptionClassName" : "exceptionClassName",
+    "message" : "message"
+  },
+  "destinationDefinitionRead" : {
+    "documentationUrl" : "https://openapi-generator.tech",
+    "dockerImageTag" : "dockerImageTag",
+    "dockerRepository" : "dockerRepository",
+    "name" : "name",
+    "icon" : "icon",
+    "destinationDefinitionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  },
+  "jobInfo" : {
+    "createdAt" : 0,
+    "configId" : "configId",
+    "endedAt" : 6,
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "logs" : {
+      "logLines" : [ "logLines", "logLines" ]
+    },
+    "succeeded" : true
+  }
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1920,13 +1955,10 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Successful operation
-        <a href="#DestinationDefinitionRead">DestinationDefinitionRead</a>
+        <a href="#DestinationDefinitionReadWithJobInfo">DestinationDefinitionReadWithJobInfo</a>
     <h4 class="field-label">404</h4>
     Object with given id was not found.
         <a href="#NotFoundKnownExceptionInfo">NotFoundKnownExceptionInfo</a>
-    <h4 class="field-label">422</h4>
-    Input failed validation
-        <a href="#InvalidInputExceptionInfo">InvalidInputExceptionInfo</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="DestinationDefinitionSpecification">DestinationDefinitionSpecification</a></h1>
@@ -3686,7 +3718,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#SourceDefinitionRead">SourceDefinitionRead</a>
+      <a href="#SourceDefinitionReadWithJobInfo">SourceDefinitionReadWithJobInfo</a>
       
     </div>
 
@@ -3695,12 +3727,31 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "documentationUrl" : "https://openapi-generator.tech",
-  "dockerImageTag" : "dockerImageTag",
-  "dockerRepository" : "dockerRepository",
-  "name" : "name",
-  "icon" : "icon",
-  "sourceDefinitionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  "sourceDefinitionRead" : {
+    "documentationUrl" : "https://openapi-generator.tech",
+    "dockerImageTag" : "dockerImageTag",
+    "dockerRepository" : "dockerRepository",
+    "name" : "name",
+    "icon" : "icon",
+    "sourceDefinitionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  },
+  "exception" : {
+    "exceptionStack" : [ "exceptionStack", "exceptionStack" ],
+    "rootCauseExceptionStack" : [ "rootCauseExceptionStack", "rootCauseExceptionStack" ],
+    "rootCauseExceptionClassName" : "rootCauseExceptionClassName",
+    "exceptionClassName" : "exceptionClassName",
+    "message" : "message"
+  },
+  "jobInfo" : {
+    "createdAt" : 0,
+    "configId" : "configId",
+    "endedAt" : 6,
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "logs" : {
+      "logLines" : [ "logLines", "logLines" ]
+    },
+    "succeeded" : true
+  }
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -3713,10 +3764,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Successful operation
-        <a href="#SourceDefinitionRead">SourceDefinitionRead</a>
-    <h4 class="field-label">422</h4>
-    Input failed validation
-        <a href="#InvalidInputExceptionInfo">InvalidInputExceptionInfo</a>
+        <a href="#SourceDefinitionReadWithJobInfo">SourceDefinitionReadWithJobInfo</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getSourceDefinition"/>
@@ -3917,7 +3965,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#SourceDefinitionRead">SourceDefinitionRead</a>
+      <a href="#SourceDefinitionReadWithJobInfo">SourceDefinitionReadWithJobInfo</a>
       
     </div>
 
@@ -3926,12 +3974,31 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "documentationUrl" : "https://openapi-generator.tech",
-  "dockerImageTag" : "dockerImageTag",
-  "dockerRepository" : "dockerRepository",
-  "name" : "name",
-  "icon" : "icon",
-  "sourceDefinitionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  "sourceDefinitionRead" : {
+    "documentationUrl" : "https://openapi-generator.tech",
+    "dockerImageTag" : "dockerImageTag",
+    "dockerRepository" : "dockerRepository",
+    "name" : "name",
+    "icon" : "icon",
+    "sourceDefinitionId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  },
+  "exception" : {
+    "exceptionStack" : [ "exceptionStack", "exceptionStack" ],
+    "rootCauseExceptionStack" : [ "rootCauseExceptionStack", "rootCauseExceptionStack" ],
+    "rootCauseExceptionClassName" : "rootCauseExceptionClassName",
+    "exceptionClassName" : "exceptionClassName",
+    "message" : "message"
+  },
+  "jobInfo" : {
+    "createdAt" : 0,
+    "configId" : "configId",
+    "endedAt" : 6,
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "logs" : {
+      "logLines" : [ "logLines", "logLines" ]
+    },
+    "succeeded" : true
+  }
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -3944,13 +4011,10 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Successful operation
-        <a href="#SourceDefinitionRead">SourceDefinitionRead</a>
+        <a href="#SourceDefinitionReadWithJobInfo">SourceDefinitionReadWithJobInfo</a>
     <h4 class="field-label">404</h4>
     Object with given id was not found.
         <a href="#NotFoundKnownExceptionInfo">NotFoundKnownExceptionInfo</a>
-    <h4 class="field-label">422</h4>
-    Input failed validation
-        <a href="#InvalidInputExceptionInfo">InvalidInputExceptionInfo</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="SourceDefinitionSpecification">SourceDefinitionSpecification</a></h1>
@@ -5343,6 +5407,7 @@ font-style: italic;
     <li><a href="#DestinationDefinitionIdRequestBody"><code>DestinationDefinitionIdRequestBody</code> - </a></li>
     <li><a href="#DestinationDefinitionRead"><code>DestinationDefinitionRead</code> - </a></li>
     <li><a href="#DestinationDefinitionReadList"><code>DestinationDefinitionReadList</code> - </a></li>
+    <li><a href="#DestinationDefinitionReadWithJobInfo"><code>DestinationDefinitionReadWithJobInfo</code> - </a></li>
     <li><a href="#DestinationDefinitionSpecificationRead"><code>DestinationDefinitionSpecificationRead</code> - </a></li>
     <li><a href="#DestinationDefinitionUpdate"><code>DestinationDefinitionUpdate</code> - </a></li>
     <li><a href="#DestinationIdRequestBody"><code>DestinationIdRequestBody</code> - </a></li>
@@ -5393,6 +5458,7 @@ font-style: italic;
     <li><a href="#SourceDefinitionIdRequestBody"><code>SourceDefinitionIdRequestBody</code> - </a></li>
     <li><a href="#SourceDefinitionRead"><code>SourceDefinitionRead</code> - </a></li>
     <li><a href="#SourceDefinitionReadList"><code>SourceDefinitionReadList</code> - </a></li>
+    <li><a href="#SourceDefinitionReadWithJobInfo"><code>SourceDefinitionReadWithJobInfo</code> - </a></li>
     <li><a href="#SourceDefinitionSpecificationRead"><code>SourceDefinitionSpecificationRead</code> - </a></li>
     <li><a href="#SourceDefinitionUpdate"><code>SourceDefinitionUpdate</code> - </a></li>
     <li><a href="#SourceDiscoverSchemaRead"><code>SourceDiscoverSchemaRead</code> - </a></li>
@@ -5652,6 +5718,15 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">destinationDefinitions </div><div class="param-desc"><span class="param-type"><a href="#DestinationDefinitionRead">array[DestinationDefinitionRead]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="DestinationDefinitionReadWithJobInfo"><code>DestinationDefinitionReadWithJobInfo</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">destinationDefinitionRead (optional)</div><div class="param-desc"><span class="param-type"><a href="#DestinationDefinitionRead">DestinationDefinitionRead</a></span>  </div>
+<div class="param">jobInfo </div><div class="param-desc"><span class="param-type"><a href="#SynchronousJobRead">SynchronousJobRead</a></span>  </div>
+<div class="param">exception (optional)</div><div class="param-desc"><span class="param-type"><a href="#KnownExceptionInfo">KnownExceptionInfo</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -6075,6 +6150,15 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">sourceDefinitions </div><div class="param-desc"><span class="param-type"><a href="#SourceDefinitionRead">array[SourceDefinitionRead]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SourceDefinitionReadWithJobInfo"><code>SourceDefinitionReadWithJobInfo</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">sourceDefinitionRead (optional)</div><div class="param-desc"><span class="param-type"><a href="#SourceDefinitionRead">SourceDefinitionRead</a></span>  </div>
+<div class="param">jobInfo </div><div class="param-desc"><span class="param-type"><a href="#SynchronousJobRead">SynchronousJobRead</a></span>  </div>
+<div class="param">exception (optional)</div><div class="param-desc"><span class="param-type"><a href="#KnownExceptionInfo">KnownExceptionInfo</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

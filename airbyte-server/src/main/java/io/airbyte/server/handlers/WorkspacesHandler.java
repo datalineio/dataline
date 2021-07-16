@@ -83,7 +83,7 @@ public class WorkspacesHandler {
   }
 
   public WorkspaceRead createWorkspace(final WorkspaceCreate workspaceCreate)
-      throws JsonValidationException, IOException, ConfigNotFoundException, ValueConflictKnownException {
+      throws JsonValidationException, IOException, ValueConflictKnownException {
 
     final String email = workspaceCreate.getEmail();
     final Boolean anonymousDataCollection = workspaceCreate.getAnonymousDataCollection();

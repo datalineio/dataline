@@ -39,7 +39,7 @@ public abstract class KnownException extends RuntimeException {
 
   abstract public int getHttpCode();
 
-  public KnownExceptionInfo getKnownExceptionInfo() {
+  public KnownExceptionInfo asKnownExceptionInfo() {
     return KnownException.infoFromThrowable(this);
   }
 
