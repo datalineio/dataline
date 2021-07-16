@@ -26,10 +26,12 @@ package io.airbyte.server;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Streams;
 import io.airbyte.analytics.TrackingClientSingleton;
 import io.airbyte.api.model.ImportRead;
 import io.airbyte.api.model.ImportRead.StatusEnum;
+import io.airbyte.commons.enums.Enums;
 import io.airbyte.commons.io.Archives;
 import io.airbyte.commons.io.IOs;
 import io.airbyte.commons.json.Jsons;
@@ -69,28 +71,24 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ConfigDumpImport {
+@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+public class ConfigDumpImporter {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(ConfigDumpImport.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ConfigDumpImporter.class);
   private static final String CONFIG_FOLDER_NAME = "airbyte_config";
   private static final String DB_FOLDER_NAME = "airbyte_db";
   private static final String VERSION_FILE_NAME = "VERSION";
   private final ConfigRepository configRepository;
   private final JsonSchemaValidator jsonSchemaValidator;
   private final JobPersistence postgresPersistence;
-  private final String targetVersion;
-  private final String initialVersion;
-  private final Path latestSeed;
 
-  public ConfigDumpImport(String initialVersion,
-                          String targetVersion,
-                          Path latestSeed,
-                          JobPersistence postgresPersistence,
-                          ConfigRepository configRepository) {
-    this.targetVersion = targetVersion;
-    this.initialVersion = initialVersion;
-    this.latestSeed = latestSeed;
-    this.jsonSchemaValidator = new JsonSchemaValidator();
+  public ConfigDumpImporter(ConfigRepository configRepository, JobPersistence postgresPersistence) {
+    this(configRepository, postgresPersistence, new JsonSchemaValidator());
+  }
+
+  @VisibleForTesting
+  public ConfigDumpImporter(ConfigRepository configRepository, JobPersistence postgresPersistence, JsonSchemaValidator jsonSchemaValidator) {
+    this.jsonSchemaValidator = jsonSchemaValidator;
     this.postgresPersistence = postgresPersistence;
     this.configRepository = configRepository;
   }
@@ -107,7 +105,17 @@ public class ConfigDumpImport {
     }
   }
 
-  public ImportRead importData(File archive) {
+  public ImportRead importData(String targetVersion, File archive) {
+    return importDataInternal(targetVersion, archive, Optional.empty());
+  }
+
+  public ImportRead importDataWithSeed(String targetVersion, File archive, Path seedPath) {
+    return importDataInternal(targetVersion, archive, Optional.of(seedPath));
+  }
+
+  // seedPath - if present, merge with the import. otherwise just use the data in the import.
+  private ImportRead importDataInternal(String targetVersion, File archive, Optional<Path> seedPath) {
+    Preconditions.checkNotNull(seedPath);
 
     final Optional<UUID> previousCustomerIdOptional = getCurrentCustomerId();
     ImportRead result;
@@ -119,10 +127,9 @@ public class ConfigDumpImport {
 
         // 2. dry run
         try {
-          checkImport(sourceRoot);
+          checkImport(targetVersion, sourceRoot, seedPath);
         } catch (Exception e) {
-          LOGGER.warn("Dry run failed, setting DB version back to initial version");
-          postgresPersistence.setVersion(initialVersion);
+          LOGGER.error("Dry run failed.", e);
           throw e;
         }
 
@@ -130,7 +137,7 @@ public class ConfigDumpImport {
         importDatabaseFromArchive(sourceRoot, targetVersion);
 
         // 4. Import Configs
-        importConfigsFromArchive(sourceRoot, false);
+        importConfigsFromArchive(sourceRoot, seedPath, false);
 
         // 5. Set DB version
         LOGGER.info("Setting the DB Airbyte version to : " + targetVersion);
@@ -156,7 +163,7 @@ public class ConfigDumpImport {
     return result;
   }
 
-  private void checkImport(Path tempFolder) throws IOException, JsonValidationException {
+  private void checkImport(String targetVersion, Path tempFolder, Optional<Path> seed) throws IOException, JsonValidationException {
     final Path versionFile = tempFolder.resolve(VERSION_FILE_NAME);
     final String importVersion = Files.readString(versionFile, Charset.defaultCharset())
         .replace("\n", "").strip();
@@ -167,7 +174,7 @@ public class ConfigDumpImport {
               "Please upgrade your Airbyte Archive, see more at https://docs.airbyte.io/tutorials/upgrading-airbyte\n",
               importVersion, targetVersion));
     }
-    importConfigsFromArchive(tempFolder, true);
+    importConfigsFromArchive(tempFolder, seed, true);
   }
 
   // Config
@@ -178,39 +185,58 @@ public class ConfigDumpImport {
     }
   }
 
-  private <T> void importConfigsFromArchive(final Path sourceRoot, final boolean dryRun) throws IOException, JsonValidationException {
-    List<String> sourceDefinitionsToMigrate = new ArrayList<>();
-    List<String> destinationDefinitionsToMigrate = new ArrayList<>();
+  private <T> void importConfigsFromArchive(final Path sourceRoot, Optional<Path> seedPath, final boolean dryRun)
+      throws IOException, JsonValidationException {
+    final List<String> sourceDefinitionsToMigrate = new ArrayList<>();
+    final List<String> destinationDefinitionsToMigrate = new ArrayList<>();
     final boolean[] sourceProcessed = {false};
     final boolean[] destinationProcessed = {false};
-    List<String> directories = listDirectories(sourceRoot);
+    final List<String> directories = listDirectories(sourceRoot);
     // We sort the directories cause we want to process SOURCE_CONNECTION before
     // STANDARD_SOURCE_DEFINITION and DESTINATION_CONNECTION before STANDARD_DESTINATION_DEFINITION
     // so that we can identify which definitions should not be upgraded to the latest version
     Collections.sort(directories);
-    Map<ConfigSchema, Stream<T>> data = new LinkedHashMap<>();
-    Map<ConfigSchema, Map<String, T>> latestSeeds = latestSeeds();
+    final Map<ConfigSchema, Stream<T>> data = new LinkedHashMap<>();
+
+    final Map<ConfigSchema, Map<String, T>> seed;
+    if (seedPath.isPresent()) {
+      seed = getSeed(seedPath.get());
+    } else {
+      seed = new HashMap<>();
+    }
     for (String directory : directories) {
-      ConfigSchema configSchema = ConfigSchema.valueOf(directory.replace(".yaml", ""));
+      final Optional<ConfigSchema> configSchemaOptional = Enums.toEnum(directory.replace(".yaml", ""), ConfigSchema.class);
+
+      if (configSchemaOptional.isEmpty()) {
+        continue;
+      }
+
+      final ConfigSchema configSchema = configSchemaOptional.get();
       Stream<T> configs = readConfigsFromArchive(sourceRoot, configSchema);
-      configs = streamWithAdditionalOperation(sourceDefinitionsToMigrate, destinationDefinitionsToMigrate, sourceProcessed, destinationProcessed,
-          configSchema, configs, latestSeeds);
+      configs = streamWithAdditionalOperation(
+          sourceDefinitionsToMigrate,
+          destinationDefinitionsToMigrate,
+          sourceProcessed,
+          destinationProcessed,
+          configSchema,
+          configs,
+          seed);
       data.put(configSchema, configs);
     }
     configRepository.replaceAllConfigs(data, dryRun);
   }
 
-  private <T> Map<ConfigSchema, Map<String, T>> latestSeeds() throws IOException {
-    List<ConfigSchema> configSchemas = Files.list(latestSeed).map(c -> ConfigSchema.valueOf(c.getFileName().toString())).collect(Collectors.toList());
-    Map<ConfigSchema, Map<String, T>> allData = new HashMap<>();
+  private <T> Map<ConfigSchema, Map<String, T>> getSeed(Path seed) throws IOException {
+    final List<ConfigSchema> configSchemas = Files.list(seed).map(c -> ConfigSchema.valueOf(c.getFileName().toString())).collect(Collectors.toList());
+    final Map<ConfigSchema, Map<String, T>> allData = new HashMap<>();
     for (ConfigSchema configSchema : configSchemas) {
-      Map<String, T> data = readLatestSeed(configSchema);
+      final Map<String, T> data = readLatestSeed(seed, configSchema);
       allData.put(configSchema, data);
     }
     return allData;
   }
 
-  private <T> Map<String, T> readLatestSeed(ConfigSchema configSchema) throws IOException {
+  private <T> Map<String, T> readLatestSeed(Path latestSeed, ConfigSchema configSchema) throws IOException {
     try (Stream<Path> files = Files.list(latestSeed.resolve(configSchema.toString()))) {
       final List<String> ids = files
           .filter(p -> !p.endsWith(".json"))
@@ -272,7 +298,7 @@ public class ConfigDumpImport {
     }
 
     return Streams.concat(configs.filter(c -> definitionsToMigrate.contains(configSchema.getId(c))),
-        latestSeeds.get(configSchema).entrySet().stream().filter(c -> !definitionsToMigrate.contains(c.getKey()))
+        latestSeeds.getOrDefault(configSchema, new HashMap<>()).entrySet().stream().filter(c -> !definitionsToMigrate.contains(c.getKey()))
             .map(Entry::getValue));
   }
 
@@ -313,8 +339,7 @@ public class ConfigDumpImport {
   }
 
   // Postgres Portion
-  public void importDatabaseFromArchive(final Path storageRoot, final String airbyteVersion)
-      throws IOException {
+  public void importDatabaseFromArchive(final Path storageRoot, final String airbyteVersion) throws IOException {
     try {
       final Map<DatabaseSchema, Stream<JsonNode>> data = new HashMap<>();
       for (DatabaseSchema tableType : DatabaseSchema.values()) {
@@ -324,8 +349,7 @@ public class ConfigDumpImport {
       postgresPersistence.importDatabase(airbyteVersion, data);
       LOGGER.info("Successful upgrade of airbyte postgres database from archive");
     } catch (Exception e) {
-      LOGGER.warn("Postgres database version upgrade failed, setting DB version back to initial version");
-      postgresPersistence.setVersion(initialVersion);
+      LOGGER.warn("Postgres database version upgrade failed, reverting to state previous to migration.");
       throw e;
     }
   }

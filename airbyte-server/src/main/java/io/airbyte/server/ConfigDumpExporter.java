@@ -56,7 +56,7 @@ import org.apache.commons.io.FileUtils;
  * would fail. 2. Unlike ArchiveHandler, this doesn't take the dump of specific files but looks at
  * the config directory and takes the full dump of whatever is available
  */
-public class ConfigDumpExport {
+public class ConfigDumpExporter {
 
   private static final String ARCHIVE_FILE_NAME = "airbyte_config_dump";
   private static final String CONFIG_FOLDER_NAME = "airbyte_config";
@@ -64,12 +64,10 @@ public class ConfigDumpExport {
   private static final String VERSION_FILE_NAME = "VERSION";
   private final ConfigRepository configRepository;
   private final JobPersistence jobPersistence;
-  private final String version;
 
-  public ConfigDumpExport(ConfigRepository configRepository, JobPersistence jobPersistence, String version) {
+  public ConfigDumpExporter(ConfigRepository configRepository, JobPersistence jobPersistence) {
     this.configRepository = configRepository;
     this.jobPersistence = jobPersistence;
-    this.version = version;
   }
 
   public File dump() {
@@ -88,6 +86,7 @@ public class ConfigDumpExport {
   }
 
   private void exportVersionFile(Path tempFolder) throws IOException {
+    final String version = jobPersistence.getVersion().orElseThrow();
     final File versionFile = Files.createFile(tempFolder.resolve(VERSION_FILE_NAME)).toFile();
     FileUtils.writeStringToFile(versionFile, version, Charset.defaultCharset());
   }
