@@ -65,3 +65,8 @@
   dockerRepository: airbyte/destination-oracle
   dockerImageTag: 0.1.1
   documentationUrl: https://docs.airbyte.io/integrations/destinations/oracle
+- destinationDefinitionId: 4c634954-5e6d-4abe-86a0-129bd9de81c9
+  name: Rockset (Alpha)
+  dockerRepository: airbyte/destination-rockset
+  dockerImageTag: 0.1.1
+  documentationUrl: https://docs.airbyte.io/integrations/destinations/rockset

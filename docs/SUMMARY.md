@@ -109,6 +109,7 @@
     * [Redshift](integrations/destinations/redshift.md)
     * [S3](integrations/destinations/s3.md)
     * [Snowflake](integrations/destinations/snowflake.md)
+    * [Rockset](integrations/destinations/rockset.md)
   * [Custom or New Connector](integrations/custom-connectors.md)
 * [Contributing to Airbyte](contributing-to-airbyte/README.md)
   * [Code of Conduct](contributing-to-airbyte/code-of-conduct.md)
