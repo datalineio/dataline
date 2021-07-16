@@ -1,0 +1,32 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/source/bigquery",
+  "supportsIncremental": true,
+  "supportsNormalization": true,
+  "supportsDBT": true,
+  "supported_destination_sync_modes": ["overwrite", "append", "append_dedup"],
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "BigQuery Destination Spec",
+    "type": "object",
+    "required": ["project_id", "credentials_json"],
+    "additionalProperties": false,
+    "properties": {
+      "project_id": {
+        "type": "string",
+        "description": "The GCP project ID for the project containing the target BigQuery dataset.",
+        "title": "Project ID"
+      },
+      "dataset_id": {
+        "type": "string",
+        "description": "The BigQuery Dataset ID to look for tables to replicate from.",
+        "title": "Default Dataset ID"
+      },
+      "credentials_json": {
+        "type": "string",
+        "description": "The contents of the JSON service account key. Check out the <a href=\"https://docs.airbyte.io/integrations/source/bigquery\">docs</a> if you need help generating this key.",
+        "title": "Credentials JSON",
+        "airbyte_secret": true
+      }
+    }
+  }
+}

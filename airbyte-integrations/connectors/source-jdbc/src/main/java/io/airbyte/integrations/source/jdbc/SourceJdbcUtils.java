@@ -24,7 +24,7 @@
 
 package io.airbyte.integrations.source.jdbc;
 
-import io.airbyte.db.jdbc.JdbcUtils;
+import io.airbyte.db.DataTypeUtils;
 import io.airbyte.protocol.models.JsonSchemaPrimitive;
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -53,7 +53,7 @@ public class SourceJdbcUtils {
       case TIME, TIMESTAMP -> {
         try {
           preparedStatement.setTimestamp(parameterIndex, Timestamp
-              .from(JdbcUtils.DATE_FORMAT.parse(value).toInstant()));
+              .from(DataTypeUtils.DATE_FORMAT.parse(value).toInstant()));
         } catch (ParseException e) {
           throw new RuntimeException(e);
         }
@@ -61,7 +61,7 @@ public class SourceJdbcUtils {
 
       case DATE -> {
         try {
-          Timestamp from = Timestamp.from(JdbcUtils.DATE_FORMAT.parse(value).toInstant());
+          Timestamp from = Timestamp.from(DataTypeUtils.DATE_FORMAT.parse(value).toInstant());
           preparedStatement.setDate(parameterIndex, new Date(from.getTime()));
         } catch (ParseException e) {
           throw new RuntimeException(e);

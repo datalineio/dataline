@@ -224,6 +224,10 @@ public class TestDataHolder {
     return expectedValues;
   }
 
+  public List<String> getValues() {
+    return values;
+  }
+
   public String getNameWithTestPrefix() {
     return nameSpace + "_" + testNumber + "_" + sourceType;
   }

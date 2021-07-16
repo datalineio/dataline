@@ -14,4 +14,12 @@ dependencies {
 
     testImplementation 'org.apache.commons:commons-lang3:3.11'
     testImplementation "org.testcontainers:postgresql:1.15.1"
+
+    // Big Query
+    implementation platform('com.google.cloud:libraries-bom:20.6.0')
+    implementation('com.google.cloud:google-cloud-bigquery:1.133.1')
+
+    // Lombok
+    implementation 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor('org.projectlombok:lombok:1.18.20')
 }

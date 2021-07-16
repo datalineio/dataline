@@ -1,0 +1,31 @@
+plugins {
+    id 'application'
+    id 'airbyte-docker'
+    id 'airbyte-integration-test-java'
+}
+
+application {
+    mainClass = 'io.airbyte.integrations.source.bigquery.BigQuerySource'
+}
+
+dependencies {
+    implementation 'com.google.cloud:google-cloud-bigquery:1.122.2'
+    implementation 'org.apache.commons:commons-lang3:3.11'
+    implementation project(':airbyte-db')
+    implementation project(':airbyte-integrations:bases:base-java')
+    implementation project(':airbyte-protocol:models')
+    implementation project(':airbyte-integrations:connectors:source-jdbc')
+    implementation project(':airbyte-integrations:connectors:source-relational-db')
+
+    //TODO Add jdbc driver import here. Ex: implementation 'com.microsoft.sqlserver:mssql-jdbc:8.4.1.jre14'
+
+    testImplementation testFixtures(project(':airbyte-integrations:connectors:source-jdbc'))
+
+    testImplementation 'org.apache.commons:commons-lang3:3.11'
+
+    integrationTestJavaImplementation project(':airbyte-integrations:connectors:source-bigquery')
+    integrationTestJavaImplementation project(':airbyte-integrations:bases:standard-source-test')
+
+    implementation files(project(':airbyte-integrations:bases:base-java').airbyteDocker.outputs)
+    integrationTestJavaImplementation files(project(':airbyte-integrations:bases:base-java').airbyteDocker.outputs)
+}

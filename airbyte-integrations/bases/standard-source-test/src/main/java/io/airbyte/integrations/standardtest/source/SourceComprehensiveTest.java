@@ -39,6 +39,7 @@ import io.airbyte.protocol.models.Field;
 import io.airbyte.protocol.models.JsonSchemaPrimitive;
 import io.airbyte.protocol.models.SyncMode;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -107,7 +108,6 @@ public abstract class SourceComprehensiveTest extends SourceAbstractTest {
     ConfiguredAirbyteCatalog catalog = getConfiguredCatalog();
     List<AirbyteMessage> allMessages = runRead(catalog);
     final List<AirbyteMessage> recordMessages = allMessages.stream().filter(m -> m.getType() == Type.RECORD).collect(Collectors.toList());
-
     Map<String, List<String>> expectedValues = new HashMap<>();
     testDataHolders.forEach(testDataHolder -> {
       if (!testDataHolder.getExpectedValues().isEmpty())
@@ -125,15 +125,19 @@ public abstract class SourceComprehensiveTest extends SourceAbstractTest {
       }
     });
 
-    expectedValues.forEach((streamName, values) -> {
-      assertTrue(values.isEmpty(), "The streamer " + streamName + " should return all expected values. Missing values: " + values);
-    });
+    expectedValues.forEach((streamName, values) -> assertTrue(values.isEmpty(),
+        "The streamer " + streamName + " should return all expected values. Missing values: " + values));
   }
 
   private String getValueFromJsonNode(JsonNode jsonNode) {
-    String value = (jsonNode != null ? jsonNode.asText() : null);
-    value = (value != null && value.equals("null") ? null : value);
-    return value;
+    if (jsonNode != null) {
+      String nodeText = jsonNode.asText();
+      String nodeString = jsonNode.toString();
+      String value = (nodeText != null && !nodeText.equals("") ? nodeText : nodeString);
+      value = (value != null && value.equals("null") ? null : value);
+      return value;
+    } else
+      return null;
   }
 
   /**
@@ -199,6 +203,34 @@ public abstract class SourceComprehensiveTest extends SourceAbstractTest {
     test.setNameSpace(getNameSpace());
     test.setIdColumnName(getIdColumnName());
     test.setTestColumnName(getTestColumnName());
+  }
+
+  private String formatCollection(Collection<String> collection) {
+    return collection.stream().map(s -> "`" + s + "`").collect(Collectors.joining(", "));
+  }
+
+  /**
+   * Builds a table with all registered test cases with values using Markdown syntax (can be used in
+   * the github).
+   *
+   * @return formatted list of test cases
+   */
+  public String getMarkdownTestTable() {
+    StringBuilder table = new StringBuilder()
+        .append("|**Data Type**|**Insert values**|**Expected values**|**Comment**|**Common test result**|\n")
+        .append("|----|----|----|----|----|\n");
+
+    testDataHolders.forEach(test -> table.append(String.format("| %s | %s | %s | %s | %s |\n",
+        test.getSourceType(),
+        formatCollection(test.getValues()),
+        formatCollection(test.getExpectedValues()),
+        "",
+        "Ok")));
+    return table.toString();
+  }
+
+  protected void printMarkdownTestTable() {
+    LOGGER.info(getMarkdownTestTable());
   }
 
 }
