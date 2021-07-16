@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-import { Cell } from "components/SimpleTableComponents";
+import { LightTextCell } from "components/SimpleTableComponents";
 import { CheckBox } from "components";
 
 type MainInfoCellProps = {
@@ -32,7 +32,7 @@ const Arrow = styled(FontAwesomeIcon)<{ $isOpen?: boolean }>`
   cursor: pointer;
 `;
 
-const MainCell = styled(Cell)`
+const MainCell = styled(LightTextCell)`
   overflow: hidden;
 `;
 
@@ -61,7 +61,7 @@ const MainInfoCell: React.FC<MainInfoCellProps> = ({
   depth,
 }) => {
   return (
-    <MainCell flex={2}>
+    <MainCell flex={1.5}>
       <Content depth={depth}>
         {(isItemHasChildren || !depth) && (
           <ArrowContainer>

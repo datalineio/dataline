@@ -34,6 +34,7 @@ export const theme = {
   greyColor0: "#F7F7FA",
 
   whiteColor: "#FFFFFF",
+  whiteColor5: "rgba(255, 255, 255, .5)",
 
   regularFont: "Inter, Arial, sans-serif",
   highlightFont: "Montserrat, Arial, sans-serif",

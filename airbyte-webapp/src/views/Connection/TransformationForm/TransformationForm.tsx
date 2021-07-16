@@ -131,7 +131,7 @@ const TransformationForm: React.FC<TransformationProps> = ({
         <Column>
           <Label label={<FormattedMessage id="form.transformationType" />}>
             <DropDown
-              data={TransformationTypes}
+              options={TransformationTypes}
               value="custom"
               placeholder={formatMessage({ id: "form.selectType" })}
             />

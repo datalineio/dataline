@@ -1,8 +1,7 @@
 import React, { useCallback } from "react";
-import { Field, setIn, FastFieldProps } from "formik";
+import { FastFieldProps, Field, setIn } from "formik";
 
 import {
-  AirbyteStream,
   AirbyteStreamConfiguration,
   DestinationSyncMode,
   SyncSchemaStream,
@@ -12,29 +11,29 @@ import { CatalogSection } from "./CatalogSection";
 type IProps = {
   streams: SyncSchemaStream[];
   destinationSupportedSyncModes: DestinationSyncMode[];
-  onChangeSchema: (schema: SyncSchemaStream[]) => void;
+  onChangeStream: (stream: SyncSchemaStream) => void;
 };
 
 const CatalogTree: React.FC<IProps> = ({
   streams,
   destinationSupportedSyncModes,
-  onChangeSchema,
+  onChangeStream,
 }) => {
   const onUpdateStream = useCallback(
-    (stream: AirbyteStream, newStream: Partial<AirbyteStreamConfiguration>) => {
-      const newSchema = streams.map((streamNode) => {
-        return streamNode.stream === stream
-          ? setIn(
-              streamNode,
-              "config",
-              Object.assign({}, streamNode.config, newStream)
-            )
-          : streamNode;
-      });
+    (id: string, newStream: Partial<AirbyteStreamConfiguration>) => {
+      const streamNode = streams.find((streamNode) => streamNode.id === id);
 
-      onChangeSchema(newSchema);
+      if (streamNode) {
+        const newStreamNode = setIn(
+          streamNode,
+          "config",
+          Object.assign({}, streamNode.config, newStream)
+        );
+
+        onChangeStream(newStreamNode);
+      }
     },
-    [streams, onChangeSchema]
+    [streams, onChangeStream]
   );
 
   return (

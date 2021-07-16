@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { FormattedMessage, useIntl } from "react-intl";
 
-import { H3, H5, DropDown } from "components/base";
-import { IDataItem } from "components/base/DropDown/components/ListItem";
+import { Button, DropDownRow, H3, H5 } from "components";
+import { Popout } from "components/base/Popout/Popout";
 
 type IProps = {
   type: "source" | "destination";
-  dropDownData: IDataItem[];
-  onSelect: (item: IDataItem) => void;
+  dropDownData: DropDownRow.IDataItem[];
+  onSelect: (item: DropDownRow.IDataItem) => void;
   entity: string;
   entityName: string;
   entityIcon?: React.ReactNode;
@@ -61,11 +61,16 @@ const TableItemTitle: React.FC<IProps> = ({
         <H5>
           <FormattedMessage id="tables.connections" />
         </H5>
-        <DropDown
+        <Popout
           onChange={onSelect}
-          data={[
+          targetComponent={({ onOpen }: any) => (
+            <Button onClick={onOpen}>
+              <FormattedMessage id={`tables.${type}Add`} />
+            </Button>
+          )}
+          options={[
             {
-              text: formatMessage({
+              label: formatMessage({
                 id: `tables.${type}AddNew`,
               }),
               value: "create-new-item",
@@ -74,10 +79,6 @@ const TableItemTitle: React.FC<IProps> = ({
             ...dropDownData,
           ]}
           hasFilter
-          withButton
-          textButton={formatMessage({
-            id: `tables.${type}Add`,
-          })}
         />
       </Content>
     </>

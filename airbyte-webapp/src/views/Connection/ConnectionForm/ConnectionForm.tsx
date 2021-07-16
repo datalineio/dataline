@@ -7,7 +7,6 @@ import { ModalTypes } from "components/ResetDataModal/types";
 import { equal } from "utils/objects";
 
 import { ControlLabels, DropDown, DropDownRow, Input, Label } from "components";
-import FrequencyConfig from "config/FrequencyConfig.json";
 
 import { useDestinationDefinitionSpecificationLoadAsync } from "components/hooks/services/useDestinationHook";
 import { createFormErrorMessage } from "utils/errorStatusMessage";
@@ -180,17 +179,13 @@ const ConnectionForm: React.FC<ConnectionFormProps> = ({
                 >
                   <DropDown
                     {...field}
-                    value={
-                      FrequencyConfig.find((f) => equal(f.config, field.value))
-                        ?.value
-                    }
                     error={!!meta.error && meta.touched}
-                    data={frequencies}
+                    options={frequencies}
                     onChange={(item) => {
                       if (onDropDownSelect) {
                         onDropDownSelect(item);
                       }
-                      setFieldValue(field.name, item.config);
+                      setFieldValue(field.name, item.value);
                     }}
                   />
                 </ConnectorLabel>

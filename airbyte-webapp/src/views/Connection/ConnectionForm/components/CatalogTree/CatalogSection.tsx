@@ -1,40 +1,29 @@
 import React, { memo, useCallback, useMemo } from "react";
 import { useToggle } from "react-use";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import styled from "styled-components";
-import { getIn, FormikErrors } from "formik";
+import { FormikErrors, getIn, useField } from "formik";
 
 import {
-  AirbyteStream,
   AirbyteStreamConfiguration,
   DestinationSyncMode,
+  getDestinationNamespace,
   SyncMode,
   SyncSchemaField,
   SyncSchemaFieldObject,
   SyncSchemaStream,
 } from "core/domain/catalog";
 import { traverseSchemaToField } from "core/domain/catalog/fieldUtil";
-
-import { Cell } from "components/SimpleTableComponents";
-import { RadioButton, CheckBox, DropDownRow } from "components";
-
-import { MainInfoCell } from "./components/MainInfoCell";
-import { SyncSettingsCell } from "./components/SyncSettingsCell";
-import { ExpandFieldCell } from "./components/ExpandFieldCell";
-import { OverflowCell } from "./components/OverflowCell";
+import { DropDownRow } from "components";
 import { TreeRowWrapper } from "./components/TreeRowWrapper";
 import { Rows } from "./components/Rows";
 
-import { equal, naturalComparatorBy } from "utils/objects";
 import { ConnectionFormValues, SUPPORTED_MODES } from "../../formConfig";
+import { StreamHeader } from "./StreamHeader";
+import { FieldHeader } from "./FieldHeader";
+import { FieldRow } from "./FieldRow";
 
-const StyledRadioButton = styled(RadioButton)`
-  vertical-align: middle;
-`;
-
-const EmptyField = styled.span`
-  color: ${({ theme }) => theme.greyColor40};
-`;
+import { equal, naturalComparatorBy } from "utils/objects";
 
 const Section = styled.div<{ error?: boolean }>`
   border: 1px solid
@@ -46,7 +35,7 @@ type TreeViewRowProps = {
   errors: FormikErrors<ConnectionFormValues>;
   destinationSupportedSyncModes: DestinationSyncMode[];
   updateStream: (
-    stream: AirbyteStream,
+    id: string,
     newConfiguration: Partial<AirbyteStreamConfiguration>
   ) => void;
 };
@@ -64,20 +53,13 @@ const CatalogSectionInner: React.FC<TreeViewRowProps> = ({
 
   const updateStreamWithConfig = useCallback(
     (config: Partial<AirbyteStreamConfiguration>) =>
-      updateStream(stream, config),
-    [updateStream, stream]
+      updateStream(streamNode.id, config),
+    [updateStream, streamNode]
   );
 
   const onSelectSyncMode = useCallback(
-    (
-      data: DropDownRow.IDataItem & {
-        rawValue: {
-          syncMode: SyncMode;
-          destinationSyncMode: DestinationSyncMode;
-        };
-      }
-    ) => {
-      updateStreamWithConfig(data.rawValue);
+    (data: DropDownRow.IDataItem | null) => {
+      data && updateStreamWithConfig(data.value);
     },
     [updateStreamWithConfig]
   );
@@ -128,7 +110,6 @@ const CatalogSectionInner: React.FC<TreeViewRowProps> = ({
     stream.sourceDefinedPrimaryKey.length === 0 && pkRequired;
   const showCursorControl = !stream.sourceDefinedCursor && cursorRequired;
 
-  const pkKeyItems = config.primaryKey.map((k) => k.join("."));
   const selectedCursorPath = config.cursorField.join(".");
 
   const fields = useMemo(() => {
@@ -146,9 +127,8 @@ const CatalogSectionInner: React.FC<TreeViewRowProps> = ({
           stream.supportedSyncModes.includes(syncMode) &&
           destinationSupportedSyncModes.includes(destinationSyncMode)
       ).map(([syncMode, destinationSyncMode]) => ({
-        value: `${syncMode}.${destinationSyncMode}`,
-        rawValue: { syncMode, destinationSyncMode },
-        text: formatMessage(
+        value: { syncMode, destinationSyncMode },
+        label: formatMessage(
           {
             id: "connection.stream.syncMode",
             defaultMessage: `${syncMode}.${destinationSyncMode}`,
@@ -172,92 +152,58 @@ const CatalogSectionInner: React.FC<TreeViewRowProps> = ({
 
   const configErrors = getIn(errors, `schema.streams[${streamNode.id}].config`);
   const hasError = configErrors && Object.keys(configErrors).length > 0;
+  const [{ value: namespaceDefinition }] = useField("namespaceDefinition");
+  const [{ value: namespaceFormat }] = useField("namespaceFormat");
+  const destNamespace = getDestinationNamespace({
+    namespaceDefinition,
+    namespaceFormat,
+    sourceNamespace: stream.namespace,
+  });
 
   return (
     <Section error={hasError}>
       <TreeRowWrapper>
-        <MainInfoCell
-          label={stream.name}
-          onCheckBoxClick={onSelectStream}
+        <StreamHeader
+          stream={streamNode}
+          destNamespace={destNamespace}
+          destName={streamNode.stream.name}
+          availableSyncModes={availableSyncModes}
+          onSelectStream={onSelectStream}
+          onSelectSyncMode={onSelectSyncMode}
+          isRowExpanded={isRowExpanded}
+          hasFields={hasChildren}
           onExpand={onExpand}
-          isItemChecked={config.selected}
-          isItemHasChildren={hasChildren}
-          isItemOpen={isRowExpanded}
-        />
-        <Cell>
-          {stream.namespace || (
-            <EmptyField>
-              <FormattedMessage id="form.noNamespace" />
-            </EmptyField>
-          )}
-        </Cell>
-        <Cell />
-        <OverflowCell title={config.aliasName}>{config.aliasName}</OverflowCell>
-        <Cell>
-          {pkRequired && (
-            <ExpandFieldCell
-              onExpand={onExpand}
-              isItemOpen={isRowExpanded}
-              tooltipItems={pkKeyItems}
-            >
-              <FormattedMessage
-                id="form.pkSelected"
-                values={{ count: pkKeyItems.length, items: pkKeyItems }}
-              />
-            </ExpandFieldCell>
-          )}
-        </Cell>
-        <Cell>
-          {cursorRequired && (
-            <ExpandFieldCell onExpand={onExpand} isItemOpen={isRowExpanded}>
-              {config.cursorField.join(".")}
-            </ExpandFieldCell>
-          )}
-        </Cell>
-        <SyncSettingsCell
-          value={`${config.syncMode}.${config.destinationSyncMode}`}
-          data={availableSyncModes}
-          onChange={onSelectSyncMode}
         />
       </TreeRowWrapper>
       {isRowExpanded && hasChildren && (
-        <Rows fields={fields} depth={1}>
-          {(field, depth) => (
-            <TreeRowWrapper depth={0}>
-              {/*// TODO hack for v0.2.0: don't allow checking any of the children aka fields in a stream.*/}
-              {/*// hideCheckbox={true} should be removed once it's possible to select these again.*/}
-              {/*// https://airbytehq.slack.com/archives/C01CWUQT7UJ/p1603173180066800*/}
-              <MainInfoCell
-                hideCheckbox={true}
-                label={field.name}
-                depth={depth}
-              />
-              <Cell />
-              <OverflowCell>{field.type}</OverflowCell>
-              <OverflowCell title={field.cleanedName}>
-                {field.cleanedName}
-              </OverflowCell>
-              <OverflowCell>
-                {showPkControl && SyncSchemaFieldObject.isPrimitive(field) && (
-                  <CheckBox
-                    checked={pkPaths.has(field.name)}
-                    onClick={() => onPkSelect(field)}
-                  />
-                )}
-              </OverflowCell>
-              <Cell>
-                {showCursorControl &&
-                  SyncSchemaFieldObject.isPrimitive(field) && (
-                    <StyledRadioButton
-                      checked={field.name === selectedCursorPath}
-                      onClick={() => onCursorSelect(field)}
-                    />
-                  )}
-              </Cell>
-              <Cell flex={1.5} />
-            </TreeRowWrapper>
-          )}
-        </Rows>
+        <>
+          <TreeRowWrapper noBorder>
+            <FieldHeader depth={1} />
+          </TreeRowWrapper>
+          <Rows fields={fields} depth={1}>
+            {(field) => (
+              <TreeRowWrapper depth={1}>
+                <FieldRow
+                  depth={1}
+                  name={field.name}
+                  type={field.type}
+                  destinationName={field.cleanedName}
+                  isCursor={field.name === selectedCursorPath}
+                  isPrimaryKey={pkPaths.has(field.name)}
+                  isPrimaryKeyEnabled={
+                    showPkControl && SyncSchemaFieldObject.isPrimitive(field)
+                  }
+                  isCursorEnabled={
+                    showCursorControl &&
+                    SyncSchemaFieldObject.isPrimitive(field)
+                  }
+                  onPrimaryKeyChange={() => onPkSelect(field)}
+                  onCursorChange={() => onCursorSelect(field)}
+                />
+              </TreeRowWrapper>
+            )}
+          </Rows>
+        </>
       )}
     </Section>
   );

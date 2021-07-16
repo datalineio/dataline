@@ -22,6 +22,7 @@ import useConnection, {
 import { useDiscoverSchema } from "components/hooks/services/useSchemaHook";
 import SourceDefinitionResource from "core/resources/SourceDefinition";
 import DestinationDefinitionResource from "core/resources/DestinationDefinition";
+import { IDataItem } from "../base/DropDown/components/Option";
 
 const SkipButton = styled.div`
   margin-top: 6px;
@@ -119,10 +120,10 @@ const CreateConnectionContent: React.FC<IProps> = ({
     }
   };
 
-  const onSelectFrequency = (item: { text: string }) => {
+  const onSelectFrequency = (item: IDataItem | null) => {
     AnalyticsService.track("New Connection - Action", {
       action: "Select a frequency",
-      frequency: item?.text,
+      frequency: item?.label,
       connector_source_definition: source?.sourceName,
       connector_source_definition_id: source?.sourceDefinitionId,
       connector_destination_definition: destination?.destinationName,

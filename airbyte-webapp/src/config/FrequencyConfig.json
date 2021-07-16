@@ -1,12 +1,10 @@
 [
   {
     "text": "manual",
-    "value": "manual",
     "config": null
   },
   {
     "text": "5 min",
-    "value": "5m",
     "config": {
       "units": 5,
       "timeUnit": "minutes"
@@ -14,7 +12,6 @@
   },
   {
     "text": "15 min",
-    "value": "15m",
     "config": {
       "units": 15,
       "timeUnit": "minutes"
@@ -22,7 +19,6 @@
   },
   {
     "text": "30 min",
-    "value": "30m",
     "config": {
       "units": 30,
       "timeUnit": "minutes"
@@ -31,7 +27,6 @@
   {
     "text": "1 hour",
     "simpleText": "hour",
-    "value": "1h",
     "config": {
       "units": 1,
       "timeUnit": "hours"
@@ -39,7 +34,6 @@
   },
   {
     "text": "2 hours",
-    "value": "2h",
     "config": {
       "units": 2,
       "timeUnit": "hours"
@@ -47,7 +41,6 @@
   },
   {
     "text": "3 hours",
-    "value": "3h",
     "config": {
       "units": 3,
       "timeUnit": "hours"
@@ -55,7 +48,6 @@
   },
   {
     "text": "6 hours",
-    "value": "6h",
     "config": {
       "units": 6,
       "timeUnit": "hours"
@@ -63,7 +55,6 @@
   },
   {
     "text": "8 hours",
-    "value": "8h",
     "config": {
       "units": 8,
       "timeUnit": "hours"
@@ -71,7 +62,6 @@
   },
   {
     "text": "12 hours",
-    "value": "12h",
     "config": {
       "units": 12,
       "timeUnit": "hours"
@@ -79,7 +69,6 @@
   },
   {
     "text": "24 hours",
-    "value": "24h",
     "config": {
       "units": 24,
       "timeUnit": "hours"

@@ -33,15 +33,15 @@ const NamespaceField: React.FC = () => {
     () => [
       {
         value: ConnectionNamespaceDefinition.Source,
-        text: <FormattedMessage id="connectionForm.sourceFormat" />,
+        label: <FormattedMessage id="connectionForm.sourceFormat" />,
       },
       {
         value: ConnectionNamespaceDefinition.Destination,
-        text: <FormattedMessage id="connectionForm.destinationFormat" />,
+        label: <FormattedMessage id="connectionForm.destinationFormat" />,
       },
       {
         value: ConnectionNamespaceDefinition.CustomFormat,
-        text: <FormattedMessage id="connectionForm.customFormat" />,
+        label: <FormattedMessage id="connectionForm.customFormat" />,
       },
     ],
     []
@@ -70,7 +70,7 @@ const NamespaceField: React.FC = () => {
               }
             >
               <DropDown
-                data={definitions}
+                options={definitions}
                 value={field.value}
                 onChange={({ value }) => form.setFieldValue(field.name, value)}
               />

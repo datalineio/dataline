@@ -74,7 +74,7 @@ const ConnectorServiceTypeControl: React.FC<{
     () =>
       availableServices
         .map((item: SourceDefinition | DestinationDefinition) => ({
-          text: item.name,
+          label: item.name,
           value: isSourceDefinition(item)
             ? item.sourceDefinitionId
             : item.destinationDefinitionId,
@@ -96,10 +96,12 @@ const ConnectorServiceTypeControl: React.FC<{
   );
 
   const handleSelect = useCallback(
-    (item: DropDownRow.IDataItem) => {
-      setValue(item.value);
-      if (onChangeServiceType) {
-        onChangeServiceType(item.value);
+    (item: DropDownRow.IDataItem | null) => {
+      if (item) {
+        setValue(item.value);
+        if (onChangeServiceType) {
+          onChangeServiceType(item.value);
+        }
       }
     },
     [setValue, onChangeServiceType]
@@ -117,7 +119,7 @@ const ConnectorServiceTypeControl: React.FC<{
           listComponent={ConnectorList}
           listProps={{ onClick: onOpenRequestConnectorModal }}
           error={!!fieldMeta.error && fieldMeta.touched}
-          disabled={isEditMode && !allowChangeConnector}
+          isDisabled={isEditMode && !allowChangeConnector}
           hasFilter
           placeholder={formatMessage({
             id: "form.selectConnector",
@@ -125,7 +127,7 @@ const ConnectorServiceTypeControl: React.FC<{
           filterPlaceholder={formatMessage({
             id: "form.searchName",
           })}
-          data={sortedDropDownData}
+          options={sortedDropDownData}
           onChange={handleSelect}
         />
       </DropdownLabels>

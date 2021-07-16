@@ -1,25 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 
 import { Cell } from "components/SimpleTableComponents";
-import { DropDown, DropdownProps } from "components/base";
-
-const DropDownContainer = styled.div`
-  padding-right: 10px;
-`;
-
-const StyledDropDown = styled(DropDown)`
-  & ~ .rw-popup-container {
-    min-width: 260px;
-    left: auto;
-  }
-`;
+import { DropDown, DropdownProps } from "components";
 
 const SyncSettingsCell: React.FC<DropdownProps> = (props) => (
   <Cell flex={1.5}>
-    <DropDownContainer>
-      <StyledDropDown {...props} fullText withBorder />
-    </DropDownContainer>
+    <DropDown {...props} fullText withBorder />
   </Cell>
 );
 

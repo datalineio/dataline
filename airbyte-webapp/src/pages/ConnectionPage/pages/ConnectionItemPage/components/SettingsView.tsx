@@ -32,7 +32,7 @@ type IProps = {
 };
 
 const Content = styled.div`
-  max-width: 1140px;
+  max-width: 1279px;
   overflow-x: hidden;
   margin: 18px auto;
 `;

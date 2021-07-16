@@ -62,10 +62,11 @@ const ConditionSection: React.FC<{
           {label ? <GroupLabel>{label}:</GroupLabel> : null}
           <DropDown
             data={Object.keys(formField.conditions).map((dataItem) => ({
-              text: dataItem,
+              label: dataItem,
               value: dataItem,
             }))}
             onChange={(selectedItem) =>
+              selectedItem &&
               setUiWidgetsInfo(formField.path, {
                 selectedItem: selectedItem.value,
               })

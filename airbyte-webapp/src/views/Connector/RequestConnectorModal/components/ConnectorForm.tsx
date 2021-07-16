@@ -49,10 +49,10 @@ const ConnectorForm: React.FC<ConnectorFormProps> = ({
 }) => {
   const formatMessage = useIntl().formatMessage;
   const dropdownData = [
-    { value: "source", text: <FormattedMessage id="connector.source" /> },
+    { value: "source", label: <FormattedMessage id="connector.source" /> },
     {
       value: "destination",
-      text: <FormattedMessage id="connector.destination" />,
+      label: <FormattedMessage id="connector.destination" />,
     },
   ];
 
@@ -83,7 +83,7 @@ const ConnectorForm: React.FC<ConnectorFormProps> = ({
               >
                 <DropDown
                   {...field}
-                  data={dropdownData}
+                  options={dropdownData}
                   placeholder={formatMessage({
                     id: "connector.type.placeholder",
                   })}

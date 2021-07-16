@@ -22,6 +22,7 @@ import FrequencyConfig from "config/FrequencyConfig.json";
 import { DestinationDefinitionSpecification } from "core/resources/DestinationDefinitionSpecification";
 import { Connection, ScheduleProperties } from "core/resources/Connection";
 import { ConnectionNamespaceDefinition } from "core/domain/connection";
+import { SOURCE_NAMESPACE_TAG } from "core/domain/connector/source";
 
 type FormikConnectionFormValues = {
   schedule?: ScheduleProperties | null;
@@ -255,7 +256,8 @@ const useInitialValues = (
       prefix: connection.prefix || "",
       namespaceDefinition:
         connection.namespaceDefinition ?? ConnectionNamespaceDefinition.Source,
-      namespaceFormat: connection.namespaceFormat ?? "${SOURCE_NAMESPACE}",
+      // eslint-disable-next-line no-template-curly-in-string
+      namespaceFormat: connection.namespaceFormat ?? SOURCE_NAMESPACE_TAG,
     };
 
     const { operations = [] } = connection;
@@ -291,9 +293,9 @@ const useFrequencyDropdownData = (): DropDownRow.IDataItem[] => {
   return useMemo(
     () =>
       FrequencyConfig.map((item) => ({
-        ...item,
-        text:
-          item.value === "manual"
+        value: item.config,
+        label:
+          item.config === null
             ? item.text
             : formatMessage(
                 {

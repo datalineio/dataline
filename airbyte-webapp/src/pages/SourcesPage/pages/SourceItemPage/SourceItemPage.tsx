@@ -6,7 +6,7 @@ import { useResource } from "rest-hooks";
 import config from "config";
 import { Routes } from "pages/routes";
 
-import { ImageBlock } from "components";
+import { DropDownRow, ImageBlock } from "components";
 import PageTitle from "components/PageTitle";
 import useRouter from "components/hooks/useRouterHook";
 import ContentCard from "components/ContentCard";
@@ -86,7 +86,7 @@ const SourceItemPage: React.FC = () => {
           (dd) => dd.destinationDefinitionId === item.destinationDefinitionId
         );
         return {
-          text: item.name,
+          label: item.name,
           value: item.destinationId,
           img: <ImageBlock img={destinationDef?.icon} />,
         };
@@ -94,7 +94,7 @@ const SourceItemPage: React.FC = () => {
     [destinations, destinationDefinitions]
   );
 
-  const onSelect = (data: { value: string }) => {
+  const onSelect = (data: DropDownRow.IDataItem) => {
     if (data.value === "create-new-item") {
       push({
         pathname: `${Routes.Source}${Routes.ConnectionNew}`,

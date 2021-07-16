@@ -87,11 +87,13 @@ const Control: React.FC<IProps> = ({
         filterPlaceholder={formatMessage({
           id: "form.searchName",
         })}
-        data={property.enum.map((dataItem) => ({
-          text: dataItem?.toString() ?? "",
+        options={property.enum.map((dataItem) => ({
+          label: dataItem?.toString() ?? "",
           value: dataItem?.toString() ?? "",
         }))}
-        onChange={(selectedItem) => form.setValue(selectedItem.value)}
+        onChange={(selectedItem) =>
+          selectedItem && form.setValue(selectedItem.value)
+        }
         value={value}
       />
     );

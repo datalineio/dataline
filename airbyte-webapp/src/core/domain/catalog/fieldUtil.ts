@@ -1,11 +1,13 @@
 import { JSONSchema7Definition } from "json-schema";
 import Status from "core/statuses";
 import { CommonRequestError } from "core/request/CommonRequestError";
+
 import { SourceDiscoverSchemaRead } from "./api";
 import { SyncSchemaField } from "./models";
+import { ConnectionNamespaceDefinition } from "../connection";
+import { SOURCE_NAMESPACE_TAG } from "../connector/source";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function toInnerModel(
+function toInnerModel(
   result: SourceDiscoverSchemaRead
 ): SourceDiscoverSchemaRead {
   if (result.jobInfo?.status === Status.FAILED || !result.catalog) {
@@ -21,7 +23,7 @@ export function toInnerModel(
   return result;
 }
 
-export const traverseSchemaToField = (
+const traverseSchemaToField = (
   jsonSchema: JSONSchema7Definition,
   key: string
 ): SyncSchemaField[] => {
@@ -66,3 +68,37 @@ const traverseJsonSchemaProperties = (
     },
   ];
 };
+
+type NamespaceOptions =
+  | {
+      namespaceDefinition:
+        | ConnectionNamespaceDefinition.Source
+        | ConnectionNamespaceDefinition.Destination;
+      sourceNamespace?: string;
+    }
+  | {
+      namespaceDefinition: ConnectionNamespaceDefinition.CustomFormat;
+      namespaceFormat: string;
+      sourceNamespace?: string;
+    };
+
+function getDestinationNamespace(opt: NamespaceOptions): string {
+  const destinationSetting = "<destination schema>";
+  switch (opt.namespaceDefinition) {
+    case ConnectionNamespaceDefinition.Source:
+      return opt.sourceNamespace ?? destinationSetting;
+    case ConnectionNamespaceDefinition.Destination:
+      return destinationSetting;
+    case ConnectionNamespaceDefinition.CustomFormat:
+      if (!opt.sourceNamespace?.trim()) {
+        return destinationSetting;
+      }
+
+      return opt.namespaceFormat.replace(
+        SOURCE_NAMESPACE_TAG,
+        opt.sourceNamespace
+      );
+  }
+}
+
+export { getDestinationNamespace, traverseSchemaToField, toInnerModel };

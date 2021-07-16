@@ -6,11 +6,13 @@ import styled from "styled-components";
 import type { DestinationSyncMode } from "core/domain/catalog";
 import { SyncSchemaStream } from "core/domain/catalog";
 
-import { Cell, Header, LightCell } from "components/SimpleTableComponents";
+import { CheckBox, LabeledRadioButton } from "components";
+import { Header, LightCell } from "components/SimpleTableComponents";
 import CatalogTree from "./CatalogTree";
 import Search from "./Search";
 import SectionTitle from "./SectionTitle";
 import { naturalComparatorBy } from "utils/objects";
+import { SyncCatalogFilters } from "./SyncCatalogFilters";
 
 const TreeViewContainer = styled.div`
   width: 100%;
@@ -18,7 +20,7 @@ const TreeViewContainer = styled.div`
   margin-bottom: 29px;
   border-radius: 4px;
   max-height: 600px;
-  overflow-y: auto;
+  overflow-y: overlay;
 `;
 
 const SchemaHeader = styled(Header)`
@@ -29,6 +31,26 @@ const SchemaHeader = styled(Header)`
 const SchemaTitle = styled(SectionTitle)`
   display: inline-block;
   margin: 0 11px 13px 0;
+`;
+
+const SelectAll = styled.div`
+  margin: 0 9px 0 30px;
+`;
+
+const NamespaceTitleCell = styled(LightCell)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const SearchContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const RadioButtonControl = styled(LabeledRadioButton)`
+  margin: 0 0 0 5px;
 `;
 
 type SchemaViewProps = {
@@ -45,9 +67,21 @@ const SyncCatalogField: React.FC<SchemaViewProps> = ({
   const { value: streams, name: fieldName } = field;
 
   const [searchString, setSearchString] = useState("");
+  const [filterMode, setFilterMode] = useState(SyncCatalogFilters.All);
+
+  const setField = form.setFieldValue;
+
   const onChangeSchema = useCallback(
-    (newValue: SyncSchemaStream[]) => form.setFieldValue(fieldName, newValue),
-    [fieldName, form.setFieldValue]
+    (newValue: SyncSchemaStream[]) => setField(fieldName, newValue),
+    [fieldName, setField]
+  );
+
+  const onChangeStream = useCallback(
+    (newValue: SyncSchemaStream) =>
+      onChangeSchema(
+        streams.map((str) => (str.id === newValue.id ? newValue : str))
+      ),
+    [streams, onChangeSchema]
   );
 
   const sortedSchema = useMemo(
@@ -57,12 +91,25 @@ const SyncCatalogField: React.FC<SchemaViewProps> = ({
   );
 
   const filteredStreams = useMemo(() => {
-    return searchString
-      ? sortedSchema.filter((stream) =>
-          stream.stream.name.toLowerCase().includes(searchString.toLowerCase())
-        )
-      : sortedSchema;
-  }, [searchString, sortedSchema]);
+    const filters: Array<(s: SyncSchemaStream) => boolean> = [
+      (_: SyncSchemaStream) => true,
+      searchString
+        ? (stream: SyncSchemaStream) =>
+            stream.stream.name
+              .toLowerCase()
+              .includes(searchString.toLowerCase())
+        : null,
+      filterMode !== SyncCatalogFilters.All
+        ? (stream: SyncSchemaStream) =>
+            (filterMode === SyncCatalogFilters.Selected &&
+              stream.config.selected) ||
+            (filterMode === SyncCatalogFilters.NotSelected &&
+              !stream.config.selected)
+        : null,
+    ].filter(Boolean) as Array<(s: SyncSchemaStream) => boolean>;
+
+    return sortedSchema.filter((stream) => filters.every((f) => f(stream)));
+  }, [searchString, filterMode, sortedSchema]);
 
   const hasSelectedItem = useMemo(
     () => filteredStreams.some((streamNode) => streamNode.config.selected),
@@ -72,20 +119,12 @@ const SyncCatalogField: React.FC<SchemaViewProps> = ({
   const onCheckAll = useCallback(() => {
     const allSelectedValues = !hasSelectedItem;
 
-    const newSchema = streams.map((streamNode) => {
-      if (
-        streamNode.stream.name
-          .toLowerCase()
-          .includes(searchString.toLowerCase())
-      ) {
-        return setIn(streamNode, "config.selected", allSelectedValues);
-      }
-
-      return streamNode;
-    });
+    const newSchema = filteredStreams.map((streamNode) =>
+      setIn(streamNode, "config.selected", allSelectedValues)
+    );
 
     onChangeSchema(newSchema);
-  }, [hasSelectedItem, onChangeSchema, streams, searchString]);
+  }, [hasSelectedItem, onChangeSchema, filteredStreams]);
 
   return (
     <>
@@ -95,22 +134,54 @@ const SyncCatalogField: React.FC<SchemaViewProps> = ({
         </SchemaTitle>
         {additionalControl}
       </div>
+      <SearchContent>
+        <Search onSearch={setSearchString} />
+        <RadioButtonControl
+          onChange={(value) => {
+            setFilterMode(value.target.value as SyncCatalogFilters);
+          }}
+          name="FilterAll"
+          value={SyncCatalogFilters.All}
+          checked={filterMode === SyncCatalogFilters.All}
+          label={<FormattedMessage id="form.all" />}
+        />
+        <RadioButtonControl
+          onChange={(value) => {
+            setFilterMode(value.target.value as SyncCatalogFilters);
+          }}
+          name="FilterSelected"
+          value={SyncCatalogFilters.Selected}
+          checked={filterMode === SyncCatalogFilters.Selected}
+          label={<FormattedMessage id="form.selected" />}
+        />
+        <RadioButtonControl
+          onChange={(value) => {
+            setFilterMode(value.target.value as SyncCatalogFilters);
+          }}
+          name="FilterNotSelected"
+          value={SyncCatalogFilters.NotSelected}
+          checked={filterMode === SyncCatalogFilters.NotSelected}
+          label={<FormattedMessage id="form.notSelected" />}
+        />
+      </SearchContent>
       <SchemaHeader>
-        <Cell flex={2}>
-          <Search
-            onCheckAll={onCheckAll}
-            onSearch={setSearchString}
-            hasSelectedItem={hasSelectedItem}
-          />
-        </Cell>
+        <NamespaceTitleCell flex={1.5}>
+          <SelectAll>
+            <CheckBox onChange={onCheckAll} checked={hasSelectedItem} />
+          </SelectAll>
+          <FormattedMessage id="form.sourceNamespace" />
+        </NamespaceTitleCell>
         <LightCell>
-          <FormattedMessage id="form.namespace" />
+          <FormattedMessage id="form.sourceStreamName" />
         </LightCell>
         <LightCell>
-          <FormattedMessage id="form.dataType" />
+          <FormattedMessage id="form.destinationNamespace" />
         </LightCell>
         <LightCell>
-          <FormattedMessage id="form.cleanedName" />
+          <FormattedMessage id="form.destinationStreamName" />
+        </LightCell>
+        <LightCell flex={1.5}>
+          <FormattedMessage id="form.syncMode" />
         </LightCell>
         <LightCell>
           <FormattedMessage id="form.primaryKey" />
@@ -118,14 +189,11 @@ const SyncCatalogField: React.FC<SchemaViewProps> = ({
         <LightCell>
           <FormattedMessage id="form.cursorField" />
         </LightCell>
-        <LightCell flex={1.5}>
-          <FormattedMessage id="form.syncSettings" />
-        </LightCell>
       </SchemaHeader>
       <TreeViewContainer>
         <CatalogTree
           streams={filteredStreams}
-          onChangeSchema={onChangeSchema}
+          onChangeStream={onChangeStream}
           destinationSupportedSyncModes={destinationSupportedSyncModes}
         />
       </TreeViewContainer>

@@ -44,6 +44,7 @@ const NotificationsForm: React.FC<NotificationsFormProps> = ({
       </Subtitle>
       <FormItem>
         <LabeledToggle
+          name="securityUpdates"
           checked={preferencesValues.securityUpdates}
           disabled={isLoading}
           label={<FormattedMessage id="settings.securityUpdates" />}
@@ -58,6 +59,7 @@ const NotificationsForm: React.FC<NotificationsFormProps> = ({
 
       <FormItem>
         <LabeledToggle
+          name="newsletter"
           checked={preferencesValues.news}
           disabled={isLoading}
           label={<FormattedMessage id="settings.newsletter" />}
