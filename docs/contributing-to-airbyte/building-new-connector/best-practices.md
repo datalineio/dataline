@@ -49,3 +49,10 @@ When reviewing connectors, we'll use the following "checklist" to verify whether
 
 Most APIs enforce rate limits. Your connector should gracefully handle those \(i.e: without failing the connector process\). The most common way to handle rate limits is to implement backoff.
 
+### Spec.json
+The spec should attempt to give a user as much guidance as possible when configuring a connector. It should take reasonable steps to reduce errors due to bad user input. Things to consider:
+1. Add a useful description for any field that is not super obvious.
+2. Add a default value for any field wherever possible.
+3. Add a regex to constrain what a valid input looks like for each field.
+4. Use an enum where possible. For any text field, where the valid values can be enumerated, even if the list is somewhat long (e.g. currency types), use an enum, so that the user is forced to put in valid inputs.
+5. Specify the order of the fields so that the user has to input data in a sequence that is intuitive.
