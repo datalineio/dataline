@@ -1,0 +1,9 @@
+{
+  "client_id": "not a client id",
+  "client_secret": "not a client secret",
+  "refresh_token": "not a refresh token",
+  "start_date": "2020-11-02T00:00:00Z",
+  "is_sandbox": false,
+  "api_type": "REST",
+  "select_fields_by_default": true
+}

@@ -1,0 +1,1541 @@
+{
+  "streams": [
+    {
+      "stream": {
+        "name": "Account",
+        "json_schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Id": {
+              "type": "string"
+            },
+            "IsDeleted": {
+              "type": ["null", "boolean"]
+            },
+            "MasterRecordId": {
+              "type": ["null", "string"]
+            },
+            "Name": {
+              "type": ["null", "string"]
+            },
+            "Type": {
+              "type": ["null", "string"]
+            },
+            "ParentId": {
+              "type": ["null", "string"]
+            },
+            "BillingStreet": {
+              "type": ["null", "string"]
+            },
+            "BillingCity": {
+              "type": ["null", "string"]
+            },
+            "BillingState": {
+              "type": ["null", "string"]
+            },
+            "BillingPostalCode": {
+              "type": ["null", "string"]
+            },
+            "BillingCountry": {
+              "type": ["null", "string"]
+            },
+            "BillingLatitude": {
+              "type": ["null", "number"]
+            },
+            "BillingLongitude": {
+              "type": ["null", "number"]
+            },
+            "BillingGeocodeAccuracy": {
+              "type": ["null", "string"]
+            },
+            "BillingAddress": {
+              "type": ["null", "object"],
+              "properties": {
+                "street": {
+                  "type": ["null", "string"]
+                },
+                "state": {
+                  "type": ["null", "string"]
+                },
+                "postalCode": {
+                  "type": ["null", "string"]
+                },
+                "city": {
+                  "type": ["null", "string"]
+                },
+                "country": {
+                  "type": ["null", "string"]
+                },
+                "longitude": {
+                  "type": ["null", "number"]
+                },
+                "latitude": {
+                  "type": ["null", "number"]
+                },
+                "geocodeAccuracy": {
+                  "type": ["null", "string"]
+                }
+              }
+            },
+            "ShippingStreet": {
+              "type": ["null", "string"]
+            },
+            "ShippingCity": {
+              "type": ["null", "string"]
+            },
+            "ShippingState": {
+              "type": ["null", "string"]
+            },
+            "ShippingPostalCode": {
+              "type": ["null", "string"]
+            },
+            "ShippingCountry": {
+              "type": ["null", "string"]
+            },
+            "ShippingLatitude": {
+              "type": ["null", "number"]
+            },
+            "ShippingLongitude": {
+              "type": ["null", "number"]
+            },
+            "ShippingGeocodeAccuracy": {
+              "type": ["null", "string"]
+            },
+            "ShippingAddress": {
+              "type": ["null", "object"],
+              "properties": {
+                "street": {
+                  "type": ["null", "string"]
+                },
+                "state": {
+                  "type": ["null", "string"]
+                },
+                "postalCode": {
+                  "type": ["null", "string"]
+                },
+                "city": {
+                  "type": ["null", "string"]
+                },
+                "country": {
+                  "type": ["null", "string"]
+                },
+                "longitude": {
+                  "type": ["null", "number"]
+                },
+                "latitude": {
+                  "type": ["null", "number"]
+                },
+                "geocodeAccuracy": {
+                  "type": ["null", "string"]
+                }
+              }
+            },
+            "Phone": {
+              "type": ["null", "string"]
+            },
+            "Fax": {
+              "type": ["null", "string"]
+            },
+            "AccountNumber": {
+              "type": ["null", "string"]
+            },
+            "Website": {
+              "type": ["null", "string"]
+            },
+            "PhotoUrl": {
+              "type": ["null", "string"]
+            },
+            "Sic": {
+              "type": ["null", "string"]
+            },
+            "Industry": {
+              "type": ["null", "string"]
+            },
+            "AnnualRevenue": {
+              "type": ["null", "number"]
+            },
+            "NumberOfEmployees": {
+              "type": ["null", "integer"]
+            },
+            "Ownership": {
+              "type": ["null", "string"]
+            },
+            "TickerSymbol": {
+              "type": ["null", "string"]
+            },
+            "Description": {
+              "type": ["null", "string"]
+            },
+            "Rating": {
+              "type": ["null", "string"]
+            },
+            "Site": {
+              "type": ["null", "string"]
+            },
+            "OwnerId": {
+              "type": ["null", "string"]
+            },
+            "CreatedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "CreatedById": {
+              "type": ["null", "string"]
+            },
+            "LastModifiedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastModifiedById": {
+              "type": ["null", "string"]
+            },
+            "SystemModstamp": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastActivityDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastViewedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastReferencedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "Jigsaw": {
+              "type": ["null", "string"]
+            },
+            "JigsawCompanyId": {
+              "type": ["null", "string"]
+            },
+            "CleanStatus": {
+              "type": ["null", "string"]
+            },
+            "AccountSource": {
+              "type": ["null", "string"]
+            },
+            "DunsNumber": {
+              "type": ["null", "string"]
+            },
+            "Tradestyle": {
+              "type": ["null", "string"]
+            },
+            "NaicsCode": {
+              "type": ["null", "string"]
+            },
+            "NaicsDesc": {
+              "type": ["null", "string"]
+            },
+            "YearStarted": {
+              "type": ["null", "string"]
+            },
+            "SicDesc": {
+              "type": ["null", "string"]
+            },
+            "DandbCompanyId": {
+              "type": ["null", "string"]
+            },
+            "OperatingHoursId": {
+              "type": ["null", "string"]
+            },
+            "CustomerPriority__c": {
+              "type": ["null", "string"]
+            },
+            "SLA__c": {
+              "type": ["null", "string"]
+            },
+            "Active__c": {
+              "type": ["null", "string"]
+            },
+            "NumberofLocations__c": {
+              "type": ["null", "number"]
+            },
+            "UpsellOpportunity__c": {
+              "type": ["null", "string"]
+            },
+            "SLASerialNumber__c": {
+              "type": ["null", "string"]
+            },
+            "SLAExpirationDate__c": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            }
+          }
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["SystemModstamp"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["SystemModstamp"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "Lead",
+        "json_schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Id": {
+              "type": "string"
+            },
+            "IsDeleted": {
+              "type": ["null", "boolean"]
+            },
+            "MasterRecordId": {
+              "type": ["null", "string"]
+            },
+            "LastName": {
+              "type": ["null", "string"]
+            },
+            "FirstName": {
+              "type": ["null", "string"]
+            },
+            "Salutation": {
+              "type": ["null", "string"]
+            },
+            "Name": {
+              "type": ["null", "string"]
+            },
+            "Title": {
+              "type": ["null", "string"]
+            },
+            "Company": {
+              "type": ["null", "string"]
+            },
+            "Street": {
+              "type": ["null", "string"]
+            },
+            "City": {
+              "type": ["null", "string"]
+            },
+            "State": {
+              "type": ["null", "string"]
+            },
+            "PostalCode": {
+              "type": ["null", "string"]
+            },
+            "Country": {
+              "type": ["null", "string"]
+            },
+            "Latitude": {
+              "type": ["null", "number"]
+            },
+            "Longitude": {
+              "type": ["null", "number"]
+            },
+            "GeocodeAccuracy": {
+              "type": ["null", "string"]
+            },
+            "Address": {
+              "type": ["null", "object"],
+              "properties": {
+                "street": {
+                  "type": ["null", "string"]
+                },
+                "state": {
+                  "type": ["null", "string"]
+                },
+                "postalCode": {
+                  "type": ["null", "string"]
+                },
+                "city": {
+                  "type": ["null", "string"]
+                },
+                "country": {
+                  "type": ["null", "string"]
+                },
+                "longitude": {
+                  "type": ["null", "number"]
+                },
+                "latitude": {
+                  "type": ["null", "number"]
+                },
+                "geocodeAccuracy": {
+                  "type": ["null", "string"]
+                }
+              }
+            },
+            "Phone": {
+              "type": ["null", "string"]
+            },
+            "MobilePhone": {
+              "type": ["null", "string"]
+            },
+            "Fax": {
+              "type": ["null", "string"]
+            },
+            "Email": {
+              "type": ["null", "string"]
+            },
+            "Website": {
+              "type": ["null", "string"]
+            },
+            "PhotoUrl": {
+              "type": ["null", "string"]
+            },
+            "Description": {
+              "type": ["null", "string"]
+            },
+            "LeadSource": {
+              "type": ["null", "string"]
+            },
+            "Status": {
+              "type": ["null", "string"]
+            },
+            "Industry": {
+              "type": ["null", "string"]
+            },
+            "Rating": {
+              "type": ["null", "string"]
+            },
+            "AnnualRevenue": {
+              "type": ["null", "number"]
+            },
+            "NumberOfEmployees": {
+              "type": ["null", "integer"]
+            },
+            "OwnerId": {
+              "type": ["null", "string"]
+            },
+            "IsConverted": {
+              "type": ["null", "boolean"]
+            },
+            "ConvertedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "ConvertedAccountId": {
+              "type": ["null", "string"]
+            },
+            "ConvertedContactId": {
+              "type": ["null", "string"]
+            },
+            "ConvertedOpportunityId": {
+              "type": ["null", "string"]
+            },
+            "IsUnreadByOwner": {
+              "type": ["null", "boolean"]
+            },
+            "CreatedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "CreatedById": {
+              "type": ["null", "string"]
+            },
+            "LastModifiedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastModifiedById": {
+              "type": ["null", "string"]
+            },
+            "SystemModstamp": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastActivityDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastViewedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastReferencedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "Jigsaw": {
+              "type": ["null", "string"]
+            },
+            "JigsawContactId": {
+              "type": ["null", "string"]
+            },
+            "CleanStatus": {
+              "type": ["null", "string"]
+            },
+            "CompanyDunsNumber": {
+              "type": ["null", "string"]
+            },
+            "DandbCompanyId": {
+              "type": ["null", "string"]
+            },
+            "EmailBouncedReason": {
+              "type": ["null", "string"]
+            },
+            "EmailBouncedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "SICCode__c": {
+              "type": ["null", "string"]
+            },
+            "ProductInterest__c": {
+              "type": ["null", "string"]
+            },
+            "Primary__c": {
+              "type": ["null", "string"]
+            },
+            "CurrentGenerators__c": {
+              "type": ["null", "string"]
+            },
+            "NumberofLocations__c": {
+              "type": ["null", "number"]
+            }
+          }
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["SystemModstamp"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["SystemModstamp"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "Campaign",
+        "json_schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Id": {
+              "type": "string"
+            },
+            "IsDeleted": {
+              "type": ["null", "boolean"]
+            },
+            "Name": {
+              "type": ["null", "string"]
+            },
+            "ParentId": {
+              "type": ["null", "string"]
+            },
+            "Type": {
+              "type": ["null", "string"]
+            },
+            "Status": {
+              "type": ["null", "string"]
+            },
+            "StartDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "EndDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "ExpectedRevenue": {
+              "type": ["null", "number"]
+            },
+            "BudgetedCost": {
+              "type": ["null", "number"]
+            },
+            "ActualCost": {
+              "type": ["null", "number"]
+            },
+            "ExpectedResponse": {
+              "type": ["null", "number"]
+            },
+            "NumberSent": {
+              "type": ["null", "number"]
+            },
+            "IsActive": {
+              "type": ["null", "boolean"]
+            },
+            "Description": {
+              "type": ["null", "string"]
+            },
+            "NumberOfLeads": {
+              "type": ["null", "integer"]
+            },
+            "NumberOfConvertedLeads": {
+              "type": ["null", "integer"]
+            },
+            "NumberOfContacts": {
+              "type": ["null", "integer"]
+            },
+            "NumberOfResponses": {
+              "type": ["null", "integer"]
+            },
+            "NumberOfOpportunities": {
+              "type": ["null", "integer"]
+            },
+            "NumberOfWonOpportunities": {
+              "type": ["null", "integer"]
+            },
+            "AmountAllOpportunities": {
+              "type": ["null", "number"]
+            },
+            "AmountWonOpportunities": {
+              "type": ["null", "number"]
+            },
+            "OwnerId": {
+              "type": ["null", "string"]
+            },
+            "CreatedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "CreatedById": {
+              "type": ["null", "string"]
+            },
+            "LastModifiedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastModifiedById": {
+              "type": ["null", "string"]
+            },
+            "SystemModstamp": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastActivityDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastViewedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastReferencedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "CampaignMemberRecordTypeId": {
+              "type": ["null", "string"]
+            }
+          }
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["SystemModstamp"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["SystemModstamp"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "Asset",
+        "json_schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Id": {
+              "type": "string"
+            },
+            "ContactId": {
+              "type": ["null", "string"]
+            },
+            "AccountId": {
+              "type": ["null", "string"]
+            },
+            "ParentId": {
+              "type": ["null", "string"]
+            },
+            "RootAssetId": {
+              "type": ["null", "string"]
+            },
+            "Product2Id": {
+              "type": ["null", "string"]
+            },
+            "ProductCode": {
+              "type": ["null", "string"]
+            },
+            "IsCompetitorProduct": {
+              "type": ["null", "boolean"]
+            },
+            "CreatedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "CreatedById": {
+              "type": ["null", "string"]
+            },
+            "LastModifiedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastModifiedById": {
+              "type": ["null", "string"]
+            },
+            "SystemModstamp": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "IsDeleted": {
+              "type": ["null", "boolean"]
+            },
+            "Name": {
+              "type": ["null", "string"]
+            },
+            "SerialNumber": {
+              "type": ["null", "string"]
+            },
+            "InstallDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "PurchaseDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "UsageEndDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "Status": {
+              "type": ["null", "string"]
+            },
+            "Price": {
+              "type": ["null", "number"]
+            },
+            "Quantity": {
+              "type": ["null", "number"]
+            },
+            "Description": {
+              "type": ["null", "string"]
+            },
+            "OwnerId": {
+              "type": ["null", "string"]
+            },
+            "AssetProvidedById": {
+              "type": ["null", "string"]
+            },
+            "AssetServicedById": {
+              "type": ["null", "string"]
+            },
+            "IsInternal": {
+              "type": ["null", "boolean"]
+            },
+            "AssetLevel": {
+              "type": ["null", "integer"]
+            },
+            "StockKeepingUnit": {
+              "type": ["null", "string"]
+            },
+            "LastViewedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastReferencedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            }
+          }
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["SystemModstamp"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["SystemModstamp"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "Contact",
+        "json_schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Id": {
+              "type": "string"
+            },
+            "IsDeleted": {
+              "type": ["null", "boolean"]
+            },
+            "MasterRecordId": {
+              "type": ["null", "string"]
+            },
+            "AccountId": {
+              "type": ["null", "string"]
+            },
+            "LastName": {
+              "type": ["null", "string"]
+            },
+            "FirstName": {
+              "type": ["null", "string"]
+            },
+            "Salutation": {
+              "type": ["null", "string"]
+            },
+            "Name": {
+              "type": ["null", "string"]
+            },
+            "OtherStreet": {
+              "type": ["null", "string"]
+            },
+            "OtherCity": {
+              "type": ["null", "string"]
+            },
+            "OtherState": {
+              "type": ["null", "string"]
+            },
+            "OtherPostalCode": {
+              "type": ["null", "string"]
+            },
+            "OtherCountry": {
+              "type": ["null", "string"]
+            },
+            "OtherLatitude": {
+              "type": ["null", "number"]
+            },
+            "OtherLongitude": {
+              "type": ["null", "number"]
+            },
+            "OtherGeocodeAccuracy": {
+              "type": ["null", "string"]
+            },
+            "OtherAddress": {
+              "type": ["null", "object"],
+              "properties": {
+                "street": {
+                  "type": ["null", "string"]
+                },
+                "state": {
+                  "type": ["null", "string"]
+                },
+                "postalCode": {
+                  "type": ["null", "string"]
+                },
+                "city": {
+                  "type": ["null", "string"]
+                },
+                "country": {
+                  "type": ["null", "string"]
+                },
+                "longitude": {
+                  "type": ["null", "number"]
+                },
+                "latitude": {
+                  "type": ["null", "number"]
+                },
+                "geocodeAccuracy": {
+                  "type": ["null", "string"]
+                }
+              }
+            },
+            "MailingStreet": {
+              "type": ["null", "string"]
+            },
+            "MailingCity": {
+              "type": ["null", "string"]
+            },
+            "MailingState": {
+              "type": ["null", "string"]
+            },
+            "MailingPostalCode": {
+              "type": ["null", "string"]
+            },
+            "MailingCountry": {
+              "type": ["null", "string"]
+            },
+            "MailingLatitude": {
+              "type": ["null", "number"]
+            },
+            "MailingLongitude": {
+              "type": ["null", "number"]
+            },
+            "MailingGeocodeAccuracy": {
+              "type": ["null", "string"]
+            },
+            "MailingAddress": {
+              "type": ["null", "object"],
+              "properties": {
+                "street": {
+                  "type": ["null", "string"]
+                },
+                "state": {
+                  "type": ["null", "string"]
+                },
+                "postalCode": {
+                  "type": ["null", "string"]
+                },
+                "city": {
+                  "type": ["null", "string"]
+                },
+                "country": {
+                  "type": ["null", "string"]
+                },
+                "longitude": {
+                  "type": ["null", "number"]
+                },
+                "latitude": {
+                  "type": ["null", "number"]
+                },
+                "geocodeAccuracy": {
+                  "type": ["null", "string"]
+                }
+              }
+            },
+            "Phone": {
+              "type": ["null", "string"]
+            },
+            "Fax": {
+              "type": ["null", "string"]
+            },
+            "MobilePhone": {
+              "type": ["null", "string"]
+            },
+            "HomePhone": {
+              "type": ["null", "string"]
+            },
+            "OtherPhone": {
+              "type": ["null", "string"]
+            },
+            "AssistantPhone": {
+              "type": ["null", "string"]
+            },
+            "ReportsToId": {
+              "type": ["null", "string"]
+            },
+            "Email": {
+              "type": ["null", "string"]
+            },
+            "Title": {
+              "type": ["null", "string"]
+            },
+            "Department": {
+              "type": ["null", "string"]
+            },
+            "AssistantName": {
+              "type": ["null", "string"]
+            },
+            "LeadSource": {
+              "type": ["null", "string"]
+            },
+            "Birthdate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "Description": {
+              "type": ["null", "string"]
+            },
+            "OwnerId": {
+              "type": ["null", "string"]
+            },
+            "CreatedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "CreatedById": {
+              "type": ["null", "string"]
+            },
+            "LastModifiedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastModifiedById": {
+              "type": ["null", "string"]
+            },
+            "SystemModstamp": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastActivityDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastCURequestDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastCUUpdateDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastViewedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastReferencedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "EmailBouncedReason": {
+              "type": ["null", "string"]
+            },
+            "EmailBouncedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "IsEmailBounced": {
+              "type": ["null", "boolean"]
+            },
+            "PhotoUrl": {
+              "type": ["null", "string"]
+            },
+            "Jigsaw": {
+              "type": ["null", "string"]
+            },
+            "JigsawContactId": {
+              "type": ["null", "string"]
+            },
+            "CleanStatus": {
+              "type": ["null", "string"]
+            },
+            "Level__c": {
+              "type": ["null", "string"]
+            },
+            "Languages__c": {
+              "type": ["null", "string"]
+            }
+          }
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["SystemModstamp"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["SystemModstamp"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "Opportunity",
+        "json_schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Id": {
+              "type": "string"
+            },
+            "IsDeleted": {
+              "type": ["null", "boolean"]
+            },
+            "AccountId": {
+              "type": ["null", "string"]
+            },
+            "IsPrivate": {
+              "type": ["null", "boolean"]
+            },
+            "Name": {
+              "type": ["null", "string"]
+            },
+            "Description": {
+              "type": ["null", "string"]
+            },
+            "StageName": {
+              "type": ["null", "string"]
+            },
+            "Amount": {
+              "type": ["null", "number"]
+            },
+            "Probability": {
+              "type": ["null", "number"]
+            },
+            "ExpectedRevenue": {
+              "type": ["null", "number"]
+            },
+            "TotalOpportunityQuantity": {
+              "type": ["null", "number"]
+            },
+            "CloseDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "Type": {
+              "type": ["null", "string"]
+            },
+            "NextStep": {
+              "type": ["null", "string"]
+            },
+            "LeadSource": {
+              "type": ["null", "string"]
+            },
+            "IsClosed": {
+              "type": ["null", "boolean"]
+            },
+            "IsWon": {
+              "type": ["null", "boolean"]
+            },
+            "ForecastCategory": {
+              "type": ["null", "string"]
+            },
+            "ForecastCategoryName": {
+              "type": ["null", "string"]
+            },
+            "CampaignId": {
+              "type": ["null", "string"]
+            },
+            "HasOpportunityLineItem": {
+              "type": ["null", "boolean"]
+            },
+            "Pricebook2Id": {
+              "type": ["null", "string"]
+            },
+            "OwnerId": {
+              "type": ["null", "string"]
+            },
+            "CreatedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "CreatedById": {
+              "type": ["null", "string"]
+            },
+            "LastModifiedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastModifiedById": {
+              "type": ["null", "string"]
+            },
+            "SystemModstamp": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastActivityDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "FiscalQuarter": {
+              "type": ["null", "integer"]
+            },
+            "FiscalYear": {
+              "type": ["null", "integer"]
+            },
+            "Fiscal": {
+              "type": ["null", "string"]
+            },
+            "LastViewedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "LastReferencedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "HasOpenActivity": {
+              "type": ["null", "boolean"]
+            },
+            "HasOverdueTask": {
+              "type": ["null", "boolean"]
+            },
+            "DeliveryInstallationStatus__c": {
+              "type": ["null", "string"]
+            },
+            "TrackingNumber__c": {
+              "type": ["null", "string"]
+            },
+            "OrderNumber__c": {
+              "type": ["null", "string"]
+            },
+            "CurrentGenerators__c": {
+              "type": ["null", "string"]
+            },
+            "MainCompetitors__c": {
+              "type": ["null", "string"]
+            }
+          }
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["SystemModstamp"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["SystemModstamp"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "LoginIp",
+        "json_schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Id": {
+              "type": "string"
+            },
+            "UsersId": {
+              "type": ["null", "string"]
+            },
+            "SourceIp": {
+              "type": ["null", "string"]
+            },
+            "CreatedDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "IsAuthenticated": {
+              "type": ["null", "boolean"]
+            },
+            "ChallengeSentDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": ["string", "null"]
+                }
+              ]
+            },
+            "ChallengeMethod": {
+              "type": ["null", "string"]
+            }
+          }
+        },
+        "supported_sync_modes": ["incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["CreatedDate"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["CreatedDate"],
+      "destination_sync_mode": "append"
+    }
+  ]
+}

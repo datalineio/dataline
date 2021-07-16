@@ -1,0 +1,31 @@
+connector_image: airbyte/source-salesforce-singer:dev
+tests:
+  spec:
+    - spec_path: "source_salesforce_singer/spec.json"
+  connection:
+    - config_path: "secrets/config.json"
+      status: "succeed"
+    - config_path: "integration_tests/invalid_config.json"
+      status: "failed"
+  discovery:
+    - config_path: "secrets/config.json"
+      timeout_seconds: 200
+  basic_read:
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "integration_tests/configured_catalog.json"
+      validate_output_from_all_streams: yes
+#  incremental:
+#    - config_path: "secrets/config.json"
+#      configured_catalog_path: "integration_tests/configured_catalog.json"
+#      cursor_paths:
+#        Account: ["SystemModstamp"]
+#        Lead: ["SystemModstamp"]
+#        Campaign: ["SystemModstamp"]
+#        Asset: ["SystemModstamp"]
+#        Contact: ["SystemModstamp"]
+#        Opportunity: ["SystemModstamp"]
+#        OpportunityStage: ["SystemModstamp"]
+#        LoginIp: ["CreatedDate"]
+  full_refresh:
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "integration_tests/configured_catalog.json"
