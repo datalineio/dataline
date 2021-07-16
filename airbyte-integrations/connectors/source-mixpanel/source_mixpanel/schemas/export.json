@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "event": {
+      "type": ["null", "string"]
+    },
+    "distinct_id": {
+      "type": ["null", "string"]
+    },
+    "time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "labels": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sampling_factor": {
+      "type": ["null", "integer"]
+    },
+    "dataset": {
+      "type": ["null", "string"]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "streams": [
+    {
+      "stream": {
+        "name": "cohort_members",
+        "json_schema": {},
+        "supported_sync_modes": ["full_refresh"]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "overwrite"
+    }
+  ]
+}

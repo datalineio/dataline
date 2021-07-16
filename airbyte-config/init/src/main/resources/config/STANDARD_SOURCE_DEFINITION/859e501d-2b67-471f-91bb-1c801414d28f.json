@@ -1,6 +1,6 @@
 {
   "sourceDefinitionId": "859e501d-2b67-471f-91bb-1c801414d28f",
-  "name": "Mixpanel",
+  "name": "Mixpanel Singer",
   "dockerRepository": "airbyte/source-mixpanel-singer",
   "dockerImageTag": "0.2.4",
   "documentationUrl": "https://hub.docker.com/r/airbyte/source-mixpanel-singer",

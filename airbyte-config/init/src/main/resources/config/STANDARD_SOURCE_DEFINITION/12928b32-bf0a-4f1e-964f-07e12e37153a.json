@@ -1,0 +1,8 @@
+{
+  "sourceDefinitionId": "12928b32-bf0a-4f1e-964f-07e12e37153a",
+  "name": "Mixpanel",
+  "dockerRepository": "airbyte/source-mixpanel",
+  "dockerImageTag": "0.1.0",
+  "documentationUrl": "https://hub.docker.com/r/airbyte/source-mixpanel",
+  "icon": "mixpanel.svg"
+}

@@ -71,7 +71,9 @@
 
  Microsoft Teams   [![source-microsoft-teams](https://img.shields.io/endpoint?url=https%3A%2F%2Fstatus-api.airbyte.io%2Ftests%2Fsummary%2Fsource-microsoft-teams%2Fbadge.json)](https://status-api.airbyte.io/tests/summary/source-microsoft-teams) 
 
- Mixpanel   [![source-mixpanel-singer](https://img.shields.io/endpoint?url=https%3A%2F%2Fstatus-api.airbyte.io%2Ftests%2Fsummary%2Fsource-mixpanel-singer%2Fbadge.json)](https://status-api.airbyte.io/tests/summary/source-mixpanel-singer) 
+ Mixpanel   [![source-mixpanel](https://img.shields.io/endpoint?url=https%3A%2F%2Fstatus-api.airbyte.io%2Ftests%2Fsummary%2Fsource-mixpanel%2Fbadge.json)](https://status-api.airbyte.io/tests/summary/source-mixpanel)
+
+ Mixpanel Singer   [![source-mixpanel-singer](https://img.shields.io/endpoint?url=https%3A%2F%2Fstatus-api.airbyte.io%2Ftests%2Fsummary%2Fsource-mixpanel-singer%2Fbadge.json)](https://status-api.airbyte.io/tests/summary/source-mixpanel-singer) 
 
  Mongo DB   [![source-mongodb](https://img.shields.io/endpoint?url=https%3A%2F%2Fstatus-api.airbyte.io%2Ftests%2Fsummary%2Fsource-mongodb%2Fbadge.json)](https://status-api.airbyte.io/tests/summary/source-mongodb) 
 

@@ -1,0 +1,44 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/mixpanel",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Source Mixpanel Spec",
+    "type": "object",
+    "required": ["api_secret"],
+    "additionalProperties": true,
+    "properties": {
+      "api_secret": {
+        "type": "string",
+        "description": "Mixpanel API Secret. See the <a href=\"https://docs.airbyte.io/integrations/sources/mixpanel\">docs</a> for more information on how to obtain this key.",
+        "airbyte_secret": true
+      },
+      "attribution_window": {
+        "type": "integer",
+        "description": "Latency minimum number of days to look-back to account for delays in attributing accurate results. Default attribution window is 5 days.",
+        "default": 5
+      },
+      "date_window_size": {
+        "type": "integer",
+        "description": "Number of days for date window looping through transactional endpoints with from_date and to_date. Default date_window_size is 30 days. Clients with large volumes of events may want to decrease this to 14, 7, or even down to 1-2 days.",
+        "default": 30
+      },
+      "project_timezone": {
+        "type": "string",
+        "description": "Time zone in which integer date times are stored. The project timezone may be found in the project settings in the Mixpanel console.",
+        "default": "US/Pacific",
+        "examples": ["US/Pacific", "UTC"]
+      },
+      "select_properties_by_default": {
+        "type": "boolean",
+        "description": "Setting this config parameter to true ensures that new properties on events and engage records are captured. Otherwise new properties will be ignored",
+        "default": true
+      },
+      "start_date": {
+        "type": "string",
+        "description": "The default value to use if no bookmark exists for an endpoint. Default is 1 year ago.",
+        "examples": ["2021-11-16"],
+        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}(T[0-9]{2}:[0-9]{2}:[0-9]{2}Z)?$"
+      }
+    }
+  }
+}

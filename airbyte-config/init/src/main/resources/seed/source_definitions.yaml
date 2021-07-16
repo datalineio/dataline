@@ -194,8 +194,14 @@
   dockerImageTag: 0.2.6
   documentationUrl: https://hub.docker.com/r/airbyte/source-jira
   icon: jira.svg
-- sourceDefinitionId: 859e501d-2b67-471f-91bb-1c801414d28f
+- sourceDefinitionId: 12928b32-bf0a-4f1e-964f-07e12e37153a
   name: Mixpanel
+  dockerRepository: airbyte/source-mixpanel
+  dockerImageTag: 0.1.0
+  documentationUrl: https://hub.docker.com/r/airbyte/source-mixpanel
+  icon: mixpanel.svg
+- sourceDefinitionId: 859e501d-2b67-471f-91bb-1c801414d28f
+  name: Mixpanel Singer
   dockerRepository: airbyte/source-mixpanel-singer
   dockerImageTag: 0.2.4
   documentationUrl: https://hub.docker.com/r/airbyte/source-mixpanel-singer
