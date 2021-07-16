@@ -1,0 +1,126 @@
+{
+  "streams": [
+    {
+      "stream": {
+        "name": "deals",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["update_time"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["update_time"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "leads",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "supported_sync_modes": ["full_refresh"]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "overwrite"
+    },
+    {
+      "stream": {
+        "name": "activity_fields",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "supported_sync_modes": ["full_refresh"]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "overwrite"
+    },
+    {
+      "stream": {
+        "name": "activities",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["update_time"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["update_time"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "persons",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["update_time"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["update_time"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "pipelines",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["update_time"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["update_time"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "stages",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["update_time"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["update_time"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "users",
+        "json_schema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["modified"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["modified"],
+      "destination_sync_mode": "append"
+    }
+  ]
+}

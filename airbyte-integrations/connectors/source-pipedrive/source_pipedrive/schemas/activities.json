@@ -1,0 +1,237 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "integer"]
+    },
+    "company_id": {
+      "type": ["null", "integer"]
+    },
+    "user_id": {
+      "type": ["null", "integer"]
+    },
+    "done": {
+      "type": ["null", "boolean"]
+    },
+    "type": {
+      "type": ["null", "string"]
+    },
+    "reference_type": {
+      "type": ["null", "string"]
+    },
+    "reference_id": {
+      "type": ["null", "integer"]
+    },
+    "conference_meeting_client": {
+      "type": ["null", "string"]
+    },
+    "conference_meeting_url": {
+      "type": ["null", "string"]
+    },
+    "conference_meeting_id": {
+      "type": ["null", "string"]
+    },
+    "due_date": {
+      "type": ["null", "string"]
+    },
+    "due_time": {
+      "type": ["null", "string"]
+    },
+    "duration": {
+      "type": ["null", "string"]
+    },
+    "busy_flag": {
+      "type": ["null", "boolean"]
+    },
+    "add_time": {
+      "type": ["null", "string"]
+    },
+    "marked_as_done_time": {
+      "type": ["null", "string"]
+    },
+    "last_notification_time": {
+      "type": ["null", "string"]
+    },
+    "last_notification_user_id": {
+      "type": ["null", "integer"]
+    },
+    "notification_language_id": {
+      "type": ["null", "integer"]
+    },
+    "subject": {
+      "type": ["null", "string"]
+    },
+    "public_description": {
+      "type": ["null", "string"]
+    },
+    "calendar_sync_include_context": {
+      "type": ["null", "boolean"]
+    },
+    "location": {
+      "type": ["null", "string"]
+    },
+    "org_id": {
+      "type": ["null", "integer"]
+    },
+    "person_id": {
+      "type": ["null", "integer"]
+    },
+    "deal_id": {
+      "type": ["null", "integer"]
+    },
+    "lead_id": {
+      "type": ["null", "integer"]
+    },
+    "active_flag": {
+      "type": ["null", "boolean"]
+    },
+    "update_time": {
+      "type": ["null", "string"]
+    },
+    "update_user_id": {
+      "type": ["null", "integer"]
+    },
+    "gcal_event_id": {
+      "type": ["null", "string"]
+    },
+    "google_calendar_id": {
+      "type": ["null", "string"]
+    },
+    "google_calendar_etag": {
+      "type": ["null", "string"]
+    },
+    "source_timezone": {
+      "type": ["null", "string"]
+    },
+    "rec_rule": {
+      "type": ["null", "string"]
+    },
+    "rec_rule_extension": {
+      "type": ["null", "string"]
+    },
+    "rec_master_activity_id": {
+      "type": ["null", "integer"]
+    },
+    "series": {
+      "type": ["null", "string"]
+    },
+    "note": {
+      "type": ["null", "string"]
+    },
+    "created_by_user_id": {
+      "type": ["null", "integer"]
+    },
+    "location_subpremise": {
+      "type": ["null", "string"]
+    },
+    "location_street_number": {
+      "type": ["null", "string"]
+    },
+    "location_route": {
+      "type": ["null", "string"]
+    },
+    "location_sublocality": {
+      "type": ["null", "string"]
+    },
+    "location_locality": {
+      "type": ["null", "string"]
+    },
+    "location_lat": {
+      "type": ["null", "number"]
+    },
+    "location_long": {
+      "type": ["null", "number"]
+    },
+    "location_admin_area_level_1": {
+      "type": ["null", "string"]
+    },
+    "location_admin_area_level_2": {
+      "type": ["null", "string"]
+    },
+    "location_country": {
+      "type": ["null", "string"]
+    },
+    "location_postal_code": {
+      "type": ["null", "string"]
+    },
+    "location_formatted_address": {
+      "type": ["null", "string"]
+    },
+    "attendees": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["null", "object"],
+        "properties": {
+          "email_address": {
+            "type": ["null", "string"]
+          },
+          "is_organizer": {
+            "type": ["null", "integer"]
+          },
+          "name": {
+            "type": ["null", "string"]
+          },
+          "person_id": {
+            "type": ["null", "integer"]
+          },
+          "status": {
+            "type": ["null", "string"]
+          },
+          "user_id": {
+            "type": ["null", "integer"]
+          }
+        }
+      }
+    },
+    "participants": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["null", "object"],
+        "properties": {
+          "person_id": {
+            "type": ["null", "integer"]
+          },
+          "primary_flag": {
+            "type": ["null", "boolean"]
+          }
+        }
+      }
+    },
+    "org_name": {
+      "type": ["null", "string"]
+    },
+    "person_name": {
+      "type": ["null", "string"]
+    },
+    "deal_title": {
+      "type": ["null", "string"]
+    },
+    "owner_name": {
+      "type": ["null", "string"]
+    },
+    "person_dropbox_bcc": {
+      "type": ["null", "string"]
+    },
+    "deal_dropbox_bcc": {
+      "type": ["null", "string"]
+    },
+    "assigned_to_user_id": {
+      "type": ["null", "integer"]
+    },
+    "file": {
+      "type": ["null", "object"],
+      "properties": {
+        "id": {
+          "type": ["null", "string"]
+        },
+        "clean_name": {
+          "type": ["null", "string"]
+        },
+        "url": {
+          "type": ["null", "string"]
+        }
+      }
+    }
+  }
+}

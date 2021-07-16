@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "integer"]
+    },
+    "name": {
+      "type": ["null", "string"]
+    },
+    "default_currency": {
+      "type": ["null", "string"]
+    },
+    "locale": {
+      "type": ["null", "string"]
+    },
+    "lang": {
+      "type": ["null", "integer"]
+    },
+    "email": {
+      "type": ["null", "string"]
+    },
+    "phone": {
+      "type": ["null", "string"]
+    },
+    "activated": {
+      "type": ["null", "boolean"]
+    },
+    "last_login": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "created": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "modified": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "signup_flow_variation": {
+      "type": ["null", "string"]
+    },
+    "has_created_company": {
+      "type": ["null", "boolean"]
+    },
+    "is_admin": {
+      "type": ["null", "integer"]
+    },
+    "active_flag": {
+      "type": ["null", "boolean"]
+    },
+    "timezone_name": {
+      "type": ["null", "string"]
+    },
+    "timezone_offset": {
+      "type": ["null", "string"]
+    },
+    "role_id": {
+      "type": ["null", "integer"]
+    },
+    "icon_url": {
+      "type": ["null", "string"]
+    },
+    "is_you": {
+      "type": ["null", "boolean"]
+    }
+  }
+}

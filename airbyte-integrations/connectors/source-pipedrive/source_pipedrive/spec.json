@@ -1,0 +1,27 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/pipedrive",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Pipedrive Spec",
+    "type": "object",
+    "required": ["api_token", "replication_start_date"],
+    "additionalProperties": false,
+    "properties": {
+      "api_token": {
+        "title": "API Token",
+        "description": "Pipedrive API Token",
+        "airbyte_secret": true,
+        "type": "string"
+      },
+      "replication_start_date": {
+        "title": "Replication Start Date",
+        "description": "UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.",
+        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
+        "examples": ["2017-01-25T00:00:00Z"],
+        "type": "string"
+      }
+    }
+  },
+  "supportsIncremental": true,
+  "supported_destination_sync_modes": ["append"]
+}

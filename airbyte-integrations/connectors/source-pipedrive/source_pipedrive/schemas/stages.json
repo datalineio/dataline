@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "integer"]
+    },
+    "order_nr": {
+      "type": ["null", "integer"]
+    },
+    "name": {
+      "type": ["null", "string"]
+    },
+    "active_flag": {
+      "type": ["null", "boolean"]
+    },
+    "deal_probability": {
+      "type": ["null", "integer"]
+    },
+    "pipeline_id": {
+      "type": ["null", "integer"]
+    },
+    "rotten_flag": {
+      "type": ["null", "boolean"]
+    },
+    "rotten_days": {
+      "type": ["null", "integer"]
+    },
+    "add_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "update_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "pipeline_name": {
+      "type": ["null", "string"]
+    },
+    "pipeline_deal_probability": {
+      "type": ["null", "boolean"]
+    }
+  }
+}

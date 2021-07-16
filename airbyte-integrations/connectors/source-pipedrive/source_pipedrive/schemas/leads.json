@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "string"]
+    },
+    "title": {
+      "type": ["null", "string"]
+    },
+    "owner_id": {
+      "type": ["null", "integer"]
+    },
+    "creator_id": {
+      "type": ["null", "integer"]
+    },
+    "label_ids": {
+      "type": ["null", "array"]
+    },
+    "person_id": {
+      "type": ["null", "integer"]
+    },
+    "organization_id": {
+      "type": ["null", "integer"]
+    },
+    "source_name": {
+      "type": ["null", "string"]
+    },
+    "is_archived": {
+      "type": ["null", "boolean"]
+    },
+    "was_seen": {
+      "type": ["null", "boolean"]
+    },
+    "value": {
+      "type": ["null", "object"],
+      "properties": {
+        "amount": {
+          "type": ["null", "integer"]
+        },
+        "currency": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "expected_close_date": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "next_activity_id": {
+      "type": ["null", "integer"]
+    },
+    "add_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "update_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    }
+  }
+}

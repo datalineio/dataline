@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "integer"]
+    },
+    "key": {
+      "type": ["null", "string"]
+    },
+    "name": {
+      "type": ["null", "string"]
+    },
+    "order_nr": {
+      "type": ["null", "integer"]
+    },
+    "field_type": {
+      "type": ["null", "string"]
+    },
+    "add_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "update_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "last_updated_by_user_id": {
+      "type": ["null", "integer"]
+    },
+    "active_flag": {
+      "type": ["null", "boolean"]
+    },
+    "edit_flag": {
+      "type": ["null", "boolean"]
+    },
+    "index_visible_flag": {
+      "type": ["null", "boolean"]
+    },
+    "details_visible_flag": {
+      "type": ["null", "boolean"]
+    },
+    "add_visible_flag": {
+      "type": ["null", "boolean"]
+    },
+    "important_flag": {
+      "type": ["null", "boolean"]
+    },
+    "bulk_edit_allowed": {
+      "type": ["null", "boolean"]
+    },
+    "searchable_flag": {
+      "type": ["null", "boolean"]
+    },
+    "filtering_allowed": {
+      "type": ["null", "boolean"]
+    },
+    "sortable_flag": {
+      "type": ["null", "boolean"]
+    },
+    "options": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["null", "object"],
+        "properties": {
+          "id": {
+            "type": ["null", "integer", "string", "boolean"]
+          },
+          "label": {
+            "type": ["null", "string"]
+          }
+        }
+      }
+    },
+    "mandatory_flag": {
+      "type": ["null", "boolean"]
+    }
+  }
+}

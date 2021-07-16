@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "integer"]
+    },
+    "name": {
+      "type": ["null", "string"]
+    },
+    "url_title": {
+      "type": ["null", "string"]
+    },
+    "order_nr": {
+      "type": ["null", "integer"]
+    },
+    "active": {
+      "type": ["null", "boolean"]
+    },
+    "deal_probability": {
+      "type": ["null", "boolean"]
+    },
+    "add_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "update_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "selected": {
+      "type": ["null", "boolean"]
+    }
+  }
+}

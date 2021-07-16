@@ -1,0 +1,20 @@
+{
+  "deals": {
+    "update_time": "2021-06-01T10:10:10Z"
+  },
+  "activities": {
+    "update_time": "2021-06-01T10:10:10Z"
+  },
+  "persons": {
+    "update_time": "2021-06-01T10:10:10Z"
+  },
+  "pipelines": {
+    "update_time": "2021-06-01T10:10:10Z"
+  },
+  "stages": {
+    "update_time": "2021-06-01T10:10:10Z"
+  },
+  "users": {
+    "modified": "2021-06-01T10:10:10Z"
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "integer"]
+    },
+    "company_id": {
+      "type": ["null", "integer"]
+    },
+    "owner_id": {
+      "type": ["null", "integer"]
+    },
+    "org_id": {
+      "type": ["null", "integer"]
+    },
+    "name": {
+      "type": ["null", "string"]
+    },
+    "first_name": {
+      "type": ["null", "string"]
+    },
+    "last_name": {
+      "type": ["null", "string"]
+    },
+    "open_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "related_open_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "closed_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "related_closed_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "participant_open_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "participant_closed_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "email_messages_count": {
+      "type": ["null", "integer"]
+    },
+    "activities_count": {
+      "type": ["null", "integer"]
+    },
+    "done_activities_count": {
+      "type": ["null", "integer"]
+    },
+    "undone_activities_count": {
+      "type": ["null", "integer"]
+    },
+    "files_count": {
+      "type": ["null", "integer"]
+    },
+    "notes_count": {
+      "type": ["null", "integer"]
+    },
+    "followers_count": {
+      "type": ["null", "integer"]
+    },
+    "won_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "related_won_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "lost_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "related_lost_deals_count": {
+      "type": ["null", "integer"]
+    },
+    "active_flag": {
+      "type": ["null", "boolean"]
+    },
+    "phone": {
+      "type": ["null", "array"]
+    },
+    "email": {
+      "type": ["null", "array"]
+    },
+    "first_char": {
+      "type": ["null", "string"]
+    },
+    "update_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "add_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "visible_to": {
+      "type": ["null", "string"]
+    },
+    "picture_id": {
+      "type": ["null", "object"],
+      "properties": {
+        "item_type": {
+          "type": ["null", "string"]
+        },
+        "item_id": {
+          "type": ["null", "integer"]
+        },
+        "active_flag": {
+          "type": ["null", "boolean"]
+        },
+        "add_time": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "update_time": {
+          "type": ["null", "string"]
+        },
+        "added_by_user_id": {
+          "type": ["null", "integer"]
+        },
+        "pictures": {
+          "type": ["null", "object"],
+          "properties": {
+            "128": {
+              "type": ["null", "string"]
+            },
+            "512": {
+              "type": ["null", "string"]
+            }
+          }
+        },
+        "value": {
+          "type": ["null", "integer"]
+        }
+      }
+    },
+    "next_activity_date": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "next_activity_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "next_activity_id": {
+      "type": ["null", "integer"]
+    },
+    "last_activity_id": {
+      "type": ["null", "integer"]
+    },
+    "last_activity_date": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "last_incoming_mail_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "last_outgoing_mail_time": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "label": {
+      "type": ["null", "integer"]
+    },
+    "org_name": {
+      "type": ["null", "string"]
+    },
+    "owner_name": {
+      "type": ["null", "string"]
+    },
+    "cc_email": {
+      "type": ["null", "string"]
+    }
+  }
+}

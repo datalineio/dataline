@@ -1,0 +1,13 @@
+plugins {
+    id 'airbyte-python'
+    id 'airbyte-docker'
+    id 'airbyte-source-acceptance-test'
+}
+
+airbytePython {
+    moduleDirectory 'source_pipedrive'
+}
+
+dependencies {
+    implementation files(project(':airbyte-integrations:bases:source-acceptance-test').airbyteDocker.outputs)
+}
