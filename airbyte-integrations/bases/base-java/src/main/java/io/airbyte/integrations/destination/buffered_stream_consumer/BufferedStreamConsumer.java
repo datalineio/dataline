@@ -66,6 +66,28 @@ import org.slf4j.LoggerFactory;
  * <p>
  * All other message types are ignored.
  * </p>
+ *
+ * <p>
+ * Throughout the lifecycle of the consumer, messages get promoted from buffered to flushed to
+ * committed. A record message when it is received is immediately buffered. When the buffer fills
+ * up, all buffered records are flushed out of memory using the user-provided recordWriter. When
+ * this flush happens, a state message is moved from pending to flushed. On close, if the
+ * user-provided onClose function is successful, then the flushed state record is considered
+ * committed and is then emitted. We expect this class to only ever emit either 1 state message (in
+ * the case of a full or partial success) or 0 state messages (in the case where the onClose step
+ * was never reached or did not complete without exception).
+ * </p>
+ *
+ * <p>
+ * When a record is "flushed" it is moved from the docker container to the destination. By
+ * convention, it is usually placed in some sort of temporary storage on the destination (e.g. a
+ * temporary database or file store). The logic in close handles committing the temporary
+ * representation data to the final store (e.g. final table). In the case of Copy destinations they
+ * often have additional temporary stores. The common pattern for copy destination is that flush
+ * pushes the data into cloud storage and then close copies from cloud storage to a temporary table
+ * AND then copies from the temporary table into the final table. This abstraction is blind to that
+ * detail as it implementation detail of how copy destinations implement close.
+ * </p>
  */
 public class BufferedStreamConsumer extends FailureTrackingAirbyteMessageConsumer implements AirbyteMessageConsumer {
 
@@ -85,7 +107,7 @@ public class BufferedStreamConsumer extends FailureTrackingAirbyteMessageConsume
   private boolean hasStarted;
   private boolean hasClosed;
 
-  private AirbyteMessage lastCommittedState;
+  private AirbyteMessage lastFlushedState;
   private AirbyteMessage pendingState;
 
   public BufferedStreamConsumer(Consumer<AirbyteMessage> outputRecordCollector,
@@ -165,7 +187,7 @@ public class BufferedStreamConsumer extends FailureTrackingAirbyteMessageConsume
     }
 
     if (pendingState != null) {
-      lastCommittedState = pendingState;
+      lastFlushedState = pendingState;
       pendingState = null;
     }
   }
@@ -192,15 +214,23 @@ public class BufferedStreamConsumer extends FailureTrackingAirbyteMessageConsume
     }
 
     try {
-      onClose.accept(hasFailed);
-      // todo (cgardens) - For now we are using this conditional to maintain existing behavior. When we
-      // enable checkpointing, we will need to get feedback from onClose on whether any data was persisted
-      // or not. If it was then, the state message will be emitted.
-      if (!hasFailed && lastCommittedState != null) {
-        outputRecordCollector.accept(lastCommittedState);
+      // if no state was was emitted (i.e. full refresh), if there were still no failures, then we can
+      // still succeed.
+      if (lastFlushedState == null) {
+        onClose.accept(hasFailed);
+      } else {
+        // if any state message flushed that means we can still go for at least a partial success.
+        onClose.accept(false);
+      }
+
+      // if one close succeeds without exception then we can emit the state record because it means its
+      // records were not only flushed, but committed.
+      if (lastFlushedState != null) {
+        outputRecordCollector.accept(lastFlushedState);
       }
     } catch (Exception e) {
-      LOGGER.error("on close failed.", e);
+      LOGGER.error("Close failed.", e);
+      throw e;
     }
   }
 
