@@ -1,0 +1,110 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": ["null", "string"]
+    },
+    "company_id": {
+      "type": ["null", "string"]
+    },
+    "id": {
+      "type": ["null", "string"]
+    },
+    "app_id": {
+      "type": ["null", "string"]
+    },
+    "name": {
+      "type": ["null", "string"]
+    },
+    "created_at": {
+      "type": ["null", "integer"],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "monthly_spend": {
+      "type": ["null", "number"],
+      "multipleOf": 1e-8
+    },
+    "session_count": {
+      "type": ["null", "integer"]
+    },
+    "user_count": {
+      "type": ["null", "integer"]
+    },
+    "size": {
+      "type": ["null", "integer"]
+    },
+    "tags": {
+      "anyOf": [
+        {
+          "type": ["null", "object"],
+          "items": {
+            "type": ["null", "object"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+
+    "segments": {
+      "anyOf": [
+        {
+          "type": ["null", "object"],
+          "items": {
+            "type": ["null", "object"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "plan": {
+      "type": ["null", "object"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": ["null", "string"]
+        },
+        "name": {
+          "type": ["null", "string"]
+        },
+        "type": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "custom_attributes": {
+      "type": ["null", "object"],
+      "additionalProperties": true
+    },
+    "industry": {
+      "type": ["null", "string"]
+    },
+    "remote_created_at": {
+      "type": ["null", "integer"],
+      "format": "date-time"
+    },
+    "website": {
+      "type": ["null", "string"]
+    }
+  }
+}

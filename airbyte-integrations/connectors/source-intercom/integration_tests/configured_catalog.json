@@ -1,0 +1,1339 @@
+{
+  "streams": [
+    {
+      "stream": {
+        "name": "admins",
+        "json_schema": {
+          "properties": {
+            "admin_ids": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "avatar": {
+              "properties": {
+                "image_url": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "away_mode_enabled": {
+              "type": ["null", "boolean"]
+            },
+            "away_mode_reassign": {
+              "type": ["null", "boolean"]
+            },
+            "email": {
+              "type": ["null", "string"]
+            },
+            "has_inbox_seat": {
+              "type": ["null", "boolean"]
+            },
+            "id": {
+              "type": ["null", "string"]
+            },
+            "job_title": {
+              "type": ["null", "string"]
+            },
+            "name": {
+              "type": ["null", "string"]
+            },
+            "team_ids": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": {
+              "type": ["null", "string"]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh"]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "companies",
+        "json_schema": {
+          "properties": {
+            "company_id": {
+              "type": ["null", "string"]
+            },
+            "created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "custom_attributes": {
+              "type": ["null", "object"],
+              "additionalProperties": true
+            },
+            "id": {
+              "type": ["null", "string"]
+            },
+            "industry": {
+              "type": ["null", "string"]
+            },
+            "monthly_spend": {
+              "multipleOf": 1e-8,
+              "type": ["null", "number"]
+            },
+            "name": {
+              "type": ["null", "string"]
+            },
+            "plan": {
+              "properties": {
+                "id": {
+                  "type": ["null", "string"]
+                },
+                "name": {
+                  "type": ["null", "string"]
+                },
+                "type": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "remote_created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "segments": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": ["null", "object"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": ["null", "string"]
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "session_count": {
+              "type": ["null", "integer"]
+            },
+            "size": {
+              "type": ["null", "integer"]
+            },
+            "tags": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": ["null", "object"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": ["null", "string"]
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": {
+              "type": ["null", "string"]
+            },
+            "updated_at": {
+              "type": ["null", "integer"]
+            },
+            "user_count": {
+              "type": ["null", "integer"]
+            },
+            "website": {
+              "type": ["null", "string"]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["updated_at"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "company_attributes",
+        "json_schema": {
+          "properties": {
+            "admin_id": {
+              "type": ["null", "string"]
+            },
+            "api_writable": {
+              "type": ["null", "boolean"]
+            },
+            "archived": {
+              "type": ["null", "boolean"]
+            },
+            "created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "custom": {
+              "type": ["null", "boolean"]
+            },
+            "data_type": {
+              "type": ["null", "string"]
+            },
+            "description": {
+              "type": ["null", "string"]
+            },
+            "full_name": {
+              "type": ["null", "string"]
+            },
+            "label": {
+              "type": ["null", "string"]
+            },
+            "model": {
+              "type": ["null", "string"]
+            },
+            "name": {
+              "type": ["null", "string"]
+            },
+            "options": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": {
+              "type": ["null", "string"]
+            },
+            "ui_writable": {
+              "type": ["null", "boolean"]
+            },
+            "updated_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh"]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "company_segments",
+        "json_schema": {
+          "properties": {
+            "created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "count": {
+              "type": ["null", "integer"]
+            },
+            "id": {
+              "type": ["null", "string"]
+            },
+            "name": {
+              "type": ["null", "string"]
+            },
+            "type": {
+              "type": ["null", "string"]
+            },
+            "updated_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["updated_at"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "conversations",
+        "json_schema": {
+          "properties": {
+            "assignee": {
+              "properties": {
+                "id": {
+                  "type": ["null", "string"]
+                },
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "name": {
+                  "type": ["null", "string"]
+                },
+                "email": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "source": {
+              "properties": {
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "id": {
+                  "type": ["null", "string"]
+                },
+                "delivered_as": {
+                  "type": ["null", "string"]
+                },
+                "subject": {
+                  "type": ["null", "string"]
+                },
+                "body": {
+                  "type": ["null", "string"]
+                },
+                "author": {
+                  "properties": {
+                    "id": {
+                      "type": ["null", "string"]
+                    },
+                    "type": {
+                      "type": ["null", "string"]
+                    },
+                    "name": {
+                      "type": ["null", "string"]
+                    },
+                    "email": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "attachments": {
+                  "items": {
+                    "properties": {},
+                    "type": ["null", "object"],
+                    "additionalProperties": true
+                  },
+                  "type": ["null", "array"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "contacts": {
+              "items": {
+                "properties": {
+                  "type": {
+                    "type": ["null", "string"]
+                  },
+                  "id": {
+                    "type": ["null", "string"]
+                  }
+                },
+                "type": ["null", "object"],
+                "additionalProperties": false
+              },
+              "type": ["null", "array"]
+            },
+            "teammates": {
+              "properties": {
+                "admins": {
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": ["null", "string"]
+                      },
+                      "type": {
+                        "type": ["null", "string"]
+                      }
+                    },
+                    "type": ["null", "object"],
+                    "additionalProperties": false
+                  },
+                  "type": ["null", "array"]
+                },
+                "type": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "first_contact_reply": {
+              "properties": {
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                },
+                "created_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "priority": {
+              "type": ["null", "string"]
+            },
+            "conversation_message": {
+              "properties": {
+                "attachments": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "type": {
+                            "type": ["null", "string"]
+                          },
+                          "name": {
+                            "type": ["null", "string"]
+                          },
+                          "url": {
+                            "type": ["null", "string"]
+                          },
+                          "content_type": {
+                            "type": ["null", "string"]
+                          },
+                          "filesize": {
+                            "type": ["null", "integer"]
+                          },
+                          "height": {
+                            "type": ["null", "integer"]
+                          },
+                          "width": {
+                            "type": ["null", "integer"]
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "author": {
+                  "properties": {
+                    "id": {
+                      "type": ["null", "string"]
+                    },
+                    "type": {
+                      "type": ["null", "string"]
+                    },
+                    "name": {
+                      "type": ["null", "string"]
+                    },
+                    "email": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "body": {
+                  "type": ["null", "string"]
+                },
+                "delivered_as": {
+                  "type": ["null", "string"]
+                },
+                "id": {
+                  "type": ["null", "string"]
+                },
+                "subject": {
+                  "type": ["null", "string"]
+                },
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "conversation_rating": {
+              "properties": {
+                "created_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "customer": {
+                  "properties": {
+                    "id": {
+                      "type": ["null", "string"]
+                    },
+                    "type": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                },
+                "rating": {
+                  "type": ["null", "integer"]
+                },
+                "remark": {
+                  "type": ["null", "string"]
+                },
+                "teammate": {
+                  "properties": {
+                    "id": {
+                      "type": ["null", "integer"]
+                    },
+                    "type": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "type": ["null", "object"],
+                  "additionalProperties": false
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "customer_first_reply": {
+              "properties": {
+                "created_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "customers": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": ["null", "object"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": ["null", "string"]
+                      },
+                      "type": {
+                        "type": ["null", "string"]
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "id": {
+              "type": ["null", "string"]
+            },
+            "open": {
+              "type": ["null", "boolean"]
+            },
+            "read": {
+              "type": ["null", "boolean"]
+            },
+            "sent_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "snoozed_until": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "sla_applied": {
+              "properties": {
+                "sla_name": {
+                  "type": ["null", "string"]
+                },
+                "sla_status": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"]
+            },
+            "state": {
+              "type": ["null", "string"]
+            },
+            "statistics": {
+              "properties": {
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "time_to_assignment": {
+                  "type": ["null", "integer"]
+                },
+                "time_to_admin_reply": {
+                  "type": ["null", "integer"]
+                },
+                "time_to_first_close": {
+                  "type": ["null", "integer"]
+                },
+                "time_to_last_close": {
+                  "type": ["null", "integer"]
+                },
+                "median_time_to_reply": {
+                  "type": ["null", "integer"]
+                },
+                "first_contact_reply_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "first_assignment_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "first_admin_reply_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "first_close_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "last_assignment_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "last_assignment_admin_reply_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "last_contact_reply_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "last_admin_reply_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "last_close_at": {
+                  "format": "date-time",
+                  "type": ["null", "integer"]
+                },
+                "last_closed_by_id": {
+                  "type": ["null", "integer"]
+                },
+                "count_reopens": {
+                  "type": ["null", "integer"]
+                },
+                "count_assignments": {
+                  "type": ["null", "integer"]
+                },
+                "count_conversation_parts": {
+                  "type": ["null", "integer"]
+                }
+              },
+              "type": ["null", "object"]
+            },
+            "tags": {
+              "items": {
+                "properties": {
+                  "applied_at": {
+                    "format": "date-time",
+                    "type": ["null", "string"]
+                  },
+                  "applied_by": {
+                    "properties": {
+                      "id": {
+                        "type": ["null", "string"]
+                      },
+                      "type": {
+                        "type": ["null", "string"]
+                      }
+                    },
+                    "type": ["null", "object"],
+                    "additionalProperties": false
+                  },
+                  "id": {
+                    "type": ["null", "string"]
+                  },
+                  "name": {
+                    "type": ["null", "string"]
+                  },
+                  "type": {
+                    "type": ["null", "string"]
+                  }
+                },
+                "type": ["null", "object"],
+                "additionalProperties": false
+              },
+              "type": ["null", "array"]
+            },
+            "type": {
+              "type": ["null", "string"]
+            },
+            "updated_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "user": {
+              "properties": {
+                "id": {
+                  "type": ["null", "string"]
+                },
+                "type": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "waiting_since": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["updated_at"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "conversation_parts",
+        "json_schema": {
+          "properties": {
+            "assigned_to": {
+              "type": ["null", "string"]
+            },
+            "attachments": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "type": {
+                        "type": ["null", "string"]
+                      },
+                      "name": {
+                        "type": ["null", "string"]
+                      },
+                      "url": {
+                        "type": ["null", "string"]
+                      },
+                      "content_type": {
+                        "type": ["null", "string"]
+                      },
+                      "filesize": {
+                        "type": ["null", "integer"]
+                      },
+                      "height": {
+                        "type": ["null", "integer"]
+                      },
+                      "width": {
+                        "type": ["null", "integer"]
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "author": {
+              "properties": {
+                "id": {
+                  "type": ["null", "string"]
+                },
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "name": {
+                  "type": ["null", "string"]
+                },
+                "email": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "body": {
+              "type": ["null", "string"]
+            },
+            "conversation_id": {
+              "type": ["null", "string"]
+            },
+            "conversation_created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "conversation_updated_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "conversation_total_parts": {
+              "type": ["null", "integer"]
+            },
+            "created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "external_id": {
+              "type": ["null", "string"]
+            },
+            "id": {
+              "type": ["null", "string"]
+            },
+            "notified_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "part_type": {
+              "type": ["null", "string"]
+            },
+            "type": {
+              "type": ["null", "string"]
+            },
+            "updated_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["updated_at"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "contact_attributes",
+        "json_schema": {
+          "properties": {
+            "type": {
+              "type": ["null", "string"]
+            },
+            "model": {
+              "type": ["null", "string"]
+            },
+            "name": {
+              "type": ["null", "string"]
+            },
+            "full_name": {
+              "type": ["null", "string"]
+            },
+            "label": {
+              "type": ["null", "string"]
+            },
+            "description": {
+              "type": ["null", "string"]
+            },
+            "data_type": {
+              "type": ["null", "string"]
+            },
+            "options": {
+              "items": {
+                "type": ["null", "string"]
+              },
+              "type": ["null", "array"]
+            },
+            "api_writable": {
+              "type": ["null", "boolean"]
+            },
+            "ui_writable": {
+              "type": ["null", "boolean"]
+            },
+            "custom": {
+              "type": ["null", "boolean"]
+            },
+            "archived": {
+              "type": ["null", "boolean"]
+            },
+            "admin_id": {
+              "type": ["null", "string"]
+            },
+            "created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "updated_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            }
+          },
+          "type": ["null", "object"],
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh"]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "contacts",
+        "json_schema": {
+          "properties": {
+            "type": {
+              "type": ["null", "string"]
+            },
+            "id": {
+              "type": ["null", "string"]
+            },
+            "workspace_id": {
+              "type": ["null", "string"]
+            },
+            "external_id": {
+              "type": ["null", "string"]
+            },
+            "role": {
+              "type": ["null", "string"]
+            },
+            "email": {
+              "type": ["null", "string"]
+            },
+            "phone": {
+              "type": ["null", "string"]
+            },
+            "name": {
+              "type": ["null", "string"]
+            },
+            "avatar": {
+              "type": ["null", "string"]
+            },
+            "owner_id": {
+              "type": ["null", "integer"]
+            },
+            "social_profiles": {
+              "properties": {
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "data": {
+                  "items": {
+                    "properties": {
+                      "type": {
+                        "type": ["null", "string"]
+                      },
+                      "name": {
+                        "type": ["null", "string"]
+                      },
+                      "url": {
+                        "type": ["null", "string"]
+                      }
+                    },
+                    "type": ["null", "object"],
+                    "additionalProperties": false
+                  },
+                  "type": ["null", "array"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "has_hard_bounced": {
+              "type": ["null", "boolean"]
+            },
+            "marked_email_as_spam": {
+              "type": ["null", "boolean"]
+            },
+            "unsubscribed_from_emails": {
+              "type": ["null", "boolean"]
+            },
+            "created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "updated_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "signed_up_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "last_seen_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "last_replied_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "last_contacted_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "last_email_opened_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "last_email_clicked_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "language_override": {
+              "type": ["null", "string"]
+            },
+            "browser": {
+              "type": ["null", "string"]
+            },
+            "browser_version": {
+              "type": ["null", "string"]
+            },
+            "browser_language": {
+              "type": ["null", "string"]
+            },
+            "os": {
+              "type": ["null", "string"]
+            },
+            "location": {
+              "properties": {
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "country": {
+                  "type": ["null", "string"]
+                },
+                "region": {
+                  "type": ["null", "string"]
+                },
+                "city": {
+                  "type": ["null", "string"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "android_app_name": {
+              "type": ["null", "string"]
+            },
+            "android_app_version": {
+              "type": ["null", "string"]
+            },
+            "android_device": {
+              "type": ["null", "string"]
+            },
+            "android_os_version": {
+              "type": ["null", "string"]
+            },
+            "android_sdk_version": {
+              "type": ["null", "string"]
+            },
+            "android_last_seen_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "ios_app_name": {
+              "type": ["null", "string"]
+            },
+            "ios_app_version": {
+              "type": ["null", "string"]
+            },
+            "ios_device": {
+              "type": ["null", "string"]
+            },
+            "ios_os_version": {
+              "type": ["null", "string"]
+            },
+            "ios_sdk_version": {
+              "type": ["null", "string"]
+            },
+            "ios_last_seen_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "custom_attributes": {
+              "properties": {},
+              "type": ["null", "object"],
+              "additionalProperties": true
+            },
+            "tags": {
+              "properties": {
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "data": {
+                  "items": {
+                    "properties": {
+                      "type": {
+                        "type": ["null", "string"]
+                      },
+                      "id": {
+                        "type": ["null", "string"]
+                      },
+                      "url": {
+                        "type": ["null", "string"]
+                      }
+                    },
+                    "type": ["null", "object"],
+                    "additionalProperties": false
+                  },
+                  "type": ["null", "array"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                },
+                "total_count": {
+                  "type": ["null", "integer"]
+                },
+                "has_more": {
+                  "type": ["null", "boolean"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "notes": {
+              "properties": {
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "data": {
+                  "items": {
+                    "properties": {
+                      "type": {
+                        "type": ["null", "string"]
+                      },
+                      "id": {
+                        "type": ["null", "string"]
+                      },
+                      "url": {
+                        "type": ["null", "string"]
+                      }
+                    },
+                    "type": ["null", "object"],
+                    "additionalProperties": false
+                  },
+                  "type": ["null", "array"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                },
+                "total_count": {
+                  "type": ["null", "integer"]
+                },
+                "has_more": {
+                  "type": ["null", "boolean"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            },
+            "companies": {
+              "properties": {
+                "type": {
+                  "type": ["null", "string"]
+                },
+                "data": {
+                  "items": {
+                    "properties": {
+                      "type": {
+                        "type": ["null", "string"]
+                      },
+                      "id": {
+                        "type": ["null", "string"]
+                      },
+                      "url": {
+                        "type": ["null", "string"]
+                      }
+                    },
+                    "type": ["null", "object"],
+                    "additionalProperties": false
+                  },
+                  "type": ["null", "array"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                },
+                "total_count": {
+                  "type": ["null", "integer"]
+                },
+                "has_more": {
+                  "type": ["null", "boolean"]
+                }
+              },
+              "type": ["null", "object"],
+              "additionalProperties": false
+            }
+          },
+          "type": ["null", "object"],
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["updated_at"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "segments",
+        "json_schema": {
+          "properties": {
+            "created_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            },
+            "count": {
+              "type": ["null", "integer"]
+            },
+            "id": {
+              "type": ["null", "string"]
+            },
+            "name": {
+              "type": ["null", "string"]
+            },
+            "type": {
+              "type": ["null", "string"]
+            },
+            "updated_at": {
+              "format": "date-time",
+              "type": ["null", "integer"]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh", "incremental"],
+        "source_defined_cursor": true,
+        "default_cursor_field": ["updated_at"]
+      },
+      "sync_mode": "incremental",
+      "cursor_field": ["updated_at"],
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "tags",
+        "json_schema": {
+          "properties": {
+            "id": {
+              "type": ["null", "string"]
+            },
+            "name": {
+              "type": ["null", "string"]
+            },
+            "type": {
+              "type": ["null", "string"]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh"]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "append"
+    },
+    {
+      "stream": {
+        "name": "teams",
+        "json_schema": {
+          "properties": {
+            "admin_ids": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "id": {
+              "type": ["null", "string"]
+            },
+            "name": {
+              "type": ["null", "string"]
+            },
+            "type": {
+              "type": ["null", "string"]
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "supported_sync_modes": ["full_refresh"]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "append"
+    }
+  ]
+}

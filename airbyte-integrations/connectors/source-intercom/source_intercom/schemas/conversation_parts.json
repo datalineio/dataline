@@ -1,0 +1,127 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "assigned_to": {
+      "anyOf": [
+        {
+          "type": ["null", "object"],
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": ["null", "string"]
+              }
+            },
+            "id": {
+              "type": ["null", "string"]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "attachments": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": ["null", "string"]
+              },
+              "name": {
+                "type": ["null", "string"]
+              },
+              "url": {
+                "type": ["null", "string"]
+              },
+              "content_type": {
+                "type": ["null", "string"]
+              },
+              "filesize": {
+                "type": ["null", "integer"]
+              },
+              "height": {
+                "type": ["null", "integer"]
+              },
+              "width": {
+                "type": ["null", "integer"]
+              }
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "author": {
+      "type": ["null", "object"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": ["null", "string"]
+        },
+        "type": {
+          "type": ["null", "string"]
+        },
+        "name": {
+          "type": ["null", "string"]
+        },
+        "email": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "body": {
+      "type": ["null", "string"]
+    },
+    "conversation_id": {
+      "type": ["null", "string"]
+    },
+    "conversation_created_at": {
+      "type": ["null", "integer"],
+      "format": "date-time"
+    },
+    "conversation_updated_at": {
+      "type": ["null", "integer"],
+      "format": "date-time"
+    },
+    "conversation_total_parts": {
+      "type": ["null", "integer"]
+    },
+    "created_at": {
+      "type": ["null", "integer"],
+      "format": "date-time"
+    },
+    "external_id": {
+      "type": ["null", "string"]
+    },
+    "id": {
+      "type": ["null", "string"]
+    },
+    "notified_at": {
+      "type": ["null", "integer"],
+      "format": "date-time"
+    },
+    "part_type": {
+      "type": ["null", "string"]
+    },
+    "type": {
+      "type": ["null", "string"]
+    },
+    "updated_at": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "redacted": {
+      "type": ["null", "boolean"]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/intercom",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Source Intercom Spec",
+    "type": "object",
+    "required": ["access_token", "start_date"],
+    "additionalProperties": false,
+    "properties": {
+      "access_token": {
+        "type": "string",
+        "description": "Intercom Access Token. See the <a href=\"https://docs.airbyte.io/integrations/sources/intercom\">docs</a> for more information on how to obtain this key.",
+        "airbyte_secret": true
+      },
+      "start_date": {
+        "type": "string",
+        "description": "The date from which you'd like to replicate data for Intercom API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.",
+        "examples": ["2020-11-16T00:00:00Z"],
+        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+      }
+    }
+  }
+}

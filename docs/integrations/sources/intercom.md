@@ -4,25 +4,24 @@
 
 The Intercom source supports both Full Refresh and Incremental syncs. You can choose if this connector will copy only the new or updated data, or all rows in the tables and columns you set up for replication, every time a sync is run.
 
-This Intercom source wraps the [Singer Intercom Tap](https://github.com/singer-io/tap-intercom).
+This Source Connector is based on a [Airbyte CDK](https://docs.airbyte.io/contributing-to-airbyte/python).
 
 ### Output schema
 
 Several output streams are available from this source:
 
-* [Admins](https://developers.intercom.com/intercom-api-reference/reference#list-admins)
-* [Companies](https://developers.intercom.com/intercom-api-reference/reference#list-companies)
-* [Conversations](https://developers.intercom.com/intercom-api-reference/reference#list-conversations)
-  * [Conversation Parts](https://developers.intercom.com/intercom-api-reference/reference#get-a-single-conversation)
-* [Data Attributes](https://developers.intercom.com/intercom-api-reference/reference#data-attributes)
-  * [Customer Attributes](https://developers.intercom.com/intercom-api-reference/reference#list-customer-data-attributes)
-  * [Company Attributes](https://developers.intercom.com/intercom-api-reference/reference#list-company-data-attributes)
-* [Leads](https://developers.intercom.com/intercom-api-reference/reference#list-leads)
-* [Segments](https://developers.intercom.com/intercom-api-reference/reference#list-segments)
-  * [Company Segments](https://developers.intercom.com/intercom-api-reference/reference#list-segments)
-* [Tags](https://developers.intercom.com/intercom-api-reference/reference#list-tags-for-an-app)
-* [Teams](https://developers.intercom.com/intercom-api-reference/reference#list-teams)
-* [Users](https://developers.intercom.com/intercom-api-reference/reference#list-users)
+* [Admins](https://developers.intercom.com/intercom-api-reference/reference#list-admins) \(Full table\)
+* [Companies](https://developers.intercom.com/intercom-api-reference/reference#list-companies) \(Incremental\)
+    * [Company Segments](https://developers.intercom.com/intercom-api-reference/reference#list-attached-segments-1) \(Incremental\)
+* [Conversations](https://developers.intercom.com/intercom-api-reference/reference#list-conversations) \(Incremental\)
+  * [Conversation Parts](https://developers.intercom.com/intercom-api-reference/reference#get-a-single-conversation) \(Incremental\)
+* [Data Attributes](https://developers.intercom.com/intercom-api-reference/reference#data-attributes) \(Full table\)
+  * [Customer Attributes](https://developers.intercom.com/intercom-api-reference/reference#list-customer-data-attributes) \(Full table\)
+  * [Company Attributes](https://developers.intercom.com/intercom-api-reference/reference#list-company-data-attributes) \(Full table\)
+* [Contacts](https://developers.intercom.com/intercom-api-reference/reference#list-contacts) \(Incremental\)
+* [Segments](https://developers.intercom.com/intercom-api-reference/reference#list-segments) \(Incremental\)
+* [Tags](https://developers.intercom.com/intercom-api-reference/reference#list-tags-for-an-app) \(Full table\)
+* [Teams](https://developers.intercom.com/intercom-api-reference/reference#list-teams) \(Full table\)
 
 If there are more endpoints you'd like Airbyte to support, please [create an issue.](https://github.com/airbytehq/airbyte/issues/new/choose)
 

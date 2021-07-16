@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "admin_id": {
+      "type": ["null", "string"]
+    },
+    "api_writable": {
+      "type": ["null", "boolean"]
+    },
+    "archived": {
+      "type": ["null", "boolean"]
+    },
+    "created_at": {
+      "type": ["null", "integer"],
+      "format": "date-time"
+    },
+    "custom": {
+      "type": ["null", "boolean"]
+    },
+    "data_type": {
+      "type": ["null", "string"]
+    },
+    "description": {
+      "type": ["null", "string"]
+    },
+    "full_name": {
+      "type": ["null", "string"]
+    },
+    "label": {
+      "type": ["null", "string"]
+    },
+    "model": {
+      "type": ["null", "string"]
+    },
+    "name": {
+      "type": ["null", "string"]
+    },
+    "options": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "type": {
+      "type": ["null", "string"]
+    },
+    "ui_writable": {
+      "type": ["null", "boolean"]
+    },
+    "updated_at": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    }
+  }
+}
