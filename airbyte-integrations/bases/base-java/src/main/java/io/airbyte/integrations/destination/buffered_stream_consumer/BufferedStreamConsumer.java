@@ -68,14 +68,14 @@ import org.slf4j.LoggerFactory;
  * </p>
  *
  * <p>
- * Throughout the lifecycle of the consumer, records get promoted from buffered to flushed to
- * committed. A record when it is received is immediately buffered. When the buffer fills up, all
- * buffered records are flushed out of memory using the user-provided recordWriter. When this flush
- * happens, a state message is moved from pending to flushed. On close, if the user-provided onClose
- * function is successful, then the flushed state record is considered committed and is then
- * emitted. We expect this class to only ever emit either 1 state message (in the case of a full or
- * partial success) or 0 state messages (in the case where the onClose step was never reached or did
- * not complete without exception).
+ * Throughout the lifecycle of the consumer, messages get promoted from buffered to flushed to
+ * committed. A record message when it is received is immediately buffered. When the buffer fills
+ * up, all buffered records are flushed out of memory using the user-provided recordWriter. When
+ * this flush happens, a state message is moved from pending to flushed. On close, if the
+ * user-provided onClose function is successful, then the flushed state record is considered
+ * committed and is then emitted. We expect this class to only ever emit either 1 state message (in
+ * the case of a full or partial success) or 0 state messages (in the case where the onClose step
+ * was never reached or did not complete without exception).
  * </p>
  *
  * <p>

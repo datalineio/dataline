@@ -258,7 +258,7 @@ public class BufferedStreamConsumerTest {
     consumeRecords(consumer, expectedRecordsBatch1);
     consumer.accept(STATE_MESSAGE1);
     consumeRecords(consumer, expectedRecordsBatch2);
-    consumer.close();
+    assertThrows(IllegalStateException.class, () -> consumer.close());
 
     verifyStartAndClose();
 
