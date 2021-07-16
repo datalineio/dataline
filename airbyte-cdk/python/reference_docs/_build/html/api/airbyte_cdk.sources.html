@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>airbyte_cdk.sources package &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="airbyte_cdk.sources.deprecated package" href="airbyte_cdk.sources.deprecated.html" />
+    <link rel="prev" title="airbyte_cdk.models package" href="airbyte_cdk.models.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="airbyte-cdk-sources-package">
+<h1>airbyte_cdk.sources package<a class="headerlink" href="#airbyte-cdk-sources-package" title="Permalink to this headline">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="airbyte_cdk.sources.deprecated.html">airbyte_cdk.sources.deprecated package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.deprecated.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.deprecated.html#module-airbyte_cdk.sources.deprecated.base_source">airbyte_cdk.sources.deprecated.base_source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.deprecated.html#module-airbyte_cdk.sources.deprecated.client">airbyte_cdk.sources.deprecated.client module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="airbyte_cdk.sources.singer.html">airbyte_cdk.sources.singer package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.singer.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.singer.html#module-airbyte_cdk.sources.singer.singer_helpers">airbyte_cdk.sources.singer.singer_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.singer.html#module-airbyte_cdk.sources.singer.source">airbyte_cdk.sources.singer.source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.singer.html#module-airbyte_cdk.sources.singer">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="airbyte_cdk.sources.streams.html">airbyte_cdk.sources.streams package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.streams.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.sources.streams.http.html">airbyte_cdk.sources.streams.http package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.streams.http.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.streams.http.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.streams.http.html#module-airbyte_cdk.sources.streams.http.exceptions">airbyte_cdk.sources.streams.http.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.streams.http.html#module-airbyte_cdk.sources.streams.http.http">airbyte_cdk.sources.streams.http.http module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.streams.http.html#module-airbyte_cdk.sources.streams.http.rate_limiting">airbyte_cdk.sources.streams.http.rate_limiting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.streams.http.html#module-airbyte_cdk.sources.streams.http">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.streams.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.streams.html#module-airbyte_cdk.sources.streams.core">airbyte_cdk.sources.streams.core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.streams.html#module-airbyte_cdk.sources.streams">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="airbyte_cdk.sources.utils.html">airbyte_cdk.sources.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.utils.html#module-airbyte_cdk.sources.utils.casing">airbyte_cdk.sources.utils.casing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.utils.html#module-airbyte_cdk.sources.utils.catalog_helpers">airbyte_cdk.sources.utils.catalog_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.sources.utils.html#module-airbyte_cdk.sources.utils.schema_helpers">airbyte_cdk.sources.utils.schema_helpers module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-airbyte_cdk.sources.abstract_source">
+<span id="airbyte-cdk-sources-abstract-source-module"></span><h2>airbyte_cdk.sources.abstract_source module<a class="headerlink" href="#module-airbyte_cdk.sources.abstract_source" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.abstract_source.AbstractSource">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.abstract_source.</span></span><span class="sig-name descname"><span class="pre">AbstractSource</span></span><a class="headerlink" href="#airbyte_cdk.sources.abstract_source.AbstractSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#airbyte_cdk.sources.source.Source" title="airbyte_cdk.sources.source.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.source.Source</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract base class for an Airbyte Source. Consumers should implement any abstract methods
+in this class to create an Airbyte Specification compliant Source.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.abstract_source.AbstractSource.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.abstract_source.AbstractSource.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Check Connection operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.abstract_source.AbstractSource.check_connection">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">check_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.abstract_source.AbstractSource.check_connection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – The user-provided configuration as specified by the source’s spec. This usually contains information required to check connection e.g. tokens, secrets and keys etc.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple of (boolean, error). If boolean is true, then the connection check is successful and we can connect to the underlying data</p>
+</dd>
+</dl>
+<p>source using the provided configuration.
+Otherwise, the input config cannot be used to connect to the underlying data source, and the “error” object should describe what went wrong.
+The error object will be cast to string to display the problem to the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.abstract_source.AbstractSource.discover">
+<span class="sig-name descname"><span class="pre">discover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.abstract_source.AbstractSource.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Discover operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.abstract_source.AbstractSource.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#airbyte_cdk.sources.abstract_source.AbstractSource.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Source name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.abstract_source.AbstractSource.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.abstract_source.AbstractSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Read operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.abstract_source.AbstractSource.streams">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">streams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.sources.streams.html#airbyte_cdk.sources.streams.core.Stream" title="airbyte_cdk.sources.streams.core.Stream"><span class="pre">airbyte_cdk.sources.streams.core.Stream</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.abstract_source.AbstractSource.streams" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – The user-provided configuration as specified by the source’s spec. Any stream construction related operation should happen here.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of the streams in this source connector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-airbyte_cdk.sources.source">
+<span id="airbyte-cdk-sources-source-module"></span><h2>airbyte_cdk.sources.source module<a class="headerlink" href="#module-airbyte_cdk.sources.source" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.source.Source">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.source.</span></span><span class="sig-name descname"><span class="pre">Source</span></span><a class="headerlink" href="#airbyte_cdk.sources.source.Source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.connector.Connector" title="airbyte_cdk.connector.Connector"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.connector.Connector</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.source.Source.discover">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">discover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.source.Source.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an AirbyteCatalog representing the available streams and fields in this integration. For example, given valid credentials to a
+Postgres database, returns an Airbyte catalog where each postgres table is a stream, and each table column is a field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.source.Source.read">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.source.Source.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of the AirbyteMessages generated by reading the source with the given configuration, catalog, and state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.source.Source.read_catalog">
+<span class="sig-name descname"><span class="pre">read_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.source.Source.read_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.source.Source.read_state">
+<span class="sig-name descname"><span class="pre">read_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.source.Source.read_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-airbyte_cdk.sources">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-airbyte_cdk.sources" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.AbstractSource">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.</span></span><span class="sig-name descname"><span class="pre">AbstractSource</span></span><a class="headerlink" href="#airbyte_cdk.sources.AbstractSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#airbyte_cdk.sources.source.Source" title="airbyte_cdk.sources.source.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.source.Source</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract base class for an Airbyte Source. Consumers should implement any abstract methods
+in this class to create an Airbyte Specification compliant Source.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.AbstractSource.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.AbstractSource.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Check Connection operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.AbstractSource.check_connection">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">check_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.AbstractSource.check_connection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – The user-provided configuration as specified by the source’s spec. This usually contains information required to check connection e.g. tokens, secrets and keys etc.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple of (boolean, error). If boolean is true, then the connection check is successful and we can connect to the underlying data</p>
+</dd>
+</dl>
+<p>source using the provided configuration.
+Otherwise, the input config cannot be used to connect to the underlying data source, and the “error” object should describe what went wrong.
+The error object will be cast to string to display the problem to the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.AbstractSource.discover">
+<span class="sig-name descname"><span class="pre">discover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.AbstractSource.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Discover operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.AbstractSource.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#airbyte_cdk.sources.AbstractSource.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Source name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.AbstractSource.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.AbstractSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the Read operation from the Airbyte Specification. See <a class="reference external" href="https://docs.airbyte.io/architecture/airbyte-specification">https://docs.airbyte.io/architecture/airbyte-specification</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.AbstractSource.streams">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">streams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.sources.streams.html#airbyte_cdk.sources.streams.core.Stream" title="airbyte_cdk.sources.streams.core.Stream"><span class="pre">airbyte_cdk.sources.streams.core.Stream</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.AbstractSource.streams" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – The user-provided configuration as specified by the source’s spec. Any stream construction related operation should happen here.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of the streams in this source connector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.Source">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.</span></span><span class="sig-name descname"><span class="pre">Source</span></span><a class="headerlink" href="#airbyte_cdk.sources.Source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.connector.Connector" title="airbyte_cdk.connector.Connector"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.connector.Connector</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.Source.discover">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">discover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.Source.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an AirbyteCatalog representing the available streams and fields in this integration. For example, given valid credentials to a
+Postgres database, returns an Airbyte catalog where each postgres table is a stream, and each table column is a field.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.Source.read">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MutableMapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.Source.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a generator of the AirbyteMessages generated by reading the source with the given configuration, catalog, and state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.Source.read_catalog">
+<span class="sig-name descname"><span class="pre">read_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.Source.read_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.Source.read_state">
+<span class="sig-name descname"><span class="pre">read_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.Source.read_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="airbyte_cdk.html">airbyte_cdk package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="airbyte_cdk.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.destinations.html">airbyte_cdk.destinations package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.models.html">airbyte_cdk.models package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">airbyte_cdk.sources package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-airbyte_cdk.sources.abstract_source">airbyte_cdk.sources.abstract_source module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-airbyte_cdk.sources.source">airbyte_cdk.sources.source module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-airbyte_cdk.sources">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.entrypoint">airbyte_cdk.entrypoint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.logger">airbyte_cdk.logger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.connector">airbyte_cdk.connector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="airbyte_cdk.html">airbyte_cdk package</a><ul>
+      <li>Previous: <a href="airbyte_cdk.models.html" title="previous chapter">airbyte_cdk.models package</a></li>
+      <li>Next: <a href="airbyte_cdk.sources.deprecated.html" title="next chapter">airbyte_cdk.sources.deprecated package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/airbyte_cdk.sources.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

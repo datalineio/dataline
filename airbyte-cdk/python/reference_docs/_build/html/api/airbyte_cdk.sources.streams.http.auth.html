@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>airbyte_cdk.sources.streams.http.auth package &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="airbyte_cdk.sources.utils package" href="airbyte_cdk.sources.utils.html" />
+    <link rel="prev" title="airbyte_cdk.sources.streams.http package" href="airbyte_cdk.sources.streams.http.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="airbyte-cdk-sources-streams-http-auth-package">
+<h1>airbyte_cdk.sources.streams.http.auth package<a class="headerlink" href="#airbyte-cdk-sources-streams-http-auth-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-airbyte_cdk.sources.streams.http.auth.core">
+<span id="airbyte-cdk-sources-streams-http-auth-core-module"></span><h2>airbyte_cdk.sources.streams.http.auth.core module<a class="headerlink" href="#module-airbyte_cdk.sources.streams.http.auth.core" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.streams.http.auth.core.</span></span><span class="sig-name descname"><span class="pre">HttpAuthenticator</span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base abstract class for various HTTP Authentication strategies. Authentication strategies are generally
+expected to provide security credentials via HTTP headers.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator.get_auth_header">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">get_auth_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.core.NoAuth">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.streams.http.auth.core.</span></span><span class="sig-name descname"><span class="pre">NoAuth</span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.core.NoAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator" title="airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.core.NoAuth.get_auth_header">
+<span class="sig-name descname"><span class="pre">get_auth_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.core.NoAuth.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-airbyte_cdk.sources.streams.http.auth.oauth">
+<span id="airbyte-cdk-sources-streams-http-auth-oauth-module"></span><h2>airbyte_cdk.sources.streams.http.auth.oauth module<a class="headerlink" href="#module-airbyte_cdk.sources.streams.http.auth.oauth" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.streams.http.auth.oauth.</span></span><span class="sig-name descname"><span class="pre">Oauth2Authenticator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token_refresh_endpoint</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_secret</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refresh_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scopes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator" title="airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator</span></code></a></p>
+<p>Generates OAuth2.0 access tokens from an OAuth2.0 refresh token and client credentials.
+The generated access token is attached to each request via the Authorization header.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.get_access_token">
+<span class="sig-name descname"><span class="pre">get_access_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.get_access_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.get_auth_header">
+<span class="sig-name descname"><span class="pre">get_auth_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.get_refresh_request_body">
+<span class="sig-name descname"><span class="pre">get_refresh_request_body</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.get_refresh_request_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to define additional parameters</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.refresh_access_token">
+<span class="sig-name descname"><span class="pre">refresh_access_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.refresh_access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a tuple of (access_token, token_lifespan_in_seconds)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.token_has_expired">
+<span class="sig-name descname"><span class="pre">token_has_expired</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.oauth.Oauth2Authenticator.token_has_expired" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-airbyte_cdk.sources.streams.http.auth.token">
+<span id="airbyte-cdk-sources-streams-http-auth-token-module"></span><h2>airbyte_cdk.sources.streams.http.auth.token module<a class="headerlink" href="#module-airbyte_cdk.sources.streams.http.auth.token" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.token.TokenAuthenticator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.streams.http.auth.token.</span></span><span class="sig-name descname"><span class="pre">TokenAuthenticator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Bearer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_header</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Authorization'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.token.TokenAuthenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator" title="airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.token.TokenAuthenticator.get_auth_header">
+<span class="sig-name descname"><span class="pre">get_auth_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.token.TokenAuthenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-airbyte_cdk.sources.streams.http.auth">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-airbyte_cdk.sources.streams.http.auth" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.HttpAuthenticator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.streams.http.auth.</span></span><span class="sig-name descname"><span class="pre">HttpAuthenticator</span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.HttpAuthenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base abstract class for various HTTP Authentication strategies. Authentication strategies are generally
+expected to provide security credentials via HTTP headers.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.HttpAuthenticator.get_auth_header">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">get_auth_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.HttpAuthenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.NoAuth">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.streams.http.auth.</span></span><span class="sig-name descname"><span class="pre">NoAuth</span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.NoAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator" title="airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.NoAuth.get_auth_header">
+<span class="sig-name descname"><span class="pre">get_auth_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.NoAuth.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.streams.http.auth.</span></span><span class="sig-name descname"><span class="pre">Oauth2Authenticator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token_refresh_endpoint</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_secret</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refresh_token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scopes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator" title="airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator</span></code></a></p>
+<p>Generates OAuth2.0 access tokens from an OAuth2.0 refresh token and client credentials.
+The generated access token is attached to each request via the Authorization header.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.get_access_token">
+<span class="sig-name descname"><span class="pre">get_access_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.get_access_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.get_auth_header">
+<span class="sig-name descname"><span class="pre">get_auth_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.get_refresh_request_body">
+<span class="sig-name descname"><span class="pre">get_refresh_request_body</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.get_refresh_request_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to define additional parameters</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.refresh_access_token">
+<span class="sig-name descname"><span class="pre">refresh_access_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.refresh_access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a tuple of (access_token, token_lifespan_in_seconds)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.token_has_expired">
+<span class="sig-name descname"><span class="pre">token_has_expired</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.Oauth2Authenticator.token_has_expired" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.TokenAuthenticator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.streams.http.auth.</span></span><span class="sig-name descname"><span class="pre">TokenAuthenticator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Bearer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_header</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Authorization'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.TokenAuthenticator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator" title="airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.streams.http.auth.core.HttpAuthenticator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.streams.http.auth.TokenAuthenticator.get_auth_header">
+<span class="sig-name descname"><span class="pre">get_auth_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.streams.http.auth.TokenAuthenticator.get_auth_header" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dictionary containing all the necessary headers to authenticate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="airbyte_cdk.html">airbyte_cdk package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="airbyte_cdk.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.destinations.html">airbyte_cdk.destinations package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.models.html">airbyte_cdk.models package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="airbyte_cdk.sources.html">airbyte_cdk.sources package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="airbyte_cdk.sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#module-airbyte_cdk.sources.abstract_source">airbyte_cdk.sources.abstract_source module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#module-airbyte_cdk.sources.source">airbyte_cdk.sources.source module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#module-airbyte_cdk.sources">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.entrypoint">airbyte_cdk.entrypoint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.logger">airbyte_cdk.logger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.connector">airbyte_cdk.connector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="airbyte_cdk.html">airbyte_cdk package</a><ul>
+  <li><a href="airbyte_cdk.sources.html">airbyte_cdk.sources package</a><ul>
+  <li><a href="airbyte_cdk.sources.streams.html">airbyte_cdk.sources.streams package</a><ul>
+  <li><a href="airbyte_cdk.sources.streams.http.html">airbyte_cdk.sources.streams.http package</a><ul>
+      <li>Previous: <a href="airbyte_cdk.sources.streams.http.html" title="previous chapter">airbyte_cdk.sources.streams.http package</a></li>
+      <li>Next: <a href="airbyte_cdk.sources.utils.html" title="next chapter">airbyte_cdk.sources.utils package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/airbyte_cdk.sources.streams.http.auth.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

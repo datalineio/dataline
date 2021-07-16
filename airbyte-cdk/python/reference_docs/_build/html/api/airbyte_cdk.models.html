@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>airbyte_cdk.models package &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="airbyte_cdk.sources package" href="airbyte_cdk.sources.html" />
+    <link rel="prev" title="airbyte_cdk.destinations package" href="airbyte_cdk.destinations.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="airbyte-cdk-models-package">
+<h1>airbyte_cdk.models package<a class="headerlink" href="#airbyte-cdk-models-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-airbyte_cdk.models.airbyte_protocol">
+<span id="airbyte-cdk-models-airbyte-protocol-module"></span><h2>airbyte_cdk.models.airbyte_protocol module<a class="headerlink" href="#module-airbyte_cdk.models.airbyte_protocol" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">AirbyteCatalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streams</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream" title="airbyte_cdk.models.airbyte_protocol.AirbyteStream"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteStream</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog.streams">
+<span class="sig-name descname"><span class="pre">streams</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream" title="airbyte_cdk.models.airbyte_protocol.AirbyteStream"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteStream</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog.streams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">AirbyteConnectionStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.Status" title="airbyte_cdk.models.airbyte_protocol.Status"><span class="pre">airbyte_cdk.models.airbyte_protocol.Status</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus.message">
+<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.Status" title="airbyte_cdk.models.airbyte_protocol.Status"><span class="pre">airbyte_cdk.models.airbyte_protocol.Status</span></a></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">AirbyteLogMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.Level" title="airbyte_cdk.models.airbyte_protocol.Level"><span class="pre">airbyte_cdk.models.airbyte_protocol.Level</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage.level">
+<span class="sig-name descname"><span class="pre">level</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.Level" title="airbyte_cdk.models.airbyte_protocol.Level"><span class="pre">airbyte_cdk.models.airbyte_protocol.Level</span></a></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage.level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage.message">
+<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">AirbyteMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.Type" title="airbyte_cdk.models.airbyte_protocol.Type"><span class="pre">airbyte_cdk.models.airbyte_protocol.Type</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification" title="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConnectorSpecification</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectionStatus</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage.catalog">
+<span class="sig-name descname"><span class="pre">catalog</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage.catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage.connectionStatus">
+<span class="sig-name descname"><span class="pre">connectionStatus</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage.connectionStatus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage.log">
+<span class="sig-name descname"><span class="pre">log</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteLogMessage</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage.record">
+<span class="sig-name descname"><span class="pre">record</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage.record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage.spec">
+<span class="sig-name descname"><span class="pre">spec</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification" title="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConnectorSpecification</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage.spec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage.state">
+<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteMessage.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.Type" title="airbyte_cdk.models.airbyte_protocol.Type"><span class="pre">airbyte_cdk.models.airbyte_protocol.Type</span></a></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteProtocol">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">AirbyteProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airbyte_message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configured_airbyte_catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteProtocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteProtocol.airbyte_message">
+<span class="sig-name descname"><span class="pre">airbyte_message</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteProtocol.airbyte_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteProtocol.configured_airbyte_catalog">
+<span class="sig-name descname"><span class="pre">configured_airbyte_catalog</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteProtocol.configured_airbyte_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">AirbyteRecordMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emitted_at</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.data">
+<span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.emitted_at">
+<span class="sig-name descname"><span class="pre">emitted_at</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.emitted_at" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.namespace">
+<span class="sig-name descname"><span class="pre">namespace</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.stream">
+<span class="sig-name descname"><span class="pre">stream</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteRecordMessage.stream" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">AirbyteStateMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage.data">
+<span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStateMessage.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">AirbyteStream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_schema</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supported_sync_modes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.SyncMode" title="airbyte_cdk.models.airbyte_protocol.SyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.SyncMode</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_defined_cursor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_defined_primary_key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream.default_cursor_field">
+<span class="sig-name descname"><span class="pre">default_cursor_field</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream.default_cursor_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream.json_schema">
+<span class="sig-name descname"><span class="pre">json_schema</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream.json_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream.namespace">
+<span class="sig-name descname"><span class="pre">namespace</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream.namespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream.source_defined_cursor">
+<span class="sig-name descname"><span class="pre">source_defined_cursor</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream.source_defined_cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream.source_defined_primary_key">
+<span class="sig-name descname"><span class="pre">source_defined_primary_key</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream.source_defined_primary_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.AirbyteStream.supported_sync_modes">
+<span class="sig-name descname"><span class="pre">supported_sync_modes</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.SyncMode" title="airbyte_cdk.models.airbyte_protocol.SyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.SyncMode</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream.supported_sync_modes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">ConfiguredAirbyteCatalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streams</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog.streams">
+<span class="sig-name descname"><span class="pre">streams</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog.streams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">ConfiguredAirbyteStream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream" title="airbyte_cdk.models.airbyte_protocol.AirbyteStream"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteStream</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.SyncMode" title="airbyte_cdk.models.airbyte_protocol.SyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.SyncMode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_sync_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.DestinationSyncMode" title="airbyte_cdk.models.airbyte_protocol.DestinationSyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.DestinationSyncMode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.cursor_field">
+<span class="sig-name descname"><span class="pre">cursor_field</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.cursor_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.destination_sync_mode">
+<span class="sig-name descname"><span class="pre">destination_sync_mode</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.DestinationSyncMode" title="airbyte_cdk.models.airbyte_protocol.DestinationSyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.DestinationSyncMode</span></a></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.destination_sync_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.primary_key">
+<span class="sig-name descname"><span class="pre">primary_key</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.primary_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.stream">
+<span class="sig-name descname"><span class="pre">stream</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.AirbyteStream" title="airbyte_cdk.models.airbyte_protocol.AirbyteStream"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteStream</span></a></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.stream" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.sync_mode">
+<span class="sig-name descname"><span class="pre">sync_mode</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.SyncMode" title="airbyte_cdk.models.airbyte_protocol.SyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.SyncMode</span></a></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream.sync_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">ConnectorSpecification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">documentationUrl</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pydantic.networks.AnyUrl</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">changelogUrl</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pydantic.networks.AnyUrl</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectionSpecification</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supportsIncremental</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supportsNormalization</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supportsDBT</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supported_destination_sync_modes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.DestinationSyncMode" title="airbyte_cdk.models.airbyte_protocol.DestinationSyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.DestinationSyncMode</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.Config">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.Config.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'allow'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.Config.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.changelogUrl">
+<span class="sig-name descname"><span class="pre">changelogUrl</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pydantic.networks.AnyUrl</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.changelogUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.connectionSpecification">
+<span class="sig-name descname"><span class="pre">connectionSpecification</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.connectionSpecification" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.documentationUrl">
+<span class="sig-name descname"><span class="pre">documentationUrl</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pydantic.networks.AnyUrl</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.documentationUrl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.supported_destination_sync_modes">
+<span class="sig-name descname"><span class="pre">supported_destination_sync_modes</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#airbyte_cdk.models.airbyte_protocol.DestinationSyncMode" title="airbyte_cdk.models.airbyte_protocol.DestinationSyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.DestinationSyncMode</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.supported_destination_sync_modes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.supportsDBT">
+<span class="sig-name descname"><span class="pre">supportsDBT</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.supportsDBT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.supportsIncremental">
+<span class="sig-name descname"><span class="pre">supportsIncremental</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.supportsIncremental" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.supportsNormalization">
+<span class="sig-name descname"><span class="pre">supportsNormalization</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.ConnectorSpecification.supportsNormalization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.DestinationSyncMode">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">DestinationSyncMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.DestinationSyncMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.DestinationSyncMode.append">
+<span class="sig-name descname"><span class="pre">append</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'append'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.DestinationSyncMode.append" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.DestinationSyncMode.append_dedup">
+<span class="sig-name descname"><span class="pre">append_dedup</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'append_dedup'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.DestinationSyncMode.append_dedup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.DestinationSyncMode.overwrite">
+<span class="sig-name descname"><span class="pre">overwrite</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'overwrite'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.DestinationSyncMode.overwrite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Level">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">Level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Level.DEBUG">
+<span class="sig-name descname"><span class="pre">DEBUG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'DEBUG'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Level.DEBUG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Level.ERROR">
+<span class="sig-name descname"><span class="pre">ERROR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'ERROR'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Level.ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Level.FATAL">
+<span class="sig-name descname"><span class="pre">FATAL</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'FATAL'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Level.FATAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Level.INFO">
+<span class="sig-name descname"><span class="pre">INFO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'INFO'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Level.INFO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Level.TRACE">
+<span class="sig-name descname"><span class="pre">TRACE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'TRACE'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Level.TRACE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Level.WARN">
+<span class="sig-name descname"><span class="pre">WARN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'WARN'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Level.WARN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Status">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">Status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Status.FAILED">
+<span class="sig-name descname"><span class="pre">FAILED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'FAILED'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Status.FAILED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Status.SUCCEEDED">
+<span class="sig-name descname"><span class="pre">SUCCEEDED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'SUCCEEDED'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Status.SUCCEEDED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.SyncMode">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">SyncMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.SyncMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.SyncMode.full_refresh">
+<span class="sig-name descname"><span class="pre">full_refresh</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'full_refresh'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.SyncMode.full_refresh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.SyncMode.incremental">
+<span class="sig-name descname"><span class="pre">incremental</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'incremental'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.SyncMode.incremental" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Type">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.models.airbyte_protocol.</span></span><span class="sig-name descname"><span class="pre">Type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Type.CATALOG">
+<span class="sig-name descname"><span class="pre">CATALOG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'CATALOG'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Type.CATALOG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Type.CONNECTION_STATUS">
+<span class="sig-name descname"><span class="pre">CONNECTION_STATUS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'CONNECTION_STATUS'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Type.CONNECTION_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Type.LOG">
+<span class="sig-name descname"><span class="pre">LOG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'LOG'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Type.LOG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Type.RECORD">
+<span class="sig-name descname"><span class="pre">RECORD</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'RECORD'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Type.RECORD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Type.SPEC">
+<span class="sig-name descname"><span class="pre">SPEC</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'SPEC'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Type.SPEC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.models.airbyte_protocol.Type.STATE">
+<span class="sig-name descname"><span class="pre">STATE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'STATE'</span></em><a class="headerlink" href="#airbyte_cdk.models.airbyte_protocol.Type.STATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="airbyte_cdk.html">airbyte_cdk package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="airbyte_cdk.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.destinations.html">airbyte_cdk.destinations package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">airbyte_cdk.models package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-airbyte_cdk.models.airbyte_protocol">airbyte_cdk.models.airbyte_protocol module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.sources.html">airbyte_cdk.sources package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.entrypoint">airbyte_cdk.entrypoint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.logger">airbyte_cdk.logger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.connector">airbyte_cdk.connector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="airbyte_cdk.html">airbyte_cdk package</a><ul>
+      <li>Previous: <a href="airbyte_cdk.destinations.html" title="previous chapter">airbyte_cdk.destinations package</a></li>
+      <li>Next: <a href="airbyte_cdk.sources.html" title="next chapter">airbyte_cdk.sources package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/airbyte_cdk.models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

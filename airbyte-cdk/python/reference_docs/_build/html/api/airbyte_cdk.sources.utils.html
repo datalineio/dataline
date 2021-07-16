@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>airbyte_cdk.sources.utils package &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="airbyte_cdk.sources.streams.http.auth package" href="airbyte_cdk.sources.streams.http.auth.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="airbyte-cdk-sources-utils-package">
+<h1>airbyte_cdk.sources.utils package<a class="headerlink" href="#airbyte-cdk-sources-utils-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-airbyte_cdk.sources.utils.casing">
+<span id="airbyte-cdk-sources-utils-casing-module"></span><h2>airbyte_cdk.sources.utils.casing module<a class="headerlink" href="#module-airbyte_cdk.sources.utils.casing" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.utils.casing.camel_to_snake">
+<span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.utils.casing.</span></span><span class="sig-name descname"><span class="pre">camel_to_snake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.utils.casing.camel_to_snake" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-airbyte_cdk.sources.utils.catalog_helpers">
+<span id="airbyte-cdk-sources-utils-catalog-helpers-module"></span><h2>airbyte_cdk.sources.utils.catalog_helpers module<a class="headerlink" href="#module-airbyte_cdk.sources.utils.catalog_helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.utils.catalog_helpers.CatalogHelper">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.utils.catalog_helpers.</span></span><span class="sig-name descname"><span class="pre">CatalogHelper</span></span><a class="headerlink" href="#airbyte_cdk.sources.utils.catalog_helpers.CatalogHelper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.utils.catalog_helpers.CatalogHelper.coerce_catalog_as_full_refresh">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">coerce_catalog_as_full_refresh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.utils.catalog_helpers.CatalogHelper.coerce_catalog_as_full_refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the sync mode on all streams in this catalog to be full refresh</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-airbyte_cdk.sources.utils.schema_helpers">
+<span id="airbyte-cdk-sources-utils-schema-helpers-module"></span><h2>airbyte_cdk.sources.utils.schema_helpers module<a class="headerlink" href="#module-airbyte_cdk.sources.utils.schema_helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.utils.schema_helpers.JsonSchemaResolver">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.utils.schema_helpers.</span></span><span class="sig-name descname"><span class="pre">JsonSchemaResolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared_schemas_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.utils.schema_helpers.JsonSchemaResolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Helper class to expand $ref items in json schema</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.utils.schema_helpers.JsonSchemaResolver.resolve">
+<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.utils.schema_helpers.JsonSchemaResolver.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves and replaces json-schema $refs with the appropriate dict.
+Recursively walks the given schema dict, converting every instance
+of $ref in a ‘properties’ structure with a resolved dict.
+This modifies the input schema and also returns it.
+Arguments:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>schema:</dt><dd><p>the schema dict</p>
+</dd>
+<dt>refs:</dt><dd><p>a dict of &lt;string, dict&gt; which forms a store of referenced schemata</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>schema</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.utils.schema_helpers.ResourceSchemaLoader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.utils.schema_helpers.</span></span><span class="sig-name descname"><span class="pre">ResourceSchemaLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">package_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.utils.schema_helpers.ResourceSchemaLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>JSONSchema loader from package resources</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.utils.schema_helpers.ResourceSchemaLoader.get_schema">
+<span class="sig-name descname"><span class="pre">get_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.utils.schema_helpers.ResourceSchemaLoader.get_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method retrieves a JSON schema from the schemas/ folder.</p>
+<p>The expected file structure is to have all top-level schemas (corresponding to streams) in the “schemas/” folder, with any shared $refs
+living inside the “schemas/shared/” folder. For example:</p>
+<p>schemas/shared/&lt;shared_definition&gt;.json
+schemas/&lt;name&gt;.json # contains a $ref to shared_definition
+schemas/&lt;name2&gt;.json # contains a $ref to shared_definition</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="airbyte_cdk.html">airbyte_cdk package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="airbyte_cdk.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.destinations.html">airbyte_cdk.destinations package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.models.html">airbyte_cdk.models package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="airbyte_cdk.sources.html">airbyte_cdk.sources package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="airbyte_cdk.sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#module-airbyte_cdk.sources.abstract_source">airbyte_cdk.sources.abstract_source module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#module-airbyte_cdk.sources.source">airbyte_cdk.sources.source module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#module-airbyte_cdk.sources">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.entrypoint">airbyte_cdk.entrypoint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.logger">airbyte_cdk.logger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.connector">airbyte_cdk.connector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="airbyte_cdk.html">airbyte_cdk package</a><ul>
+  <li><a href="airbyte_cdk.sources.html">airbyte_cdk.sources package</a><ul>
+      <li>Previous: <a href="airbyte_cdk.sources.streams.http.auth.html" title="previous chapter">airbyte_cdk.sources.streams.http.auth package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/airbyte_cdk.sources.utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

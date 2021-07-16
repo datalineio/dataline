@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>airbyte_cdk.sources.singer package &#8212; Airbyte Connector Development Kit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="airbyte_cdk.sources.streams package" href="airbyte_cdk.sources.streams.html" />
+    <link rel="prev" title="airbyte_cdk.sources.deprecated package" href="airbyte_cdk.sources.deprecated.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="airbyte-cdk-sources-singer-package">
+<h1>airbyte_cdk.sources.singer package<a class="headerlink" href="#airbyte-cdk-sources-singer-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-airbyte_cdk.sources.singer.singer_helpers">
+<span id="airbyte-cdk-sources-singer-singer-helpers-module"></span><h2>airbyte_cdk.sources.singer.singer_helpers module<a class="headerlink" href="#module-airbyte_cdk.sources.singer.singer_helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.Catalogs">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.</span></span><span class="sig-name descname"><span class="pre">Catalogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">singer_catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airbyte_catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.Catalogs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.Catalogs.airbyte_catalog">
+<span class="sig-name descname"><span class="pre">airbyte_catalog</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></em><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.Catalogs.airbyte_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.Catalogs.singer_catalog">
+<span class="sig-name descname"><span class="pre">singer_catalog</span></span><em class="property"><span class="pre">:</span> <span class="pre">object</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.Catalogs.singer_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.SingerHelper">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.</span></span><span class="sig-name descname"><span class="pre">SingerHelper</span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.SingerHelper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.SingerHelper.create_singer_catalog_with_selection">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">create_singer_catalog_with_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">masked_airbyte_catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">discovered_singer_catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.SingerHelper.create_singer_catalog_with_selection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.SingerHelper.get_catalogs">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">get_catalogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shell_command</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_mode_overrides</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo" title="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_streams</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#airbyte_cdk.sources.singer.singer_helpers.Catalogs" title="airbyte_cdk.sources.singer.singer_helpers.Catalogs"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.Catalogs</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.SingerHelper.get_catalogs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.SingerHelper.read">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger</span></em>, <em class="sig-param"><span class="pre">shell_command</span></em>, <em class="sig-param"><span class="pre">is_message=&lt;function</span> <span class="pre">SingerHelper.&lt;lambda&gt;&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.SingerHelper.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.SingerHelper.singer_catalog_to_airbyte_catalog">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">singer_catalog_to_airbyte_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">singer_catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_mode_overrides</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo" title="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.SingerHelper.singer_catalog_to_airbyte_catalog" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>singer_catalog</strong> – </p></li>
+<li><p><strong>sync_mode_overrides</strong> – A dict from stream name to the sync modes it should use. Each stream in this dict must exist in the Singer catalog,</p></li>
+</ul>
+</dd>
+</dl>
+<p>but not every stream in the catalog should exist in this
+:return: Airbyte Catalog</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.</span></span><span class="sig-name descname"><span class="pre">SyncModeInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">supported_sync_modes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.SyncMode" title="airbyte_cdk.models.airbyte_protocol.SyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.SyncMode</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">NoneType</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_defined_cursor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">NoneType</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">NoneType</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo.default_cursor_field">
+<span class="sig-name descname"><span class="pre">default_cursor_field</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo.default_cursor_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo.source_defined_cursor">
+<span class="sig-name descname"><span class="pre">source_defined_cursor</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo.source_defined_cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo.supported_sync_modes">
+<span class="sig-name descname"><span class="pre">supported_sync_modes</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.SyncMode" title="airbyte_cdk.models.airbyte_protocol.SyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.SyncMode</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo.supported_sync_modes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.configured_for_incremental">
+<span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.</span></span><span class="sig-name descname"><span class="pre">configured_for_incremental</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configured_stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteStream</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.configured_for_incremental" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.get_stream_level_metadata">
+<span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.</span></span><span class="sig-name descname"><span class="pre">get_stream_level_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadatas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.get_stream_level_metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.is_field_metadata">
+<span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.</span></span><span class="sig-name descname"><span class="pre">is_field_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.is_field_metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.override_sync_modes">
+<span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.</span></span><span class="sig-name descname"><span class="pre">override_sync_modes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airbyte_stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteStream" title="airbyte_cdk.models.airbyte_protocol.AirbyteStream"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteStream</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">overrides</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo" title="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.override_sync_modes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.set_sync_modes_from_metadata">
+<span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.</span></span><span class="sig-name descname"><span class="pre">set_sync_modes_from_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airbyte_stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteStream" title="airbyte_cdk.models.airbyte_protocol.AirbyteStream"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteStream</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadatas</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.set_sync_modes_from_metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.singer_helpers.to_json">
+<span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.</span></span><span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.singer_helpers.to_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-airbyte_cdk.sources.singer.source">
+<span id="airbyte-cdk-sources-singer-source-module"></span><h2>airbyte_cdk.sources.singer.source module<a class="headerlink" href="#module-airbyte_cdk.sources.singer.source" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.source.</span></span><span class="sig-name descname"><span class="pre">BaseSingerSource</span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#airbyte_cdk.sources.singer.source.SingerSource" title="airbyte_cdk.sources.singer.source.SingerSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.singer.source.SingerSource</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource.api_error">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">api_error</span></span><em class="property"><span class="pre">:</span> <span class="pre">Type[Exception]</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource.api_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class/Base class of the exception that will be thrown if the tap is misconfigured or service unavailable</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource.check_config">
+<span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">airbyte_cdk.logger.AirbyteLogger</span></em>, <em class="sig-param"><span class="pre">config_path:</span> <span class="pre">str</span></em>, <em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.8/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource.check_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some Singer source may perform check using config_path or config to
+tests if the input configuration can be used to successfully connect to the integration</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource.discover">
+<span class="sig-name descname"><span class="pre">discover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_container</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.sources.singer.source.ConfigContainer" title="airbyte_cdk.sources.singer.source.ConfigContainer"><span class="pre">airbyte_cdk.sources.singer.source.ConfigContainer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the parent class discover method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource.discover_cmd">
+<span class="sig-name descname"><span class="pre">discover_cmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource.discover_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the command used to run discovery in the singer tap. For example, if the bash command used to invoke the singer tap is <cite>tap-postgres</cite>,
+and the config JSON lived in “/path/config.json”, this method would return “tap-postgres –config /path/config.json”</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource.force_full_refresh">
+<span class="sig-name descname"><span class="pre">force_full_refresh</span></span><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource.force_full_refresh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource.read_cmd">
+<span class="sig-name descname"><span class="pre">read_cmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource.read_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the command used to read data from the singer tap. For example, if the bash command used to invoke the singer tap is <cite>tap-postgres</cite>,
+and the config JSON lived in “/path/config.json”, and the catalog was in “/path/catalog.json”,
+this method would return “tap-postgres –config /path/config.json –catalog /path/catalog.json”</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource.tap_cmd">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">tap_cmd</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource.tap_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tap command</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource.tap_name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">tap_name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource.tap_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tap name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.BaseSingerSource.try_connect">
+<span class="sig-name descname"><span class="pre">try_connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">airbyte_cdk.logger.AirbyteLogger</span></em>, <em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.8/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.BaseSingerSource.try_connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test provided credentials, raises self.api_error if something goes wrong</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.ConfigContainer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.source.</span></span><span class="sig-name descname"><span class="pre">ConfigContainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.8/json/__init__.py'&gt;</span></em>, <em class="sig-param"><span class="pre">config_path:</span> <span class="pre">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.ConfigContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.ConfigContainer.config">
+<span class="sig-name descname"><span class="pre">config</span></span><em class="property"><span class="pre">:</span> <span class="pre">&lt;module</span> <span class="pre">‘json’</span> <span class="pre">from</span> <span class="pre">‘/usr/lib/python3.8/json/__init__.py’&gt;</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.source.ConfigContainer.config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.ConfigContainer.config_path">
+<span class="sig-name descname"><span class="pre">config_path</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.source.ConfigContainer.config_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.source.</span></span><span class="sig-name descname"><span class="pre">SingerSource</span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="airbyte_cdk.sources.html#airbyte_cdk.sources.source.Source" title="airbyte_cdk.sources.source.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.source.Source</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_container</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.sources.singer.source.ConfigContainer" title="airbyte_cdk.sources.singer.source.ConfigContainer"><span class="pre">airbyte_cdk.sources.singer.source.ConfigContainer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the input configuration can be used to successfully connect to the integration</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.check_config">
+<span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">airbyte_cdk.logger.AirbyteLogger</span></em>, <em class="sig-param"><span class="pre">config_path:</span> <span class="pre">str</span></em>, <em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.8/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.check_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some Singer source may perform check using config_path or config to
+tests if the input configuration can be used to successfully connect to the integration</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.configure">
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">raw_config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.8/json/__init__.py'&gt;</span></em>, <em class="sig-param"><span class="pre">temp_dir:</span> <span class="pre">str</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">&lt;module</span> <span class="pre">‘json’</span> <span class="pre">from</span> <span class="pre">‘/usr/lib/python3.8/json/__init__.py’&gt;</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist raw_config in temporary directory to run the Source job
+This can be overridden if extra temporary files need to be persisted in the temp dir</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.discover">
+<span class="sig-name descname"><span class="pre">discover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_container</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the parent class discover method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.discover_cmd">
+<span class="sig-name descname"><span class="pre">discover_cmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.discover_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the command used to run discovery in the singer tap. For example, if the bash command used to invoke the singer tap is <cite>tap-postgres</cite>,
+and the config JSON lived in “/path/config.json”, this method would return “tap-postgres –config /path/config.json”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.get_excluded_streams">
+<span class="sig-name descname"><span class="pre">get_excluded_streams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.get_excluded_streams" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method provide ability to exclude some streams from catalog</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of excluded stream names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.get_sync_mode_overrides">
+<span class="sig-name descname"><span class="pre">get_sync_mode_overrides</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo" title="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.get_sync_mode_overrides" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Singer Spec outlines a way for taps to declare in their catalog that their streams support incremental sync (valid-replication-keys,
+forced-replication-method, and others). However, many taps which are incremental don’t actually declare that via the catalog, and just
+use their input state to perform an incremental sync without giving any hints to the user. An Airbyte Connector built on top of such a
+Singer Tap cannot automatically detect which streams are full refresh or incremental or what their cursors are. In those cases the developer
+needs to manually specify information about the sync modes.</p>
+<p>This method provides a way of doing that: the dict of stream names to SyncModeInfo returned from this method will be used to override each
+stream’s sync mode information in the Airbyte Catalog output from the discover method. Only set fields provided in the SyncModeInfo are used.
+If a SyncModeInfo field is not set, it will not be overridden in the output catalog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dict from stream name to the sync modes that should be applied to this stream.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_container</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.sources.singer.source.ConfigContainer" title="airbyte_cdk.sources.singer.source.ConfigContainer"><span class="pre">airbyte_cdk.sources.singer.source.ConfigContainer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the parent class read method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.read_catalog">
+<span class="sig-name descname"><span class="pre">read_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.read_catalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Since singer source don’t need actual catalog object, we override this to return path only</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.read_cmd">
+<span class="sig-name descname"><span class="pre">read_cmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.read_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the command used to read data from the singer tap. For example, if the bash command used to invoke the singer tap is <cite>tap-postgres</cite>,
+and the config JSON lived in “/path/config.json”, and the catalog was in “/path/catalog.json”,
+this method would return “tap-postgres –config /path/config.json –catalog /path/catalog.json”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.read_state">
+<span class="sig-name descname"><span class="pre">read_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.read_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Since singer source don’t need actual state object, we override this to return path only</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.source.SingerSource.transform_config">
+<span class="sig-name descname"><span class="pre">transform_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.8/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">&lt;module</span> <span class="pre">‘json’</span> <span class="pre">from</span> <span class="pre">‘/usr/lib/python3.8/json/__init__.py’&gt;</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.source.SingerSource.transform_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Singer source may need to adapt the Config object for the singer tap specifics</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-airbyte_cdk.sources.singer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-airbyte_cdk.sources.singer" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerHelper">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.</span></span><span class="sig-name descname"><span class="pre">SingerHelper</span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerHelper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerHelper.create_singer_catalog_with_selection">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">create_singer_catalog_with_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">masked_airbyte_catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.ConfiguredAirbyteCatalog</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">discovered_singer_catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerHelper.create_singer_catalog_with_selection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerHelper.get_catalogs">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">get_catalogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shell_command</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_mode_overrides</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo" title="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_streams</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#airbyte_cdk.sources.singer.singer_helpers.Catalogs" title="airbyte_cdk.sources.singer.singer_helpers.Catalogs"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.Catalogs</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerHelper.get_catalogs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerHelper.read">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger</span></em>, <em class="sig-param"><span class="pre">shell_command</span></em>, <em class="sig-param"><span class="pre">is_message=&lt;function</span> <span class="pre">SingerHelper.&lt;lambda&gt;&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerHelper.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerHelper.singer_catalog_to_airbyte_catalog">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">singer_catalog_to_airbyte_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">singer_catalog</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_mode_overrides</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo" title="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerHelper.singer_catalog_to_airbyte_catalog" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>singer_catalog</strong> – </p></li>
+<li><p><strong>sync_mode_overrides</strong> – A dict from stream name to the sync modes it should use. Each stream in this dict must exist in the Singer catalog,</p></li>
+</ul>
+</dd>
+</dl>
+<p>but not every stream in the catalog should exist in this
+:return: Airbyte Catalog</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.</span></span><span class="sig-name descname"><span class="pre">SingerSource</span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="airbyte_cdk.sources.html#airbyte_cdk.sources.source.Source" title="airbyte_cdk.sources.source.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">airbyte_cdk.sources.source.Source</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_container</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.sources.singer.source.ConfigContainer" title="airbyte_cdk.sources.singer.source.ConfigContainer"><span class="pre">airbyte_cdk.sources.singer.source.ConfigContainer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the input configuration can be used to successfully connect to the integration</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.check_config">
+<span class="sig-name descname"><span class="pre">check_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">logger:</span> <span class="pre">airbyte_cdk.logger.AirbyteLogger</span></em>, <em class="sig-param"><span class="pre">config_path:</span> <span class="pre">str</span></em>, <em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.8/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus" title="airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteConnectionStatus</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.check_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some Singer source may perform check using config_path or config to
+tests if the input configuration can be used to successfully connect to the integration</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.configure">
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">raw_config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.8/json/__init__.py'&gt;</span></em>, <em class="sig-param"><span class="pre">temp_dir:</span> <span class="pre">str</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">&lt;module</span> <span class="pre">‘json’</span> <span class="pre">from</span> <span class="pre">‘/usr/lib/python3.8/json/__init__.py’&gt;</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist raw_config in temporary directory to run the Source job
+This can be overridden if extra temporary files need to be persisted in the temp dir</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.discover">
+<span class="sig-name descname"><span class="pre">discover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_container</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteCatalog" title="airbyte_cdk.models.airbyte_protocol.AirbyteCatalog"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteCatalog</span></a></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the parent class discover method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.discover_cmd">
+<span class="sig-name descname"><span class="pre">discover_cmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.discover_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the command used to run discovery in the singer tap. For example, if the bash command used to invoke the singer tap is <cite>tap-postgres</cite>,
+and the config JSON lived in “/path/config.json”, this method would return “tap-postgres –config /path/config.json”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.get_excluded_streams">
+<span class="sig-name descname"><span class="pre">get_excluded_streams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.get_excluded_streams" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method provide ability to exclude some streams from catalog</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of excluded stream names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.get_sync_mode_overrides">
+<span class="sig-name descname"><span class="pre">get_sync_mode_overrides</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo" title="airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo"><span class="pre">airbyte_cdk.sources.singer.singer_helpers.SyncModeInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.get_sync_mode_overrides" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Singer Spec outlines a way for taps to declare in their catalog that their streams support incremental sync (valid-replication-keys,
+forced-replication-method, and others). However, many taps which are incremental don’t actually declare that via the catalog, and just
+use their input state to perform an incremental sync without giving any hints to the user. An Airbyte Connector built on top of such a
+Singer Tap cannot automatically detect which streams are full refresh or incremental or what their cursors are. In those cases the developer
+needs to manually specify information about the sync modes.</p>
+<p>This method provides a way of doing that: the dict of stream names to SyncModeInfo returned from this method will be used to override each
+stream’s sync mode information in the Airbyte Catalog output from the discover method. Only set fields provided in the SyncModeInfo are used.
+If a SyncModeInfo field is not set, it will not be overridden in the output catalog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dict from stream name to the sync modes that should be applied to this stream.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_container</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#airbyte_cdk.sources.singer.source.ConfigContainer" title="airbyte_cdk.sources.singer.source.ConfigContainer"><span class="pre">airbyte_cdk.sources.singer.source.ConfigContainer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.AirbyteMessage" title="airbyte_cdk.models.airbyte_protocol.AirbyteMessage"><span class="pre">airbyte_cdk.models.airbyte_protocol.AirbyteMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the parent class read method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.read_catalog">
+<span class="sig-name descname"><span class="pre">read_catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.read_catalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Since singer source don’t need actual catalog object, we override this to return path only</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.read_cmd">
+<span class="sig-name descname"><span class="pre">read_cmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="airbyte_cdk.html#airbyte_cdk.logger.AirbyteLogger" title="airbyte_cdk.logger.AirbyteLogger"><span class="pre">airbyte_cdk.logger.AirbyteLogger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.read_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the command used to read data from the singer tap. For example, if the bash command used to invoke the singer tap is <cite>tap-postgres</cite>,
+and the config JSON lived in “/path/config.json”, and the catalog was in “/path/catalog.json”,
+this method would return “tap-postgres –config /path/config.json –catalog /path/catalog.json”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.read_state">
+<span class="sig-name descname"><span class="pre">read_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.read_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Since singer source don’t need actual state object, we override this to return path only</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SingerSource.transform_config">
+<span class="sig-name descname"><span class="pre">transform_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">config:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.8/json/__init__.py'&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">&lt;module</span> <span class="pre">‘json’</span> <span class="pre">from</span> <span class="pre">‘/usr/lib/python3.8/json/__init__.py’&gt;</span></span></span><a class="headerlink" href="#airbyte_cdk.sources.singer.SingerSource.transform_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Singer source may need to adapt the Config object for the singer tap specifics</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SyncModeInfo">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">airbyte_cdk.sources.singer.</span></span><span class="sig-name descname"><span class="pre">SyncModeInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">supported_sync_modes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.SyncMode" title="airbyte_cdk.models.airbyte_protocol.SyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.SyncMode</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">NoneType</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_defined_cursor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span> </span><span class="pre">NoneType</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_cursor_field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">NoneType</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#airbyte_cdk.sources.singer.SyncModeInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SyncModeInfo.default_cursor_field">
+<span class="sig-name descname"><span class="pre">default_cursor_field</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.SyncModeInfo.default_cursor_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SyncModeInfo.source_defined_cursor">
+<span class="sig-name descname"><span class="pre">source_defined_cursor</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.SyncModeInfo.source_defined_cursor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="airbyte_cdk.sources.singer.SyncModeInfo.supported_sync_modes">
+<span class="sig-name descname"><span class="pre">supported_sync_modes</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="airbyte_cdk.models.html#airbyte_cdk.models.airbyte_protocol.SyncMode" title="airbyte_cdk.models.airbyte_protocol.SyncMode"><span class="pre">airbyte_cdk.models.airbyte_protocol.SyncMode</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#airbyte_cdk.sources.singer.SyncModeInfo.supported_sync_modes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Airbyte Connector Development Kit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="airbyte_cdk.html">airbyte_cdk package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="airbyte_cdk.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.destinations.html">airbyte_cdk.destinations package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="airbyte_cdk.models.html">airbyte_cdk.models package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="airbyte_cdk.sources.html">airbyte_cdk.sources package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="airbyte_cdk.sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#module-airbyte_cdk.sources.abstract_source">airbyte_cdk.sources.abstract_source module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#module-airbyte_cdk.sources.source">airbyte_cdk.sources.source module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="airbyte_cdk.sources.html#module-airbyte_cdk.sources">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.entrypoint">airbyte_cdk.entrypoint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.logger">airbyte_cdk.logger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk.connector">airbyte_cdk.connector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airbyte_cdk.html#module-airbyte_cdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="airbyte_cdk.html">airbyte_cdk package</a><ul>
+  <li><a href="airbyte_cdk.sources.html">airbyte_cdk.sources package</a><ul>
+      <li>Previous: <a href="airbyte_cdk.sources.deprecated.html" title="previous chapter">airbyte_cdk.sources.deprecated package</a></li>
+      <li>Next: <a href="airbyte_cdk.sources.streams.html" title="next chapter">airbyte_cdk.sources.streams package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Airbyte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/airbyte_cdk.sources.singer.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
