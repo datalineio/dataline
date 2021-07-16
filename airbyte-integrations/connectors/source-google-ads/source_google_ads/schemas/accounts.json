@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "customer.auto_tagging_enabled": {
+      "type": ["null", "boolean"]
+    },
+    "customer.call_reporting_setting.call_conversion_action": {
+      "type": ["null", "string"]
+    },
+    "customer.call_reporting_setting.call_conversion_reporting_enabled": {
+      "type": ["null", "boolean"]
+    },
+    "customer.call_reporting_setting.call_reporting_enabled": {
+      "type": ["null", "boolean"]
+    },
+    "customer.conversion_tracking_setting.conversion_tracking_id": {
+      "type": ["null", "integer"]
+    },
+    "customer.conversion_tracking_setting.cross_account_conversion_tracking_id": {
+      "type": ["null", "integer"]
+    },
+    "customer.currency_code": {
+      "type": ["null", "string"]
+    },
+    "customer.descriptive_name": {
+      "type": ["null", "string"]
+    },
+    "customer.final_url_suffix": {
+      "type": ["null", "string"]
+    },
+    "customer.has_partners_badge": {
+      "type": ["null", "boolean"]
+    },
+    "customer.id": {
+      "type": ["null", "integer"]
+    },
+    "customer.manager": {
+      "type": ["null", "boolean"]
+    },
+    "customer.optimization_score": {
+      "type": ["null", "number"]
+    },
+    "customer.optimization_score_weight": {
+      "type": ["null", "number"]
+    },
+    "customer.pay_per_conversion_eligibility_failure_reasons": {
+      "type": ["null", "array"]
+    },
+    "customer.remarketing_setting.google_global_site_tag": {
+      "type": ["null", "string"]
+    },
+    "customer.resource_name": {
+      "type": ["null", "string"]
+    },
+    "customer.test_account": {
+      "type": ["null", "boolean"]
+    },
+    "customer.time_zone": {
+      "type": ["null", "string"]
+    },
+    "customer.tracking_url_template": {
+      "type": ["null", "string"]
+    }
+  }
+}

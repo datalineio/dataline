@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
   "properties": {
     "ad_group_ad.ad.legacy_responsive_display_ad.accent_color": {
       "description": "AccentColor",
@@ -22,37 +24,37 @@
     },
     "metrics.active_view_cpm": {
       "description": "ActiveViewCpm",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.active_view_cpm"
     },
     "metrics.active_view_ctr": {
       "description": "ActiveViewCtr",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.active_view_ctr"
     },
     "metrics.active_view_impressions": {
       "description": "ActiveViewImpressions",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.active_view_impressions"
     },
     "metrics.active_view_measurability": {
       "description": "ActiveViewMeasurability",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.active_view_measurability"
     },
     "metrics.active_view_measurable_cost_micros": {
       "description": "ActiveViewMeasurableCost",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.active_view_measurable_cost_micros"
     },
     "metrics.active_view_measurable_impressions": {
       "description": "ActiveViewMeasurableImpressions",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.active_view_measurable_impressions"
     },
     "metrics.active_view_viewability": {
       "description": "ActiveViewViewability",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.active_view_viewability"
     },
     "ad_group_ad.ad_group": {
@@ -87,62 +89,62 @@
     },
     "metrics.all_conversions_from_interactions_rate": {
       "description": "AllConversionRate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.all_conversions_from_interactions_rate"
     },
     "metrics.all_conversions_value": {
       "description": "AllConversionValue",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.all_conversions_value"
     },
     "metrics.all_conversions": {
       "description": "AllConversions",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.all_conversions"
     },
     "ad_group_ad.ad.legacy_responsive_display_ad.allow_flexible_color": {
       "description": "AllowFlexibleColor",
-      "type": ["null", "string"],
+      "type": ["null", "boolean"],
       "title": "ad_group_ad.ad.legacy_responsive_display_ad.allow_flexible_color"
     },
     "ad_group_ad.ad.added_by_google_ads": {
       "description": "Automated",
-      "type": ["null", "string"],
+      "type": ["null", "boolean"],
       "title": "ad_group_ad.ad.added_by_google_ads"
     },
     "metrics.average_cost": {
       "description": "AverageCost",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.average_cost"
     },
     "metrics.average_cpc": {
       "description": "AverageCpc",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.average_cpc"
     },
     "metrics.average_cpe": {
       "description": "AverageCpe",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.average_cpe"
     },
     "metrics.average_cpm": {
       "description": "AverageCpm",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.average_cpm"
     },
     "metrics.average_cpv": {
       "description": "AverageCpv",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.average_cpv"
     },
     "metrics.average_page_views": {
       "description": "AveragePageviews",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.average_page_views"
     },
     "metrics.average_time_on_site": {
       "description": "AverageTimeOnSite",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.average_time_on_site"
     },
     "ad_group.base_ad_group": {
@@ -157,7 +159,7 @@
     },
     "metrics.bounce_rate": {
       "description": "BounceRate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.bounce_rate"
     },
     "ad_group_ad.ad.legacy_responsive_display_ad.business_name": {
@@ -172,7 +174,7 @@
     },
     "campaign.id": {
       "description": "CampaignId",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "campaign.id"
     },
     "campaign.name": {
@@ -187,7 +189,7 @@
     },
     "metrics.clicks": {
       "description": "Clicks",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.clicks"
     },
     "ad_group_ad.policy_summary.approval_status": {
@@ -197,47 +199,47 @@
     },
     "metrics.conversions_from_interactions_rate": {
       "description": "ConversionRate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.conversions_from_interactions_rate"
     },
     "metrics.conversions_value": {
       "description": "ConversionValue",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.conversions_value"
     },
     "metrics.conversions": {
       "description": "Conversions",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.conversions"
     },
     "metrics.cost_micros": {
       "description": "Cost",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.cost_micros"
     },
     "metrics.cost_per_all_conversions": {
       "description": "CostPerAllConversion",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.cost_per_all_conversions"
     },
     "metrics.cost_per_conversion": {
       "description": "CostPerConversion",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.cost_per_conversion"
     },
     "metrics.cost_per_current_model_attributed_conversion": {
       "description": "CostPerCurrentModelAttributedConversion",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.cost_per_current_model_attributed_conversion"
     },
     "ad_group_ad.ad.final_mobile_urls": {
       "description": "CreativeFinalMobileUrls",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.final_mobile_urls"
     },
     "ad_group_ad.ad.final_urls": {
       "description": "CreativeFinalUrls",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.final_urls"
     },
     "ad_group_ad.ad.tracking_url_template": {
@@ -247,27 +249,27 @@
     },
     "ad_group_ad.ad.url_custom_parameters": {
       "description": "CreativeUrlCustomParameters",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.url_custom_parameters"
     },
     "metrics.cross_device_conversions": {
       "description": "CrossDeviceConversions",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.cross_device_conversions"
     },
     "metrics.ctr": {
       "description": "Ctr",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.ctr"
     },
     "metrics.current_model_attributed_conversions_value": {
       "description": "CurrentModelAttributedConversionValue",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.current_model_attributed_conversions_value"
     },
     "metrics.current_model_attributed_conversions": {
       "description": "CurrentModelAttributedConversions",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.current_model_attributed_conversions"
     },
     "segments.date": {
@@ -307,12 +309,12 @@
     },
     "metrics.engagement_rate": {
       "description": "EngagementRate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.engagement_rate"
     },
     "metrics.engagements": {
       "description": "Engagements",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.engagements"
     },
     "ad_group_ad.ad.legacy_responsive_display_ad.logo_image": {
@@ -352,7 +354,7 @@
     },
     "customer.id": {
       "description": "ExternalCustomerId",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "customer.id"
     },
     "ad_group_ad.ad.legacy_responsive_display_ad.format_setting": {
@@ -377,17 +379,17 @@
     },
     "metrics.gmail_forwards": {
       "description": "GmailForwards",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.gmail_forwards"
     },
     "metrics.gmail_saves": {
       "description": "GmailSaves",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.gmail_saves"
     },
     "metrics.gmail_secondary_clicks": {
       "description": "GmailSecondaryClicks",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.gmail_secondary_clicks"
     },
     "ad_group_ad.ad.gmail_ad.teaser.business_name": {
@@ -422,7 +424,7 @@
     },
     "ad_group_ad.ad.id": {
       "description": "Id",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "ad_group_ad.ad.id"
     },
     "ad_group_ad.ad.image_ad.image_url": {
@@ -432,12 +434,12 @@
     },
     "ad_group_ad.ad.image_ad.pixel_height": {
       "description": "ImageCreativeImageHeight",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "ad_group_ad.ad.image_ad.pixel_height"
     },
     "ad_group_ad.ad.image_ad.pixel_width": {
       "description": "ImageCreativeImageWidth",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "ad_group_ad.ad.image_ad.pixel_width"
     },
     "ad_group_ad.ad.image_ad.mime_type": {
@@ -452,22 +454,22 @@
     },
     "metrics.impressions": {
       "description": "Impressions",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.impressions"
     },
     "metrics.interaction_rate": {
       "description": "InteractionRate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.interaction_rate"
     },
     "metrics.interaction_event_types": {
       "description": "InteractionTypes",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "metrics.interaction_event_types"
     },
     "metrics.interactions": {
       "description": "Interactions",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.interactions"
     },
     "ad_group_ad.ad.legacy_responsive_display_ad.long_headline": {
@@ -512,7 +514,7 @@
     },
     "ad_group_ad.ad.responsive_display_ad.allow_flexible_color": {
       "description": "MultiAssetResponsiveDisplayAdAllowFlexibleColor",
-      "type": ["null", "string"],
+      "type": ["null", "boolean"],
       "title": "ad_group_ad.ad.responsive_display_ad.allow_flexible_color"
     },
     "ad_group_ad.ad.responsive_display_ad.business_name": {
@@ -527,7 +529,7 @@
     },
     "ad_group_ad.ad.responsive_display_ad.descriptions": {
       "description": "MultiAssetResponsiveDisplayAdDescriptions",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.responsive_display_ad.descriptions"
     },
     "ad_group_ad.ad.responsive_display_ad.price_prefix": {
@@ -547,17 +549,17 @@
     },
     "ad_group_ad.ad.responsive_display_ad.headlines": {
       "description": "MultiAssetResponsiveDisplayAdHeadlines",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.responsive_display_ad.headlines"
     },
     "ad_group_ad.ad.responsive_display_ad.logo_images": {
       "description": "MultiAssetResponsiveDisplayAdLandscapeLogoImages",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.responsive_display_ad.logo_images"
     },
     "ad_group_ad.ad.responsive_display_ad.square_logo_images": {
       "description": "MultiAssetResponsiveDisplayAdLogoImages",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.responsive_display_ad.square_logo_images"
     },
     "ad_group_ad.ad.responsive_display_ad.long_headline": {
@@ -572,17 +574,17 @@
     },
     "ad_group_ad.ad.responsive_display_ad.marketing_images": {
       "description": "MultiAssetResponsiveDisplayAdMarketingImages",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.responsive_display_ad.marketing_images"
     },
     "ad_group_ad.ad.responsive_display_ad.square_marketing_images": {
       "description": "MultiAssetResponsiveDisplayAdSquareMarketingImages",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.responsive_display_ad.square_marketing_images"
     },
     "ad_group_ad.ad.responsive_display_ad.youtube_videos": {
       "description": "MultiAssetResponsiveDisplayAdYouTubeVideos",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.responsive_display_ad.youtube_videos"
     },
     "ad_group_ad.ad.expanded_text_ad.path1": {
@@ -597,7 +599,7 @@
     },
     "metrics.percent_new_visitors": {
       "description": "PercentNewVisitors",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.percent_new_visitors"
     },
     "ad_group_ad.ad.legacy_responsive_display_ad.price_prefix": {
@@ -617,12 +619,12 @@
     },
     "ad_group_ad.ad.responsive_search_ad.descriptions": {
       "description": "ResponsiveSearchAdDescriptions",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.responsive_search_ad.descriptions"
     },
     "ad_group_ad.ad.responsive_search_ad.headlines": {
       "description": "ResponsiveSearchAdHeadlines",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.responsive_search_ad.headlines"
     },
     "ad_group_ad.ad.responsive_search_ad.path1": {
@@ -652,27 +654,27 @@
     },
     "metrics.top_impression_percentage": {
       "description": "TopImpressionPercentage",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.top_impression_percentage"
     },
     "ad_group_ad.ad.app_ad.descriptions": {
       "description": "UniversalAppAdDescriptions",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.app_ad.descriptions"
     },
     "ad_group_ad.ad.app_ad.headlines": {
       "description": "UniversalAppAdHeadlines",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.app_ad.headlines"
     },
     "ad_group_ad.ad.app_ad.html5_media_bundles": {
       "description": "UniversalAppAdHtml5MediaBundles",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.app_ad.html5_media_bundles"
     },
     "ad_group_ad.ad.app_ad.images": {
       "description": "UniversalAppAdImages",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.app_ad.images"
     },
     "ad_group_ad.ad.app_ad.mandatory_ad_text": {
@@ -682,57 +684,57 @@
     },
     "ad_group_ad.ad.app_ad.youtube_videos": {
       "description": "UniversalAppAdYouTubeVideos",
-      "type": ["null", "string"],
+      "type": ["null", "array"],
       "title": "ad_group_ad.ad.app_ad.youtube_videos"
     },
     "metrics.value_per_all_conversions": {
       "description": "ValuePerAllConversion",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.value_per_all_conversions"
     },
     "metrics.value_per_conversion": {
       "description": "ValuePerConversion",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.value_per_conversion"
     },
     "metrics.value_per_current_model_attributed_conversion": {
       "description": "ValuePerCurrentModelAttributedConversion",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.value_per_current_model_attributed_conversion"
     },
     "metrics.video_quartile_p100_rate": {
       "description": "VideoQuartile100Rate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.video_quartile_p100_rate"
     },
     "metrics.video_quartile_p25_rate": {
       "description": "VideoQuartile25Rate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.video_quartile_p25_rate"
     },
     "metrics.video_quartile_p50_rate": {
       "description": "VideoQuartile50Rate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.video_quartile_p50_rate"
     },
     "metrics.video_quartile_p75_rate": {
       "description": "VideoQuartile75Rate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.video_quartile_p75_rate"
     },
     "metrics.video_view_rate": {
       "description": "VideoViewRate",
-      "type": ["null", "string"],
+      "type": ["null", "number"],
       "title": "metrics.video_view_rate"
     },
     "metrics.video_views": {
       "description": "VideoViews",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.video_views"
     },
     "metrics.view_through_conversions": {
       "description": "ViewThroughConversions",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "metrics.view_through_conversions"
     },
     "segments.week": {
@@ -742,7 +744,7 @@
     },
     "segments.year": {
       "description": "Year",
-      "type": ["null", "string"],
+      "type": ["null", "integer"],
       "title": "segments.year"
     }
   }

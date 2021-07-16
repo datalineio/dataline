@@ -22,7 +22,8 @@
 # SOFTWARE.
 #
 
-from source_google_ads.source import AdGroupAdReport, GoogleAds, chunk_date_range
+from source_google_ads.google_ads import GoogleAds
+from source_google_ads.streams import AdGroupAdReport, chunk_date_range
 
 
 def test_chunk_date_range():

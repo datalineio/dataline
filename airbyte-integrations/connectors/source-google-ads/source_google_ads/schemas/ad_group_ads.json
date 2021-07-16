@@ -1,0 +1,459 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "ad_group_ad.ad.added_by_google_ads": {
+      "type": ["null", "boolean"]
+    },
+    "ad_group_ad.ad.app_ad.descriptions": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.app_ad.headlines": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.app_ad.html5_media_bundles": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.app_ad.images": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.app_ad.mandatory_ad_text": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.app_ad.youtube_videos": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.app_engagement_ad.descriptions": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.app_engagement_ad.headlines": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.app_engagement_ad.images": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.app_engagement_ad.videos": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.call_ad.business_name": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.call_tracked": {
+      "type": ["null", "boolean"]
+    },
+    "ad_group_ad.ad.call_ad.conversion_action": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.conversion_reporting_state": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.country_code": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.description1": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.description2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.disable_call_conversion": {
+      "type": ["null", "boolean"]
+    },
+    "ad_group_ad.ad.call_ad.headline1": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.headline2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.path1": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.path2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.phone_number": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.call_ad.phone_number_verification_url": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.device_preference": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.display_upload_ad.display_upload_product_type": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.display_upload_ad.media_bundle": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.display_url": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.expanded_dynamic_search_ad.description": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.expanded_dynamic_search_ad.description2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.expanded_text_ad.description": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.expanded_text_ad.description2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.expanded_text_ad.headline_part1": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.expanded_text_ad.headline_part2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.expanded_text_ad.headline_part3": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.expanded_text_ad.path1": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.expanded_text_ad.path2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.final_app_urls": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.final_mobile_urls": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.final_url_suffix": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.final_urls": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.gmail_ad.header_image": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.marketing_image": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.marketing_image_description": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.marketing_image_display_call_to_action.text": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.marketing_image_display_call_to_action.text_color": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.marketing_image_display_call_to_action.url_collection_id": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.marketing_image_headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.product_images": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.gmail_ad.product_videos": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.gmail_ad.teaser.business_name": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.teaser.description": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.teaser.headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.gmail_ad.teaser.logo_image": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.hotel_ad": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.id": {
+      "type": ["null", "integer"]
+    },
+    "ad_group_ad.ad.image_ad.image_url": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.image_ad.mime_type": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.image_ad.name": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.image_ad.pixel_height": {
+      "type": ["null", "integer"]
+    },
+    "ad_group_ad.ad.image_ad.pixel_width": {
+      "type": ["null", "integer"]
+    },
+    "ad_group_ad.ad.image_ad.preview_image_url": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.image_ad.preview_pixel_height": {
+      "type": ["null", "integer"]
+    },
+    "ad_group_ad.ad.image_ad.preview_pixel_width": {
+      "type": ["null", "integer"]
+    },
+    "ad_group_ad.ad.legacy_app_install_ad": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.accent_color": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.allow_flexible_color": {
+      "type": ["null", "boolean"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.business_name": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.call_to_action_text": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.description": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.format_setting": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.logo_image": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.long_headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.main_color": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.marketing_image": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.price_prefix": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.promo_text": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.short_headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.square_logo_image": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.legacy_responsive_display_ad.square_marketing_image": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.local_ad.call_to_actions": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.local_ad.descriptions": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.local_ad.headlines": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.local_ad.logo_images": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.local_ad.marketing_images": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.local_ad.path1": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.local_ad.path2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.local_ad.videos": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.name": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.resource_name": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.accent_color": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.allow_flexible_color": {
+      "type": ["null", "boolean"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.business_name": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.call_to_action_text": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.control_spec.enable_asset_enhancements": {
+      "type": ["null", "boolean"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.control_spec.enable_autogen_video": {
+      "type": ["null", "boolean"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.descriptions": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.format_setting": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.headlines": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.logo_images": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.long_headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.main_color": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.marketing_images": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.price_prefix": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.promo_text": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.square_logo_images": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.square_marketing_images": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.responsive_display_ad.youtube_videos": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.responsive_search_ad.descriptions": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.responsive_search_ad.headlines": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.responsive_search_ad.path1": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.responsive_search_ad.path2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.shopping_comparison_listing_ad.headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.shopping_product_ad": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.shopping_smart_ad": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.smart_campaign_ad.descriptions": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.smart_campaign_ad.headlines": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.system_managed_resource_source": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.text_ad.description1": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.text_ad.description2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.text_ad.headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.tracking_url_template": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.type": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.url_collections": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.url_custom_parameters": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.video_ad.bumper.companion_banner": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.discovery.description1": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.discovery.description2": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.discovery.headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.in_stream.action_button_label": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.in_stream.action_headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.in_stream.companion_banner": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.media_file": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.non_skippable.companion_banner": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.out_stream.description": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_ad.out_stream.headline": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad.video_responsive_ad.call_to_actions": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.video_responsive_ad.companion_banners": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.video_responsive_ad.descriptions": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.video_responsive_ad.headlines": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.video_responsive_ad.long_headlines": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad.video_responsive_ad.videos": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.ad_group": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.ad_strength": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.labels": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.policy_summary.approval_status": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.policy_summary.policy_topic_entries": {
+      "type": ["null", "array"]
+    },
+    "ad_group_ad.policy_summary.review_status": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.resource_name": {
+      "type": ["null", "string"]
+    },
+    "ad_group_ad.status": {
+      "type": ["null", "string"]
+    }
+  }
+}

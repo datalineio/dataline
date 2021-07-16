@@ -23,7 +23,6 @@
 #
 
 from datetime import date
-from string import Template
 
 from source_google_ads.google_ads import GoogleAds
 
@@ -119,18 +118,11 @@ def test_get_fields_from_schema():
 
 def test_convert_schema_into_query():
     report_name = "ad_group_ad_report"
-    query = Template(
-        """
-          SELECT
-            segment.date
-          FROM ad_group_ad
-          WHERE segments.date > '2020-01-01'
-            AND segments.date < '2020-03-01'
-          ORDER BY segments.date
-      """
+    query = (
+        "SELECT segment.date FROM ad_group_ad WHERE segments.date > '2020-01-01' AND segments.date < '2020-03-01' ORDER BY segments.date"
     )
-    response = GoogleAds.convert_schema_into_query(SAMPLE_SCHEMA, report_name, "2020-01-01", "2020-03-01")
-    assert response == query.substitute()
+    response = GoogleAds.convert_schema_into_query(SAMPLE_SCHEMA, report_name, "2020-01-01", "2020-03-01", "segments.date")
+    assert response == query
 
 
 def test_get_field_value():
@@ -138,9 +130,6 @@ def test_get_field_value():
     date = "2001-01-01"
     response = GoogleAds.get_field_value(MockedDateSegment(date), field)
     assert response == date
-    date = "2020"
-    response = GoogleAds.get_field_value(MockedDateSegment(date), field)
-    assert response is None
 
 
 def test_parse_single_result():

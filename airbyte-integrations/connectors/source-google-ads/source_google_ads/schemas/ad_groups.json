@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "ad_group.ad_rotation_mode": {
+      "type": ["null", "string"]
+    },
+    "ad_group.base_ad_group": {
+      "type": ["null", "string"]
+    },
+    "ad_group.campaign": {
+      "type": ["null", "string"]
+    },
+    "ad_group.cpc_bid_micros": {
+      "type": ["null", "integer"]
+    },
+    "ad_group.cpm_bid_micros": {
+      "type": ["null", "integer"]
+    },
+    "ad_group.cpv_bid_micros": {
+      "type": ["null", "integer"]
+    },
+    "ad_group.display_custom_bid_dimension": {
+      "type": ["null", "string"]
+    },
+    "ad_group.effective_target_cpa_micros": {
+      "type": ["null", "integer"]
+    },
+    "ad_group.effective_target_cpa_source": {
+      "type": ["null", "string"]
+    },
+    "ad_group.effective_target_roas": {
+      "type": ["null", "number"]
+    },
+    "ad_group.effective_target_roas_source": {
+      "type": ["null", "string"]
+    },
+    "ad_group.excluded_parent_asset_field_types": {
+      "type": ["null", "array"]
+    },
+    "ad_group.explorer_auto_optimizer_setting.opt_in": {
+      "type": ["null", "boolean"]
+    },
+    "ad_group.final_url_suffix": {
+      "type": ["null", "string"]
+    },
+    "ad_group.id": {
+      "type": ["null", "integer"]
+    },
+    "ad_group.labels": {
+      "type": ["null", "array"]
+    },
+    "ad_group.name": {
+      "type": ["null", "string"]
+    },
+    "ad_group.percent_cpc_bid_micros": {
+      "type": ["null", "integer"]
+    },
+    "ad_group.resource_name": {
+      "type": ["null", "string"]
+    },
+    "ad_group.status": {
+      "type": ["null", "string"]
+    },
+    "ad_group.target_cpa_micros": {
+      "type": ["null", "integer"]
+    },
+    "ad_group.target_cpm_micros": {
+      "type": ["null", "integer"]
+    },
+    "ad_group.target_roas": {
+      "type": ["null", "number"]
+    },
+    "ad_group.targeting_setting.target_restrictions": {
+      "type": ["null", "array"]
+    },
+    "ad_group.tracking_url_template": {
+      "type": ["null", "string"]
+    },
+    "ad_group.type": {
+      "type": ["null", "string"]
+    },
+    "ad_group.url_custom_parameters": {
+      "type": ["null", "array"]
+    }
+  }
+}

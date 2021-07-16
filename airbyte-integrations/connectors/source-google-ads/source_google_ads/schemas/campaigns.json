@@ -1,0 +1,219 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "campaign.accessible_bidding_strategy": {
+      "type": ["null", "string"]
+    },
+    "campaign.ad_serving_optimization_status": {
+      "type": ["null", "string"]
+    },
+    "campaign.advertising_channel_sub_type": {
+      "type": ["null", "string"]
+    },
+    "campaign.advertising_channel_type": {
+      "type": ["null", "string"]
+    },
+    "campaign.app_campaign_setting.app_id": {
+      "type": ["null", "string"]
+    },
+    "campaign.app_campaign_setting.app_store": {
+      "type": ["null", "string"]
+    },
+    "campaign.app_campaign_setting.bidding_strategy_goal_type": {
+      "type": ["null", "string"]
+    },
+    "campaign.base_campaign": {
+      "type": ["null", "string"]
+    },
+    "campaign.bidding_strategy": {
+      "type": ["null", "string"]
+    },
+    "campaign.bidding_strategy_type": {
+      "type": ["null", "string"]
+    },
+    "campaign.campaign_budget": {
+      "type": ["null", "string"]
+    },
+    "campaign.commission.commission_rate_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.dynamic_search_ads_setting.domain_name": {
+      "type": ["null", "string"]
+    },
+    "campaign.dynamic_search_ads_setting.feeds": {
+      "type": ["null", "array"]
+    },
+    "campaign.dynamic_search_ads_setting.language_code": {
+      "type": ["null", "string"]
+    },
+    "campaign.dynamic_search_ads_setting.use_supplied_urls_only": {
+      "type": ["null", "boolean"]
+    },
+    "campaign.end_date": {
+      "type": ["null", "string"]
+    },
+    "campaign.excluded_parent_asset_field_types": {
+      "type": ["null", "array"]
+    },
+    "campaign.experiment_type": {
+      "type": ["null", "string"]
+    },
+    "campaign.final_url_suffix": {
+      "type": ["null", "string"]
+    },
+    "campaign.frequency_caps": {
+      "type": ["null", "array"]
+    },
+    "campaign.geo_target_type_setting.negative_geo_target_type": {
+      "type": ["null", "string"]
+    },
+    "campaign.geo_target_type_setting.positive_geo_target_type": {
+      "type": ["null", "string"]
+    },
+    "campaign.hotel_setting.hotel_center_id": {
+      "type": ["null", "integer"]
+    },
+    "campaign.id": {
+      "type": ["null", "integer"]
+    },
+    "campaign.labels": {
+      "type": ["null", "array"]
+    },
+    "campaign.local_campaign_setting.location_source_type": {
+      "type": ["null", "string"]
+    },
+    "campaign.manual_cpc.enhanced_cpc_enabled": {
+      "type": ["null", "boolean"]
+    },
+    "campaign.manual_cpm": {
+      "type": ["null", "string"]
+    },
+    "campaign.manual_cpv": {
+      "type": ["null", "string"]
+    },
+    "campaign.maximize_conversion_value.target_roas": {
+      "type": ["null", "number"]
+    },
+    "campaign.maximize_conversions.target_cpa": {
+      "type": ["null", "integer"]
+    },
+    "campaign.name": {
+      "type": ["null", "string"]
+    },
+    "campaign.network_settings.target_content_network": {
+      "type": ["null", "boolean"]
+    },
+    "campaign.network_settings.target_google_search": {
+      "type": ["null", "boolean"]
+    },
+    "campaign.network_settings.target_partner_search_network": {
+      "type": ["null", "boolean"]
+    },
+    "campaign.network_settings.target_search_network": {
+      "type": ["null", "boolean"]
+    },
+    "campaign.optimization_goal_setting.optimization_goal_types": {
+      "type": ["null", "array"]
+    },
+    "campaign.optimization_score": {
+      "type": ["null", "number"]
+    },
+    "campaign.payment_mode": {
+      "type": ["null", "string"]
+    },
+    "campaign.percent_cpc.cpc_bid_ceiling_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.percent_cpc.enhanced_cpc_enabled": {
+      "type": ["null", "boolean"]
+    },
+    "campaign.real_time_bidding_setting.opt_in": {
+      "type": ["null", "boolean"]
+    },
+    "campaign.resource_name": {
+      "type": ["null", "string"]
+    },
+    "campaign.selective_optimization.conversion_actions": {
+      "type": ["null", "array"]
+    },
+    "campaign.serving_status": {
+      "type": ["null", "string"]
+    },
+    "campaign.shopping_setting.campaign_priority": {
+      "type": ["null", "integer"]
+    },
+    "campaign.shopping_setting.enable_local": {
+      "type": ["null", "boolean"]
+    },
+    "campaign.shopping_setting.merchant_id": {
+      "type": ["null", "integer"]
+    },
+    "campaign.shopping_setting.sales_country": {
+      "type": ["null", "string"]
+    },
+    "campaign.start_date": {
+      "type": ["null", "string"]
+    },
+    "campaign.status": {
+      "type": ["null", "string"]
+    },
+    "campaign.target_cpa.cpc_bid_ceiling_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.target_cpa.cpc_bid_floor_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.target_cpa.target_cpa_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.target_cpm": {
+      "type": ["null", "string"]
+    },
+    "campaign.target_impression_share.cpc_bid_ceiling_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.target_impression_share.location": {
+      "type": ["null", "string"]
+    },
+    "campaign.target_impression_share.location_fraction_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.target_roas.cpc_bid_ceiling_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.target_roas.cpc_bid_floor_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.target_roas.target_roas": {
+      "type": ["null", "number"]
+    },
+    "campaign.target_spend.cpc_bid_ceiling_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.target_spend.target_spend_micros": {
+      "type": ["null", "integer"]
+    },
+    "campaign.targeting_setting.target_restrictions": {
+      "type": ["null", "array"]
+    },
+    "campaign.tracking_setting.tracking_url": {
+      "type": ["null", "string"]
+    },
+    "campaign.tracking_url_template": {
+      "type": ["null", "string"]
+    },
+    "campaign.url_custom_parameters": {
+      "type": ["null", "array"]
+    },
+    "campaign.vanity_pharma.vanity_pharma_display_url_mode": {
+      "type": ["null", "string"]
+    },
+    "campaign.vanity_pharma.vanity_pharma_text": {
+      "type": ["null", "string"]
+    },
+    "campaign.video_brand_safety_suitability": {
+      "type": ["null", "string"]
+    }
+  }
+}
