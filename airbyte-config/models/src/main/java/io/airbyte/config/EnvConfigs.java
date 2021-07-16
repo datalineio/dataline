@@ -59,6 +59,7 @@ public class EnvConfigs implements Configs {
   private static final String TEMPORAL_HOST = "TEMPORAL_HOST";
   private static final String TEMPORAL_WORKER_PORTS = "TEMPORAL_WORKER_PORTS";
   private static final String KUBE_NAMESPACE = "KUBE_NAMESPACE";
+  private static final String SUBMITTER_NUM_THREADS = "SUBMITTER_NUM_THREADS";
   private static final String RESOURCE_CPU_REQUEST = "RESOURCE_CPU_REQUEST";
   private static final String RESOURCE_CPU_LIMIT = "RESOURCE_CPU_LIMIT";
   private static final String RESOURCE_MEMORY_REQUEST = "RESOURCE_MEMORY_REQUEST";
@@ -188,6 +189,11 @@ public class EnvConfigs implements Configs {
   @Override
   public String getKubeNamespace() {
     return getEnvOrDefault(KUBE_NAMESPACE, DEFAULT_KUBE_NAMESPACE);
+  }
+
+  @Override
+  public String getSubmitterNumThreads() {
+    return getEnsureEnv(SUBMITTER_NUM_THREADS);
   }
 
   @Override

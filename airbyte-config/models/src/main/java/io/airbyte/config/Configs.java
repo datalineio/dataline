@@ -67,6 +67,8 @@ public interface Configs {
 
   String getKubeNamespace();
 
+  String getSubmitterNumThreads();
+
   // Resources
   String getCpuRequest();
 

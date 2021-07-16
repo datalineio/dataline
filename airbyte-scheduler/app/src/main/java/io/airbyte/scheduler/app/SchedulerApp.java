@@ -75,16 +75,20 @@ import org.slf4j.MDC;
 
 /**
  * The SchedulerApp is responsible for finding new scheduled jobs that need to be run and to launch
- * them. The current implementation uses a thread pool on the scheduler's machine to launch the
- * jobs. One thread is reserved for the job submitter, which is responsible for finding and
- * launching new jobs.
+ * them. The current implementation uses two thread pools to do so. One pool is responsible for all
+ * job launching operations. The other pool is responsible for clean up operations.
+ *
+ * Operations can have thread pools under the hood. An important thread pool to note is that the job
+ * submitter thread pool. This pool does the work of submitting jobs to temporal - the size of this
+ * pool determines the number of concurrent jobs that can be run. This is controlled via the
+ * {@link #SUBMITTER_NUM_THREADS} variable.
  */
 public class SchedulerApp {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(SchedulerApp.class);
 
   private static final long GRACEFUL_SHUTDOWN_SECONDS = 30;
-  private static final int MAX_WORKERS = 4;
+  private static final int SUBMITTER_NUM_THREADS = Integer.parseInt(new EnvConfigs().getSubmitterNumThreads());
   private static final Duration SCHEDULING_DELAY = Duration.ofSeconds(5);
   private static final Duration CLEANING_DELAY = Duration.ofHours(2);
   private static final ThreadFactory THREAD_FACTORY = new ThreadFactoryBuilder().setNameFormat("worker-%d").build();
@@ -121,7 +125,7 @@ public class SchedulerApp {
     final TemporalPool temporalPool = new TemporalPool(temporalService, workspaceRoot, processFactory);
     temporalPool.run();
 
-    final ExecutorService workerThreadPool = Executors.newFixedThreadPool(MAX_WORKERS, THREAD_FACTORY);
+    final ExecutorService workerThreadPool = Executors.newFixedThreadPool(SUBMITTER_NUM_THREADS, THREAD_FACTORY);
     final ScheduledExecutorService scheduledPool = Executors.newSingleThreadScheduledExecutor();
     final TemporalWorkerRunFactory temporalWorkerRunFactory = new TemporalWorkerRunFactory(temporalClient, workspaceRoot);
     final JobRetrier jobRetrier = new JobRetrier(jobPersistence, Instant::now, jobNotifier);
