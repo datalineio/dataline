@@ -77,6 +77,17 @@ import org.slf4j.LoggerFactory;
  * partial success) or 0 state messages (in the case where the onClose step was never reached or did
  * not complete without exception).
  * </p>
+ *
+ * <p>
+ * When a record is "flushed" it is moved from the docker container to the destination. By
+ * convention, it is usually placed in some sort of temporary storage on the destination (e.g. a
+ * temporary database or file store). The logic in close handles committing the temporary
+ * representation data to the final store (e.g. final table). In the case of Copy destinations they
+ * often have additional temporary stores. The common pattern for copy destination is that flush
+ * pushes the data into cloud storage and then close copies from cloud storage to a temporary table
+ * AND then copies from the temporary table into the final table. This abstraction is blind to that
+ * detail as it implementation detail of how copy destinations implement close.
+ * </p>
  */
 public class BufferedStreamConsumer extends FailureTrackingAirbyteMessageConsumer implements AirbyteMessageConsumer {
 
