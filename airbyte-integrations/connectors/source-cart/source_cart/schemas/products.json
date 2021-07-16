@@ -1,0 +1,380 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "item_number": {
+      "type": ["string", "null"]
+    },
+    "manufacturer_id": {
+      "type": ["integer", "null"]
+    },
+    "manufacturer_part_number": {
+      "type": ["string", "null"]
+    },
+    "primary_category_id": {
+      "type": ["integer", "null"]
+    },
+    "product_status_id": {
+      "type": ["integer", "null"]
+    },
+    "item_name": {
+      "type": ["string", "null"]
+    },
+    "bullets": {
+      "type": ["string", "null"]
+    },
+    "short_description": {
+      "type": ["string", "null"]
+    },
+    "long_description_2": {
+      "type": ["string", "null"]
+    },
+    "long_description_3": {
+      "type": ["string", "null"]
+    },
+    "long_description_4": {
+      "type": ["string", "null"]
+    },
+    "long_description_5": {
+      "type": ["string", "null"]
+    },
+    "height": {
+      "type": ["string", "null"]
+    },
+    "length": {
+      "type": ["string", "null"]
+    },
+    "width": {
+      "type": ["string", "null"]
+    },
+    "size_unit": {
+      "type": ["string", "null"]
+    },
+    "weight": {
+      "type": ["number", "null"]
+    },
+    "weight_unit": {
+      "type": ["string", "null"]
+    },
+    "cost": {
+      "type": ["number", "null"]
+    },
+    "price": {
+      "type": ["number", "null"]
+    },
+    "retail": {
+      "type": ["number", "null"]
+    },
+    "minimum_quantity": {
+      "type": ["integer", "null"]
+    },
+    "maximum_quantity": {
+      "type": ["integer", "null"]
+    },
+    "is_spotlight_item": {
+      "type": ["integer", "null"]
+    },
+    "quantity_on_hand": {
+      "type": ["integer", "null"]
+    },
+    "keywords": {
+      "type": ["string", "null"]
+    },
+    "is_non_taxable": {
+      "type": ["integer", "null"]
+    },
+    "is_shipped_individually": {
+      "type": ["integer", "null"]
+    },
+    "is_hidden": {
+      "type": ["integer", "null"]
+    },
+    "sort_order": {
+      "type": ["integer", "null"]
+    },
+    "e_product_type": {
+      "type": ["string", "null"]
+    },
+    "e_product_url": {
+      "type": ["string", "null"]
+    },
+    "e_product_password": {
+      "type": ["string", "null"]
+    },
+    "e_product_verification_link_expiration": {
+      "type": ["integer", "null"]
+    },
+    "e_product_email": {
+      "type": ["string", "null"]
+    },
+    "e_product_allow_multiple_deliveries": {
+      "type": ["integer", "null"]
+    },
+    "warehouse_id": {
+      "type": ["integer", "null"]
+    },
+    "call_for_shipping": {
+      "type": ["integer", "null"]
+    },
+    "quickbooks_item_id": {
+      "type": ["string", "null"]
+    },
+    "call_for_pricing": {
+      "type": ["integer", "null"]
+    },
+    "rate_adjustment_type": {
+      "type": ["string", "null"]
+    },
+    "meta_description": {
+      "type": ["string", "null"]
+    },
+    "page_title": {
+      "type": ["string", "null"]
+    },
+    "use_tabs": {
+      "type": "boolean"
+    },
+    "related_name": {
+      "type": ["string", "null"]
+    },
+    "override_theme_use_tabs": {
+      "type": "boolean"
+    },
+    "long_description_tab_name_1": {
+      "type": ["string", "null"]
+    },
+    "long_description_tab_name_2": {
+      "type": ["string", "null"]
+    },
+    "long_description_tab_name_3": {
+      "type": ["string", "null"]
+    },
+    "long_description_tab_name_4": {
+      "type": ["string", "null"]
+    },
+    "long_description_tab_name_5": {
+      "type": ["string", "null"]
+    },
+    "long_description_1": {
+      "type": ["string", "null"]
+    },
+    "is_non_shipping_item": {
+      "type": "boolean"
+    },
+    "e_product_delivery_action": {
+      "type": ["string", "null"]
+    },
+    "use_variant_inventory": {
+      "type": "boolean"
+    },
+    "is_featured_item": {
+      "type": "boolean"
+    },
+    "long_description_external_url_1": {
+      "type": ["string", "null"]
+    },
+    "long_description_external_url_2": {
+      "type": ["string", "null"]
+    },
+    "long_description_external_url_3": {
+      "type": ["string", "null"]
+    },
+    "long_description_external_url_4": {
+      "type": ["string", "null"]
+    },
+    "long_description_external_url_5": {
+      "type": ["string", "null"]
+    },
+    "bullets_external_url": {
+      "type": ["string", "null"]
+    },
+    "custom_flag_1": {
+      "type": "boolean"
+    },
+    "custom_flag_2": {
+      "type": "boolean"
+    },
+    "custom_flag_3": {
+      "type": "boolean"
+    },
+    "custom_flag_4": {
+      "type": "boolean"
+    },
+    "custom_flag_5": {
+      "type": "boolean"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "url_rewrite": {
+      "type": ["string", "null"]
+    },
+    "is_kit": {
+      "type": "boolean"
+    },
+    "is_child_product": {
+      "type": "boolean"
+    },
+    "is_non_inventory": {
+      "type": "boolean"
+    },
+    "is_discontinued": {
+      "type": "boolean"
+    },
+    "eta_date": {
+      "type": ["string", "null"]
+    },
+    "quantity_on_order": {
+      "type": ["integer", "null"]
+    },
+    "available_region_id": {
+      "type": ["string", "null"]
+    },
+    "call_for_shipping_on_whole_order": {
+      "type": "boolean"
+    },
+    "break_out_shipping": {
+      "type": "boolean"
+    },
+    "shipping_classification_code": {
+      "type": ["string", "null"]
+    },
+    "exclude_parent_from_display": {
+      "type": "boolean"
+    },
+    "drop_ship": {
+      "type": "boolean"
+    },
+    "no_price_mask": {
+      "type": ["string", "null"]
+    },
+    "starting_quantity": {
+      "type": ["integer", "null"]
+    },
+    "tax_code": {
+      "type": ["string", "null"]
+    },
+    "use_map_pricing": {
+      "type": "boolean"
+    },
+    "last_item_number": {
+      "type": ["string", "null"]
+    },
+    "has_visible_variants": {
+      "type": "boolean"
+    },
+    "product_rating_dimension_group_override_id": {
+      "type": ["string", "null"]
+    },
+    "average_review_rating": {
+      "type": ["number", "null"]
+    },
+    "review_count": {
+      "type": ["integer", "null"]
+    },
+    "exclude_children_from_display": {
+      "type": "boolean"
+    },
+    "use_pricing_from_parent": {
+      "type": "boolean"
+    },
+    "low_stock_warning_threshold": {
+      "type": ["string", "null"]
+    },
+    "enable_low_stock_warning": {
+      "type": "boolean"
+    },
+    "do_not_discount": {
+      "type": "boolean"
+    },
+    "head_tags": {
+      "type": ["string", "null"]
+    },
+    "handling_fee": {
+      "type": ["number", "null"]
+    },
+    "custom_upsell_url": {
+      "type": ["string", "null"]
+    },
+    "e_product_serial_number_file_path": {
+      "type": ["string", "null"]
+    },
+    "hide_variant_surcharges": {
+      "type": "boolean"
+    },
+    "quantity_increment": {
+      "type": ["integer", "null"]
+    },
+    "gtin": {
+      "type": ["string", "null"]
+    },
+    "add_to_cart_message": {
+      "type": ["string", "null"]
+    },
+    "is_subscription_product": {
+      "type": "boolean"
+    },
+    "subscription_frequency": {
+      "type": ["string", "null"]
+    },
+    "subscription_frequency_type": {
+      "type": ["string", "null"]
+    },
+    "e_product_generic_username": {
+      "type": ["string", "null"]
+    },
+    "e_product_generic_password": {
+      "type": ["string", "null"]
+    },
+    "shipping_override": {
+      "type": ["string", "null"]
+    },
+    "insurance_cost": {
+      "type": ["string", "null"]
+    },
+    "exclude_from_commissions": {
+      "type": "boolean"
+    },
+    "days_until_reorder_allowed": {
+      "type": ["integer", "null"]
+    },
+    "force_separate_order": {
+      "type": "boolean"
+    },
+    "approval_required": {
+      "type": "boolean"
+    },
+    "in_stock_notification_email_template_id": {
+      "type": ["integer", "null"]
+    },
+    "earns_points": {
+      "type": "boolean"
+    },
+    "additional_points_earned": {
+      "type": ["integer", "null"]
+    },
+    "allowed_variable_subscription_types": {
+      "type": ["string", "null"]
+    },
+    "profile_id": {
+      "type": ["string", "null"]
+    },
+    "is_linked_product": {
+      "type": "boolean"
+    },
+    "master_product_id": {
+      "type": ["string", "null"]
+    },
+    "do_not_send_review_request": {
+      "type": "boolean"
+    },
+    "vendor_store_id": {
+      "type": ["string", "null"]
+    }
+  }
+}

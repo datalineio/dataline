@@ -1,0 +1,7 @@
+{
+  "sourceDefinitionId": "bb1a6d31-6879-4819-a2bd-3eed299ea8e2",
+  "name": "Cart",
+  "dockerRepository": "airbyte/source-cart",
+  "dockerImageTag": "0.1.0",
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/cart"
+}

@@ -1,0 +1,7 @@
+*
+!Dockerfile
+!Dockerfile.test
+!main.py
+!source_cart
+!setup.py
+!secrets

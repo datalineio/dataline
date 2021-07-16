@@ -1,0 +1,107 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "customer_id": {
+      "type": ["integer", "null"]
+    },
+    "order_id": {
+      "type": ["integer", "null"]
+    },
+    "customer_payment_method_id": {
+      "type": ["integer", "null"]
+    },
+    "payment_method_id": {
+      "type": ["integer", "null"]
+    },
+    "payment_type": {
+      "type": ["string", "null"]
+    },
+    "is_approved": {
+      "type": "boolean"
+    },
+    "is_declined": {
+      "type": "boolean"
+    },
+    "card_type": {
+      "type": ["string", "null"]
+    },
+    "card_expiration_month": {
+      "type": ["integer", "null"]
+    },
+    "card_expiration_year": {
+      "type": ["integer", "null"]
+    },
+    "cardholder_name": {
+      "type": ["string", "null"]
+    },
+    "paid_at": {
+      "type": ["string", "null"]
+    },
+    "approved_at": {
+      "type": ["string", "null"]
+    },
+    "authorization_code": {
+      "type": ["string", "null"]
+    },
+    "reject_reason": {
+      "type": ["string", "null"]
+    },
+    "avs_code": {
+      "type": ["string", "null"]
+    },
+    "payment_method_name": {
+      "type": ["string", "null"]
+    },
+    "transaction_type": {
+      "type": ["string", "null"]
+    },
+    "amount": {
+      "type": ["number", "null"]
+    },
+    "payment_note": {
+      "type": ["string", "null"]
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "gift_certificate_id": {
+      "type": ["string", "null"]
+    },
+    "is_captured": {
+      "type": "boolean"
+    },
+    "transaction_id": {
+      "type": ["string", "null"]
+    },
+    "last_four": {
+      "type": ["string", "null"]
+    },
+    "is_void": {
+      "type": "boolean"
+    },
+    "gateway_response_code": {
+      "type": ["string", "null"]
+    },
+    "cvv_response_code": {
+      "type": ["string", "null"]
+    },
+    "sent_to_spark_pay": {
+      "type": "boolean"
+    },
+    "token": {
+      "type": ["string", "null"]
+    },
+    "payment_ref_num": {
+      "type": ["string", "null"]
+    },
+    "store_payment_method_id": {
+      "type": ["string", "null"]
+    }
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "customer_id": {
+      "type": ["integer", "null"]
+    },
+    "customer_type_id": {
+      "type": ["integer", "null"]
+    },
+    "adcode": {
+      "type": ["string", "null"]
+    },
+    "ordered_at": {
+      "type": ["string", "null"]
+    },
+    "order_status_id": {
+      "type": ["integer", "null"]
+    },
+    "special_instructions": {
+      "type": ["string", "null"]
+    },
+    "subtotal": {
+      "type": ["number", "null"]
+    },
+    "tax_total": {
+      "type": ["number", "null"]
+    },
+    "shipping_total": {
+      "type": ["number", "null"]
+    },
+    "discount_total": {
+      "type": ["number", "null"]
+    },
+    "grand_total": {
+      "type": ["number", "null"]
+    },
+    "cost_total": {
+      "type": ["number", "null"]
+    },
+    "selected_shipping_method": {
+      "type": ["string", "null"]
+    },
+    "ip_address": {
+      "type": ["string", "null"]
+    },
+    "exported_to_accounting_system": {
+      "type": ["integer", "null"]
+    },
+    "referrer": {
+      "type": ["string", "null"]
+    },
+    "order_shipping_address_id": {
+      "type": ["integer", "null"]
+    },
+    "order_billing_address_id": {
+      "type": ["integer", "null"]
+    },
+    "admin_comments": {
+      "type": ["string", "null"]
+    },
+    "source": {
+      "type": ["string", "null"]
+    },
+    "search_phrase": {
+      "type": ["string", "null"]
+    },
+    "is_ppc": {
+      "type": "boolean"
+    },
+    "ppc_keyword": {
+      "type": ["string", "null"]
+    },
+    "affiliate_id": {
+      "type": ["string", "null"]
+    },
+    "store_id": {
+      "type": ["integer", "null"]
+    },
+    "session_id": {
+      "type": ["integer", "null"]
+    },
+    "handling_total": {
+      "type": ["number", "null"]
+    },
+    "is_payment_order_only": {
+      "type": "boolean"
+    },
+    "selected_shipping_provider_service": {
+      "type": ["string", "null"]
+    },
+    "additional_fees": {
+      "type": ["number", "null"]
+    },
+    "adcode_id": {
+      "type": ["integer", "null"]
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "is_gift": {
+      "type": "boolean"
+    },
+    "gift_message": {
+      "type": ["string", "null"]
+    },
+    "public_comments": {
+      "type": ["string", "null"]
+    },
+    "instructions": {
+      "type": ["string", "null"]
+    },
+    "source_group": {
+      "type": ["string", "null"]
+    },
+    "from_subscription_id": {
+      "type": ["string", "null"]
+    },
+    "previous_order_status_id": {
+      "type": ["integer", "null"]
+    },
+    "order_status_last_changed_at": {
+      "type": ["string", "null"]
+    },
+    "discounted_shipping_total": {
+      "type": ["number", "null"]
+    },
+    "order_number": {
+      "type": ["string", "null"]
+    },
+    "coupon_code": {
+      "type": ["string", "null"]
+    },
+    "order_type": {
+      "type": ["string", "null"]
+    },
+    "expires_at": {
+      "type": ["string", "null"]
+    },
+    "expires": {
+      "type": "boolean"
+    },
+    "from_quote_id": {
+      "type": ["string", "null"]
+    },
+    "campaign_code": {
+      "type": ["string", "null"]
+    },
+    "reward_points_credited": {
+      "type": "boolean"
+    },
+    "channel": {
+      "type": ["string", "null"]
+    },
+    "device": {
+      "type": ["string", "null"]
+    },
+    "manufacturer_invoice_number": {
+      "type": ["string", "null"]
+    },
+    "manufacturer_invoice_amount": {
+      "type": ["number", "null"]
+    },
+    "manufacturer_invoice_paid": {
+      "type": "boolean"
+    },
+    "entered_by": {
+      "type": ["string", "null"]
+    },
+    "due_date": {
+      "type": ["string", "null"]
+    }
+  }
+}

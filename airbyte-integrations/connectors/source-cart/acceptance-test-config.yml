@@ -1,0 +1,24 @@
+# See [Source Acceptance Tests](https://docs.airbyte.io/contributing-to-airbyte/building-new-connector/source-acceptance-tests.md)
+# for more information about how to configure these tests
+connector_image: airbyte/source-cart:dev
+tests:
+  spec:
+    - spec_path: "source_cart/spec.json"
+  connection:
+    - config_path: "secrets/config.json"
+      status: "succeed"
+    - config_path: "integration_tests/invalid_config.json"
+      status: "failed"
+  discovery:
+    - config_path: "secrets/config.json"
+  basic_read:
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "integration_tests/configured_catalog.json"
+      validate_output_from_all_streams: yes
+  incremental: # TODO if your connector does not implement incremental sync, remove this block
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "integration_tests/configured_catalog.json"
+      future_state_path: "integration_tests/abnormal_state.json"
+  full_refresh:
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "integration_tests/configured_catalog.json"

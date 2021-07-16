@@ -1,0 +1,113 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "customer_number": {
+      "type": ["string", "null"]
+    },
+    "last_name": {
+      "type": ["string", "null"]
+    },
+    "first_name": {
+      "type": ["string", "null"]
+    },
+    "email": {
+      "type": ["string", "null"]
+    },
+    "phone_number": {
+      "type": ["string", "null"]
+    },
+    "registered_at": {
+      "type": ["string", "null"]
+    },
+    "last_visit_at": {
+      "type": ["string", "null"]
+    },
+    "adcode": {
+      "type": ["string", "null"]
+    },
+    "adcode_id": {
+      "type": ["integer", "null"]
+    },
+    "affiliate_id": {
+      "type": ["integer", "null"]
+    },
+    "customer_type_id": {
+      "type": ["integer", "null"]
+    },
+    "is_no_tax_customer": {
+      "type": "boolean"
+    },
+    "comments": {
+      "type": ["string", "null"]
+    },
+    "store_id": {
+      "type": ["integer", "null"]
+    },
+    "source": {
+      "type": ["string", "null"]
+    },
+    "search_string": {
+      "type": ["string", "null"]
+    },
+    "no_account": {
+      "type": "boolean"
+    },
+    "sales_person": {
+      "type": ["string", "null"]
+    },
+    "alternate_phone_number": {
+      "type": ["string", "null"]
+    },
+    "is_affiliate_customer": {
+      "type": "boolean"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "is_contact_information_only": {
+      "type": "boolean"
+    },
+    "tax_exemption_number": {
+      "type": ["string", "null"]
+    },
+    "company": {
+      "type": ["string", "null"]
+    },
+    "source_group": {
+      "type": ["string", "null"]
+    },
+    "sales_person_user_id": {
+      "type": ["string", "null"]
+    },
+    "store_payment_methods_enabled": {
+      "type": "array",
+      "items": {
+        "type": ["string", "null"]
+      }
+    },
+    "tax_rate": {
+      "type": ["string", "null"]
+    },
+    "reward_tier_id": {
+      "type": ["string", "null"]
+    },
+    "sub": {
+      "type": ["string", "null"]
+    },
+    "customer_payment_methods_availability": {
+      "type": "array",
+      "items": {
+        "type": ["string", "null"]
+      }
+    }
+  }
+}
