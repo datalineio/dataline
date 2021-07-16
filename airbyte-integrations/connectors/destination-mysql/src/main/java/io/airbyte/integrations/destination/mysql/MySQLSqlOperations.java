@@ -80,7 +80,7 @@ public class MySQLSqlOperations extends DefaultSqlOperations {
         String absoluteFile = "'" + tmpFile.getAbsolutePath() + "'";
 
         String query = String.format(
-            "LOAD DATA LOCAL INFILE %s INTO TABLE %s.%s FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\\r\\n'",
+            "LOAD DATA LOCAL INFILE %s INTO TABLE %s.%s FIELDS TERMINATED BY ',' ENCLOSED BY '\"' ESCAPED BY '\\\"' LINES TERMINATED BY '\\r\\n'",
             absoluteFile, schemaName, tmpTableName);
 
         try (Statement stmt = connection.createStatement()) {
