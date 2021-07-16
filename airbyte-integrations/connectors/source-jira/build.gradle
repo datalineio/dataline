@@ -1,21 +1,14 @@
 plugins {
     id 'airbyte-python'
     id 'airbyte-docker'
-    id 'airbyte-standard-source-test-file'
+    id 'airbyte-source-acceptance-test'
 }
 
 airbytePython {
     moduleDirectory 'source_jira'
 }
 
-airbyteStandardSourceTestFile {
-    specPath = "source_jira/spec.json"
-    configPath = "secrets/config.json"
-    configuredCatalogPath = "sample_files/configured_catalog.json"
-}
-
-
 dependencies {
-    implementation files(project(':airbyte-integrations:bases:base-standard-source-test-file').airbyteDocker.outputs)
+    implementation files(project(':airbyte-integrations:bases:source-acceptance-test').airbyteDocker.outputs)
     implementation files(project(':airbyte-integrations:bases:base-python').airbyteDocker.outputs)
 }

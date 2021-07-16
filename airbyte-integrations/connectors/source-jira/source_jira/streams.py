@@ -165,7 +165,7 @@ class Groups(JiraStream):
 
 
 class Issues(IncrementalJiraStream):
-    cursor_field = "created"
+    cursor_field = "updated"
     parse_response_root = "issues"
 
     def path(self, **kwargs) -> str:
@@ -174,11 +174,11 @@ class Issues(IncrementalJiraStream):
     def request_params(self, stream_state=None, **kwargs):
         stream_state = stream_state or {}
         params = super().request_params(stream_state=stream_state, **kwargs)
-        params["fields"] = ["attachment", "issuelinks", "security", "issuetype", "created"]
+        params["fields"] = ["attachment", "issuelinks", "security", "issuetype", "updated"]
         if stream_state.get(self.cursor_field):
             issues_state = pendulum.parse(stream_state.get(self.cursor_field))
             issues_state_row = issues_state.strftime("%Y/%m/%d %H:%M")
-            params["jql"] = f"created > '{issues_state_row}'"
+            params["jql"] = f"updated > '{issues_state_row}'"
         return params
 
     def get_updated_state(self, current_stream_state: MutableMapping[str, Any], latest_record: Mapping[str, Any]) -> Mapping[str, Any]:
@@ -344,7 +344,7 @@ class IssueWatchers(JiraStream):
 
 
 class IssueWorklogs(IncrementalJiraStream):
-    cursor_field = "startedAfter"
+    cursor_field = "updated"
     parse_response_root = "worklogs"
 
     def path(self, stream_slice: Mapping[str, Any] = None, **kwargs) -> str:
@@ -357,11 +357,11 @@ class IssueWorklogs(IncrementalJiraStream):
         if stream_state.get(self.cursor_field):
             issue_worklogs_state = pendulum.parse(stream_state.get(self.cursor_field))
             state_row = int(issue_worklogs_state.timestamp() * 1000)
-            params["startedAfter"] = state_row
+            params[self.cursor_field] = state_row
         return params
 
     def get_updated_state(self, current_stream_state: MutableMapping[str, Any], latest_record: Mapping[str, Any]) -> Mapping[str, Any]:
-        latest_record_date = pendulum.parse(latest_record.get("started"))
+        latest_record_date = pendulum.parse(latest_record.get("fields", {}).get(self.cursor_field))
         if current_stream_state:
             current_stream_state = current_stream_state.get(self.cursor_field)
             if current_stream_state:
