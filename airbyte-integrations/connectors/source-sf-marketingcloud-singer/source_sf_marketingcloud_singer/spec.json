@@ -1,0 +1,48 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/sources/sf_marketingcloud",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Source Sf Marketingcloud Singer Spec",
+    "type": "object",
+    "required": [
+      "client_id",
+      "client_secret",
+      "tenant_subdomain",
+      "start_date",
+      "batch_size",
+      "request_timeout"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "description": "as per MC app",
+        "airbyte_secret": true
+      },
+      "client_secret": {
+        "type": "string",
+        "description": "as per MC app",
+        "airbyte_secret": true
+      },
+      "tenant_subdomain": {
+        "type": "string",
+        "description": "as per MC app"
+      },
+      "start_date": {
+        "type": "string",
+        "description": "date from which data is retrieved",
+        "example": "2019-01-01T00:00:00Z"
+      },
+      "batch_size": {
+        "type": "integer",
+        "description": "sync batches",
+        "example": "2500"
+      },
+      "request_timeout": {
+        "type": "integer",
+        "description": "request timeout",
+        "example": "900"
+      }
+    }
+  }
+}

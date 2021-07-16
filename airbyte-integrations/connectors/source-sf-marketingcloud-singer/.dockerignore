@@ -1,0 +1,7 @@
+*
+!Dockerfile
+!Dockerfile.test
+!main.py
+!source_sf_marketingcloud_singer
+!setup.py
+!secrets
