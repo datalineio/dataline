@@ -34,8 +34,14 @@ run {
     // default for running on local machine.
     environment "DATABASE_USER", env.DATABASE_USER
     environment "DATABASE_PASSWORD", env.DATABASE_PASSWORD
+
+    environment "CONFIG_DATABASE_USER", env.CONFIG_DATABASE_USER
+    environment "CONFIG_DATABASE_PASSWORD", env.CONFIG_DATABASE_PASSWORD
+
     // we map the docker pg db to port 5433 so it does not conflict with other pg instances.
     environment "DATABASE_URL", "jdbc:postgresql://localhost:5433/${env.DATABASE_DB}"
+    environment "CONFIG_DATABASE_URL", "jdbc:postgresql://localhost:5433/${env.CONFIG_DATABASE_DB}"
+
     environment "WORKSPACE_ROOT", env.WORKSPACE_ROOT
     environment "WORKSPACE_DOCKER_MOUNT", env.WORKSPACE_DOCKER_MOUNT
     environment "LOCAL_DOCKER_MOUNT", env.LOCAL_DOCKER_MOUNT

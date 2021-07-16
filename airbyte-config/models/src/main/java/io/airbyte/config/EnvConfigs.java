@@ -52,6 +52,9 @@ public class EnvConfigs implements Configs {
   public static final String DATABASE_USER = "DATABASE_USER";
   public static final String DATABASE_PASSWORD = "DATABASE_PASSWORD";
   public static final String DATABASE_URL = "DATABASE_URL";
+  public static final String CONFIG_DATABASE_USER = "CONFIG_DATABASE_USER";
+  public static final String CONFIG_DATABASE_PASSWORD = "CONFIG_DATABASE_PASSWORD";
+  public static final String CONFIG_DATABASE_URL = "CONFIG_DATABASE_URL";
   public static final String WEBAPP_URL = "WEBAPP_URL";
   private static final String MINIMUM_WORKSPACE_RETENTION_DAYS = "MINIMUM_WORKSPACE_RETENTION_DAYS";
   private static final String MAXIMUM_WORKSPACE_RETENTION_DAYS = "MAXIMUM_WORKSPACE_RETENTION_DAYS";
@@ -125,6 +128,24 @@ public class EnvConfigs implements Configs {
   @Override
   public String getDatabaseUrl() {
     return getEnsureEnv(DATABASE_URL);
+  }
+
+  @Override
+  public String getConfigDatabaseUser() {
+    // Default to reuse the job database
+    return getEnvOrDefault(CONFIG_DATABASE_USER, getDatabaseUser());
+  }
+
+  @Override
+  public String getConfigDatabasePassword() {
+    // Default to reuse the job database
+    return getEnvOrDefault(CONFIG_DATABASE_PASSWORD, getDatabasePassword());
+  }
+
+  @Override
+  public String getConfigDatabaseUrl() {
+    // Default to reuse the job database
+    return getEnvOrDefault(CONFIG_DATABASE_URL, getDatabaseUrl());
   }
 
   @Override
@@ -255,10 +276,10 @@ public class EnvConfigs implements Configs {
 
   private <T> T getEnvOrDefault(String key, T defaultValue, Function<String, T> parser) {
     final String value = getEnv.apply(key);
-    if (value != null) {
+    if (value != null && !value.isEmpty()) {
       return parser.apply(value);
     } else {
-      LOGGER.info(key + " not found, defaulting to " + defaultValue);
+      LOGGER.info(key + " not found or empty, defaulting to " + defaultValue);
       return defaultValue;
     }
   }

@@ -50,6 +50,9 @@ public enum DatabaseSchema {
   // AirbyteMetadata
   AIRBYTE_METADATA("AirbyteMetadata.yaml");
 
+  // TODO: add airbyte_configs table
+  // AIRBYTE_CONFIGS("AirbyteConfigs.yaml");
+
   static final Path KNOWN_SCHEMAS_ROOT = JsonSchemas.prepareSchemas("tables", DatabaseSchema.class);
 
   private final String schemaFilename;

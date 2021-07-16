@@ -1,6 +1,10 @@
 dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.7'
 
+    implementation project(':airbyte-db')
     implementation project(':airbyte-config:models')
-    implementation project(":airbyte-json-validation")
+    implementation project(':airbyte-config:init')
+    implementation project(':airbyte-json-validation')
+
+    testImplementation "org.testcontainers:postgresql:1.15.1"
 }

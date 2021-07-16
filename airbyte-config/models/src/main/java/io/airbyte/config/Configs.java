@@ -47,6 +47,12 @@ public interface Configs {
 
   String getDatabaseUrl();
 
+  String getConfigDatabaseUser();
+
+  String getConfigDatabasePassword();
+
+  String getConfigDatabaseUrl();
+
   String getWebappUrl();
 
   String getWorkspaceDockerMount();

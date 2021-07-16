@@ -57,13 +57,14 @@ public class FileSystemConfigPersistence implements ConfigPersistence {
   // root for where configs are stored
   private final Path configRoot;
 
-  public static ConfigPersistence createWithValidation(final Path storageRoot) {
+  public static ConfigPersistence createWithValidation(final Path storageRoot) throws IOException {
     return new ValidatingConfigPersistence(new FileSystemConfigPersistence(storageRoot));
   }
 
-  public FileSystemConfigPersistence(final Path storageRoot) {
+  public FileSystemConfigPersistence(final Path storageRoot) throws IOException {
     this.storageRoot = storageRoot;
     this.configRoot = storageRoot.resolve(CONFIG_DIR);
+    Files.createDirectories(configRoot);
   }
 
   @Override

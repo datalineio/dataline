@@ -32,8 +32,8 @@ import io.airbyte.config.Configs;
 import io.airbyte.config.EnvConfigs;
 import io.airbyte.config.helpers.LogClientSingleton;
 import io.airbyte.config.persistence.ConfigPersistence;
+import io.airbyte.config.persistence.ConfigPersistenceBuilder;
 import io.airbyte.config.persistence.ConfigRepository;
-import io.airbyte.config.persistence.FileSystemConfigPersistence;
 import io.airbyte.db.Database;
 import io.airbyte.db.Databases;
 import io.airbyte.scheduler.app.worker_run.TemporalWorkerRunFactory;
@@ -191,9 +191,6 @@ public class SchedulerApp {
 
     final Configs configs = new EnvConfigs();
 
-    final Path configRoot = configs.getConfigRoot();
-    LOGGER.info("configRoot = " + configRoot);
-
     MDC.put(LogClientSingleton.WORKSPACE_MDC_KEY, LogClientSingleton.getSchedulerLogsRoot(configs).toString());
 
     final Path workspaceRoot = configs.getWorkspaceRoot();
@@ -202,16 +199,17 @@ public class SchedulerApp {
     final String temporalHost = configs.getTemporalHost();
     LOGGER.info("temporalHost = " + temporalHost);
 
-    LOGGER.info("Creating DB connection pool...");
-    final Database database = Databases.createPostgresDatabaseWithRetry(
+    LOGGER.info("Creating Job DB connection pool...");
+    final Database jobDatabase = Databases.createPostgresDatabaseWithRetry(
         configs.getDatabaseUser(),
         configs.getDatabasePassword(),
-        configs.getDatabaseUrl());
+        configs.getDatabaseUrl(),
+        Databases.IS_JOB_DATABASE_READY);
 
     final ProcessFactory processFactory = getProcessBuilderFactory(configs);
 
-    final JobPersistence jobPersistence = new DefaultJobPersistence(database);
-    final ConfigPersistence configPersistence = FileSystemConfigPersistence.createWithValidation(configRoot);
+    final JobPersistence jobPersistence = new DefaultJobPersistence(jobDatabase);
+    final ConfigPersistence configPersistence = ConfigPersistenceBuilder.getDbPersistence(configs);
     final ConfigRepository configRepository = new ConfigRepository(configPersistence);
     final JobCleaner jobCleaner = new JobCleaner(
         configs.getWorkspaceRetentionConfig(),

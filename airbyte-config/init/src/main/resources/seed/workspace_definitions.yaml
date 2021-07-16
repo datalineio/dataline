@@ -1,0 +1,6 @@
+- workspaceId: 5ae6b09b-fdec-41af-aaf7-7d94cfc33ef6
+  name: default
+  slug: default
+  initialSetupComplete: false
+  displaySetupWizard: true
+  tombstone: false

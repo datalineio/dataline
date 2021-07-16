@@ -4,11 +4,13 @@ Airbyte uses different objects to store internal state and metadata. This data i
 - Using the default Postgres database that Airbyte spins-up as part of the Docker service described in the `docker-compose.yml` file: `airbyte/db`.
 - Through a dedicated custom Postgres instance (the `airbyte/db` is in this case unused, and can therefore be removed or de-activated from the `docker-compose.yml` file).
 
-The various entities persisted in this internal database can be categorized as:
+The various entities are persisted in two internal databases:
 
-1. Jobs Database: Data about executions of Airbyte Jobs and various runtime metadata.
-2. Temporal Database: Data about the internal orchestrator used by Airbyte, Temporal.io (Tasks, Workflow data, Events, and visibility data).
-3. Connection Configuration Database: Connectors, Sync Connections and various Airbyte configuration objects.
+- Job database
+  - Data about executions of Airbyte Jobs and various runtime metadata.
+  - Data about the internal orchestrator used by Airbyte, Temporal.io (Tasks, Workflow data, Events, and visibility data).
+- Config database
+  - Connectors, Sync Connections and various Airbyte configuration objects.
 
 Note that no actual data from the source (or destination) connectors ever transits or is retained in this internal database.
 
@@ -31,10 +33,25 @@ DATABASE_PORT=3000
 DATABASE_DB=postgres
 ```
 
+By default, the Config Database and the Job Database use the same database instance based on the above setting. It is possible, however, to separate the former from the latter by specifying a separate parameters. For example:
+
+```bash
+CONFIG_DATABASE_USER=airbyte_config_db_user
+CONFIG_DATABASE_PASSWORD=password
+CONFIG_DATABASE_PORT=5432
+CONFIG_DATABASE_DB=airbyte_config_db
+```
+
 Additionally, you must redefine the JDBC URL constructed in the environment variable `DATABASE_URL` to include the correct host, port, and database. If you need to provide extra arguments to the JDBC driver (for example, to handle SSL) you should add it here as well:
 
 ```bash
 DATABASE_URL=jdbc:postgresql://host.docker.internal:3000/postgres?ssl=true&sslmode=require
+```
+
+Same for the config database if it is separate from the job database:
+
+```bash
+CONFIG_DATABASE_URL=jdbc:postgresql://<host>:<port>/<database>?<extra-parameters>
 ```
 
 ## Initializing the database
@@ -45,12 +62,14 @@ This step is only required when you setup Airbyte with a custom database for the
 
 If you provide an empty database to Airbyte and start Airbyte up for the first time, the server and scheduler services won't be able to start because there is no data in the database yet.
 
-We need to make sure that the proper tables have been created by running the init SQL script that you can find [here](https://github.com/airbytehq/airbyte/blob/master/airbyte-db/src/main/resources/schema.sql).
+For the Job Database, you need to make sure that the proper tables have been created by running the init SQL script [here](https://github.com/airbytehq/airbyte/blob/master/airbyte-db/src/main/resources/schema.sql).
 
 You can replace:
 - "airbyte" with your actual "DATABASE_DB" value
 - "docker" with your actual "DATABASE_USER" value
 then run the SQL script to populate the database manually.
+
+For the Config Database, tables will be created automatically. But you should make sure that the database exists, and the user have full access to it.
 
 Now, when you run `docker-compose up`, the Airbyte server and scheduler should connect to the configured database successfully.
 
