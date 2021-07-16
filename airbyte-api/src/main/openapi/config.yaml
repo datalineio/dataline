@@ -1390,6 +1390,11 @@ paths:
         - deployment
       summary: Export Airbyte Configuration and Data Archive
       operationId: exportArchive
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkspaceIdRequestBody"
       responses:
         "200":
           description: Successful operation

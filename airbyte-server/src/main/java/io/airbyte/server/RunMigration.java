@@ -44,41 +44,40 @@ public class RunMigration implements Runnable, AutoCloseable {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(RunMigration.class);
   private final String targetVersion;
-  private final ConfigDumpExport configDumpExport;
-  private final ConfigDumpImport configDumpImport;
+  private final Path seedPath;
+  private final ConfigDumpExporter configDumpExporter;
+  private final ConfigDumpImporter configDumpImporter;
   private final List<File> filesToBeCleanedUp = new ArrayList<>();
 
-  public RunMigration(String initialVersion,
-                      JobPersistence jobPersistence,
+  public RunMigration(JobPersistence jobPersistence,
                       ConfigRepository configRepository,
                       String targetVersion,
-                      Path latestSeeds) {
+                      Path seedPath) {
     this.targetVersion = targetVersion;
-    this.configDumpExport = new ConfigDumpExport(configRepository, jobPersistence, initialVersion);
-    this.configDumpImport = new ConfigDumpImport(initialVersion, targetVersion, latestSeeds, jobPersistence, configRepository);
+    this.seedPath = seedPath;
+    this.configDumpExporter = new ConfigDumpExporter(configRepository, jobPersistence);
+    this.configDumpImporter = new ConfigDumpImporter(configRepository, jobPersistence);
   }
 
   @Override
   public void run() {
     try {
       // Export data
-      File exportData = configDumpExport.dump();
+      File exportData = configDumpExporter.dump();
       filesToBeCleanedUp.add(exportData);
 
       // Define output target
       final Path tempFolder = Files.createTempDirectory(Path.of("/tmp"), "airbyte_archive_output");
-      final File output = Files.createTempFile(tempFolder, "airbyte_archive_output", ".tar.gz")
-          .toFile();
+      final File output = Files.createTempFile(tempFolder, "airbyte_archive_output", ".tar.gz").toFile();
       filesToBeCleanedUp.add(output);
       filesToBeCleanedUp.add(tempFolder.toFile());
 
       // Run Migration
-      MigrateConfig migrateConfig = new MigrateConfig(exportData.toPath(), output.toPath(),
-          targetVersion);
+      MigrateConfig migrateConfig = new MigrateConfig(exportData.toPath(), output.toPath(), targetVersion);
       MigrationRunner.run(migrateConfig);
 
       // Import data
-      ImportRead importRead = configDumpImport.importData(output);
+      ImportRead importRead = configDumpImporter.importDataWithSeed(targetVersion, output, seedPath);
       if (importRead.getStatus() == StatusEnum.FAILED) {
         throw new RuntimeException("Automatic migration failed : " + importRead.getReason());
       }
