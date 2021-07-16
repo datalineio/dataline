@@ -453,7 +453,8 @@ public class KubePodProcess extends Process {
         LOGGER.info("Setting stdout...");
         this.stdout = socket.getInputStream();
       } catch (IOException e) {
-        e.printStackTrace(); // todo: propagate exception / join at the end of constructor
+        LOGGER.error("Server 'stdout' failed, killing pod.", e);
+        System.exit(1);
       }
     });
     executorService.submit(() -> {
@@ -464,7 +465,8 @@ public class KubePodProcess extends Process {
         LOGGER.info("Setting stderr...");
         this.stderr = socket.getInputStream();
       } catch (IOException e) {
-        e.printStackTrace(); // todo: propagate exception / join at the end of constructor
+        LOGGER.error("Server 'stderr' failed, killing pod.", e);
+        System.exit(1);
       }
     });
   }
