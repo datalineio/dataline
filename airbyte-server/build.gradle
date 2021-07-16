@@ -72,7 +72,8 @@ task copySeed(type: Copy, dependsOn: [project(':airbyte-config:init').processRes
 }
 
 // need to make sure that the files are in the resource directory before copying.
-//project.tasks.copySeed.mustRunAfter(project(':airbyte-config:init').tasks.processResources)
+// tests require the seed to exist.
+test.dependsOn(project.tasks.copySeed)
 assemble.dependsOn(project.tasks.copySeed)
 
 mainClassName = 'io.airbyte.server.ServerApp'

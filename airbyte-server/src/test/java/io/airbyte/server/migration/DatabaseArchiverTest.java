@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package io.airbyte.server.converters;
+package io.airbyte.server.migration;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;

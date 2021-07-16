@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package io.airbyte.server.converters;
+package io.airbyte.server.migration;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import io.airbyte.commons.io.IOs;
@@ -48,6 +48,8 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// todo (cgardens) - kill this class. only kept around because it is hard to extricate from the
+// {@link RunMigrationTest} test.
 public class DatabaseArchiver {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseArchiver.class);

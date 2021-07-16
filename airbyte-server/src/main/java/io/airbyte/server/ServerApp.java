@@ -274,8 +274,11 @@ public class ServerApp {
     LOGGER.info("Running Automatic Migration from version : " + airbyteDatabaseVersion + " to version : " + airbyteVersion);
     final Path latestSeedsPath = Path.of(System.getProperty("user.dir")).resolve("latest_seeds");
     LOGGER.info("Last seeds dir: {}", latestSeedsPath);
-    try (RunMigration runMigration = new RunMigration(airbyteDatabaseVersion,
-        jobPersistence, configRepository, airbyteVersion, latestSeedsPath)) {
+    try (final RunMigration runMigration = new RunMigration(
+        jobPersistence,
+        configRepository,
+        airbyteVersion,
+        latestSeedsPath)) {
       runMigration.run();
     } catch (Exception e) {
       LOGGER.error("Automatic Migration failed ", e);
