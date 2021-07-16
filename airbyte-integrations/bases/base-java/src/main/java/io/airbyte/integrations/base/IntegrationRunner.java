@@ -152,8 +152,7 @@ public class IntegrationRunner {
         if (singerMessageOptional.isPresent()) {
           consumer.accept(singerMessageOptional.get());
         } else {
-          // todo (cgardens) - decide if we want to throw here instead.
-          LOGGER.error(inputString);
+          LOGGER.error("Received invalid message: " + inputString);
         }
       }
     }

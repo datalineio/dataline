@@ -203,17 +203,23 @@ public class BufferedStreamConsumer extends FailureTrackingAirbyteMessageConsume
     }
 
     try {
-      // if any state message flushed that means we can still go for at least a partial success. if none
-      // was emitted, if there were still no failures, then we can still succeed. the latter case is full
-      // refresh.
-      onClose.accept(lastFlushedState == null && hasFailed);
+      // if no state was was emitted (i.e. full refresh), if there were still no failures, then we can
+      // still succeed.
+      if (lastFlushedState == null) {
+        onClose.accept(hasFailed);
+      } else {
+        // if any state message flushed that means we can still go for at least a partial success.
+        onClose.accept(false);
+      }
+
       // if one close succeeds without exception then we can emit the state record because it means its
       // records were not only flushed, but committed.
       if (lastFlushedState != null) {
         outputRecordCollector.accept(lastFlushedState);
       }
     } catch (Exception e) {
-      LOGGER.error("on close failed.", e);
+      LOGGER.error("Close failed.", e);
+      throw e;
     }
   }
 
