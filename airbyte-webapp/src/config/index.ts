@@ -31,6 +31,9 @@ type Config = {
     baseUrl: string;
     enableStorytime: boolean;
   };
+  openreplay: {
+    projectKey: string;
+  };
   fullstory: Fullstory.SnippetOptions;
   apiUrl: string;
   healthCheckInterval: number;
@@ -64,6 +67,9 @@ const config: Config = {
     accountId: "74560291-451e-4ceb-a802-56706ece528b",
     baseUrl: "https://app.papercups.io",
     enableStorytime: window.PAPERCUPS_STORYTIME !== "disabled",
+  },
+  openreplay: {
+    projectKey: "6611843272536134",
   },
   fullstory: {
     orgId: "13AXQ4",

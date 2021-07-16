@@ -26,6 +26,7 @@ import useWorkspace from "components/hooks/services/useWorkspaceHook";
 import { AnalyticsService } from "core/analytics/AnalyticsService";
 import { useNotificationService } from "components/hooks/services/Notification/NotificationService";
 import { useApiHealthPoll } from "components/hooks/services/Health";
+import useOpenReplay from "../components/hooks/useOpenReplay";
 
 export enum Routes {
   Preferences = "/preferences",
@@ -160,15 +161,17 @@ const OnboardingsRoutes = () => {
 };
 
 export const Routing: React.FC = () => {
+  useApiHealthPoll(config.healthCheckInterval);
   useSegment(config.segment.token);
   useFullStory(config.fullstory);
-  useApiHealthPoll(config.healthCheckInterval);
+  const tracker = useOpenReplay(config.openreplay.projectKey);
 
   const { workspace } = useWorkspace();
 
   useEffect(() => {
     if (workspace) {
       AnalyticsService.identify(workspace.customerId);
+      tracker.setUserID(workspace.customerId);
     }
   }, [workspace]);
 

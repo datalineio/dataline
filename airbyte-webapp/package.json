@@ -16,6 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@fullstory/browser": "^1.4.9",
+    "@openreplay/tracker": "^3.0.5",
     "@papercups-io/chat-widget": "^1.1.5",
     "@papercups-io/storytime": "^1.0.6",
     "@rest-hooks/legacy": "^2.0.5",
