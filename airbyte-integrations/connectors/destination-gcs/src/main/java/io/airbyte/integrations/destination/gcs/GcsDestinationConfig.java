@@ -22,32 +22,54 @@
  * SOFTWARE.
  */
 
-package io.airbyte.integrations.destination.jdbc.copy.gcs;
+package io.airbyte.integrations.destination.s3;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class GcsConfig {
+public class GcsDestinationConfig {
 
   private final String bucketName;
   private final String bucketPath;
+  private final String bucketRegion;
   private final String accessKeyId;
   private final String secretAccessKey;
-  private final String region;
+  private final S3FormatConfig formatConfig;
 
-  public GcsConfig(String bucketName, String bucketPath, String accessKeyId, String secretAccessKey, String region) {
+  public GcsDestinationConfig(
+                             String bucketName,
+                             String bucketPath,
+                             String bucketRegion,
+                             String accessKeyId,
+                             String secretAccessKey,
+                             S3FormatConfig formatConfig) {
     this.bucketName = bucketName;
     this.bucketPath = bucketPath;
+    this.bucketRegion = bucketRegion;
     this.accessKeyId = accessKeyId;
     this.secretAccessKey = secretAccessKey;
-    this.region = region;
+    this.formatConfig = formatConfig;
+  }
+
+  public static GcsDestinationConfig getGcsDestinationConfig(JsonNode config) {
+    return new GcsDestinationConfig(
+        config.get("gcs_bucket_name").asText(),
+        config.get("gcs_bucket_path").asText(),
+        config.get("gcs_bucket_region").asText(),
+        config.get("access_key_id").asText(),
+        config.get("secret_access_key").asText(),
+        S3FormatConfigs.getS3FormatConfig(config));
   }
 
   public String getBucketName() {
     return bucketName;
   }
 
-  public String getbucketPath() {
+  public String getBucketPath() {
     return bucketPath;
+  }
+
+  public String getBucketRegion() {
+    return bucketRegion;
   }
 
   public String getAccessKeyId() {
@@ -57,20 +79,9 @@ public class GcsConfig {
   public String getSecretAccessKey() {
     return secretAccessKey;
   }
-
-  public String getRegion() {
-    return region;
-  }
-
-   public static GcsConfig getGcsConfig(JsonNode config) {
-
-    return new GcsConfig(
-        config.get("gcs_bucket_name").asText(),
-        config.get("gcs_bucket_path").asText(),
-        config.get("access_key_id").asText(),
-        config.get("secret_access_key").asText(),
-        config.get("gcs_bucket_region").asText()
-      );
+  
+  public S3FormatConfig getFormatConfig() {
+    return formatConfig;
   }
 
 }

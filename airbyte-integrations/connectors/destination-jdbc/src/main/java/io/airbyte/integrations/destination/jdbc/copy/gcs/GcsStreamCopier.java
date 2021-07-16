@@ -50,6 +50,14 @@ import org.apache.commons.csv.CSVPrinter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.client.builder.AwsClientBuilder;
+
+
 public abstract class GcsStreamCopier implements StreamCopier {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(GcsStreamCopier.class);
@@ -180,24 +188,37 @@ public abstract class GcsStreamCopier implements StreamCopier {
     attemptWriteAndDeleteGcsObject(gcsConfig, outputTableName);
   }
 
+  public static void attemptGcsWriteAndDelete(GcsConfig gcsConfig) throws IOException {
+      final String outputTableName = "_airbyte_connection_test_" + UUID.randomUUID().toString().replaceAll("-", "");
+      attemptWriteAndDeleteGcsObject(gcsConfig, outputTableName);
+  }
+
   private static void attemptWriteAndDeleteGcsObject(GcsConfig gcsConfig, String outputTableName) throws IOException {
-    var storage = getStorageClient(gcsConfig);
-    var blobId = BlobId.of(gcsConfig.getBucketName(), "check-content/" + outputTableName);
-    var blobInfo = BlobInfo.newBuilder(blobId).build();
+      var storage = getStorageClient(gcsConfig);
+      // var blobId = BlobId.of(gcsConfig.getBucketName(), "check-content/" + outputTableName);
+      // var blobInfo = BlobInfo.newBuilder(blobId).build();
 
-    storage.create(blobInfo, "".getBytes());
-    storage.delete(blobId);
+      // storage.create(blobInfo, "".getBytes());
+      // storage.delete(blobId);
+      var gcsBucket = gcsConfig.getBucketName();
+
+      storage.putObject(gcsBucket, outputTableName, "check-content");
+      storage.deleteObject(gcsBucket, outputTableName);
   }
 
-  public static Storage getStorageClient(GcsConfig gcsConfig) throws IOException {
-    InputStream credentialsInputStream = new ByteArrayInputStream(gcsConfig.getCredentialsJson().getBytes());
-    GoogleCredentials credentials = GoogleCredentials.fromStream(credentialsInputStream);
-    return StorageOptions.newBuilder()
-        .setCredentials(credentials)
-        .setProjectId(gcsConfig.getProjectId())
-        .build()
-        .getService();
-  }
+  public static AmazonS3 getStorageClient(GcsConfig gcsConfig) throws IOException {
+    var region = gcsConfig.getRegion();
+    var accessKeyId = gcsConfig.getAccessKeyId();
+    var secretAccessKey = gcsConfig.getSecretAccessKey();
+
+    var awsCreds = new BasicAWSCredentials(accessKeyId, secretAccessKey);
+    return AmazonS3ClientBuilder.standard()
+        .withEndpointConfiguration(
+          new AwsClientBuilder.EndpointConfiguration(
+          "https://storage.googleapis.com", region))
+        .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
+        .build();
+    }
 
   public abstract void copyGcsCsvFileIntoTable(JdbcDatabase database,
                                                String gcsFileLocation,

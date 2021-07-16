@@ -32,7 +32,3 @@ crash.log
 *.tfstate
 *.tfstate.backup
 *.lock.hcl
-
-# Airflow Demo
-resources/examples/airflow/logs/*
-!resources/examples/airflow/logs/.gitkeep

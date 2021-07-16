@@ -38,6 +38,13 @@ import io.airbyte.protocol.models.DestinationSyncMode;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.client.builder.AwsClientBuilder;
+
 public abstract class GcsStreamCopierFactory implements StreamCopierFactory<GcsConfig> {
 
   /**
@@ -56,15 +63,28 @@ public abstract class GcsStreamCopierFactory implements StreamCopierFactory<GcsC
       var pair = AirbyteStreamNameNamespacePair.fromAirbyteSteam(stream);
       var schema = getSchema(stream, configuredSchema, nameTransformer);
 
-      InputStream credentialsInputStream = new ByteArrayInputStream(gcsConfig.getCredentialsJson().getBytes());
-      GoogleCredentials credentials = GoogleCredentials.fromStream(credentialsInputStream);
-      Storage storageClient = StorageOptions.newBuilder()
-          .setCredentials(credentials)
-          .setProjectId(gcsConfig.getProjectId())
-          .build()
-          .getService();
+      var region = gcsConfig.getRegion();
+      var accessKeyId = gcsConfig.getAccessKeyId();
+      var secretAccessKey = gcsConfig.getSecretAccessKey();
+      
+      // InputStream credentialsInputStream = new ByteArrayInputStream(gcsConfig.getCredentialsJson().getBytes());
+      // GoogleCredentials credentials = GoogleCredentials.fromStream(credentialsInputStream);
+      // Storage storageClient = StorageOptions.newBuilder()
+      //     .setCredentials(credentials)
+      //     .setProjectId(gcsConfig.getProjectId())
+      //     .build()
+      //     .getService();
 
-      return create(stagingFolder, syncMode, schema, pair.getName(), storageClient, db, gcsConfig, nameTransformer, sqlOperations);
+      var awsCreds = new BasicAWSCredentials(accessKeyId, secretAccessKey);
+      AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+          .withEndpointConfiguration(
+            new AwsClientBuilder.EndpointConfiguration(
+            "https://storage.googleapis.com", region))
+          .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
+          .build();
+
+      return create(stagingFolder, syncMode, schema, pair.getName(), //storageClient
+      s3Client, db, gcsConfig, nameTransformer, sqlOperations);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
@@ -77,7 +97,7 @@ public abstract class GcsStreamCopierFactory implements StreamCopierFactory<GcsC
                                       DestinationSyncMode syncMode,
                                       String schema,
                                       String streamName,
-                                      Storage storageClient,
+                                      AmazonS3 s3Client,
                                       JdbcDatabase db,
                                       GcsConfig gcsConfig,
                                       ExtendedNameTransformer nameTransformer,
