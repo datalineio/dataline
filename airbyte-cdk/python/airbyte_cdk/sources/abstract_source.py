@@ -149,7 +149,7 @@ class AbstractSource(Source, ABC):
         stream_name = configured_stream.stream.name
         stream_state = connector_state.get(stream_name, {})
         if stream_state:
-            logger.info(f"Setting state of {stream_name} stream to {stream_state.get(stream_name)}")
+            logger.info(f"Setting state of {stream_name} stream to {stream_state}")
 
         checkpoint_interval = stream_instance.state_checkpoint_interval
         slices = stream_instance.stream_slices(
