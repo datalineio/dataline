@@ -100,7 +100,8 @@ class SingerSource(Source):
 
     def _discover_internal(self, logger: AirbyteLogger, config_path: str) -> Catalogs:
         cmd = self.discover_cmd(logger, config_path)
-        catalogs = SingerHelper.get_catalogs(logger, cmd, self.get_sync_mode_overrides(), self.get_excluded_streams())
+        catalogs = SingerHelper.get_catalogs(
+            logger, cmd, self.get_sync_mode_overrides(), self.get_primary_key_overrides(), self.get_excluded_streams())
         return catalogs
 
     def check(self, logger: AirbyteLogger, config_container: ConfigContainer) -> AirbyteConnectionStatus:
@@ -144,6 +145,14 @@ class SingerSource(Source):
         If a SyncModeInfo field is not set, it will not be overridden in the output catalog.
 
         :return: A dict from stream name to the sync modes that should be applied to this stream.
+        """
+        return {}
+
+    def get_primary_key_overrides(self) -> Dict[str, List[str]]:
+        """
+        Similar to get_sync_mode_overrides but for primary keys.
+
+        :return: A dict from stream name to the list of primary key fields for the stream.
         """
         return {}
 

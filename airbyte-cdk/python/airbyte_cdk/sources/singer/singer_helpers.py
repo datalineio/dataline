@@ -124,11 +124,12 @@ class SingerHelper:
             field_object["type"] = SingerHelper._parse_type(field_object["type"])
 
     @staticmethod
-    def singer_catalog_to_airbyte_catalog(singer_catalog: Dict[str, any], sync_mode_overrides: Dict[str, SyncModeInfo]) -> AirbyteCatalog:
+    def singer_catalog_to_airbyte_catalog(singer_catalog: Dict[str, any], sync_mode_overrides: Dict[str, SyncModeInfo], primary_key_overrides: Dict[str, List[str]]) -> AirbyteCatalog:
         """
         :param singer_catalog:
         :param sync_mode_overrides: A dict from stream name to the sync modes it should use. Each stream in this dict must exist in the Singer catalog,
         but not every stream in the catalog should exist in this
+        :param primary_key_overrides: A dict of stream name -> list of fields to be used as PKs.
         :return: Airbyte Catalog
         """
         airbyte_streams = []
@@ -142,11 +143,17 @@ class SingerHelper:
             else:
                 set_sync_modes_from_metadata(airbyte_stream, stream.get("metadata", []))
 
+            if name in primary_key_overrides:
+                airbyte_stream.source_defined_primary_key = [[k] for k in primary_key_overrides[name]]
+            else:
+                if schema.get("key_properties"):
+                    airbyte_stream.source_defined_primary_key = [[k] for k in schema["key_properties"]]
+
             airbyte_streams += [airbyte_stream]
         return AirbyteCatalog(streams=airbyte_streams)
 
     @staticmethod
-    def get_catalogs(logger, shell_command: str, sync_mode_overrides: Dict[str, SyncModeInfo], excluded_streams: List) -> Catalogs:
+    def get_catalogs(logger, shell_command: str, sync_mode_overrides: Dict[str, SyncModeInfo], primary_key_overrides: Dict[str, List[str]], excluded_streams: List) -> Catalogs:
         completed_process = subprocess.run(
             shell_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True
         )
@@ -158,7 +165,7 @@ class SingerHelper:
         streams = singer_catalog.get("streams", [])
         if streams and excluded_streams:
             singer_catalog["streams"] = [stream for stream in streams if stream["stream"] not in excluded_streams]
-        airbyte_catalog = SingerHelper.singer_catalog_to_airbyte_catalog(singer_catalog, sync_mode_overrides)
+        airbyte_catalog = SingerHelper.singer_catalog_to_airbyte_catalog(singer_catalog, sync_mode_overrides, primary_key_overrides)
 
         return Catalogs(singer_catalog=singer_catalog, airbyte_catalog=airbyte_catalog)
 
